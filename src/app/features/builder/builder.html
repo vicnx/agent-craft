@@ -46,8 +46,11 @@
         <span class="badge-brand text-[10px]">{{ agentConfig.targetFormat() }}</span>
       </div>
 
-      <!-- Modular Identity & Role Form -->
+      <!-- Identity & Role Form -->
       <app-agent-identity-form />
+
+      <!-- Tech Stack Selector Form -->
+      <app-tech-stack-form />
     </div>
 
     <!-- Right Column: Real-Time Markdown Preview -->
@@ -68,6 +71,16 @@
           <div class="text-slate-400 italic">> {{ agentConfig.config().description }}</div>
         }
         <div class="text-purple-400 mt-3 font-semibold">## Rol: {{ agentConfig.config().role }}</div>
+
+        <!-- Tech Stack Live Section -->
+        <div class="text-emerald-400 font-semibold mt-3">## Tech Stack</div>
+        @for (tech of agentConfig.config().techStack; track tech) {
+          <div class="text-slate-400 pl-2">- {{ tech }}</div>
+        } @empty {
+          <div class="text-slate-600 pl-2 italic">// Ninguna tecnología seleccionada</div>
+        }
+
+        <!-- Architecture Directives Section -->
         <div class="text-slate-300 font-semibold mt-3">## Directivas de Arquitectura</div>
         @for (rule of agentConfig.config().architecturalRules; track rule) {
           <div class="text-slate-400 pl-2">- {{ rule }}</div>

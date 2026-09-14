@@ -1,0 +1,67 @@
+<div class="space-y-4 pt-4 border-t border-white/[0.06]">
+  <div>
+    <h3 class="text-xs font-semibold text-slate-200">{{ 'builder.stackTitle' | translate }}</h3>
+    <p class="text-[11px] text-slate-400 mt-0.5">{{ 'builder.stackSubtitle' | translate }}</p>
+  </div>
+
+  <!-- Active Tech Stack Badges Container -->
+  <div class="flex flex-wrap gap-1.5 min-h-[38px] p-2.5 rounded-xl bg-black/25 border border-white/[0.06] items-center">
+    @for (tech of agentConfig.config().techStack; track tech) {
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 shadow-sm">
+        <span>{{ tech }}</span>
+        <button
+          type="button"
+          (click)="removeTech(tech)"
+          [attr.aria-label]="'Remove ' + tech"
+          class="hover:text-white text-indigo-400 font-bold transition-colors cursor-pointer text-xs"
+        >
+          &times;
+        </button>
+      </span>
+    } @empty {
+      <span class="text-xs text-slate-500 italic pl-1">No hay tecnologías seleccionadas</span>
+    }
+  </div>
+
+  <!-- Custom Tech Input Field with Add Button -->
+  <div class="flex items-center gap-2">
+    <input
+      type="text"
+      [value]="customTechInput()"
+      (input)="onInputChange($event)"
+      (keydown)="onKeydown($event)"
+      [placeholder]="'builder.stackPlaceholder' | translate"
+      class="flex-1 bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none"
+    />
+    <button
+      type="button"
+      (click)="addCustomTech()"
+      class="btn-secondary text-xs py-2 px-3.5"
+    >
+      {{ 'builder.stackAddButton' | translate }}
+    </button>
+  </div>
+
+  <!-- Quick Popular Suggestions -->
+  <div class="space-y-1.5">
+    <span class="text-[11px] text-slate-400 font-medium">{{ 'builder.popularSuggestions' | translate }}</span>
+    <div class="flex flex-wrap gap-1.5">
+      @for (tech of popularTech; track tech) {
+        <button
+          type="button"
+          (click)="togglePopular(tech)"
+          [class.bg-indigo-500/20]="isTechSelected(tech)"
+          [class.text-indigo-300]="isTechSelected(tech)"
+          [class.border-indigo-500/40]="isTechSelected(tech)"
+          [class.bg-white/[0.02]]="!isTechSelected(tech)"
+          [class.text-slate-400]="!isTechSelected(tech)"
+          [class.border-white/[0.06]]="!isTechSelected(tech)"
+          class="px-2 py-0.5 rounded-md text-[11px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer"
+        >
+          <span class="mr-1 font-bold">{{ isTechSelected(tech) ? '✓' : '+' }}</span>
+          {{ tech }}
+        </button>
+      }
+    </div>
+  </div>
+</div>

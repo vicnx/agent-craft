@@ -55,7 +55,12 @@
     "descriptionPlaceholder": "Describe brevemente el propósito de la app y cómo debe comportarse el asistente...",
     "outputLanguageLabel": "Idioma del archivo generado",
     "outputLangEs": "Español",
-    "outputLangEn": "Inglés"
+    "outputLangEn": "Inglés",
+    "stackTitle": "Stack Tecnológico",
+    "stackSubtitle": "Define las tecnologías y herramientas principales del proyecto",
+    "stackPlaceholder": "Escribe una tecnología (ej: Vitest, NestJS) y pulsa Enter...",
+    "stackAddButton": "Añadir",
+    "popularSuggestions": "Sugerencias rápidas:"
   },
   "footer": {
     "createdWith": "Creado con",

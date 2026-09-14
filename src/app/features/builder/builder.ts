@@ -11,10 +11,11 @@ import { TargetFormat } from '../../core/models/agent.model';
 import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { AgentIdentityForm } from './components/agent-identity-form/agent-identity-form';
+import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 
 @Component({
   selector: 'app-builder',
-  imports: [TranslatePipe, AgentIdentityForm],
+  imports: [TranslatePipe, AgentIdentityForm, TechStackForm],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './builder.html',
 })

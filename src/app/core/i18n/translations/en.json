@@ -55,7 +55,12 @@
     "descriptionPlaceholder": "Briefly describe the purpose of the application and how the agent should behave...",
     "outputLanguageLabel": "Generated file language",
     "outputLangEs": "Spanish",
-    "outputLangEn": "English"
+    "outputLangEn": "English",
+    "stackTitle": "Tech Stack",
+    "stackSubtitle": "Define the core technologies and tools for the project",
+    "stackPlaceholder": "Type a technology (e.g.: Vitest, NestJS) and press Enter...",
+    "stackAddButton": "Add",
+    "popularSuggestions": "Quick suggestions:"
   },
   "footer": {
     "createdWith": "Crafted with",
