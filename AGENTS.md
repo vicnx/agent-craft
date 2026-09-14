@@ -50,9 +50,10 @@
 
 ## 4. Documentación y "README Vivo"
 
-### 4.1. Información Mínima Necesaria
-- El archivo `README.md` debe contener **únicamente lo indispensable** para entender y ejecutar el proyecto (título, descripción de 1-2 frases, stack esencial, scripts y versión).
-- **Sin meta-información:** Queda estrictamente prohibido incluir referencias a directivas internas, menciones al archivo `AGENTS.md` o explicaciones sobre cómo fue creada o asistida la app.
+### 4.1. Calidad de Showcase de Producción y "Built With"
+- El archivo `README.md` debe estar estructurado como una vitrina de aplicación en producción para destacar en GitHub: cabecera visual, badges, enlace a Demo, resumen de características, tabla **Built With**, guía de inicio rápido y sección del **Autor**.
+- **Mantenimiento de "Built With":** Cada vez que se incorpore una librería, API o dependencia relevante, debe registrarse inmediatamente en la tabla correspondiente de `README.md`.
+- **Sin meta-información:** Queda estrictamente prohibido incluir referencias a directivas internas, menciones al archivo `AGENTS.md` o notas meta sobre la asistencia de IA.
 
 ### 4.2. Versionado Semántico (SemVer)
 - Al completar una funcionalidad (`feat`) o solventar un error (`fix`), se debe incrementar la versión del proyecto siguiendo SemVer (`MAJOR.MINOR.PATCH`).
