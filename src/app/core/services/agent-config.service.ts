@@ -162,6 +162,38 @@ export class AgentConfigService {
     this.config.update((c) => ({ ...c, customInstructions }));
   }
 
+  addNeverRule(rule: string): void {
+    const trimmed = rule.trim();
+    if (trimmed) {
+      this.config.update((c) =>
+        c.neverRules.includes(trimmed) ? c : { ...c, neverRules: [...c.neverRules, trimmed] }
+      );
+    }
+  }
+
+  removeNeverRule(index: number): void {
+    this.config.update((c) => ({
+      ...c,
+      neverRules: c.neverRules.filter((_, i) => i !== index),
+    }));
+  }
+
+  toggleNeverRule(rule: string): void {
+    const trimmed = rule.trim();
+    if (trimmed) {
+      this.config.update((c) => ({
+        ...c,
+        neverRules: c.neverRules.includes(trimmed)
+          ? c.neverRules.filter((r) => r !== trimmed)
+          : [...c.neverRules, trimmed],
+      }));
+    }
+  }
+
+  clearNeverRules(): void {
+    this.config.update((c) => ({ ...c, neverRules: [] }));
+  }
+
   appendCustomInstruction(instruction: string): void {
     const trimmed = instruction.trim();
     if (!trimmed) return;

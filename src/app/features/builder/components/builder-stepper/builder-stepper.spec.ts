@@ -55,12 +55,13 @@ describe('BuilderStepper', () => {
     fixture.componentRef.setInput('currentStep', 1);
     fixture.detectChanges();
 
-    agentConfig.updateConfig({ communicationRules: [] });
+    agentConfig.updateConfig({ communicationRules: [], neverRules: [] });
     agentConfig.addCommunicationRule('Be concise');
     agentConfig.addTechStackItem('Angular');
     agentConfig.addTechStackItem('Tailwind');
     agentConfig.addArchitecturalRule('Clean code principle');
     agentConfig.addUiDesignRule('Dark mode first');
+    agentConfig.addNeverRule('No usar any');
 
     expect(fixture.componentInstance.getStepBadge(1)).toBe(0);
     expect(fixture.componentInstance.getStepBadge(2)).toBe(1);
@@ -68,7 +69,7 @@ describe('BuilderStepper', () => {
     expect(fixture.componentInstance.getStepBadge(4)).toBe(1);
     expect(fixture.componentInstance.getStepBadge(5)).toBe(1);
     expect(fixture.componentInstance.getStepBadge(6)).toBe(0);
-    expect(fixture.componentInstance.getStepBadge(7)).toBe(0);
+    expect(fixture.componentInstance.getStepBadge(7)).toBe(1);
   });
 
   it('should render icon and tooltip for each step tab', () => {

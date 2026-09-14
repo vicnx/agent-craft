@@ -55,7 +55,14 @@
       "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
       "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
     ],
-    "customTone": ""
+    "customTone": "",
+    "neverRules": [
+      "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+      "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+      "No eliminar comentarios explicativos, documentación ni tests existentes",
+      "Prohibido el uso de any, @ts-ignore o casting inseguro",
+      "No superar el límite de 150-200 líneas de código por archivo"
+    ]
   },
   "presets": {
     "typescript": {
@@ -100,7 +107,14 @@
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
         "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "Prohibido el uso de any, @ts-ignore o casting inseguro",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
     },
     "python": {
       "targetFormat": "cursor",
@@ -140,7 +154,14 @@
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
         "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "Prohibido el uso de any, @ts-ignore o casting inseguro",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
     },
     "go": {
       "targetFormat": "cursor",
@@ -179,7 +200,14 @@
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
         "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "Prohibido el uso de any, @ts-ignore o casting inseguro",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
     },
     "rust": {
       "targetFormat": "cursor",
@@ -218,7 +246,14 @@
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
         "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "Prohibido el uso de any, @ts-ignore o casting inseguro",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
     },
     "java": {
       "targetFormat": "cursor",
@@ -257,7 +292,14 @@
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
         "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "Prohibido el uso de any, @ts-ignore o casting inseguro",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
     },
     "custom": {
       "targetFormat": "cursor",
@@ -283,7 +325,14 @@
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
         "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "Prohibido el uso de any, @ts-ignore o casting inseguro",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
     }
   }
 }

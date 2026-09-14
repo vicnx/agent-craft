@@ -59,6 +59,9 @@ export class BuilderStepper {
     if (stepId === 5) {
       return this.agentConfig.config().uiDesignRules.length;
     }
+    if (stepId === 7) {
+      return this.agentConfig.config().neverRules.length;
+    }
     return 0;
   }
 }

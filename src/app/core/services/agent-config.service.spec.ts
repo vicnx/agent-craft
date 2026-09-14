@@ -175,4 +175,30 @@ describe('AgentConfigService', () => {
     service.removeCommunicationRule(0);
     expect(service.config().communicationRules.length).toBe(0);
   });
+
+  it('should toggle, add, remove, and clear neverRules', () => {
+    service.updateConfig({ neverRules: [] });
+    service.toggleNeverRule('No usar any');
+    expect(service.config().neverRules).toContain('No usar any');
+
+    // Toggle off
+    service.toggleNeverRule('No usar any');
+    expect(service.config().neverRules).not.toContain('No usar any');
+
+    // Add unique
+    service.addNeverRule('No tocar .env');
+    service.addNeverRule('No tocar .env');
+    expect(service.config().neverRules.length).toBe(1);
+
+    // Remove by index
+    service.removeNeverRule(0);
+    expect(service.config().neverRules.length).toBe(0);
+
+    // Clear all
+    service.addNeverRule('Regla 1');
+    service.addNeverRule('Regla 2');
+    expect(service.config().neverRules.length).toBe(2);
+    service.clearNeverRules();
+    expect(service.config().neverRules.length).toBe(0);
+  });
 });

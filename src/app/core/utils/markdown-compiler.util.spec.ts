@@ -1,4 +1,4 @@
-import { compileAgentMarkdown, formatRuleItem } from './markdown-compiler.util';
+import { compileAgentMarkdown, formatNeverItem, formatRuleItem } from './markdown-compiler.util';
 import { AgentConfig } from '../models/agent.model';
 
 describe('markdown-compiler.util', () => {
@@ -12,6 +12,10 @@ describe('markdown-compiler.util', () => {
     autonomy: 'autonomous',
     communicationRules: ['Evitar disculpas o charlas innecesarias'],
     customTone: 'Actuar como Staff Software Engineer',
+    neverRules: [
+      'No usar any ni @ts-ignore',
+      'Seguridad: No exponer variables de entorno .env',
+    ],
     techStack: ['Angular', 'TypeScript'],
     architecturalRules: [
       'Arquitectura modular y componentes desacoplados',
@@ -52,6 +56,10 @@ describe('markdown-compiler.util', () => {
     expect(md).toContain('# Build');
     expect(md).toContain('npm run build');
     expect(md).toContain('## 7. Instrucciones Operativas y Guardrails');
+    expect(md).toContain('### 🚫 Restricciones Estrictas (Never-Do List)');
+    expect(md).toContain('- ❌ No usar any ni @ts-ignore');
+    expect(md).toContain('- ❌ **Seguridad:** No exponer variables de entorno .env');
+    expect(md).toContain('### Instrucciones Adicionales del Proyecto');
     expect(md).toContain('Never touch tmp files.');
   });
 
@@ -83,6 +91,8 @@ describe('markdown-compiler.util', () => {
     expect(md).toContain('## 6. Git Workflow & Conventions');
     expect(md).toContain('### Development & Verification Commands');
     expect(md).toContain('## 7. Operational Instructions & Guardrails');
+    expect(md).toContain('### 🚫 Strict Prohibitions & Constraints (Never-Do List)');
+    expect(md).toContain('### Additional Project Instructions');
   });
 
   it('should format rule items with bold title when containing a colon', () => {
@@ -90,6 +100,13 @@ describe('markdown-compiler.util', () => {
     expect(formatRuleItem('- **Ya formateado:** regla')).toBe('- - **Ya formateado:** regla');
     expect(formatRuleItem('Regla simple sin dos puntos')).toBe('- Regla simple sin dos puntos');
     expect(formatRuleItem('')).toBe('');
+  });
+
+  it('should format never items with bold title when containing a colon', () => {
+    expect(formatNeverItem('Seguridad: No exponer .env')).toBe('**Seguridad:** No exponer .env');
+    expect(formatNeverItem('- Sin guion: regla')).toBe('**Sin guion:** regla');
+    expect(formatNeverItem('Regla directa')).toBe('Regla directa');
+    expect(formatNeverItem('')).toBe('');
   });
 
   it('should handle custom git conventions that are not conventional commits', () => {
@@ -130,6 +147,7 @@ describe('markdown-compiler.util', () => {
       autonomy: '' as unknown as AgentConfig['autonomy'],
       communicationRules: [],
       customTone: '',
+      neverRules: [],
       techStack: [],
       architecturalRules: [],
       uiDesignRules: [],

@@ -78,6 +78,9 @@ export interface AgentConfig {
   /** Si se debe exigir al asistente proponer un bloque de commit al finalizar cada tarea */
   readonly proposeCommit: boolean;
 
+  /** Lista de prohibiciones estrictas y restricciones negativas (Never-Do List) */
+  readonly neverRules: readonly string[];
+
   /** Instrucciones adicionales libres o restricciones específicas del desarrollador */
   readonly customInstructions: string;
 }

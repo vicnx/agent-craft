@@ -27,6 +27,16 @@
       "Indicar explícitamente nombres de archivo y líneas al sugerir cambios",
       "Mantener actitud quirúrgica: modificar solo el código indispensable sin tocar áreas adyacentes"
     ],
+    "neverSuggestions": [
+      "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+      "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+      "No eliminar comentarios explicativos, documentación ni tests existentes",
+      "Prohibido el uso de any, @ts-ignore o casting inseguro",
+      "No superar el límite de 150-200 líneas de código por archivo",
+      "No crear mocks de servicios internos cuando se puedan emplear implementaciones reales",
+      "No ejecutar comandos de Git destructivos (force push, reset hard o rebase no supervisado)",
+      "No tocar código adyacente que no guarde relación directa con la tarea solicitada"
+    ],
     "categories": [
       {
         "id": "architecture",
@@ -96,6 +106,16 @@
       "Ask for confirmation before installing third-party libraries or packages",
       "Explicitly reference exact filenames and line numbers when proposing changes",
       "Adopt surgical precision: touch only necessary code without altering adjacent areas"
+    ],
+    "neverSuggestions": [
+      "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+      "Never install external packages or dependencies without explicit user confirmation",
+      "Never delete existing comments, documentation, or unit tests",
+      "Forbidden use of any, @ts-ignore, or unsafe type casting",
+      "Never exceed the 150-200 lines of code limit per file",
+      "Never fabricate mocked internal services when real instances can be used",
+      "Never run destructive Git commands (force push, hard reset, unsupervised rebase)",
+      "Never alter adjacent code that is unrelated to the requested task"
     ],
     "categories": [
       {

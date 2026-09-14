@@ -17,6 +17,19 @@ export function formatRuleItem(rule: string): string {
   return `- ${trimmed}`;
 }
 
+export function formatNeverItem(rule: string): string {
+  const trimmed = rule.trim();
+  if (!trimmed) return '';
+  const clean = trimmed.replace(/^-\s*/, '');
+  const colonIdx = clean.indexOf(':');
+  if (colonIdx > 0 && colonIdx < 45) {
+    const key = clean.substring(0, colonIdx).trim();
+    const rest = clean.substring(colonIdx + 1).trim();
+    return `**${key}:** ${rest}`;
+  }
+  return clean;
+}
+
 export function compileAgentMarkdown(config: AgentConfig): string {
   const isEn = config.outputLanguage === 'en';
   const isAgentsMd = config.targetFormat === 'agents';
@@ -129,8 +142,23 @@ export function compileAgentMarkdown(config: AgentConfig): string {
     }
   }
 
-  if (config.customInstructions.trim()) {
-    lines.push('', `## ${isAgentsMd ? '7. ' : ''}${t.instructionsTitle}`, config.customInstructions.trim());
+  const hasNeverRules = Boolean(config.neverRules && config.neverRules.length > 0);
+  const hasCustomInst = Boolean(config.customInstructions.trim());
+
+  if (hasNeverRules || hasCustomInst) {
+    lines.push('', `## ${isAgentsMd ? '7. ' : ''}${t.instructionsTitle}`);
+    if (hasNeverRules) {
+      lines.push('', `### 🚫 ${t.neverTitle}`);
+      for (const rule of config.neverRules) {
+        lines.push(`- ❌ ${formatNeverItem(rule)}`);
+      }
+    }
+    if (hasCustomInst) {
+      if (hasNeverRules) {
+        lines.push('', `### ${t.additionalInstructionsTitle}`);
+      }
+      lines.push(config.customInstructions.trim());
+    }
   }
 
   return lines.join('\n');

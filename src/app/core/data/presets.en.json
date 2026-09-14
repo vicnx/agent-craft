@@ -55,7 +55,14 @@
       "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
       "Explain technical rationale step-by-step before making complex changes"
     ],
-    "customTone": ""
+    "customTone": "",
+    "neverRules": [
+      "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+      "Never install external packages or dependencies without explicit user confirmation",
+      "Never delete existing comments, documentation, or unit tests",
+      "Forbidden use of any, @ts-ignore, or unsafe type casting",
+      "Never exceed the 150-200 lines of code limit per file"
+    ]
   },
   "presets": {
     "typescript": {
@@ -100,7 +107,14 @@
         "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
         "Explain technical rationale step-by-step before making complex changes"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     },
     "python": {
       "targetFormat": "cursor",
@@ -140,7 +154,14 @@
         "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
         "Explain technical rationale step-by-step before making complex changes"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     },
     "go": {
       "targetFormat": "cursor",
@@ -179,7 +200,14 @@
         "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
         "Explain technical rationale step-by-step before making complex changes"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     },
     "rust": {
       "targetFormat": "cursor",
@@ -218,7 +246,14 @@
         "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
         "Explain technical rationale step-by-step before making complex changes"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     },
     "java": {
       "targetFormat": "cursor",
@@ -257,7 +292,14 @@
         "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
         "Explain technical rationale step-by-step before making complex changes"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     },
     "custom": {
       "targetFormat": "cursor",
@@ -283,7 +325,14 @@
         "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
         "Explain technical rationale step-by-step before making complex changes"
       ],
-      "customTone": ""
+      "customTone": "",
+      "neverRules": [
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     }
   }
 }
