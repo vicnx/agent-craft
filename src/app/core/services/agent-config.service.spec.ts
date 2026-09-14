@@ -27,10 +27,18 @@ describe('AgentConfigService', () => {
   });
 
   it('should load preset correctly', () => {
-    service.loadPreset('copilot');
+    service.loadPreset('python');
+    expect(service.config().projectName).toBe('Python AI & Backend');
+    expect(service.config().techStack).toContain('FastAPI');
+  });
+
+  it('should switch targetFormat without resetting user rules or stack', () => {
+    service.loadPreset('typescript');
+    service.addTechStackItem('CustomLib');
+    service.setTargetFormat('copilot');
     expect(service.config().targetFormat).toBe('copilot');
-    expect(service.config().projectName).toBe('Copilot Workspace');
-    expect(service.activeOption().filename).toBe('copilot-instructions.md');
+    expect(service.config().techStack).toContain('CustomLib');
+    expect(service.config().projectName).toBe('TypeScript Workspace');
   });
 
   it('should update partial configuration', () => {
@@ -81,11 +89,10 @@ describe('AgentConfigService', () => {
   });
 
   it('should reset configuration back to defaults', () => {
-    service.loadPreset('agents');
-    expect(service.config().targetFormat).toBe('agents');
+    service.loadPreset('go');
+    expect(service.config().projectName).toBe('Go Cloud Service');
     service.reset();
-    expect(service.config().targetFormat).toBe('cursor');
-    expect(service.config().projectName).toBe('My Project');
+    expect(service.config().projectName).toBe('Custom Project');
   });
 
   it('should switch output language and translate catalog rules and role', () => {

@@ -1,7 +1,7 @@
 /**
  * Formatos de archivo y asistentes de IA soportados.
  */
-export type TargetFormat = 'cursor' | 'copilot' | 'agents' | 'custom';
+export type TargetFormat = 'cursor' | 'copilot' | 'agents' | 'claude' | 'custom';
 
 /**
  * Metadatos descriptivos para los selectores de formato en la interfaz.

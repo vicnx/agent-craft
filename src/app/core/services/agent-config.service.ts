@@ -6,6 +6,7 @@ import {
 } from '../constants/presets.constant';
 import { I18nService, Language } from '../i18n/i18n.service';
 import { AgentConfig, TargetFormat, TargetFormatOption } from '../models/agent.model';
+import { LanguagePresetId } from '../models/preset.model';
 import { translateCatalogItems } from '../utils/suggestions-translator.util';
 
 @Injectable({
@@ -15,9 +16,7 @@ export class AgentConfigService {
   private readonly i18n = inject(I18nService);
 
   readonly config = signal<AgentConfig>(this.buildInitialConfig(this.i18n.currentLang()));
-
   readonly targetFormat = computed<TargetFormat>(() => this.config().targetFormat);
-
   readonly activeOption = computed<TargetFormatOption>(
     () => TARGET_FORMAT_OPTIONS.find((opt) => opt.id === this.targetFormat()) ?? TARGET_FORMAT_OPTIONS[0],
   );
@@ -29,13 +28,20 @@ export class AgentConfigService {
     });
   }
 
-  loadPreset(format: TargetFormat): void {
-    const preset = PRESET_CONFIGS[format] ?? DEFAULT_AGENT_CONFIG;
+  loadPreset(presetId: LanguagePresetId): void {
+    const preset = PRESET_CONFIGS[presetId] ?? DEFAULT_AGENT_CONFIG;
     const isEn = untracked(() => this.config().outputLanguage === 'en');
+    const targetFormat = untracked(() => this.config().targetFormat);
     const { translatedRules, translatedRole } = isEn
       ? translateCatalogItems(preset.architecturalRules, preset.role, 'es', 'en')
       : { translatedRules: preset.architecturalRules, translatedRole: preset.role };
-    this.config.set({ ...preset, outputLanguage: isEn ? 'en' : 'es', role: translatedRole, architecturalRules: [...translatedRules] });
+    this.config.set({
+      ...preset,
+      targetFormat,
+      outputLanguage: isEn ? 'en' : 'es',
+      role: translatedRole,
+      architecturalRules: [...translatedRules],
+    });
   }
 
   setTargetFormat(targetFormat: TargetFormat): void {
@@ -53,7 +59,6 @@ export class AgentConfigService {
         prevLang,
         newLang,
       );
-
       return {
         ...current,
         outputLanguage: newLang,
@@ -70,9 +75,7 @@ export class AgentConfigService {
   addTechStackItem(item: string): void {
     const trimmed = item.trim();
     if (!trimmed) return;
-    this.config.update((c) =>
-      c.techStack.includes(trimmed) ? c : { ...c, techStack: [...c.techStack, trimmed] },
-    );
+    this.config.update((c) => c.techStack.includes(trimmed) ? c : { ...c, techStack: [...c.techStack, trimmed] });
   }
 
   removeTechStackItem(itemToRemove: string): void {
@@ -133,7 +136,7 @@ export class AgentConfigService {
   }
 
   reset(): void {
-    this.config.set(this.buildInitialConfig(this.i18n.currentLang()));
+    this.config.set(this.buildInitialConfig(untracked(() => this.i18n.currentLang())));
   }
 
   private buildInitialConfig(lang: Language): AgentConfig {

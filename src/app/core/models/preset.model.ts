@@ -1,5 +1,13 @@
+export type LanguagePresetId =
+  | 'typescript'
+  | 'python'
+  | 'go'
+  | 'rust'
+  | 'java'
+  | 'custom';
+
 export interface PresetOption {
-  readonly id: string;
+  readonly id: LanguagePresetId;
   readonly nameKey: string;
   readonly targetFile: string;
   readonly badgeKey: string;

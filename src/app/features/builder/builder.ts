@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
 import { TargetFormat } from '../../core/models/agent.model';
+import { LanguagePresetId } from '../../core/models/preset.model';
 import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { AgentIdentityForm } from './components/agent-identity-form/agent-identity-form';
@@ -18,7 +19,6 @@ import { DirectivesModal } from './components/directives-modal/directives-modal'
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 import { WorkflowForm } from './components/workflow-form/workflow-form';
 import { CustomInstructionsForm } from './components/custom-instructions-form/custom-instructions-form';
-import { ConfirmModal } from './components/confirm-modal/confirm-modal';
 
 @Component({
   selector: 'app-builder',
@@ -30,7 +30,6 @@ import { ConfirmModal } from './components/confirm-modal/confirm-modal';
     WorkflowForm,
     CustomInstructionsForm,
     DirectivesModal,
-    ConfirmModal,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './builder.html',
@@ -42,8 +41,6 @@ export class Builder {
   readonly presetId = input<string>();
   readonly formatOptions = TARGET_FORMAT_OPTIONS;
   readonly isCatalogOpen = signal(false);
-  readonly pendingFormat = signal<TargetFormat | null>(null);
-  readonly isChangeFormatModalOpen = signal(false);
   private lastLoadedPreset?: string;
 
   constructor() {
@@ -52,35 +49,18 @@ export class Builder {
       if (
         id &&
         id !== this.lastLoadedPreset &&
-        (id === 'cursor' || id === 'copilot' || id === 'agents' || id === 'custom')
+        (id === 'typescript' || id === 'python' || id === 'go' || id === 'rust' || id === 'java' || id === 'custom')
       ) {
         this.lastLoadedPreset = id;
         untracked(() => {
-          this.agentConfig.loadPreset(id);
+          this.agentConfig.loadPreset(id as LanguagePresetId);
         });
       }
     });
   }
 
   changeFormat(format: TargetFormat): void {
-    if (format === this.agentConfig.targetFormat()) return;
-    this.pendingFormat.set(format);
-    this.isChangeFormatModalOpen.set(true);
-  }
-
-  confirmChangeFormat(): void {
-    const target = this.pendingFormat();
-    if (target) {
-      this.lastLoadedPreset = target;
-      this.agentConfig.loadPreset(target);
-      void this.router.navigate(['/builder', target], { replaceUrl: true });
-    }
-    this.closeChangeFormatModal();
-  }
-
-  closeChangeFormatModal(): void {
-    this.isChangeFormatModalOpen.set(false);
-    this.pendingFormat.set(null);
+    this.agentConfig.setTargetFormat(format);
   }
 
   goBack(): void {
