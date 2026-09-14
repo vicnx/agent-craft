@@ -81,15 +81,15 @@ describe('Builder', () => {
     component.nextStep();
     expect(component.currentStep()).toBe(3);
 
-    component.goToStep(4);
-    expect(component.currentStep()).toBe(4);
+    component.goToStep(6);
+    expect(component.currentStep()).toBe(6);
 
-    // Should not exceed step 4
+    // Should not exceed step 6
     component.nextStep();
-    expect(component.currentStep()).toBe(4);
+    expect(component.currentStep()).toBe(6);
 
     component.prevStep();
-    expect(component.currentStep()).toBe(3);
+    expect(component.currentStep()).toBe(5);
 
     component.goToStep(1);
     expect(component.currentStep()).toBe(1);

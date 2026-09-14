@@ -32,4 +32,9 @@ export class WorkflowForm {
   isSelected(preset: string): boolean {
     return this.agentConfig.config().gitConvention.trim() === preset.trim();
   }
+
+  updateBuildCommand(key: 'build' | 'test' | 'dev', event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.agentConfig.setBuildCommand(key, input.value);
+  }
 }

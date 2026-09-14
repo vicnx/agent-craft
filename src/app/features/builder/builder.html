@@ -77,21 +77,12 @@
         <!-- Step Content Area -->
         <div class="min-h-[320px]">
           @switch (currentStep()) {
-            @case (1) {
-              <app-agent-identity-form />
-            }
-            @case (2) {
-              <app-tech-stack-form />
-            }
-            @case (3) {
-              <app-directives-form (openCatalog)="isCatalogOpen.set(true)" />
-            }
-            @case (4) {
-              <div class="flex flex-col gap-4">
-                <app-workflow-form />
-                <app-custom-instructions-form />
-              </div>
-            }
+            @case (1) { <app-agent-identity-form /> }
+            @case (2) { <app-tech-stack-form /> }
+            @case (3) { <app-directives-form (openCatalog)="isCatalogOpen.set(true)" /> }
+            @case (4) { <app-ui-design-form /> }
+            @case (5) { <app-workflow-form /> }
+            @case (6) { <app-custom-instructions-form /> }
           }
         </div>
       </div>
@@ -109,9 +100,9 @@
           <i class="fa-solid fa-arrow-left"></i><span>{{ 'builder.prevStep' | translate }}</span>
         </button>
         <span class="text-xs text-slate-400 font-medium">
-          {{ 'builder.stepCount' | translate }} {{ currentStep() }} {{ 'builder.stepOf' | translate }} 4
+          {{ 'builder.stepCount' | translate }} {{ currentStep() }} {{ 'builder.stepOf' | translate }} 6
         </span>
-        @if (currentStep() < 4) {
+        @if (currentStep() < 6) {
           <button type="button" (click)="nextStep()" class="btn-primary text-xs py-1.5 px-3 flex items-center gap-1.5 cursor-pointer">
             <span>{{ 'builder.nextStep' | translate }}</span><i class="fa-solid fa-arrow-right"></i>
           </button>

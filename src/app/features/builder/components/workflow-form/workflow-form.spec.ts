@@ -42,4 +42,10 @@ describe('WorkflowForm', () => {
     expect(component.isSelected(targetPreset)).toBe(true);
     expect(component.isSelected(GIT_CONVENTION_PRESETS[0])).toBe(false);
   });
+
+  it('should update build commands on input', () => {
+    const event = { target: { value: 'npm run custom-build' } } as unknown as Event;
+    component.updateBuildCommand('build', event);
+    expect(agentConfig.config().buildCommands.build).toBe('npm run custom-build');
+  });
 });

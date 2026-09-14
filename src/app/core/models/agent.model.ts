@@ -20,6 +20,12 @@ export interface TargetFormatOption {
   readonly descKey: string;
 }
 
+export interface BuildCommands {
+  readonly build: string;
+  readonly test: string;
+  readonly dev: string;
+}
+
 /**
  * Estado completo de la configuración del agente que se compilará en Markdown.
  */
@@ -42,13 +48,16 @@ export interface AgentConfig {
   /** Tecnologías y librerías clave. Ej: ['Angular 22', 'Tailwind CSS v4', 'TypeScript'] */
   readonly techStack: readonly string[];
 
-  /** Reglas de arquitectura de obligado cumplimiento. Ej: ['Standalone Components', 'Signals', 'SRP'] */
+  /** Reglas de arquitectura y código. Ej: ['Standalone Components', 'Signals', 'SRP'] */
   readonly architecturalRules: readonly string[];
 
-  /** Estándares de calidad de código. Ej: ['Máximo 150 líneas por archivo', 'Sin any', 'DRY'] */
-  readonly qualityStandards: readonly string[];
+  /** Directivas de UI/UX y diseño visual. Ej: ['Dark-mode first', 'Responsive total', 'Tailwind'] */
+  readonly uiDesignRules: readonly string[];
 
-  /** Convención de control de versiones y flujo Git. Ej: 'Conventional Commits (feat, fix, chore)' */
+  /** Comandos de ejecución para que el asistente pueda verificar su trabajo */
+  readonly buildCommands: BuildCommands;
+
+  /** Convención de control de versiones y flujo Git. Ej: 'Conventional Commits' */
   readonly gitConvention: string;
 
   /** Instrucciones adicionales libres o restricciones específicas del desarrollador */

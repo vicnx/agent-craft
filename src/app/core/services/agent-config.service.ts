@@ -97,6 +97,19 @@ export class AgentConfigService {
     this.config.update((c) => ({ ...c, architecturalRules: [] }));
   }
 
+  addUiDesignRule(rule: string): void {
+    const trimmed = rule.trim();
+    if (trimmed) this.config.update((c) => c.uiDesignRules.includes(trimmed) ? c : { ...c, uiDesignRules: [...c.uiDesignRules, trimmed] });
+  }
+
+  removeUiDesignRule(index: number): void {
+    this.config.update((c) => ({ ...c, uiDesignRules: c.uiDesignRules.filter((_, i) => i !== index) }));
+  }
+
+  setBuildCommand(key: 'build' | 'test' | 'dev', value: string): void {
+    this.config.update((c) => ({ ...c, buildCommands: { ...c.buildCommands, [key]: value } }));
+  }
+
   setGitConvention(gitConvention: string): void {
     this.config.update((c) => ({ ...c, gitConvention }));
   }
