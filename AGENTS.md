@@ -29,6 +29,11 @@
 - **Tipado Fuerte:** Definir interfaces (`interface`) o tipos (`type`) explícitos para todas las estructuras, modelos y contratos de datos.
 - **Prohibición de `any`:** Está estrictamente vetado el uso de `any`. En casos de incertidumbre, emplear `unknown` junto con type guards o validación de tipos en runtime.
 
+### 2.4. Internacionalización Obligatoria (i18n)
+- **Cero Textos Hardcodeados:** Queda terminantemente prohibido incluir textos literales visibles al usuario directamente en plantillas HTML o componentes.
+- **Traducción Integral:** Toda etiqueta, botón, título, descripción, mensaje de ayuda o placeholder debe canalizarse a través del sistema de internacionalización (soportando Español `es` e Inglés `en`).
+- **Reactividad y Persistencia:** El cambio de idioma debe reflejarse en tiempo real sin recargar la página y persistir la preferencia en `localStorage`.
+
 ---
 
 ## 3. UI/UX y Diseño Visual

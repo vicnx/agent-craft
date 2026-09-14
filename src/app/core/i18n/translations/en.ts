@@ -1,0 +1,56 @@
+import { TranslationSchema } from '../i18n.model';
+
+export const enTranslations: TranslationSchema = {
+  common: {
+    appName: 'AgentCraft',
+    appSubtitle: 'AI Agents & Rules Studio',
+    clientSide: '100% Client-Side',
+    back: 'Back',
+    backToHome: 'Back to home',
+    popular: 'Popular',
+    standard: 'Standard',
+    autonomous: 'Autonomous',
+    readyToEdit: 'Ready to edit',
+    stepOf: 'Step 1 of 2',
+  },
+  welcome: {
+    badge: 'Visual Rule Builder for AI',
+    heroTitlePrefix: 'Configure your coding agents with',
+    heroTitleHighlight: 'surgical precision',
+    heroSubtitle:
+      'Visually design directives for Cursor, GitHub Copilot, and Claude Code. Real-time preview and seamless export without touching manual markdown.',
+    ctaStartCustom: 'Start Custom Configuration',
+    ctaExploreTemplates: 'Explore Presets',
+    templatesTitle: 'Quick-Start Presets',
+    templatesSubtitle: 'Select a preconfigured format to speed up your workflow.',
+    formatsSupported: '3 supported formats',
+    useTemplate: 'Use',
+    featureClientTitle: '100% Client-Side',
+    featureClientDesc: 'No backend, no accounts. Your directives live solely in your browser.',
+    featureSyncTitle: 'Live Markdown',
+    featureSyncDesc: 'Instant visual preview of the compiled file in real time.',
+    featureExportTitle: 'One-Click Export',
+    featureExportDesc: 'Copy to clipboard or download your ready-to-use file.',
+  },
+  presets: {
+    cursorName: 'Cursor IDE',
+    cursorDesc: 'Behavior rules, agent role, and coding standards for the Cursor editor.',
+    copilotName: 'GitHub Copilot',
+    copilotDesc: 'Contextual repository instructions to steer GitHub Copilot suggestions.',
+    agentsName: 'Claude / AGENTS.md',
+    agentsDesc: 'Master architectural directives, execution boundaries, and Git workflows for autonomous agents.',
+  },
+  builder: {
+    title: 'Rules Studio',
+    subtitle: 'Configure directives, architecture, and code conventions.',
+    customConfig: 'Custom Configuration',
+    agentParams: 'Agent Parameters',
+    agentParamsPlaceholderTitle: 'Configurator Forms',
+    agentParamsPlaceholderDesc:
+      'Ready to integrate modular fields: Role, Tech stack, Quality standards, and Conventions.',
+    livePreview: 'Live Preview',
+    compiledOutput: 'Compiled Output',
+    compiledOutputDesc:
+      'The real-time compiler engine will display the ready-to-copy or one-click export output here.',
+  },
+};

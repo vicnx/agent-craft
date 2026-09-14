@@ -11,10 +11,11 @@
   </p>
 
   <p>
-    <img src="https://img.shields.io/badge/version-0.3.0-6366f1?style=flat-square" alt="Version 0.3.0" />
+    <img src="https://img.shields.io/badge/version-0.4.0-6366f1?style=flat-square" alt="Version 0.4.0" />
     <img src="https://img.shields.io/badge/Angular-22-dd0031?style=flat-square&logo=angular&logoColor=white" alt="Angular 22" />
     <img src="https://img.shields.io/badge/TailwindCSS-v4-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" />
     <img src="https://img.shields.io/badge/TypeScript-Strict-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/i18n-ES%20%7C%20EN-blueviolet?style=flat-square" alt="i18n ES/EN" />
     <img src="https://img.shields.io/badge/License-MIT-emerald?style=flat-square" alt="License MIT" />
   </p>
 </div>
@@ -29,6 +30,7 @@ Design, customize, and export standard context files such as `.cursorrules`, `co
 
 - 🔒 **100% Client-Side:** No backend, no accounts, and no telemetry. All configurations live in your browser.
 - ⚡ **Real-Time Preview:** Instant compilation and formatted markdown preview as you configure your agent.
+- 🌐 **Full Internationalization (i18n):** Native, zero-reload language switching between English and Spanish.
 - 🎯 **IDE & Agent Agnostic:** Built-in templates tailored for Cursor, GitHub Copilot, Claude Code, and autonomous coding agents.
 - 🎨 **Dev-Tool Aesthetics:** Dark-mode first interface crafted with glassmorphism, micro-borders, and high-contrast typography.
 
@@ -45,6 +47,7 @@ Design, customize, and export standard context files such as `.cursorrules`, `co
 - **Visual Rule Builder:** Form-driven configuration for agent roles, tech stack constraints, code conventions, and architectural boundaries.
 - **Live Markdown Sync:** Real-time dual-pane editor showing the exact rendered file structure.
 - **One-Click Export:** Copy directly to clipboard or download ready-to-use configuration files for your repository root.
+- **Bilingual Interface (i18n):** Instant switching between English and Spanish with persistent user preferences.
 - **100% Responsive:** Fluid, responsive layout optimized across mobile, tablet, and wide desktop displays.
 
 ---

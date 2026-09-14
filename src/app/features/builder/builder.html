@@ -3,23 +3,23 @@
   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
     <div class="flex items-center gap-3">
       <button (click)="goBack()" type="button" class="btn-secondary text-xs py-1.5 px-3">
-        &larr; Volver
+        &larr; {{ 'common.back' | translate }}
       </button>
       <div>
         <div class="flex items-center gap-2">
-          <h1 class="text-lg sm:text-xl font-bold text-white tracking-tight">Studio de Reglas</h1>
+          <h1 class="text-lg sm:text-xl font-bold text-white tracking-tight">{{ 'builder.title' | translate }}</h1>
           <span class="badge-brand text-[11px]">
             {{ activeTarget() }}
           </span>
         </div>
-        <p class="text-xs text-slate-400">Configura directivas, arquitectura y convenciones de código.</p>
+        <p class="text-xs text-slate-400">{{ 'builder.subtitle' | translate }}</p>
       </div>
     </div>
 
     <div class="flex items-center gap-2">
       <span class="badge-emerald text-xs">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        Listo para editar
+        {{ 'common.readyToEdit' | translate }}
       </span>
     </div>
   </div>
@@ -31,9 +31,9 @@
       <div class="flex items-center justify-between pb-3 border-b border-white/[0.06]">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
-          <h2 class="text-sm font-semibold text-white">Parámetros del Agente</h2>
+          <h2 class="text-sm font-semibold text-white">{{ 'builder.agentParams' | translate }}</h2>
         </div>
-        <span class="text-xs font-mono text-slate-400">Paso 1 de 2</span>
+        <span class="text-xs font-mono text-slate-400">{{ 'common.stepOf' | translate }}</span>
       </div>
 
       <div class="flex-1 flex flex-col items-center justify-center p-8 text-center border border-dashed border-white/[0.08] rounded-xl">
@@ -42,9 +42,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
           </svg>
         </div>
-        <h3 class="text-sm font-medium text-white">Formularios del Configurador</h3>
+        <h3 class="text-sm font-medium text-white">{{ 'builder.agentParamsPlaceholderTitle' | translate }}</h3>
         <p class="text-xs text-slate-400 max-w-sm mt-1">
-          Preparado para integrar los campos modulares: Rol, Stack tecnológico, Estándares de calidad y Convenciones.
+          {{ 'builder.agentParamsPlaceholderDesc' | translate }}
         </p>
       </div>
     </div>
@@ -54,7 +54,7 @@
       <div class="flex items-center justify-between pb-3 border-b border-white/[0.06]">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-          <h2 class="text-sm font-semibold text-white">Previsualización en Vivo</h2>
+          <h2 class="text-sm font-semibold text-white">{{ 'builder.livePreview' | translate }}</h2>
         </div>
         <span class="text-xs font-mono text-slate-400">Markdown</span>
       </div>
@@ -66,9 +66,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
           </svg>
         </div>
-        <h3 class="text-sm font-medium text-white">Salida Compilada</h3>
+        <h3 class="text-sm font-medium text-white">{{ 'builder.compiledOutput' | translate }}</h3>
         <p class="text-xs text-slate-400 max-w-sm mt-1">
-          El motor de generación en tiempo real mostrará aquí el resultado listo para copiar o exportar en 1 clic.
+          {{ 'builder.compiledOutputDesc' | translate }}
         </p>
       </div>
     </div>

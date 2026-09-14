@@ -8,17 +8,29 @@
         </div>
         <div>
           <span class="text-sm font-semibold tracking-tight text-white flex items-center gap-2">
-            AgentCraft
-            <span class="badge-brand text-[10px] py-0.5">v0.3.0</span>
+            {{ 'common.appName' | translate }}
+            <span class="badge-brand text-[10px] py-0.5">v0.4.0</span>
           </span>
-          <p class="text-xs text-slate-400 hidden sm:block">AI Agents & Rules Studio</p>
+          <p class="text-xs text-slate-400 hidden sm:block">{{ 'common.appSubtitle' | translate }}</p>
         </div>
       </a>
 
       <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Switcher Toggle -->
+        <button
+          (click)="i18n.toggleLanguage()"
+          type="button"
+          aria-label="Toggle language"
+          class="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] hover:border-indigo-500/40 hover:bg-white/[0.08] text-slate-300 transition-all cursor-pointer"
+        >
+          <span [class.text-indigo-400]="i18n.currentLang() === 'es'" [class.font-bold]="i18n.currentLang() === 'es'">ES</span>
+          <span class="text-slate-600">/</span>
+          <span [class.text-indigo-400]="i18n.currentLang() === 'en'" [class.font-bold]="i18n.currentLang() === 'en'">EN</span>
+        </button>
+
         <span class="badge-emerald text-xs">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          100% Client-Side
+          {{ 'common.clientSide' | translate }}
         </span>
       </div>
     </div>

@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { PresetOption } from '../../core/models/preset.model';
 
 @Component({
   selector: 'app-welcome',
+  imports: [TranslatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './welcome.html',
 })
@@ -13,27 +15,27 @@ export class Welcome {
   readonly presets = signal<readonly PresetOption[]>([
     {
       id: 'cursor',
-      name: 'Cursor IDE',
+      nameKey: 'presets.cursorName',
       targetFile: '.cursorrules',
-      badge: 'Popular',
-      description: 'Reglas de comportamiento, rol del agente y estándares de código para el editor Cursor.',
+      badgeKey: 'common.popular',
+      descKey: 'presets.cursorDesc',
       tags: ['Angular', 'TypeScript', 'Tailwind'],
     },
     {
       id: 'copilot',
-      name: 'GitHub Copilot',
+      nameKey: 'presets.copilotName',
       targetFile: 'copilot-instructions.md',
-      badge: 'Estándar',
-      description: 'Instrucciones contextuales para guiar las sugerencias de Copilot en todo el repositorio.',
-      tags: ['Workspace', 'Buenas Prácticas', 'Clean Code'],
+      badgeKey: 'common.standard',
+      descKey: 'presets.copilotDesc',
+      tags: ['Workspace', 'Clean Code'],
     },
     {
       id: 'agents',
-      name: 'Claude / AGENTS.md',
+      nameKey: 'presets.agentsName',
       targetFile: 'AGENTS.md',
-      badge: 'Autónomo',
-      description: 'Directivas maestras de arquitectura, límites de ejecución y flujo Git para agentes autónomos.',
-      tags: ['Arquitectura', 'Conventional Commits', 'SemVer'],
+      badgeKey: 'common.autonomous',
+      descKey: 'presets.agentsDesc',
+      tags: ['Architecture', 'Commits', 'SemVer'],
     },
   ]);
 

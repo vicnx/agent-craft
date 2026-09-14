@@ -1,8 +1,8 @@
 export interface PresetOption {
   readonly id: string;
-  readonly name: string;
+  readonly nameKey: string;
   readonly targetFile: string;
-  readonly badge: string;
-  readonly description: string;
+  readonly badgeKey: string;
+  readonly descKey: string;
   readonly tags: readonly string[];
 }
