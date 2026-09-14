@@ -1,7 +1,7 @@
 import { computed, effect, inject, Injectable, signal, untracked } from '@angular/core';
 import {
   DEFAULT_AGENT_CONFIG,
-  PRESET_CONFIGS,
+  PRESET_CONFIGS_BY_LANG,
   TARGET_FORMAT_OPTIONS,
 } from '../constants/presets.constant';
 import { I18nService, Language } from '../i18n/i18n.service';
@@ -29,19 +29,11 @@ export class AgentConfigService {
   }
 
   loadPreset(presetId: LanguagePresetId): void {
-    const preset = PRESET_CONFIGS[presetId] ?? DEFAULT_AGENT_CONFIG;
     const isEn = untracked(() => this.config().outputLanguage === 'en');
+    const lang = isEn ? 'en' : 'es';
+    const preset = PRESET_CONFIGS_BY_LANG[lang][presetId] ?? DEFAULT_AGENT_CONFIG;
     const targetFormat = untracked(() => this.config().targetFormat);
-    const { translatedRules, translatedRole } = isEn
-      ? translateCatalogItems(preset.architecturalRules, preset.role, 'es', 'en')
-      : { translatedRules: preset.architecturalRules, translatedRole: preset.role };
-    this.config.set({
-      ...preset,
-      targetFormat,
-      outputLanguage: isEn ? 'en' : 'es',
-      role: translatedRole,
-      architecturalRules: [...translatedRules],
-    });
+    this.config.set({ ...preset, targetFormat, outputLanguage: lang });
   }
 
   setTargetFormat(targetFormat: TargetFormat): void {
@@ -59,12 +51,7 @@ export class AgentConfigService {
         prevLang,
         newLang,
       );
-      return {
-        ...current,
-        outputLanguage: newLang,
-        role: translatedRole,
-        architecturalRules: [...translatedRules],
-      };
+      return { ...current, outputLanguage: newLang, role: translatedRole, architecturalRules: [...translatedRules] };
     });
   }
 
@@ -74,8 +61,7 @@ export class AgentConfigService {
 
   addTechStackItem(item: string): void {
     const trimmed = item.trim();
-    if (!trimmed) return;
-    this.config.update((c) => c.techStack.includes(trimmed) ? c : { ...c, techStack: [...c.techStack, trimmed] });
+    if (trimmed) this.config.update((c) => c.techStack.includes(trimmed) ? c : { ...c, techStack: [...c.techStack, trimmed] });
   }
 
   removeTechStackItem(itemToRemove: string): void {
@@ -140,13 +126,8 @@ export class AgentConfigService {
   }
 
   private buildInitialConfig(lang: Language): AgentConfig {
-    if (lang !== 'en') return { ...DEFAULT_AGENT_CONFIG, outputLanguage: 'es' };
-    const { translatedRules, translatedRole } = translateCatalogItems(
-      DEFAULT_AGENT_CONFIG.architecturalRules,
-      DEFAULT_AGENT_CONFIG.role,
-      'es',
-      'en',
-    );
-    return { ...DEFAULT_AGENT_CONFIG, outputLanguage: 'en', role: translatedRole, architecturalRules: [...translatedRules] };
+    const configLang = lang === 'en' ? 'en' : 'es';
+    const base = PRESET_CONFIGS_BY_LANG[configLang].custom ?? DEFAULT_AGENT_CONFIG;
+    return { ...base, outputLanguage: configLang };
   }
 }

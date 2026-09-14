@@ -33,8 +33,8 @@
   ],
   "defaultConfig": {
     "targetFormat": "cursor",
-    "projectName": "Custom Project",
-    "role": "AI Coding Assistant",
+    "projectName": "Proyecto Personalizado",
+    "role": "Asistente de Código IA",
     "description": "Configuración personalizada desde cero.",
     "outputLanguage": "es",
     "techStack": [],
@@ -46,7 +46,7 @@
   "presets": {
     "typescript": {
       "targetFormat": "cursor",
-      "projectName": "TypeScript Workspace",
+      "projectName": "Proyecto TypeScript",
       "role": "Arquitecto Frontend Senior y Especialista TypeScript",
       "description": "Directivas de arquitectura, tipado estricto y buenas prácticas para el ecosistema TypeScript.",
       "outputLanguage": "es",
@@ -88,7 +88,7 @@
     },
     "go": {
       "targetFormat": "cursor",
-      "projectName": "Go Cloud Service",
+      "projectName": "Microservicio Go",
       "role": "Ingeniero de Sistemas Senior y Especialista Go",
       "description": "Directivas de desarrollo idiomático en Go, alta concurrencia y microservicios resilientes.",
       "outputLanguage": "es",
@@ -96,7 +96,7 @@
       "architecturalRules": [
         "Interfaces pequeñas y desacopladas en el punto de consumo (aceptar interfaces, devolver structs)",
         "Manejo explícito de errores idiomático (if err != nil), nunca ignorar errores devueltos",
-        "Concurrencia segura con goroutines, sync.WaitGroup, y channels con control de contexto (context.Context)",
+        "Concurrencia segura con goroutines, sync.WaitGroup y control de contexto (context.Context)",
         "Estructura estándar de proyectos Go (cmd/, internal/, pkg/)"
       ],
       "qualityStandards": [
@@ -109,7 +109,7 @@
     },
     "rust": {
       "targetFormat": "cursor",
-      "projectName": "Rust High-Perf Systems",
+      "projectName": "Sistemas Rust de Alto Rendimiento",
       "role": "Ingeniero de Sistemas de Alto Rendimiento y Especialista Rust",
       "description": "Directivas de desarrollo seguro, alto rendimiento y gestión estricta de memoria en Rust.",
       "outputLanguage": "es",
@@ -130,7 +130,7 @@
     },
     "java": {
       "targetFormat": "cursor",
-      "projectName": "Enterprise Java Backend",
+      "projectName": "Backend Empresarial Java",
       "role": "Arquitecto Empresarial Senior y Especialista Spring Boot",
       "description": "Directivas de arquitectura empresarial, DDD y estándares de código limpio para Java y Spring Boot.",
       "outputLanguage": "es",
@@ -143,7 +143,7 @@
       ],
       "qualityStandards": [
         "Adherencia a estándares de Checkstyle y análisis estático con SonarQube",
-        "Tests unitarios y de integración con JUnit 5, AssertJ, Mockito y Testcontainers",
+        "Tests unitarios e integración con JUnit 5, AssertJ, Mockito y Testcontainers",
         "Validación declarativa de datos mediante Jakarta Bean Validation (@Valid)"
       ],
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
@@ -151,8 +151,8 @@
     },
     "custom": {
       "targetFormat": "cursor",
-      "projectName": "Custom Project",
-      "role": "AI Coding Assistant",
+      "projectName": "Proyecto Personalizado",
+      "role": "Asistente de Código IA",
       "description": "Configuración personalizada desde cero.",
       "outputLanguage": "es",
       "techStack": [],

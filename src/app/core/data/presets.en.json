@@ -1,0 +1,165 @@
+{
+  "options": [
+    {
+      "id": "cursor",
+      "filename": ".cursorrules",
+      "labelKey": "targets.cursor",
+      "descKey": "targets.cursorDesc"
+    },
+    {
+      "id": "copilot",
+      "filename": "copilot-instructions.md",
+      "labelKey": "targets.copilot",
+      "descKey": "targets.copilotDesc"
+    },
+    {
+      "id": "agents",
+      "filename": "AGENTS.md",
+      "labelKey": "targets.agents",
+      "descKey": "targets.agentsDesc"
+    },
+    {
+      "id": "claude",
+      "filename": "CLAUDE.md",
+      "labelKey": "targets.claude",
+      "descKey": "targets.claudeDesc"
+    },
+    {
+      "id": "custom",
+      "filename": "RULES.md",
+      "labelKey": "targets.custom",
+      "descKey": "targets.customDesc"
+    }
+  ],
+  "defaultConfig": {
+    "targetFormat": "cursor",
+    "projectName": "Custom Project",
+    "role": "AI Coding Assistant",
+    "description": "Custom configuration from scratch.",
+    "outputLanguage": "en",
+    "techStack": [],
+    "architecturalRules": [],
+    "qualityStandards": [],
+    "gitConvention": "Conventional Commits",
+    "customInstructions": ""
+  },
+  "presets": {
+    "typescript": {
+      "targetFormat": "cursor",
+      "projectName": "TypeScript Project",
+      "role": "Senior Frontend Architect & TypeScript Specialist",
+      "description": "Architectural directives, strict typing, and best practices for the modern TypeScript ecosystem.",
+      "outputLanguage": "en",
+      "techStack": ["TypeScript", "Angular", "Tailwind CSS", "Node.js"],
+      "architecturalRules": [
+        "Modular architecture and decoupled components adhering to the Single Responsibility Principle (SRP)",
+        "DRY Principle: maximum reusability and zero logical duplication",
+        "Immutability by default: use readonly, immutable objects, and reactive Signals",
+        "Strict separation between presentation layer, business logic, and data access"
+      ],
+      "qualityStandards": [
+        "Strict typing enabled (strict: true) with zero tolerance for the any type",
+        "Zero tolerance for dead code, orphan imports, or unused variables",
+        "Automated unit and integration tests for critical business logic"
+      ],
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "customInstructions": "Prioritize readability, composability, and rendering performance."
+    },
+    "python": {
+      "targetFormat": "cursor",
+      "projectName": "Python AI & Backend",
+      "role": "Senior Backend Architect & Python Specialist",
+      "description": "Development standards, Clean Architecture, and directives for backend services and AI applications in Python.",
+      "outputLanguage": "en",
+      "techStack": ["Python 3.12+", "FastAPI", "Pydantic", "Pytest", "Ruff"],
+      "architecturalRules": [
+        "Clean Architecture with decoupled layers (Domain, Application, Infrastructure)",
+        "Mandatory Type Hints across all functions and classes per PEP 484",
+        "Explicit error handling using custom domain exceptions",
+        "Idiomatic asynchronous programming using asyncio and dependency injection"
+      ],
+      "qualityStandards": [
+        "Strict validation with Ruff and Mypy in strict mode",
+        "Automated tests with Pytest, typed fixtures, and coverage above 80%",
+        "Google Style docstrings clearly documenting arguments and return types"
+      ],
+      "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "customInstructions": "Favor immutability using dataclasses(frozen=True) or Pydantic BaseModel(frozen=True)."
+    },
+    "go": {
+      "targetFormat": "cursor",
+      "projectName": "Go Cloud Service",
+      "role": "Senior Systems Engineer & Go Specialist",
+      "description": "Directives for idiomatic Go development, high concurrency, and resilient microservices.",
+      "outputLanguage": "en",
+      "techStack": ["Go 1.22+", "Gin/Fiber", "PostgreSQL", "Docker"],
+      "architecturalRules": [
+        "Small, decoupled interfaces defined at the consumption point (accept interfaces, return structs)",
+        "Explicit idiomatic error handling (if err != nil); never discard returned errors",
+        "Safe concurrency using goroutines, sync.WaitGroup, and channels with context control (context.Context)",
+        "Standard Go project layout (cmd/, internal/, pkg/)"
+      ],
+      "qualityStandards": [
+        "Strict linting with golangci-lint",
+        "Zero data races: always verify with 'go test -race'",
+        "Unit and integration testing using standard testing package and table-driven tests"
+      ],
+      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "customInstructions": "Avoid unnecessary abstractions; favor clear, direct code with zero superfluous dependencies."
+    },
+    "rust": {
+      "targetFormat": "cursor",
+      "projectName": "Rust High-Perf Systems",
+      "role": "Senior Systems Engineer & Rust Specialist",
+      "description": "Directives for memory-safe, high-performance, and idiomatic systems development in Rust.",
+      "outputLanguage": "en",
+      "techStack": ["Rust 2024", "Cargo", "Tokio", "Serde"],
+      "architecturalRules": [
+        "Strict adherence to ownership and borrowing rules without unnecessary defensive clones",
+        "Explicit, typed error handling using Result<T, E> and the '?' operator",
+        "Rich domain modeling with algebraic data types (Enums with payloads) and exhaustive pattern matching",
+        "Internal modularity with restricted crate visibility (pub(crate))"
+      ],
+      "qualityStandards": [
+        "Zero tolerance for 'unsafe' blocks without rigorous, documented justification",
+        "Clean compilation with zero warnings using 'cargo clippy -- -D warnings'",
+        "Unit, integration, and property-based tests using 'cargo test'"
+      ],
+      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "customInstructions": "Ensure errors contain descriptive contextual information before propagating."
+    },
+    "java": {
+      "targetFormat": "cursor",
+      "projectName": "Enterprise Java Backend",
+      "role": "Senior Enterprise Architect & Spring Boot Specialist",
+      "description": "Directives for enterprise architecture, Domain-Driven Design (DDD), and clean code standards for Java & Spring Boot.",
+      "outputLanguage": "en",
+      "techStack": ["Java 21+", "Spring Boot 3", "Spring Data JPA", "PostgreSQL"],
+      "architecturalRules": [
+        "Hexagonal Architecture (Ports & Adapters) isolating the core domain model",
+        "Strict constructor-based dependency injection; avoid field injection (@Autowired)",
+        "Immutability encouraged using Java Records and immutable DTOs",
+        "Global exception handling via @RestControllerAdvice and RFC 7807 ProblemDetails"
+      ],
+      "qualityStandards": [
+        "Adherence to Checkstyle standards and static analysis with SonarQube",
+        "Unit and integration testing with JUnit 5, AssertJ, Mockito, and Testcontainers",
+        "Declarative input validation using Jakarta Bean Validation (@Valid)"
+      ],
+      "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "customInstructions": "Follow SOLID principles rigorously and prevent framework coupling in the business layer."
+    },
+    "custom": {
+      "targetFormat": "cursor",
+      "projectName": "Custom Project",
+      "role": "AI Coding Assistant",
+      "description": "Custom configuration from scratch.",
+      "outputLanguage": "en",
+      "techStack": [],
+      "architecturalRules": [],
+      "qualityStandards": [],
+      "gitConvention": "Conventional Commits",
+      "customInstructions": ""
+    }
+  }
+}

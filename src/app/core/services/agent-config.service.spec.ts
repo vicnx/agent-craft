@@ -23,7 +23,7 @@ describe('AgentConfigService', () => {
     TestBed.configureTestingModule({});
     const enService = TestBed.inject(AgentConfigService);
     expect(enService.config().outputLanguage).toBe('en');
-    expect(enService.config().role).toBe('Senior Fullstack Software Engineer');
+    expect(enService.config().role).toBe('AI Coding Assistant');
   });
 
   it('should load preset correctly', () => {
@@ -33,12 +33,13 @@ describe('AgentConfigService', () => {
   });
 
   it('should switch targetFormat without resetting user rules or stack', () => {
+    service.setOutputLanguage('es');
     service.loadPreset('typescript');
     service.addTechStackItem('CustomLib');
     service.setTargetFormat('copilot');
     expect(service.config().targetFormat).toBe('copilot');
     expect(service.config().techStack).toContain('CustomLib');
-    expect(service.config().projectName).toBe('TypeScript Workspace');
+    expect(service.config().projectName).toBe('Proyecto TypeScript');
   });
 
   it('should update partial configuration', () => {
@@ -65,14 +66,33 @@ describe('AgentConfigService', () => {
 
     service.removeArchitecturalRule(initialCount);
     expect(service.config().architecturalRules.length).toBe(initialCount);
+  });
 
+  it('should toggle architectural rules and verify existence', () => {
+    expect(service.hasArchitecturalRule('Toggle Rule')).toBe(false);
+    service.toggleArchitecturalRule('Toggle Rule');
+    expect(service.hasArchitecturalRule('Toggle Rule')).toBe(true);
+    service.toggleArchitecturalRule('Toggle Rule');
+    expect(service.hasArchitecturalRule('Toggle Rule')).toBe(false);
+  });
+
+  it('should clear all architectural rules', () => {
+    service.addArchitecturalRule('Rule to clear');
     service.clearArchitecturalRules();
     expect(service.config().architecturalRules.length).toBe(0);
   });
 
+  it('should add and remove quality standards', () => {
+    service.addQualityStandard('Test Coverage > 80%');
+    expect(service.config().qualityStandards).toContain('Test Coverage > 80%');
+
+    service.removeQualityStandard(service.config().qualityStandards.length - 1);
+    expect(service.config().qualityStandards).not.toContain('Test Coverage > 80%');
+  });
+
   it('should update git convention', () => {
-    service.setGitConvention('Git Flow');
-    expect(service.config().gitConvention).toBe('Git Flow');
+    service.setGitConvention('GitFlow');
+    expect(service.config().gitConvention).toBe('GitFlow');
   });
 
   it('should update and append custom instructions without duplication', () => {
@@ -82,17 +102,19 @@ describe('AgentConfigService', () => {
     service.appendCustomInstruction('Second rule.');
     expect(service.config().customInstructions).toContain('- Second rule.');
 
-    // Duplicate append should not duplicate
     service.appendCustomInstruction('Second rule.');
     const occurrences = service.config().customInstructions.split('Second rule.').length - 1;
     expect(occurrences).toBe(1);
   });
 
   it('should reset configuration back to defaults', () => {
+    const i18n = TestBed.inject(I18nService);
+    i18n.setLanguage('es');
+    TestBed.flushEffects();
     service.loadPreset('go');
-    expect(service.config().projectName).toBe('Go Cloud Service');
+    expect(service.config().projectName).toBe('Microservicio Go');
     service.reset();
-    expect(service.config().projectName).toBe('Custom Project');
+    expect(service.config().projectName).toBe('Proyecto Personalizado');
   });
 
   it('should switch output language and translate catalog rules and role', () => {
@@ -124,21 +146,22 @@ describe('AgentConfigService', () => {
     expect(service.config().outputLanguage).toBe('es');
   });
 
-  it('should maintain English outputLanguage and translate preset items when loading preset', () => {
+  it('should load English preset when outputLanguage is English', () => {
     service.setOutputLanguage('en');
-    service.loadPreset('copilot');
+    service.loadPreset('typescript');
     expect(service.config().outputLanguage).toBe('en');
-    expect(service.config().targetFormat).toBe('copilot');
-    expect(service.config().role).toBe('Clean Code & Software Craftsmanship Expert');
+    expect(service.config().projectName).toBe('TypeScript Project');
+    expect(service.config().role).toBe('Senior Frontend Architect & TypeScript Specialist');
   });
 
   it('should reset to English default config when app language is English', () => {
     const i18n = TestBed.inject(I18nService);
     i18n.setLanguage('en');
     TestBed.flushEffects();
-    service.loadPreset('agents');
+    service.loadPreset('go');
     service.reset();
     expect(service.config().outputLanguage).toBe('en');
-    expect(service.config().role).toBe('Senior Fullstack Software Engineer');
+    expect(service.config().projectName).toBe('Custom Project');
+    expect(service.config().role).toBe('AI Coding Assistant');
   });
 });

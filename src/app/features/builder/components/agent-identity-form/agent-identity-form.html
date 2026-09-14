@@ -1,6 +1,6 @@
 <div class="space-y-5">
   <!-- Project Name Field -->
-  <div class="space-y-1.5">
+  <div>
     <label for="projectNameInput" class="block text-xs font-medium text-slate-300 mb-2">
       {{ 'builder.projectNameLabel' | translate }}
     </label>
@@ -10,12 +10,12 @@
       [value]="agentConfig.config().projectName"
       (input)="onProjectNameChange($event)"
       [placeholder]="'builder.projectNamePlaceholder' | translate"
-      class="input-field text-xs font-mono"
+      class="input-field w-full text-xs font-mono"
     />
   </div>
 
   <!-- Agent Role Field -->
-  <div class="space-y-1.5">
+  <div>
     <label for="roleInput" class="block text-xs font-medium text-slate-300 mb-2">
       {{ 'builder.roleLabel' | translate }}
     </label>
@@ -25,11 +25,11 @@
       [value]="agentConfig.config().role"
       (input)="onRoleChange($event)"
       [placeholder]="'builder.rolePlaceholder' | translate"
-      class="input-field text-xs font-mono"
+      class="input-field w-full text-xs font-mono"
     />
 
     <!-- Role Suggestions Pills -->
-    <div class="space-y-1.5 pt-1">
+    <div class="space-y-1.5 pt-2">
       <div class="flex items-center justify-between">
         <span class="text-[11px] text-slate-400 font-medium">
           {{ 'builder.quickRoles' | translate }}
@@ -65,8 +65,8 @@
   </div>
 
   <!-- Output Language Toggle -->
-  <div class="space-y-1.5">
-    <label class="text-xs font-medium text-slate-300">
+  <div>
+    <label class="block text-xs font-medium text-slate-300 mb-2">
       {{ 'builder.outputLanguageLabel' | translate }}
     </label>
     <div class="inline-flex p-1 rounded-xl bg-white/[0.03] border border-white/[0.08]">
@@ -76,7 +76,7 @@
         [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'es'"
         [class.text-white]="agentConfig.config().outputLanguage === 'es'"
         [class.text-slate-400]="agentConfig.config().outputLanguage !== 'es'"
-        class="px-3 py-1 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
+        class="px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
       >
         {{ 'builder.outputLangEs' | translate }}
       </button>
@@ -86,7 +86,7 @@
         [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'en'"
         [class.text-white]="agentConfig.config().outputLanguage === 'en'"
         [class.text-slate-400]="agentConfig.config().outputLanguage !== 'en'"
-        class="px-3 py-1 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
+        class="px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
       >
         {{ 'builder.outputLangEn' | translate }}
       </button>
@@ -104,7 +104,7 @@
       [value]="agentConfig.config().description"
       (input)="onDescriptionChange($event)"
       [placeholder]="'builder.descriptionPlaceholder' | translate"
-      class="input-field text-xs font-mono resize-none leading-relaxed"
+      class="input-field w-full text-xs font-mono resize-none leading-relaxed"
     ></textarea>
   </div>
 </div>
