@@ -114,6 +114,10 @@ export class AgentConfigService {
     this.config.update((c) => ({ ...c, gitConvention }));
   }
 
+  setProposeCommit(proposeCommit: boolean): void {
+    this.config.update((c) => ({ ...c, proposeCommit }));
+  }
+
   setCustomInstructions(customInstructions: string): void {
     this.config.update((c) => ({ ...c, customInstructions }));
   }

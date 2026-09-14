@@ -48,4 +48,12 @@ describe('WorkflowForm', () => {
     component.updateBuildCommand('build', event);
     expect(agentConfig.config().buildCommands.build).toBe('npm run custom-build');
   });
+
+  it('should toggle proposeCommit independent option', () => {
+    const initial = agentConfig.config().proposeCommit;
+    component.toggleProposeCommit();
+    expect(agentConfig.config().proposeCommit).toBe(!initial);
+    component.toggleProposeCommit();
+    expect(agentConfig.config().proposeCommit).toBe(initial);
+  });
 });

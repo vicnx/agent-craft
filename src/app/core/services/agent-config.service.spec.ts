@@ -83,6 +83,8 @@ describe('AgentConfigService', () => {
     expect(service.config().uiDesignRules).not.toContain('Dark-mode first');
     service.setBuildCommand('build', 'npm run build');
     expect(service.config().buildCommands.build).toBe('npm run build');
+    service.setProposeCommit(false);
+    expect(service.config().proposeCommit).toBe(false);
   });
 
   it('should compile reactive markdown whenever config changes', () => {

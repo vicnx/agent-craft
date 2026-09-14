@@ -137,6 +137,8 @@
     "gitConventionLabel": "Convención de commits",
     "gitConventionPlaceholder": "Ej: Conventional Commits (feat, fix, refactor, docs, chore)...",
     "quickConventions": "Estándares recomendados:",
+    "proposeCommitLabel": "Proponer mensaje de commit al finalizar",
+    "proposeCommitDesc": "Exigir siempre al asistente incluir al final un bloque estructurado con el mensaje de commit.",
     "previewEmptyTech": "Ninguna tecnología seleccionada",
     "previewEmptyRules": "Ninguna directiva configurada",
     "previewArchitectureTitle": "Directivas de Arquitectura",

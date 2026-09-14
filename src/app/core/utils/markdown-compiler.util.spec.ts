@@ -16,6 +16,7 @@ describe('markdown-compiler.util', () => {
     ],
     uiDesignRules: ['Dark-mode first con Tailwind CSS'],
     gitConvention: 'Conventional Commits',
+    proposeCommit: true,
     buildCommands: {
       build: 'npm run build',
       test: 'npm test',
@@ -89,6 +90,22 @@ describe('markdown-compiler.util', () => {
     expect(md).not.toContain('Conventional Commits');
   });
 
+  it('should include or exclude delivery guideline based on proposeCommit option independently', () => {
+    const withCommit = compileAgentMarkdown({ ...baseConfig, proposeCommit: true });
+    expect(withCommit).toContain('Regla de Entrega');
+
+    const withoutCommit = compileAgentMarkdown({ ...baseConfig, proposeCommit: false });
+    expect(withoutCommit).not.toContain('Regla de Entrega');
+
+    const customWithCommit = compileAgentMarkdown({
+      ...baseConfig,
+      gitConvention: 'Trunk-Based Development',
+      proposeCommit: true,
+    });
+    expect(customWithCommit).toContain('- **Convención Git:** Trunk-Based Development');
+    expect(customWithCommit).toContain('Regla de Entrega');
+  });
+
   it('should omit empty sections gracefully', () => {
     const minimalConfig: AgentConfig = {
       targetFormat: 'agents',
@@ -100,6 +117,7 @@ describe('markdown-compiler.util', () => {
       architecturalRules: [],
       uiDesignRules: [],
       gitConvention: '',
+      proposeCommit: false,
       buildCommands: { build: '', test: '', dev: '' },
       customInstructions: '',
     };

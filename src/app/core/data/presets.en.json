@@ -46,6 +46,7 @@
       "dev": "npm run start"
     },
     "gitConvention": "Conventional Commits",
+    "proposeCommit": true,
     "customInstructions": ""
   },
   "presets": {
@@ -77,6 +78,7 @@
         "dev": "npm run start"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
       "customInstructions": "Prioritize readability, composability, and rendering performance."
     },
     "python": {
@@ -102,6 +104,7 @@
         "dev": "uvicorn main:app --reload"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
       "customInstructions": "Favor immutability using dataclasses(frozen=True) or Pydantic BaseModel(frozen=True)."
     },
     "go": {
@@ -127,6 +130,7 @@
         "dev": "go run main.go"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "proposeCommit": true,
       "customInstructions": "Avoid unnecessary abstractions; favor clear, direct code with zero superfluous dependencies."
     },
     "rust": {
@@ -152,6 +156,7 @@
         "dev": "cargo run"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "proposeCommit": true,
       "customInstructions": "Ensure errors contain descriptive contextual information before propagating."
     },
     "java": {
@@ -177,6 +182,7 @@
         "dev": "./mvnw spring-boot:run"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
       "customInstructions": "Follow SOLID principles rigorously and prevent framework coupling in the business layer."
     },
     "custom": {
@@ -194,6 +200,7 @@
         "dev": "npm run start"
       },
       "gitConvention": "Conventional Commits",
+      "proposeCommit": true,
       "customInstructions": ""
     }
   }

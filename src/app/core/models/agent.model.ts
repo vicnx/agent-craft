@@ -60,6 +60,9 @@ export interface AgentConfig {
   /** Convención de control de versiones y flujo Git. Ej: 'Conventional Commits' */
   readonly gitConvention: string;
 
+  /** Si se debe exigir al asistente proponer un bloque de commit al finalizar cada tarea */
+  readonly proposeCommit: boolean;
+
   /** Instrucciones adicionales libres o restricciones específicas del desarrollador */
   readonly customInstructions: string;
 }

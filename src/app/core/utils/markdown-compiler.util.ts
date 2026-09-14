@@ -67,7 +67,9 @@ export function compileAgentMarkdown(config: AgentConfig): string {
 
   const hasGit = Boolean(config.gitConvention.trim());
   const hasCmds = Boolean(config.buildCommands?.build || config.buildCommands?.test || config.buildCommands?.dev);
-  if (hasGit || hasCmds) {
+  const hasProposeCommit = Boolean(config.proposeCommit);
+
+  if (hasGit || hasCmds || hasProposeCommit) {
     lines.push('', `## ${isAgentsMd ? '5. ' : ''}${t.gitWorkflow}`);
     if (hasGit) {
       const isConv = /conventional/i.test(config.gitConvention);
@@ -75,11 +77,14 @@ export function compileAgentMarkdown(config: AgentConfig): string {
         lines.push(
           `- **${t.gitStandard}:** ${t.gitStandardValue}`,
           `- **${t.gitStructure}:** ${t.gitStructureValue}`,
-          `- **${t.gitDelivery}:** ${t.gitDeliveryValue}`,
         );
       } else {
         lines.push(`- **${t.gitConvention}:** ${config.gitConvention.trim()}`);
       }
+    }
+
+    if (hasProposeCommit) {
+      lines.push(`- **${t.gitDelivery}:** ${t.gitDeliveryValue}`);
     }
 
     if (hasCmds) {
