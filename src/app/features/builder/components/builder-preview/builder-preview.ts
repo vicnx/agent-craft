@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { AgentConfigService } from '../../../../core/services/agent-config.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { parseMarkdownForPreview } from '../../../../core/utils/markdown-highlighter.util';
 
 @Component({
   selector: 'app-builder-preview',
@@ -12,6 +13,8 @@ import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 export class BuilderPreview {
   readonly agentConfig = inject(AgentConfigService);
   readonly isCopied = signal(false);
+
+  readonly previewLines = computed(() => parseMarkdownForPreview(this.agentConfig.compiledMarkdown()));
 
   async copyToClipboard(): Promise<void> {
     try {

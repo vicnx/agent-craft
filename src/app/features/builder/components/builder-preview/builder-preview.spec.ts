@@ -65,4 +65,13 @@ describe('BuilderPreview', () => {
     createObjectURLSpy.mockRestore();
     revokeObjectURLSpy.mockRestore();
   });
+
+  it('should compute preview lines with colored title classes', () => {
+    const fixture = TestBed.createComponent(BuilderPreview);
+    fixture.detectChanges();
+    const lines = fixture.componentInstance.previewLines();
+    expect(lines.length).toBeGreaterThan(0);
+    const hasH1 = lines.some((l) => l.type === 'h1' && l.colorClass.includes('text-indigo-300'));
+    expect(hasH1).toBe(true);
+  });
 });

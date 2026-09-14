@@ -1,4 +1,5 @@
 <div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col gap-4 w-full h-full">
+  <!-- Preview Header Bar -->
   <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/[0.06] gap-2">
     <div class="flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-purple-400 shrink-0"></span>
@@ -24,5 +25,54 @@
       </button>
     </div>
   </div>
-  <pre class="flex-1 p-3.5 sm:p-5 rounded-xl bg-slate-950/90 border border-white/[0.08] font-mono text-xs text-slate-300 overflow-auto leading-relaxed whitespace-pre-wrap selection:bg-brand-primary/30 max-h-[750px]">{{ agentConfig.compiledMarkdown() }}</pre>
+
+  <!-- Real-Time Colored Markdown Code Viewer -->
+  <div class="flex-1 p-3.5 sm:p-5 rounded-xl bg-slate-950/90 border border-white/[0.08] font-mono text-xs overflow-auto leading-relaxed selection:bg-brand-primary/30 max-h-[750px]">
+    @for (line of previewLines(); track $index) {
+      @switch (line.type) {
+        @case ('h1') {
+          <span [class]="'block text-sm sm:text-base tracking-tight my-2 ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @case ('h2') {
+          <span [class]="'block font-bold text-xs sm:text-sm mt-4 mb-1.5 pb-1 border-b ' + line.borderClass + ' ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @case ('h3') {
+          <span [class]="'block font-semibold text-xs mt-3 mb-1 ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @case ('quote') {
+          <span [class]="'block border-l-2 pl-2.5 my-1.5 ' + line.borderClass + ' ' + line.colorClass">
+            @for (seg of line.segments; track $index) {
+              @if (seg.isBold) { <strong class="text-amber-100 font-semibold">{{ seg.text }}</strong> } @else { <span>{{ seg.text }}</span> }
+            }
+          </span>
+        }
+        @case ('code-fence') {
+          <span [class]="'block select-none opacity-60 ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @case ('code-comment') {
+          <span [class]="'block bg-slate-900/60 px-2 py-0.5 ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @case ('code') {
+          <span [class]="'block bg-slate-900/60 px-2 py-0.5 font-medium ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @case ('comment') {
+          <span [class]="'block select-none ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @case ('frontmatter') {
+          <span [class]="'block select-none ' + line.colorClass">{{ line.raw }}</span>
+        }
+        @default {
+          @if (line.raw.trim() === '') {
+            <span class="block h-2 select-none"></span>
+          } @else {
+            <span [class]="'block ' + line.colorClass">
+              @for (seg of line.segments; track $index) {
+                @if (seg.isBold) { <strong class="text-slate-100 font-semibold">{{ seg.text }}</strong> } @else { <span>{{ seg.text }}</span> }
+              }
+            </span>
+          }
+        }
+      }
+    }
+  </div>
 </div>
