@@ -20,11 +20,15 @@ import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 import { WorkflowForm } from './components/workflow-form/workflow-form';
 import { CustomInstructionsForm } from './components/custom-instructions-form/custom-instructions-form';
 import { ConfirmModal } from './components/confirm-modal/confirm-modal';
+import { BuilderStepper } from './components/builder-stepper/builder-stepper';
+import { BuilderPreview } from './components/builder-preview/builder-preview';
 
 @Component({
   selector: 'app-builder',
   imports: [
     TranslatePipe,
+    BuilderStepper,
+    BuilderPreview,
     AgentIdentityForm,
     TechStackForm,
     DirectivesForm,
@@ -44,9 +48,31 @@ export class Builder {
   readonly formatOptions = TARGET_FORMAT_OPTIONS;
   readonly isCatalogOpen = signal(false);
   readonly isResetModalOpen = signal(false);
-  readonly isCopied = signal(false);
   readonly activeMobileTab = signal<'editor' | 'preview'>('editor');
+  readonly currentStep = signal<number>(1);
   private lastLoadedPreset?: string;
+
+  goToStep(step: number): void {
+    if (step >= 1 && step <= 4) {
+      this.currentStep.set(step);
+    }
+  }
+
+  nextStep(): void {
+    if (this.currentStep() < 4) {
+      this.currentStep.update((s) => s + 1);
+    }
+  }
+
+  prevStep(): void {
+    if (this.currentStep() > 1) {
+      this.currentStep.update((s) => s - 1);
+    }
+  }
+
+  reviewOutput(): void {
+    this.setMobileTab('preview');
+  }
 
   constructor() {
     effect(() => {
@@ -83,28 +109,6 @@ export class Builder {
 
   cancelReset(): void {
     this.isResetModalOpen.set(false);
-  }
-
-  async copyToClipboard(): Promise<void> {
-    try {
-      await navigator.clipboard.writeText(this.agentConfig.compiledMarkdown());
-      this.isCopied.set(true);
-      setTimeout(() => this.isCopied.set(false), 2000);
-    } catch {
-      // Manejar error silenciosamente
-    }
-  }
-
-  downloadFile(): void {
-    const markdown = this.agentConfig.compiledMarkdown();
-    const filename = this.agentConfig.activeOption().filename;
-    const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.click();
-    URL.revokeObjectURL(url);
   }
 
   goBack(): void {

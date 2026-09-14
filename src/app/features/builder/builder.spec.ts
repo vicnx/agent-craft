@@ -70,15 +70,46 @@ describe('Builder', () => {
     expect(component.agentConfig.config().projectName).toBe(expectedName);
   });
 
-  it('should copy compiled markdown to clipboard', async () => {
+  it('should navigate through steps correctly and respect boundaries', () => {
     const fixture = TestBed.createComponent(Builder);
     const component = fixture.componentInstance;
-    const writeTextSpy = vi.fn().mockResolvedValue(undefined);
-    Object.assign(navigator, { clipboard: { writeText: writeTextSpy } });
+    expect(component.currentStep()).toBe(1);
 
-    await component.copyToClipboard();
-    expect(writeTextSpy).toHaveBeenCalledWith(component.agentConfig.compiledMarkdown());
-    expect(component.isCopied()).toBe(true);
+    component.nextStep();
+    expect(component.currentStep()).toBe(2);
+
+    component.nextStep();
+    expect(component.currentStep()).toBe(3);
+
+    component.goToStep(4);
+    expect(component.currentStep()).toBe(4);
+
+    // Should not exceed step 4
+    component.nextStep();
+    expect(component.currentStep()).toBe(4);
+
+    component.prevStep();
+    expect(component.currentStep()).toBe(3);
+
+    component.goToStep(1);
+    expect(component.currentStep()).toBe(1);
+
+    // Should not go below step 1
+    component.prevStep();
+    expect(component.currentStep()).toBe(1);
+
+    // Ignore invalid steps
+    component.goToStep(99);
+    expect(component.currentStep()).toBe(1);
+  });
+
+  it('should switch mobile tab to preview on reviewOutput', () => {
+    const fixture = TestBed.createComponent(Builder);
+    const component = fixture.componentInstance;
+    expect(component.activeMobileTab()).toBe('editor');
+
+    component.reviewOutput();
+    expect(component.activeMobileTab()).toBe('preview');
   });
 
   it('should load preset when presetId input is provided without infinite loop', () => {

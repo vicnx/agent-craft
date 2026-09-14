@@ -1,0 +1,28 @@
+<div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col gap-4 w-full h-full">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/[0.06] gap-2">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-purple-400 shrink-0"></span>
+      <h2 class="text-sm font-semibold text-white whitespace-nowrap">{{ 'builder.livePreview' | translate }}</h2>
+      <span class="text-xs font-mono text-slate-400 truncate">({{ agentConfig.activeOption().filename }})</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        (click)="copyToClipboard()"
+        class="flex-1 sm:flex-none btn-secondary text-xs py-1 px-3 flex items-center justify-center gap-1.5 cursor-pointer transition-all whitespace-nowrap"
+        [class.border-emerald-500/50]="isCopied()"
+        [class.text-emerald-400]="isCopied()"
+      >
+        @if (isCopied()) {
+          <i class="fa-solid fa-check"></i><span>{{ 'builder.copied' | translate }}</span>
+        } @else {
+          <i class="fa-regular fa-clipboard"></i><span>{{ 'builder.copy' | translate }}</span>
+        }
+      </button>
+      <button type="button" (click)="downloadFile()" class="flex-1 sm:flex-none btn-primary text-xs py-1 px-3 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap">
+        <i class="fa-solid fa-download"></i><span>{{ 'builder.download' | translate }}</span>
+      </button>
+    </div>
+  </div>
+  <pre class="flex-1 p-3.5 sm:p-5 rounded-xl bg-slate-950/90 border border-white/[0.08] font-mono text-xs text-slate-300 overflow-auto leading-relaxed whitespace-pre-wrap selection:bg-brand-primary/30 max-h-[750px]">{{ agentConfig.compiledMarkdown() }}</pre>
+</div>
