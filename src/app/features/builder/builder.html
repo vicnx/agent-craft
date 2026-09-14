@@ -54,6 +54,9 @@
 
       <!-- Directives & Rules Form -->
       <app-directives-form (openCatalog)="isCatalogOpen.set(true)" />
+
+      <!-- Git Conventions & Workflow Form -->
+      <app-workflow-form />
     </div>
 
     <!-- Right Column: Real-Time Markdown Preview -->
@@ -89,6 +92,14 @@
           <div class="text-slate-400 pl-2">- {{ rule }}</div>
         } @empty {
           <div class="text-slate-600 pl-2 italic">// {{ 'builder.previewEmptyRules' | translate }}</div>
+        }
+
+        <!-- Git Workflow Live Section -->
+        <div class="text-amber-400 font-semibold mt-3">## {{ 'builder.previewWorkflowTitle' | translate }}</div>
+        @if (agentConfig.config().gitConvention) {
+          <div class="text-slate-400 pl-2">- {{ agentConfig.config().gitConvention }}</div>
+        } @else {
+          <div class="text-slate-600 pl-2 italic">// {{ 'builder.previewEmptyWorkflow' | translate }}</div>
         }
       </div>
     </div>

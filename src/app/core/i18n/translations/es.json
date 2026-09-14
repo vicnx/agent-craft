@@ -84,9 +84,16 @@
     "catArchitecture": "Arquitectura y Diseño",
     "catQuality": "Calidad y Estándares",
     "catWorkflow": "Flujo de Trabajo y Git",
+    "workflowTitle": "Flujo de Trabajo y Convenciones Git",
+    "workflowSubtitle": "Define el estándar de commits y versionado para el asistente",
+    "gitConventionLabel": "Convención de commits",
+    "gitConventionPlaceholder": "Ej: Conventional Commits (feat, fix, refactor, docs, chore)...",
+    "quickConventions": "Estándares recomendados:",
     "previewEmptyTech": "Ninguna tecnología seleccionada",
     "previewEmptyRules": "Ninguna directiva configurada",
-    "previewArchitectureTitle": "Directivas de Arquitectura"
+    "previewArchitectureTitle": "Directivas de Arquitectura",
+    "previewWorkflowTitle": "Flujo de Trabajo y Git",
+    "previewEmptyWorkflow": "Sin convención de Git definida"
   },
   "footer": {
     "createdWith": "Creado con",

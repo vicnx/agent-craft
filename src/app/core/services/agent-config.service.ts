@@ -122,6 +122,10 @@ export class AgentConfigService {
     this.config.update((c) => ({ ...c, qualityStandards: c.qualityStandards.filter((_, i) => i !== index) }));
   }
 
+  setGitConvention(gitConvention: string): void {
+    this.config.update((c) => ({ ...c, gitConvention }));
+  }
+
   reset(): void {
     this.config.set(this.buildInitialConfig(this.i18n.currentLang()));
   }

@@ -62,6 +62,11 @@ describe('AgentConfigService', () => {
     expect(service.config().architecturalRules.length).toBe(0);
   });
 
+  it('should update git convention', () => {
+    service.setGitConvention('Git Flow');
+    expect(service.config().gitConvention).toBe('Git Flow');
+  });
+
   it('should reset configuration back to defaults', () => {
     service.loadPreset('agents');
     expect(service.config().targetFormat).toBe('agents');

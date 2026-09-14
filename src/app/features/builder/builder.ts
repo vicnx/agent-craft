@@ -15,6 +15,7 @@ import { AgentIdentityForm } from './components/agent-identity-form/agent-identi
 import { DirectivesForm } from './components/directives-form/directives-form';
 import { DirectivesModal } from './components/directives-modal/directives-modal';
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
+import { WorkflowForm } from './components/workflow-form/workflow-form';
 
 @Component({
   selector: 'app-builder',
@@ -23,6 +24,7 @@ import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
     AgentIdentityForm,
     TechStackForm,
     DirectivesForm,
+    WorkflowForm,
     DirectivesModal,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
