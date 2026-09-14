@@ -53,4 +53,10 @@ export const esTranslations: TranslationSchema = {
     compiledOutputDesc:
       'El motor de generación en tiempo real mostrará aquí el resultado listo para copiar o exportar en 1 clic.',
   },
+  footer: {
+    createdWith: 'Creado con',
+    by: 'por',
+    author: 'Xente',
+    license: 'Licencia MIT',
+  },
 };

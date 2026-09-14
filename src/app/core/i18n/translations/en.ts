@@ -53,4 +53,10 @@ export const enTranslations: TranslationSchema = {
     compiledOutputDesc:
       'The real-time compiler engine will display the ready-to-copy or one-click export output here.',
   },
+  footer: {
+    createdWith: 'Crafted with',
+    by: 'by',
+    author: 'Xente',
+    license: 'MIT License',
+  },
 };

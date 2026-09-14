@@ -50,4 +50,10 @@ export interface TranslationSchema {
     readonly compiledOutput: string;
     readonly compiledOutputDesc: string;
   };
+  readonly footer: {
+    readonly createdWith: string;
+    readonly by: string;
+    readonly author: string;
+    readonly license: string;
+  };
 }

@@ -93,9 +93,10 @@ Navigate to `http://localhost:4200/` in your browser.
 
 ## 👤 Author
 
-**Vicente Andani**
+**Vicente Andani (Xente)**
 
 - GitHub: [@vicnx](https://github.com/vicnx)
+- LinkedIn: [vicnx](https://www.linkedin.com/in/vicnx/)
 - Repository: [vicnx/agent-craft](https://github.com/vicnx/agent-craft)
 
 ---
