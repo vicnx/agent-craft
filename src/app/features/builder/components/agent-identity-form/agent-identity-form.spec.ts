@@ -40,4 +40,18 @@ describe('AgentIdentityForm', () => {
     component.setOutputLanguage('es');
     expect(service.config().outputLanguage).toBe('es');
   });
+
+  it('should select role from suggestion pill', () => {
+    const suggestedRole = component.allRoles[0];
+    component.selectRole(suggestedRole);
+    expect(service.config().role).toBe(suggestedRole);
+  });
+
+  it('should toggle visibility of all roles', () => {
+    expect(component.showAllRoles()).toBe(false);
+    expect(component.visibleRoles().length).toBe(4);
+    component.toggleShowAllRoles();
+    expect(component.showAllRoles()).toBe(true);
+    expect(component.visibleRoles().length).toBe(component.allRoles.length);
+  });
 });

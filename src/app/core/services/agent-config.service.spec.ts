@@ -46,6 +46,9 @@ describe('AgentConfigService', () => {
 
     service.removeArchitecturalRule(initialCount);
     expect(service.config().architecturalRules.length).toBe(initialCount);
+
+    service.clearArchitecturalRules();
+    expect(service.config().architecturalRules.length).toBe(0);
   });
 
   it('should reset configuration back to defaults', () => {

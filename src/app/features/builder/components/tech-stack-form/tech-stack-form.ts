@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import techCatalog from '../../../../core/data/tech-catalog.json';
 import { AgentConfigService } from '../../../../core/services/agent-config.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
@@ -12,19 +19,17 @@ export class TechStackForm {
   readonly agentConfig = inject(AgentConfigService);
 
   readonly customTechInput = signal('');
+  readonly showAllCategories = signal(false);
 
-  readonly popularTech: readonly string[] = [
-    'Angular',
-    'TypeScript',
-    'Tailwind CSS',
-    'React',
-    'Vue',
-    'Next.js',
-    'Node.js',
-    'Python',
-    'Docker',
-    'Vitest',
-  ];
+  readonly initialPopularCount = 6;
+  readonly popularTech: readonly string[] = techCatalog.popular;
+  readonly categories = techCatalog.categories;
+
+  readonly visiblePopularTech = computed(() =>
+    this.showAllCategories()
+      ? this.popularTech
+      : this.popularTech.slice(0, this.initialPopularCount)
+  );
 
   onInputChange(event: Event): void {
     const target = event.target as HTMLInputElement;
@@ -56,6 +61,10 @@ export class TechStackForm {
 
   removeTech(tech: string): void {
     this.agentConfig.removeTechStackItem(tech);
+  }
+
+  toggleShowAll(): void {
+    this.showAllCategories.update((v) => !v);
   }
 
   isTechSelected(tech: string): boolean {

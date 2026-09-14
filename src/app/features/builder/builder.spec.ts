@@ -31,4 +31,14 @@ describe('Builder', () => {
     expect(component.agentConfig.activeOption().filename).toBe('copilot-instructions.md');
     expect(component.agentConfig.config().projectName).toBe('Copilot Workspace');
   });
+
+  it('should manage decoupled catalog modal state', () => {
+    const fixture = TestBed.createComponent(Builder);
+    const component = fixture.componentInstance;
+    expect(component.isCatalogOpen()).toBe(false);
+    component.isCatalogOpen.set(true);
+    expect(component.isCatalogOpen()).toBe(true);
+    component.isCatalogOpen.set(false);
+    expect(component.isCatalogOpen()).toBe(false);
+  });
 });

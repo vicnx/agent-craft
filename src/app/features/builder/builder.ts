@@ -4,6 +4,7 @@ import {
   effect,
   inject,
   input,
+  signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
@@ -11,11 +12,19 @@ import { TargetFormat } from '../../core/models/agent.model';
 import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { AgentIdentityForm } from './components/agent-identity-form/agent-identity-form';
+import { DirectivesForm } from './components/directives-form/directives-form';
+import { DirectivesModal } from './components/directives-modal/directives-modal';
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 
 @Component({
   selector: 'app-builder',
-  imports: [TranslatePipe, AgentIdentityForm, TechStackForm],
+  imports: [
+    TranslatePipe,
+    AgentIdentityForm,
+    TechStackForm,
+    DirectivesForm,
+    DirectivesModal,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './builder.html',
 })
@@ -25,6 +34,7 @@ export class Builder {
 
   readonly presetId = input<string>();
   readonly formatOptions = TARGET_FORMAT_OPTIONS;
+  readonly isCatalogOpen = signal(false);
 
   constructor() {
     effect(() => {

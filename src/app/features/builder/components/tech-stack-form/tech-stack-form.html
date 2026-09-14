@@ -19,7 +19,7 @@
         </button>
       </span>
     } @empty {
-      <span class="text-xs text-slate-500 italic pl-1">No hay tecnologías seleccionadas</span>
+      <span class="text-xs text-slate-500 italic pl-1">{{ 'builder.previewEmptyTech' | translate }}</span>
     }
   </div>
 
@@ -42,11 +42,22 @@
     </button>
   </div>
 
-  <!-- Quick Popular Suggestions -->
-  <div class="space-y-1.5">
-    <span class="text-[11px] text-slate-400 font-medium">{{ 'builder.popularSuggestions' | translate }}</span>
+  <!-- Popular Suggestions & Categories -->
+  <div class="space-y-2">
+    <div class="flex items-center justify-between">
+      <span class="text-[11px] text-slate-400 font-medium">{{ 'builder.popularSuggestions' | translate }}</span>
+      <button
+        type="button"
+        (click)="toggleShowAll()"
+        class="text-[11px] text-indigo-400 hover:text-indigo-300 transition-colors cursor-pointer"
+      >
+        {{ (showAllCategories() ? 'builder.showLessTech' : 'builder.showMoreTech') | translate }}
+      </button>
+    </div>
+
+    <!-- Quick popular chips (compact view) -->
     <div class="flex flex-wrap gap-1.5">
-      @for (tech of popularTech; track tech) {
+      @for (tech of visiblePopularTech(); track tech) {
         <button
           type="button"
           (click)="togglePopular(tech)"
@@ -63,5 +74,34 @@
         </button>
       }
     </div>
+
+    <!-- Extended categories when toggled -->
+    @if (showAllCategories()) {
+      <div class="pt-3 space-y-3 border-t border-white/[0.06] mt-3">
+        @for (category of categories; track category.name) {
+          <div class="space-y-1">
+            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">{{ category.name }}</span>
+            <div class="flex flex-wrap gap-1">
+              @for (item of category.items; track item) {
+                <button
+                  type="button"
+                  (click)="togglePopular(item)"
+                  [class.bg-indigo-500/20]="isTechSelected(item)"
+                  [class.text-indigo-300]="isTechSelected(item)"
+                  [class.border-indigo-500/40]="isTechSelected(item)"
+                  [class.bg-white/[0.02]]="!isTechSelected(item)"
+                  [class.text-slate-400]="!isTechSelected(item)"
+                  [class.border-white/[0.06]]="!isTechSelected(item)"
+                  class="px-1.5 py-0.5 rounded text-[10px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer"
+                >
+                  <span class="mr-0.5 font-bold">{{ isTechSelected(item) ? '✓' : '+' }}</span>
+                  {{ item }}
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
   </div>
 </div>

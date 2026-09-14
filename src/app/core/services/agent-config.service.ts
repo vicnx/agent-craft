@@ -52,16 +52,41 @@ export class AgentConfigService {
   addArchitecturalRule(rule: string): void {
     const trimmed = rule.trim();
     if (!trimmed) return;
-    this.config.update((current) => ({
-      ...current,
-      architecturalRules: [...current.architecturalRules, trimmed],
-    }));
+    this.config.update((current) => {
+      if (current.architecturalRules.includes(trimmed)) return current;
+      return { ...current, architecturalRules: [...current.architecturalRules, trimmed] };
+    });
   }
 
   removeArchitecturalRule(index: number): void {
     this.config.update((current) => ({
       ...current,
       architecturalRules: current.architecturalRules.filter((_, i) => i !== index),
+    }));
+  }
+
+  toggleArchitecturalRule(rule: string): void {
+    const trimmed = rule.trim();
+    if (!trimmed) return;
+    this.config.update((current) => {
+      const exists = current.architecturalRules.includes(trimmed);
+      return {
+        ...current,
+        architecturalRules: exists
+          ? current.architecturalRules.filter((r) => r !== trimmed)
+          : [...current.architecturalRules, trimmed],
+      };
+    });
+  }
+
+  hasArchitecturalRule(rule: string): boolean {
+    return this.config().architecturalRules.includes(rule.trim());
+  }
+
+  clearArchitecturalRules(): void {
+    this.config.update((current) => ({
+      ...current,
+      architecturalRules: [],
     }));
   }
 

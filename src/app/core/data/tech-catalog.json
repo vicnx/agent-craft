@@ -1,0 +1,97 @@
+{
+  "popular": [
+    "TypeScript",
+    "Angular",
+    "Tailwind CSS",
+    "React",
+    "Next.js",
+    "Vue",
+    "Node.js",
+    "Python",
+    "Docker",
+    "Vitest",
+    "PostgreSQL",
+    "Supabase",
+    "Git",
+    "FastAPI",
+    "NestJS",
+    "Prisma",
+    "Playwright",
+    "GraphQL",
+    "Rust",
+    "Go"
+  ],
+  "categories": [
+    {
+      "name": "Frontend & UI",
+      "items": [
+        "Angular",
+        "React",
+        "Vue",
+        "Next.js",
+        "Nuxt",
+        "Svelte",
+        "Astro",
+        "Tailwind CSS",
+        "HTML5",
+        "CSS3",
+        "SCSS"
+      ]
+    },
+    {
+      "name": "Backend & APIs",
+      "items": [
+        "Node.js",
+        "NestJS",
+        "Express",
+        "FastAPI",
+        "Python",
+        "Go",
+        "Rust",
+        "Django",
+        "Spring Boot",
+        "GraphQL",
+        "REST APIs"
+      ]
+    },
+    {
+      "name": "Bases de Datos & ORMs",
+      "items": [
+        "PostgreSQL",
+        "MySQL",
+        "SQLite",
+        "MongoDB",
+        "Redis",
+        "Prisma",
+        "Drizzle ORM",
+        "Supabase",
+        "Firebase"
+      ]
+    },
+    {
+      "name": "Testing & Calidad",
+      "items": [
+        "Vitest",
+        "Jest",
+        "Playwright",
+        "Cypress",
+        "Testing Library",
+        "ESLint",
+        "Prettier"
+      ]
+    },
+    {
+      "name": "DevOps & Cloud",
+      "items": [
+        "Docker",
+        "Kubernetes",
+        "Git",
+        "GitHub Actions",
+        "AWS",
+        "Cloudflare",
+        "Vercel",
+        "Linux"
+      ]
+    }
+  ]
+}

@@ -39,6 +39,31 @@ html, body {
   font-family: var(--font-sans);
 }
 
+/* Modern Dev-Tool Scrollbar Styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
+
 /* Custom Utilities for Consistent Modern Aesthetics */
 @utility glass-panel {
   background-color: rgb(13 18 34 / 0.65);

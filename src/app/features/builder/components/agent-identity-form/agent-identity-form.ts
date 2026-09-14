@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import suggestionsData from '../../../../core/data/suggestions.json';
 import { AgentConfigService } from '../../../../core/services/agent-config.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 
@@ -10,6 +17,21 @@ import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 })
 export class AgentIdentityForm {
   readonly agentConfig = inject(AgentConfigService);
+
+  readonly allRoles: readonly string[] = (suggestionsData.roles as readonly string[]) ?? [];
+  readonly showAllRoles = signal(false);
+
+  readonly visibleRoles = computed(() =>
+    this.showAllRoles() ? this.allRoles : this.allRoles.slice(0, 4)
+  );
+
+  selectRole(role: string): void {
+    this.agentConfig.updateConfig({ role });
+  }
+
+  toggleShowAllRoles(): void {
+    this.showAllRoles.update((prev) => !prev);
+  }
 
   onProjectNameChange(event: Event): void {
     const target = event.target as HTMLInputElement;

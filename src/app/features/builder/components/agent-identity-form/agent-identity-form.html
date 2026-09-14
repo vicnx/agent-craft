@@ -27,6 +27,41 @@
       [placeholder]="'builder.rolePlaceholder' | translate"
       class="w-full bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none"
     />
+
+    <!-- Role Suggestions Pills -->
+    <div class="space-y-1.5 pt-1">
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] text-slate-400 font-medium">
+          {{ 'builder.quickRoles' | translate }}
+        </span>
+        @if (allRoles.length > 4) {
+          <button
+            type="button"
+            (click)="toggleShowAllRoles()"
+            class="text-[11px] text-brand-primary hover:text-brand-secondary transition-colors cursor-pointer font-medium"
+          >
+            {{ (showAllRoles() ? 'builder.showLessRoles' : 'builder.showMoreRoles') | translate }}
+          </button>
+        }
+      </div>
+      <div class="flex flex-wrap gap-1.5">
+        @for (role of visibleRoles(); track role) {
+          <button
+            type="button"
+            (click)="selectRole(role)"
+            [class.bg-brand-primary/20]="agentConfig.config().role === role"
+            [class.border-brand-primary/40]="agentConfig.config().role === role"
+            [class.text-brand-primary]="agentConfig.config().role === role"
+            [class.bg-white/[0.03]]="agentConfig.config().role !== role"
+            [class.border-white/[0.08]]="agentConfig.config().role !== role"
+            [class.text-slate-400]="agentConfig.config().role !== role"
+            class="text-[11px] px-2.5 py-1 rounded-lg border hover:border-brand-primary/40 hover:text-white transition-all cursor-pointer text-left"
+          >
+            {{ role }}
+          </button>
+        }
+      </div>
+    </div>
   </div>
 
   <!-- Output Language Toggle -->

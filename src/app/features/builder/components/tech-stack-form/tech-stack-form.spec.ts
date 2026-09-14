@@ -42,4 +42,12 @@ describe('TechStackForm', () => {
     component.togglePopular('Python');
     expect(component.isTechSelected('Python')).toBe(false);
   });
+
+  it('should display limited popular items until toggled', () => {
+    expect(component.showAllCategories()).toBe(false);
+    expect(component.visiblePopularTech().length).toBe(6);
+    component.toggleShowAll();
+    expect(component.showAllCategories()).toBe(true);
+    expect(component.visiblePopularTech().length).toBe(component.popularTech.length);
+  });
 });
