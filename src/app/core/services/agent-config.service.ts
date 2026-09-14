@@ -5,7 +5,7 @@ import {
   TARGET_FORMAT_OPTIONS,
 } from '../constants/presets.constant';
 import { I18nService, Language } from '../i18n/i18n.service';
-import { AgentConfig, TargetFormat, TargetFormatOption } from '../models/agent.model';
+import { AgentConfig, AgentTone, AgentAutonomy, TargetFormat, TargetFormatOption } from '../models/agent.model';
 import { LanguagePresetId } from '../models/preset.model';
 import { translateCatalogItems } from '../utils/suggestions-translator.util';
 import { compileAgentMarkdown } from '../utils/markdown-compiler.util';
@@ -59,6 +59,46 @@ export class AgentConfigService {
 
   updateConfig(partial: Partial<AgentConfig>): void {
     this.config.update((current) => ({ ...current, ...partial }));
+  }
+
+  setTone(tone: AgentTone): void {
+    this.config.update((c) => ({ ...c, tone }));
+  }
+
+  setAutonomy(autonomy: AgentAutonomy): void {
+    this.config.update((c) => ({ ...c, autonomy }));
+  }
+
+  toggleCommunicationRule(rule: string): void {
+    const trimmed = rule.trim();
+    if (trimmed) {
+      this.config.update((c) => ({
+        ...c,
+        communicationRules: c.communicationRules.includes(trimmed)
+          ? c.communicationRules.filter((r) => r !== trimmed)
+          : [...c.communicationRules, trimmed],
+      }));
+    }
+  }
+
+  addCommunicationRule(rule: string): void {
+    const trimmed = rule.trim();
+    if (trimmed) {
+      this.config.update((c) =>
+        c.communicationRules.includes(trimmed) ? c : { ...c, communicationRules: [...c.communicationRules, trimmed] }
+      );
+    }
+  }
+
+  removeCommunicationRule(index: number): void {
+    this.config.update((c) => ({
+      ...c,
+      communicationRules: c.communicationRules.filter((_, i) => i !== index),
+    }));
+  }
+
+  setCustomTone(customTone: string): void {
+    this.config.update((c) => ({ ...c, customTone }));
   }
 
   addTechStackItem(item: string): void {

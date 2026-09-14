@@ -14,6 +14,7 @@ import { LanguagePresetId } from '../../core/models/preset.model';
 import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { AgentIdentityForm } from './components/agent-identity-form/agent-identity-form';
+import { PersonaToneForm } from './components/persona-tone-form/persona-tone-form';
 import { DirectivesForm } from './components/directives-form/directives-form';
 import { DirectivesModal } from './components/directives-modal/directives-modal';
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
@@ -31,6 +32,7 @@ import { BuilderPreview } from './components/builder-preview/builder-preview';
     BuilderStepper,
     BuilderPreview,
     AgentIdentityForm,
+    PersonaToneForm,
     TechStackForm,
     DirectivesForm,
     UiDesignForm,
@@ -55,13 +57,13 @@ export class Builder {
   private lastLoadedPreset?: string;
 
   goToStep(step: number): void {
-    if (step >= 1 && step <= 6) {
+    if (step >= 1 && step <= 7) {
       this.currentStep.set(step);
     }
   }
 
   nextStep(): void {
-    if (this.currentStep() < 6) {
+    if (this.currentStep() < 7) {
       this.currentStep.update((s) => s + 1);
     }
   }

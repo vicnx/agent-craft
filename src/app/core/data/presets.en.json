@@ -47,7 +47,15 @@
     },
     "gitConvention": "Conventional Commits",
     "proposeCommit": true,
-    "customInstructions": ""
+    "customInstructions": "",
+    "tone": "concise",
+    "autonomy": "autonomous",
+    "communicationRules": [
+      "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+      "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+      "Explain technical rationale step-by-step before making complex changes"
+    ],
+    "customTone": ""
   },
   "presets": {
     "typescript": {
@@ -56,7 +64,12 @@
       "role": "Senior Frontend Architect & TypeScript Specialist",
       "description": "Architectural directives, strict typing, and best practices for the modern TypeScript ecosystem.",
       "outputLanguage": "en",
-      "techStack": ["TypeScript", "Angular", "Tailwind CSS", "Node.js"],
+      "techStack": [
+        "TypeScript",
+        "Angular",
+        "Tailwind CSS",
+        "Node.js"
+      ],
       "architecturalRules": [
         "Modular architecture and decoupled components adhering to the Single Responsibility Principle (SRP)",
         "DRY Principle: maximum reusability and zero logical duplication",
@@ -79,7 +92,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Prioritize readability, composability, and rendering performance."
+      "customInstructions": "Prioritize readability, composability, and rendering performance.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+        "Explain technical rationale step-by-step before making complex changes"
+      ],
+      "customTone": ""
     },
     "python": {
       "targetFormat": "cursor",
@@ -87,7 +108,13 @@
       "role": "Senior Backend Architect & Python Specialist",
       "description": "Development standards, Clean Architecture, and directives for backend services and AI applications in Python.",
       "outputLanguage": "en",
-      "techStack": ["Python 3.12+", "FastAPI", "Pydantic", "Pytest", "Ruff"],
+      "techStack": [
+        "Python 3.12+",
+        "FastAPI",
+        "Pydantic",
+        "Pytest",
+        "Ruff"
+      ],
       "architecturalRules": [
         "Clean Architecture with decoupled layers (Domain, Application, Infrastructure)",
         "Mandatory Type Hints across all functions and classes per PEP 484",
@@ -105,7 +132,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Favor immutability using dataclasses(frozen=True) or Pydantic BaseModel(frozen=True)."
+      "customInstructions": "Favor immutability using dataclasses(frozen=True) or Pydantic BaseModel(frozen=True).",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+        "Explain technical rationale step-by-step before making complex changes"
+      ],
+      "customTone": ""
     },
     "go": {
       "targetFormat": "cursor",
@@ -113,7 +148,12 @@
       "role": "Senior Systems Engineer & Go Specialist",
       "description": "Directives for idiomatic Go development, high concurrency, and resilient microservices.",
       "outputLanguage": "en",
-      "techStack": ["Go 1.22+", "Gin/Fiber", "PostgreSQL", "Docker"],
+      "techStack": [
+        "Go 1.22+",
+        "Gin/Fiber",
+        "PostgreSQL",
+        "Docker"
+      ],
       "architecturalRules": [
         "Small, decoupled interfaces defined at the consumption point (accept interfaces, return structs)",
         "Explicit idiomatic error handling (if err != nil); never discard returned errors",
@@ -131,7 +171,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
       "proposeCommit": true,
-      "customInstructions": "Avoid unnecessary abstractions; favor clear, direct code with zero superfluous dependencies."
+      "customInstructions": "Avoid unnecessary abstractions; favor clear, direct code with zero superfluous dependencies.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+        "Explain technical rationale step-by-step before making complex changes"
+      ],
+      "customTone": ""
     },
     "rust": {
       "targetFormat": "cursor",
@@ -139,7 +187,12 @@
       "role": "Senior Systems Engineer & Rust Specialist",
       "description": "Directives for memory-safe, high-performance, and idiomatic systems development in Rust.",
       "outputLanguage": "en",
-      "techStack": ["Rust 2024", "Cargo", "Tokio", "Serde"],
+      "techStack": [
+        "Rust 2024",
+        "Cargo",
+        "Tokio",
+        "Serde"
+      ],
       "architecturalRules": [
         "Strict adherence to ownership and borrowing rules without unnecessary defensive clones",
         "Explicit, typed error handling using Result<T, E> and the '?' operator",
@@ -157,7 +210,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
       "proposeCommit": true,
-      "customInstructions": "Ensure errors contain descriptive contextual information before propagating."
+      "customInstructions": "Ensure errors contain descriptive contextual information before propagating.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+        "Explain technical rationale step-by-step before making complex changes"
+      ],
+      "customTone": ""
     },
     "java": {
       "targetFormat": "cursor",
@@ -165,7 +226,12 @@
       "role": "Senior Enterprise Architect & Spring Boot Specialist",
       "description": "Directives for enterprise architecture, Domain-Driven Design (DDD), and clean code standards for Java & Spring Boot.",
       "outputLanguage": "en",
-      "techStack": ["Java 21+", "Spring Boot 3", "Spring Data JPA", "PostgreSQL"],
+      "techStack": [
+        "Java 21+",
+        "Spring Boot 3",
+        "Spring Data JPA",
+        "PostgreSQL"
+      ],
       "architecturalRules": [
         "Hexagonal Architecture (Ports & Adapters) isolating the core domain model",
         "Strict constructor-based dependency injection; avoid field injection (@Autowired)",
@@ -183,7 +249,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Follow SOLID principles rigorously and prevent framework coupling in the business layer."
+      "customInstructions": "Follow SOLID principles rigorously and prevent framework coupling in the business layer.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+        "Explain technical rationale step-by-step before making complex changes"
+      ],
+      "customTone": ""
     },
     "custom": {
       "targetFormat": "cursor",
@@ -201,7 +275,15 @@
       },
       "gitConvention": "Conventional Commits",
       "proposeCommit": true,
-      "customInstructions": ""
+      "customInstructions": "",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+        "Explain technical rationale step-by-step before making complex changes"
+      ],
+      "customTone": ""
     }
   }
 }

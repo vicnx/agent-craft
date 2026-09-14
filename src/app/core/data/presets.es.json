@@ -47,7 +47,15 @@
     },
     "gitConvention": "Conventional Commits",
     "proposeCommit": true,
-    "customInstructions": ""
+    "customInstructions": "",
+    "tone": "concise",
+    "autonomy": "autonomous",
+    "communicationRules": [
+      "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+      "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+      "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+    ],
+    "customTone": ""
   },
   "presets": {
     "typescript": {
@@ -56,7 +64,12 @@
       "role": "Arquitecto Frontend Senior y Especialista TypeScript",
       "description": "Directivas de arquitectura, tipado estricto y buenas prácticas para el ecosistema TypeScript.",
       "outputLanguage": "es",
-      "techStack": ["TypeScript", "Angular", "Tailwind CSS", "Node.js"],
+      "techStack": [
+        "TypeScript",
+        "Angular",
+        "Tailwind CSS",
+        "Node.js"
+      ],
       "architecturalRules": [
         "Arquitectura modular y componentes desacoplados con Principio de Responsabilidad Única (SRP)",
         "Principio DRY: máxima reutilización y cero duplicación lógica",
@@ -79,7 +92,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Priorizar legibilidad, composabilidad y rendimiento en el renderizado."
+      "customInstructions": "Priorizar legibilidad, composabilidad y rendimiento en el renderizado.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+      ],
+      "customTone": ""
     },
     "python": {
       "targetFormat": "cursor",
@@ -87,7 +108,13 @@
       "role": "Arquitecto Backend Senior y Especialista Python",
       "description": "Estándares de desarrollo, Clean Architecture y directivas para servicios backend y aplicaciones de IA en Python.",
       "outputLanguage": "es",
-      "techStack": ["Python 3.12+", "FastAPI", "Pydantic", "Pytest", "Ruff"],
+      "techStack": [
+        "Python 3.12+",
+        "FastAPI",
+        "Pydantic",
+        "Pytest",
+        "Ruff"
+      ],
       "architecturalRules": [
         "Clean Architecture con capas desacopladas (Domain, Application, Infrastructure)",
         "Type Hints obligatorios en todas las funciones y clases según PEP 484",
@@ -105,7 +132,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Favorecer inmutabilidad con dataclasses(frozen=True) o Pydantic BaseModel(frozen=True)."
+      "customInstructions": "Favorecer inmutabilidad con dataclasses(frozen=True) o Pydantic BaseModel(frozen=True).",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+      ],
+      "customTone": ""
     },
     "go": {
       "targetFormat": "cursor",
@@ -113,7 +148,12 @@
       "role": "Ingeniero de Sistemas Senior y Especialista Go",
       "description": "Directivas de desarrollo idiomático en Go, alta concurrencia y microservicios resilientes.",
       "outputLanguage": "es",
-      "techStack": ["Go 1.22+", "Gin/Fiber", "PostgreSQL", "Docker"],
+      "techStack": [
+        "Go 1.22+",
+        "Gin/Fiber",
+        "PostgreSQL",
+        "Docker"
+      ],
       "architecturalRules": [
         "Interfaces pequeñas y desacopladas en el punto de consumo (aceptar interfaces, devolver structs)",
         "Manejo explícito de errores idiomático (if err != nil), nunca ignorar errores devueltos",
@@ -131,7 +171,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
       "proposeCommit": true,
-      "customInstructions": "Evitar abstracciones innecesarias; preferir código claro, directo y con cero dependencias superfluas."
+      "customInstructions": "Evitar abstracciones innecesarias; preferir código claro, directo y con cero dependencias superfluas.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+      ],
+      "customTone": ""
     },
     "rust": {
       "targetFormat": "cursor",
@@ -139,7 +187,12 @@
       "role": "Ingeniero de Sistemas de Alto Rendimiento y Especialista Rust",
       "description": "Directivas de desarrollo seguro, alto rendimiento y gestión estricta de memoria en Rust.",
       "outputLanguage": "es",
-      "techStack": ["Rust 2024", "Cargo", "Tokio", "Serde"],
+      "techStack": [
+        "Rust 2024",
+        "Cargo",
+        "Tokio",
+        "Serde"
+      ],
       "architecturalRules": [
         "Respeto estricto del ownership y borrowing sin clones defensivos innecesarios",
         "Manejo de errores explícito y tipado con Result<T, E> y el operador '?'",
@@ -157,7 +210,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
       "proposeCommit": true,
-      "customInstructions": "Asegurar que los errores contengan contexto descriptivo antes de propagarse."
+      "customInstructions": "Asegurar que los errores contengan contexto descriptivo antes de propagarse.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+      ],
+      "customTone": ""
     },
     "java": {
       "targetFormat": "cursor",
@@ -165,7 +226,12 @@
       "role": "Arquitecto Empresarial Senior y Especialista Spring Boot",
       "description": "Directivas de arquitectura empresarial, DDD y estándares de código limpio para Java y Spring Boot.",
       "outputLanguage": "es",
-      "techStack": ["Java 21+", "Spring Boot 3", "Spring Data JPA", "PostgreSQL"],
+      "techStack": [
+        "Java 21+",
+        "Spring Boot 3",
+        "Spring Data JPA",
+        "PostgreSQL"
+      ],
       "architecturalRules": [
         "Arquitectura Hexagonal (Ports & Adapters) con aislamiento del modelo de dominio",
         "Inyección de dependencias estricta por constructor sin inyección por campo (@Autowired)",
@@ -183,7 +249,15 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Seguir principios SOLID rigurosamente y evitar acoplamiento a frameworks en la capa de negocio."
+      "customInstructions": "Seguir principios SOLID rigurosamente y evitar acoplamiento a frameworks en la capa de negocio.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+      ],
+      "customTone": ""
     },
     "custom": {
       "targetFormat": "cursor",
@@ -201,7 +275,15 @@
       },
       "gitConvention": "Conventional Commits",
       "proposeCommit": true,
-      "customInstructions": ""
+      "customInstructions": "",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+      ],
+      "customTone": ""
     }
   }
 }

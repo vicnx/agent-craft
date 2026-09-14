@@ -145,4 +145,34 @@ describe('AgentConfigService', () => {
     expect(service.config().projectName).toBe('Custom Project');
     expect(service.config().role).toBe('AI Coding Assistant');
   });
+
+  it('should update tone, autonomy, and custom tone', () => {
+    service.setTone('explanatory');
+    expect(service.config().tone).toBe('explanatory');
+
+    service.setAutonomy('conservative');
+    expect(service.config().autonomy).toBe('conservative');
+
+    service.setCustomTone('Act like a principal engineer');
+    expect(service.config().customTone).toBe('Act like a principal engineer');
+  });
+
+  it('should toggle, add, and remove communication rules', () => {
+    service.updateConfig({ communicationRules: [] });
+    service.toggleCommunicationRule('Never apologize');
+    expect(service.config().communicationRules).toContain('Never apologize');
+
+    // Toggle off
+    service.toggleCommunicationRule('Never apologize');
+    expect(service.config().communicationRules).not.toContain('Never apologize');
+
+    // Add unique
+    service.addCommunicationRule('Keep code concise');
+    service.addCommunicationRule('Keep code concise');
+    expect(service.config().communicationRules.length).toBe(1);
+
+    // Remove by index
+    service.removeCommunicationRule(0);
+    expect(service.config().communicationRules.length).toBe(0);
+  });
 });

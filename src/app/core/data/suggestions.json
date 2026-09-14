@@ -18,6 +18,15 @@
       "Tipado estricto y cero tipos permisivos",
       "Principio DRY: máxima reutilización y cero duplicidad"
     ],
+    "communicationSuggestions": [
+      "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+      "No truncar código crítico ni usar comentarios de omisión tipo '// ... resto del código'",
+      "Estructurar razonamientos paso a paso antes de acometer refactorizaciones complejas",
+      "Responder y redactar siempre en el idioma configurado para el proyecto",
+      "Pedir confirmación antes de instalar dependencias o paquetes de terceros",
+      "Indicar explícitamente nombres de archivo y líneas al sugerir cambios",
+      "Mantener actitud quirúrgica: modificar solo el código indispensable sin tocar áreas adyacentes"
+    ],
     "categories": [
       {
         "id": "architecture",
@@ -78,6 +87,15 @@
       "Single Responsibility Principle (SRP)",
       "Strict typing and zero permissive types",
       "DRY principle: maximum reuse and zero duplication"
+    ],
+    "communicationSuggestions": [
+      "Avoid unnecessary apologies or fluff; provide direct solutions and clean code",
+      "Never truncate critical code or use omit comments like '// ... rest of code'",
+      "Structure step-by-step technical reasoning before complex refactorings",
+      "Always respond and comment in the configured project language",
+      "Ask for confirmation before installing third-party libraries or packages",
+      "Explicitly reference exact filenames and line numbers when proposing changes",
+      "Adopt surgical precision: touch only necessary code without altering adjacent areas"
     ],
     "categories": [
       {

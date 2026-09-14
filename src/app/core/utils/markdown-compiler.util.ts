@@ -50,18 +50,51 @@ export function compileAgentMarkdown(config: AgentConfig): string {
     lines.push('', `## ${t.assignedRole}`, config.role.trim());
   }
 
+  const toneMap: Record<string, string> = {
+    concise: t.toneConciseValue,
+    balanced: t.toneBalancedValue,
+    explanatory: t.toneExplanatoryValue,
+  };
+  const autonomyMap: Record<string, string> = {
+    conservative: t.autonomyConservativeValue,
+    collaborative: t.autonomyCollaborativeValue,
+    autonomous: t.autonomyAutonomousValue,
+  };
+
+  const hasTone = Boolean(config.tone && toneMap[config.tone]);
+  const hasAutonomy = Boolean(config.autonomy && autonomyMap[config.autonomy]);
+  const hasCommRules = Boolean(config.communicationRules && config.communicationRules.length > 0);
+  const hasCustomTone = Boolean(config.customTone?.trim());
+
+  if (hasTone || hasAutonomy || hasCommRules || hasCustomTone) {
+    lines.push('', `## ${isAgentsMd ? '2. ' : ''}${t.personaToneTitle}`);
+    if (hasTone) {
+      lines.push(`- **${t.toneLabel}:** ${toneMap[config.tone]}`);
+    }
+    if (hasAutonomy) {
+      lines.push(`- **${t.autonomyLabel}:** ${autonomyMap[config.autonomy]}`);
+    }
+    if (hasCommRules) {
+      lines.push(`- **${t.commRulesLabel}:**`);
+      config.communicationRules.forEach((rule) => lines.push(`  - ${rule}`));
+    }
+    if (hasCustomTone) {
+      lines.push(`- **${t.customToneLabel}:** ${config.customTone.trim()}`);
+    }
+  }
+
   if (config.techStack.length > 0) {
-    lines.push('', `## ${isAgentsMd ? '2. ' : ''}${t.techStack}`);
+    lines.push('', `## ${isAgentsMd ? '3. ' : ''}${t.techStack}`);
     for (const tech of config.techStack) lines.push(`- ${tech}`);
   }
 
   if (config.architecturalRules.length > 0) {
-    lines.push('', `## ${isAgentsMd ? '3. ' : ''}${t.architecture}`);
+    lines.push('', `## ${isAgentsMd ? '4. ' : ''}${t.architecture}`);
     config.architecturalRules.forEach((r) => lines.push(formatRuleItem(r)));
   }
 
   if (config.uiDesignRules && config.uiDesignRules.length > 0) {
-    lines.push('', `## ${isAgentsMd ? '4. ' : ''}${t.uiDesign}`);
+    lines.push('', `## ${isAgentsMd ? '5. ' : ''}${t.uiDesign}`);
     config.uiDesignRules.forEach((r) => lines.push(formatRuleItem(r)));
   }
 
@@ -70,7 +103,7 @@ export function compileAgentMarkdown(config: AgentConfig): string {
   const hasProposeCommit = Boolean(config.proposeCommit);
 
   if (hasGit || hasCmds || hasProposeCommit) {
-    lines.push('', `## ${isAgentsMd ? '5. ' : ''}${t.gitWorkflow}`);
+    lines.push('', `## ${isAgentsMd ? '6. ' : ''}${t.gitWorkflow}`);
     if (hasGit) {
       const isConv = /conventional/i.test(config.gitConvention);
       if (isConv) {
@@ -97,7 +130,7 @@ export function compileAgentMarkdown(config: AgentConfig): string {
   }
 
   if (config.customInstructions.trim()) {
-    lines.push('', `## ${isAgentsMd ? '6. ' : ''}${t.instructionsTitle}`, config.customInstructions.trim());
+    lines.push('', `## ${isAgentsMd ? '7. ' : ''}${t.instructionsTitle}`, config.customInstructions.trim());
   }
 
   return lines.join('\n');
