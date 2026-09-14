@@ -22,9 +22,7 @@
     <div class="mt-8 flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
       <button (click)="onStart()" type="button" class="btn-primary w-full sm:w-auto">
         <span>{{ 'welcome.ctaStartCustom' | translate }}</span>
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
       </button>
       <a href="#plantillas" class="btn-secondary w-full sm:w-auto">
         {{ 'welcome.ctaExploreTemplates' | translate }}
@@ -53,7 +51,7 @@
               <span class="badge-brand text-xs font-mono">
                 {{ preset.targetFile }}
               </span>
-              <span class="text-[11px] font-medium text-slate-400 bg-white/[0.03] border border-white/[0.06] px-2 py-0.5 rounded-full">
+              <span class="text-[11px] font-medium text-slate-400 bg-white/[0.03] border border-white/[0.06] px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">
                 {{ preset.badgeKey | translate }}
               </span>
             </div>
@@ -66,16 +64,17 @@
             </p>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-            <div class="flex flex-wrap gap-1.5">
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between gap-2">
+            <div class="flex flex-wrap gap-1.5 min-w-0">
               @for (tag of preset.tags; track tag) {
-                <span class="text-[10px] font-mono text-slate-400 bg-white/[0.03] px-1.5 py-0.5 rounded">
+                <span class="text-[10px] font-mono text-slate-400 bg-white/[0.03] px-1.5 py-0.5 rounded whitespace-nowrap shrink-0">
                   {{ tag }}
                 </span>
               }
             </div>
-            <span class="text-xs font-medium text-indigo-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
-              {{ 'welcome.useTemplate' | translate }} &rarr;
+            <span class="text-xs font-medium text-indigo-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-1.5 whitespace-nowrap shrink-0">
+              <span>{{ 'welcome.useTemplate' | translate }}</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </span>
           </div>
         </div>

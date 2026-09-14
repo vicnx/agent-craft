@@ -67,6 +67,8 @@
     "customConfig": "Configuración Personalizada",
     "badgeGit": "Git Flow",
     "badgeCustom": "Personalizado",
+    "tabEditor": "Configuración",
+    "tabPreview": "Vista Previa",
     "changeTemplateTitle": "¿Cambiar de plantilla?",
     "changeTemplateMessage": "Al cambiar de plantilla se restablecerán los campos y se borrará la información que hayas ingresado. ¿Deseas continuar?",
     "changeTemplateConfirm": "Cambiar plantilla",

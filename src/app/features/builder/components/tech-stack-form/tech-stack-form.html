@@ -7,7 +7,7 @@
   <!-- Active Tech Stack Badges Container -->
   <div class="flex flex-wrap gap-1.5 min-h-[38px] p-2.5 rounded-xl bg-black/25 border border-white/[0.06] items-center">
     @for (tech of agentConfig.config().techStack; track tech) {
-      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 shadow-sm">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 shadow-sm whitespace-nowrap shrink-0">
         <span>{{ tech }}</span>
         <button
           type="button"
@@ -15,7 +15,7 @@
           [attr.aria-label]="('common.remove' | translate) + ' ' + tech"
           class="hover:text-white text-indigo-400 font-bold transition-colors cursor-pointer text-xs"
         >
-          &times;
+          <i class="fa-solid fa-xmark text-xs"></i>
         </button>
       </span>
     } @empty {
@@ -36,7 +36,7 @@
     <button
       type="button"
       (click)="addCustomTech()"
-      class="btn-secondary text-xs py-2.5 px-3.5 shrink-0"
+      class="btn-secondary text-xs py-2.5 px-3.5 shrink-0 whitespace-nowrap"
     >
       {{ 'builder.stackAddButton' | translate }}
     </button>
@@ -67,9 +67,13 @@
           [class.bg-white/[0.02]]="!isTechSelected(tech)"
           [class.text-slate-400]="!isTechSelected(tech)"
           [class.border-white/[0.06]]="!isTechSelected(tech)"
-          class="px-2 py-0.5 rounded-md text-[11px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer"
+          class="px-2 py-0.5 rounded-md text-[11px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap shrink-0"
         >
-          <span class="mr-1 font-bold">{{ isTechSelected(tech) ? '✓' : '+' }}</span>
+          @if (isTechSelected(tech)) {
+            <i class="fa-solid fa-check text-[10px] mr-1"></i>
+          } @else {
+            <i class="fa-solid fa-plus text-[10px] mr-1"></i>
+          }
           {{ tech }}
         </button>
       }
@@ -92,9 +96,13 @@
                   [class.bg-white/[0.02]]="!isTechSelected(item)"
                   [class.text-slate-400]="!isTechSelected(item)"
                   [class.border-white/[0.06]]="!isTechSelected(item)"
-                  class="px-1.5 py-0.5 rounded text-[10px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer"
+                  class="px-1.5 py-0.5 rounded text-[10px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap shrink-0"
                 >
-                  <span class="mr-0.5 font-bold">{{ isTechSelected(item) ? '✓' : '+' }}</span>
+                  @if (isTechSelected(item)) {
+                    <i class="fa-solid fa-check text-[9px] mr-0.5"></i>
+                  } @else {
+                    <i class="fa-solid fa-plus text-[9px] mr-0.5"></i>
+                  }
                   {{ item }}
                 </button>
               }

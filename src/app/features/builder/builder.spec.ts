@@ -96,4 +96,16 @@ describe('Builder', () => {
     expect(fixture.componentInstance.agentConfig.config().architecturalRules.length).toBe(0);
     expect(fixture.componentInstance.agentConfig.config().techStack.length).toBe(0);
   });
+
+  it('should switch active mobile tab', () => {
+    const fixture = TestBed.createComponent(Builder);
+    const component = fixture.componentInstance;
+    expect(component.activeMobileTab()).toBe('editor');
+
+    component.setMobileTab('preview');
+    expect(component.activeMobileTab()).toBe('preview');
+
+    component.setMobileTab('editor');
+    expect(component.activeMobileTab()).toBe('editor');
+  });
 });
