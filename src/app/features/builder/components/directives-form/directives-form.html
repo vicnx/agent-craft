@@ -89,7 +89,7 @@
 
     <!-- Quick pills (only top suggestions) -->
     <div class="flex flex-wrap gap-1.5">
-      @for (rule of quickSuggestions; track rule) {
+      @for (rule of quickSuggestions(); track rule) {
         <button
           type="button"
           (click)="toggleRule(rule)"

@@ -42,7 +42,7 @@ describe('AgentIdentityForm', () => {
   });
 
   it('should select role from suggestion pill', () => {
-    const suggestedRole = component.allRoles[0];
+    const suggestedRole = component.allRoles()[0];
     component.selectRole(suggestedRole);
     expect(service.config().role).toBe(suggestedRole);
   });
@@ -52,6 +52,14 @@ describe('AgentIdentityForm', () => {
     expect(component.visibleRoles().length).toBe(4);
     component.toggleShowAllRoles();
     expect(component.showAllRoles()).toBe(true);
-    expect(component.visibleRoles().length).toBe(component.allRoles.length);
+    expect(component.visibleRoles().length).toBe(component.allRoles().length);
+  });
+
+  it('should update roles suggestions when output language is toggled', () => {
+    component.setOutputLanguage('es');
+    const esFirstRole = component.allRoles()[0];
+    component.setOutputLanguage('en');
+    const enFirstRole = component.allRoles()[0];
+    expect(esFirstRole).not.toBe(enFirstRole);
   });
 });

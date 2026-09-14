@@ -45,7 +45,7 @@
         >
           {{ 'common.all' | translate }}
         </button>
-        @for (cat of categories; track cat.id) {
+        @for (cat of categories(); track cat.id) {
           <button
             type="button"
             (click)="setActiveCategory(cat.id)"
@@ -61,7 +61,7 @@
 
       <!-- Modal Body (Rule List with Checkboxes) -->
       <div class="flex-1 overflow-y-auto p-5 space-y-5">
-        @for (cat of categories; track cat.id) {
+        @for (cat of categories(); track cat.id) {
           @if (activeCategory() === 'all' || activeCategory() === cat.id) {
             <div>
               <h4 class="text-xs font-semibold text-brand-primary uppercase tracking-wider mb-2.5">

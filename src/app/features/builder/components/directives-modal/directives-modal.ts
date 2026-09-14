@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 import suggestionsData from '../../../../core/data/suggestions.json';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { AgentConfigService } from '../../../../core/services/agent-config.service';
@@ -21,8 +29,14 @@ export class DirectivesModal {
   readonly close = output<void>();
 
   readonly agentConfig = inject(AgentConfigService);
-  readonly categories: readonly SuggestionCategory[] =
-    suggestionsData.categories as readonly SuggestionCategory[];
+  readonly categories = computed<readonly SuggestionCategory[]>(() => {
+    const lang = this.agentConfig.config().outputLanguage;
+    const catalogs = suggestionsData as unknown as Record<
+      string,
+      { categories: readonly SuggestionCategory[] }
+    >;
+    return catalogs[lang]?.categories ?? catalogs['es']?.categories ?? [];
+  });
   readonly activeCategory = signal<string>('all');
 
   setActiveCategory(catId: string): void {

@@ -21,7 +21,15 @@ describe('DirectivesModal', () => {
 
   it('should create modal component', () => {
     expect(component).toBeTruthy();
-    expect(component.categories.length).toBeGreaterThan(0);
+    expect(component.categories().length).toBeGreaterThan(0);
+  });
+
+  it('should update categories reactively when outputLanguage changes', () => {
+    service.setOutputLanguage('es');
+    const esRule = component.categories()[0].rules[0];
+    service.setOutputLanguage('en');
+    const enRule = component.categories()[0].rules[0];
+    expect(esRule).not.toBe(enRule);
   });
 
   it('should filter categories when activeCategory changes', () => {

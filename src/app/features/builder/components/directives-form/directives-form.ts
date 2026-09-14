@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   output,
   signal,
@@ -21,8 +22,11 @@ export class DirectivesForm {
   readonly customInput = signal('');
   readonly openCatalog = output<void>();
 
-  readonly quickSuggestions: readonly string[] =
-    (suggestionsData.quickSuggestions as readonly string[]) ?? [];
+  readonly quickSuggestions = computed<readonly string[]>(() => {
+    const lang = this.agentConfig.config().outputLanguage;
+    const catalogs = suggestionsData as unknown as Record<string, { quickSuggestions: readonly string[] }>;
+    return catalogs[lang]?.quickSuggestions ?? catalogs['es']?.quickSuggestions ?? [];
+  });
 
   updateCustomInput(event: Event): void {
     const target = event.target as HTMLInputElement;

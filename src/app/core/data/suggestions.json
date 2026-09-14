@@ -1,61 +1,124 @@
 {
-  "roles": [
-    "Senior Frontend Architect & UI/UX Specialist",
-    "Senior Backend & Distributed Systems Engineer",
-    "Senior Fullstack Software Engineer",
-    "DevOps, Cloud Infrastructure & SRE Specialist",
-    "Clean Code & Software Craftsmanship Expert",
-    "AI Systems & Autonomous Agent Engineer",
-    "Mobile Application Engineer (iOS / Android)",
-    "QA Automation & Reliability Specialist",
-    "Security & Application Hardening Engineer",
-    "Data Engineer & Pipeline Specialist"
-  ],
-  "quickSuggestions": [
-    "Arquitectura modular y componentes desacoplados",
-    "Principio de Responsabilidad Única (SRP)",
-    "Tipado estricto y cero tipos permisivos",
-    "Principio DRY: máxima reutilización y cero duplicidad"
-  ],
-  "categories": [
-    {
-      "id": "architecture",
-      "nameKey": "builder.catArchitecture",
-      "rules": [
-        "Arquitectura modular y componentes desacoplados",
-        "Principio de Responsabilidad Única (SRP) por módulo o archivo",
-        "Principio DRY: máxima reutilización y cero duplicidad lógica",
-        "Principio KISS: favorecer simplicidad frente a abstracciones complejas",
-        "Separación estricta de capas (presentación, negocio y datos)",
-        "Adherencia a principios SOLID y patrones de diseño limpios",
-        "Programación defensiva y validación estricta en los límites del sistema",
-        "Inmutabilidad por defecto en el flujo de datos y estado"
-      ]
-    },
-    {
-      "id": "quality",
-      "nameKey": "builder.catQuality",
-      "rules": [
-        "Tipado estricto activado sin uso de tipos permisivos o genéricos inseguros",
-        "Límite de tamaño razonable por archivo (máximo 150-200 líneas)",
-        "Tolerancia cero a código muerto, imports huérfanos o variables sin uso",
-        "Internacionalización integral (i18n): cero textos literales en plantillas",
-        "Tests unitarios e integración automatizados para lógica crítica",
-        "Manejo centralizado de excepciones y errores descriptivos",
-        "Validación estricta con linter y formateador de código en cada commit",
-        "Documentación viva sincronizada (README y comentarios en APIs clave)"
-      ]
-    },
-    {
-      "id": "workflow",
-      "nameKey": "builder.catWorkflow",
-      "rules": [
-        "Metodología incremental con commits pequeños y atómicos",
-        "Convención Conventional Commits (feat, fix, refactor, docs, chore)",
-        "Auditoría y refactorización continua tras cada bloque funcional",
-        "Propuesta de commit estructurado al finalizar cada tarea",
-        "Instrucciones claras de prueba y validación para cada funcionalidad"
-      ]
-    }
-  ]
+  "es": {
+    "roles": [
+      "Arquitecto Frontend Senior y Especialista UI/UX",
+      "Ingeniero Backend Senior y Sistemas Distribuidos",
+      "Ingeniero de Software Fullstack Senior",
+      "Especialista en DevOps, Infraestructura Cloud y SRE",
+      "Experto en Código Limpio y Software Craftsmanship",
+      "Ingeniero de Sistemas de IA y Agentes Autónomos",
+      "Ingeniero de Aplicaciones Móviles (iOS / Android)",
+      "Especialista en Automatización de QA y Fiabilidad",
+      "Ingeniero de Seguridad y Hardening de Aplicaciones",
+      "Especialista en Ingeniería de Datos y Pipelines"
+    ],
+    "quickSuggestions": [
+      "Arquitectura modular y componentes desacoplados",
+      "Principio de Responsabilidad Única (SRP)",
+      "Tipado estricto y cero tipos permisivos",
+      "Principio DRY: máxima reutilización y cero duplicidad"
+    ],
+    "categories": [
+      {
+        "id": "architecture",
+        "nameKey": "builder.catArchitecture",
+        "rules": [
+          "Arquitectura modular y componentes desacoplados",
+          "Principio de Responsabilidad Única (SRP) por módulo o archivo",
+          "Principio DRY: máxima reutilización y cero duplicidad lógica",
+          "Principio KISS: favorecer simplicidad frente a abstracciones complejas",
+          "Separación estricta de capas (presentación, negocio y datos)",
+          "Adherencia a principios SOLID y patrones de diseño limpios",
+          "Programación defensiva y validación estricta en los límites del sistema",
+          "Inmutabilidad por defecto en el flujo de datos y estado"
+        ]
+      },
+      {
+        "id": "quality",
+        "nameKey": "builder.catQuality",
+        "rules": [
+          "Tipado estricto activado sin uso de tipos permisivos o genéricos inseguros",
+          "Límite de tamaño razonable por archivo (máximo 150-200 líneas)",
+          "Tolerancia cero a código muerto, imports huérfanos o variables sin uso",
+          "Internacionalización integral (i18n): cero textos literales en plantillas",
+          "Tests unitarios e integración automatizados para lógica crítica",
+          "Manejo centralizado de excepciones y errores descriptivos",
+          "Validación estricta con linter y formateador de código en cada commit",
+          "Documentación viva sincronizada (README y comentarios en APIs clave)"
+        ]
+      },
+      {
+        "id": "workflow",
+        "nameKey": "builder.catWorkflow",
+        "rules": [
+          "Metodología incremental con commits pequeños y atómicos",
+          "Convención Conventional Commits (feat, fix, refactor, docs, chore)",
+          "Auditoría y refactorización continua tras cada bloque funcional",
+          "Propuesta de commit estructurado al finalizar cada tarea",
+          "Instrucciones claras de prueba y validación para cada funcionalidad"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "roles": [
+      "Senior Frontend Architect & UI/UX Specialist",
+      "Senior Backend & Distributed Systems Engineer",
+      "Senior Fullstack Software Engineer",
+      "DevOps, Cloud Infrastructure & SRE Specialist",
+      "Clean Code & Software Craftsmanship Expert",
+      "AI Systems & Autonomous Agent Engineer",
+      "Mobile Application Engineer (iOS / Android)",
+      "QA Automation & Reliability Specialist",
+      "Security & Application Hardening Engineer",
+      "Data Engineer & Pipeline Specialist"
+    ],
+    "quickSuggestions": [
+      "Modular architecture and decoupled components",
+      "Single Responsibility Principle (SRP)",
+      "Strict typing and zero permissive types",
+      "DRY principle: maximum reuse and zero duplication"
+    ],
+    "categories": [
+      {
+        "id": "architecture",
+        "nameKey": "builder.catArchitecture",
+        "rules": [
+          "Modular architecture and decoupled components",
+          "Single Responsibility Principle (SRP) per module or file",
+          "DRY principle: maximum reuse and zero logic duplication",
+          "KISS principle: prioritize simplicity over complex abstractions",
+          "Strict separation of concerns (presentation, business logic, data)",
+          "Adherence to SOLID principles and clean design patterns",
+          "Defensive programming and strict validation at system boundaries",
+          "Immutability by default across data flow and state management"
+        ]
+      },
+      {
+        "id": "quality",
+        "nameKey": "builder.catQuality",
+        "rules": [
+          "Strict typing enabled with zero permissive or unsafe generic types",
+          "Reasonable file size limit (max 150-200 lines) to ensure readability",
+          "Zero tolerance for dead code, orphan imports, or unused variables",
+          "Comprehensive internationalization (i18n): zero hardcoded template literals",
+          "Automated unit and integration tests for critical business logic",
+          "Centralized exception handling with descriptive, secure error messages",
+          "Strict validation with linter and code formatter on every commit",
+          "Synchronized living documentation (up-to-date README and API docs)"
+        ]
+      },
+      {
+        "id": "workflow",
+        "nameKey": "builder.catWorkflow",
+        "rules": [
+          "Incremental step-by-step methodology with small, atomic commits",
+          "Conventional Commits standard (feat, fix, refactor, docs, chore)",
+          "Continuous code audit and mandatory refactoring after each feature block",
+          "Structured commit proposal block at the end of each completed task",
+          "Clear verification and testing instructions for every introduced change"
+        ]
+      }
+    ]
+  }
 }

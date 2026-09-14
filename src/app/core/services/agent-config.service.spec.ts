@@ -58,4 +58,22 @@ describe('AgentConfigService', () => {
     expect(service.config().targetFormat).toBe('cursor');
     expect(service.config().projectName).toBe('My Project');
   });
+
+  it('should switch output language and translate catalog rules and role', () => {
+    service.updateConfig({
+      outputLanguage: 'es',
+      role: 'Arquitecto Frontend Senior y Especialista UI/UX',
+      architecturalRules: ['Arquitectura modular y componentes desacoplados'],
+    });
+
+    service.setOutputLanguage('en');
+    expect(service.config().outputLanguage).toBe('en');
+    expect(service.config().role).toBe('Senior Frontend Architect & UI/UX Specialist');
+    expect(service.config().architecturalRules).toContain('Modular architecture and decoupled components');
+
+    service.setOutputLanguage('es');
+    expect(service.config().outputLanguage).toBe('es');
+    expect(service.config().role).toBe('Arquitecto Frontend Senior y Especialista UI/UX');
+    expect(service.config().architecturalRules).toContain('Arquitectura modular y componentes desacoplados');
+  });
 });

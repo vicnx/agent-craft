@@ -5,6 +5,7 @@ import {
   TARGET_FORMAT_OPTIONS,
 } from '../constants/presets.constant';
 import { AgentConfig, TargetFormat, TargetFormatOption } from '../models/agent.model';
+import { translateCatalogItems } from '../utils/suggestions-translator.util';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,27 @@ export class AgentConfigService {
 
   setTargetFormat(targetFormat: TargetFormat): void {
     this.config.update((current) => ({ ...current, targetFormat }));
+  }
+
+  setOutputLanguage(newLang: 'es' | 'en'): void {
+    const prevLang = this.config().outputLanguage;
+    if (prevLang === newLang) return;
+
+    this.config.update((current) => {
+      const { translatedRules, translatedRole } = translateCatalogItems(
+        current.architecturalRules,
+        current.role,
+        prevLang,
+        newLang,
+      );
+
+      return {
+        ...current,
+        outputLanguage: newLang,
+        role: translatedRole,
+        architecturalRules: [...translatedRules],
+      };
+    });
   }
 
   updateConfig(partial: Partial<AgentConfig>): void {

@@ -18,11 +18,15 @@ import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 export class AgentIdentityForm {
   readonly agentConfig = inject(AgentConfigService);
 
-  readonly allRoles: readonly string[] = (suggestionsData.roles as readonly string[]) ?? [];
+  readonly allRoles = computed<readonly string[]>(() => {
+    const lang = this.agentConfig.config().outputLanguage;
+    const catalogs = suggestionsData as unknown as Record<string, { roles: readonly string[] }>;
+    return catalogs[lang]?.roles ?? catalogs['es']?.roles ?? [];
+  });
   readonly showAllRoles = signal(false);
 
   readonly visibleRoles = computed(() =>
-    this.showAllRoles() ? this.allRoles : this.allRoles.slice(0, 4)
+    this.showAllRoles() ? this.allRoles() : this.allRoles().slice(0, 4)
   );
 
   selectRole(role: string): void {
@@ -49,6 +53,6 @@ export class AgentIdentityForm {
   }
 
   setOutputLanguage(outputLanguage: 'es' | 'en'): void {
-    this.agentConfig.updateConfig({ outputLanguage });
+    this.agentConfig.setOutputLanguage(outputLanguage);
   }
 }

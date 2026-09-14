@@ -49,4 +49,12 @@ describe('DirectivesForm', () => {
     component.clearAllRules();
     expect(service.config().architecturalRules.length).toBe(0);
   });
+
+  it('should update quick suggestions reactively when outputLanguage changes', () => {
+    service.setOutputLanguage('es');
+    const esRule = component.quickSuggestions()[0];
+    service.setOutputLanguage('en');
+    const enRule = component.quickSuggestions()[0];
+    expect(esRule).not.toBe(enRule);
+  });
 });

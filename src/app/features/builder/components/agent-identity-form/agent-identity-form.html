@@ -34,7 +34,7 @@
         <span class="text-[11px] text-slate-400 font-medium">
           {{ 'builder.quickRoles' | translate }}
         </span>
-        @if (allRoles.length > 4) {
+        @if (allRoles().length > 4) {
           <button
             type="button"
             (click)="toggleShowAllRoles()"
