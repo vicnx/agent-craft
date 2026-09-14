@@ -10,10 +10,11 @@ import { TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
 import { TargetFormat } from '../../core/models/agent.model';
 import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
+import { AgentIdentityForm } from './components/agent-identity-form/agent-identity-form';
 
 @Component({
   selector: 'app-builder',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, AgentIdentityForm],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './builder.html',
 })

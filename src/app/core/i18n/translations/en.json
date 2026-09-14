@@ -46,7 +46,16 @@
     "agentParamsPlaceholderDesc": "Ready to integrate modular fields: Role, Tech stack, Quality standards, and Conventions.",
     "livePreview": "Live Preview",
     "compiledOutput": "Compiled Output",
-    "compiledOutputDesc": "The real-time compiler engine will display the ready-to-copy or one-click export output here."
+    "compiledOutputDesc": "The real-time compiler engine will display the ready-to-copy or one-click export output here.",
+    "projectNameLabel": "Project or repository name",
+    "projectNamePlaceholder": "E.g.: AgentCraft",
+    "roleLabel": "Agent role and persona",
+    "rolePlaceholder": "E.g.: Senior Frontend Architect & Clean Code Expert",
+    "descriptionLabel": "Mission / Overall context",
+    "descriptionPlaceholder": "Briefly describe the purpose of the application and how the agent should behave...",
+    "outputLanguageLabel": "Generated file language",
+    "outputLangEs": "Spanish",
+    "outputLangEn": "English"
   },
   "footer": {
     "createdWith": "Crafted with",

@@ -1,0 +1,75 @@
+<div class="space-y-4">
+  <!-- Project Name Field -->
+  <div class="space-y-1.5">
+    <label for="projectNameInput" class="text-xs font-medium text-slate-300">
+      {{ 'builder.projectNameLabel' | translate }}
+    </label>
+    <input
+      id="projectNameInput"
+      type="text"
+      [value]="agentConfig.config().projectName"
+      (input)="onProjectNameChange($event)"
+      [placeholder]="'builder.projectNamePlaceholder' | translate"
+      class="w-full bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none"
+    />
+  </div>
+
+  <!-- Agent Role Field -->
+  <div class="space-y-1.5">
+    <label for="roleInput" class="text-xs font-medium text-slate-300">
+      {{ 'builder.roleLabel' | translate }}
+    </label>
+    <input
+      id="roleInput"
+      type="text"
+      [value]="agentConfig.config().role"
+      (input)="onRoleChange($event)"
+      [placeholder]="'builder.rolePlaceholder' | translate"
+      class="w-full bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none"
+    />
+  </div>
+
+  <!-- Output Language Toggle -->
+  <div class="space-y-1.5">
+    <label class="text-xs font-medium text-slate-300">
+      {{ 'builder.outputLanguageLabel' | translate }}
+    </label>
+    <div class="inline-flex p-1 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+      <button
+        type="button"
+        (click)="setOutputLanguage('es')"
+        [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'es'"
+        [class.text-white]="agentConfig.config().outputLanguage === 'es'"
+        [class.text-slate-400]="agentConfig.config().outputLanguage !== 'es'"
+        class="px-3 py-1 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
+      >
+        {{ 'builder.outputLangEs' | translate }}
+      </button>
+      <button
+        type="button"
+        (click)="setOutputLanguage('en')"
+        [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'en'"
+        [class.text-white]="agentConfig.config().outputLanguage === 'en'"
+        [class.text-slate-400]="agentConfig.config().outputLanguage !== 'en'"
+        class="px-3 py-1 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
+      >
+        {{ 'builder.outputLangEn' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Mission / Description Field -->
+  <div class="space-y-1.5">
+    <label for="descriptionInput" class="text-xs font-medium text-slate-300">
+      {{ 'builder.descriptionLabel' | translate }}
+    </label>
+    <textarea
+      id="descriptionInput"
+      rows="3"
+      [value]="agentConfig.config().description"
+      (input)="onDescriptionChange($event)"
+      [placeholder]="'builder.descriptionPlaceholder' | translate"
+      class="w-full bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none resize-none"
+    ></textarea>
+  </div>
+</div>

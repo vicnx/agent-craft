@@ -35,9 +35,9 @@
   </div>
 
   <!-- Workspace Split Grid (Responsive Layout) -->
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[500px]">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[520px]">
     <!-- Left Column: Form Setup Panel -->
-    <div class="lg:col-span-6 glass-panel rounded-2xl p-6 flex flex-col gap-4">
+    <div class="lg:col-span-6 glass-panel rounded-2xl p-6 flex flex-col gap-5">
       <div class="flex items-center justify-between pb-3 border-b border-white/[0.06]">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
@@ -46,32 +46,8 @@
         <span class="badge-brand text-[10px]">{{ agentConfig.targetFormat() }}</span>
       </div>
 
-      <!-- Live preset summary cards -->
-      <div class="space-y-3">
-        <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-          <span class="text-[11px] font-mono text-indigo-300 font-semibold uppercase tracking-wider">Proyecto</span>
-          <p class="text-sm text-white font-medium mt-0.5">{{ agentConfig.config().projectName }}</p>
-        </div>
-
-        <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-          <span class="text-[11px] font-mono text-purple-300 font-semibold uppercase tracking-wider">Rol Asignado</span>
-          <p class="text-sm text-slate-200 mt-0.5">{{ agentConfig.config().role }}</p>
-        </div>
-
-        <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-          <span class="text-[11px] font-mono text-emerald-300 font-semibold uppercase tracking-wider">
-            Directivas Iniciales ({{ agentConfig.config().architecturalRules.length }})
-          </span>
-          <ul class="mt-2 space-y-1.5">
-            @for (rule of agentConfig.config().architecturalRules; track rule) {
-              <li class="text-xs text-slate-300 flex items-start gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 shrink-0"></span>
-                <span>{{ rule }}</span>
-              </li>
-            }
-          </ul>
-        </div>
-      </div>
+      <!-- Modular Identity & Role Form -->
+      <app-agent-identity-form />
     </div>
 
     <!-- Right Column: Real-Time Markdown Preview -->
@@ -85,12 +61,14 @@
       </div>
 
       <!-- Real-time code preview frame -->
-      <div class="flex-1 p-4 rounded-xl bg-slate-950/80 border border-white/[0.08] font-mono text-xs text-slate-300 overflow-x-auto leading-relaxed space-y-2">
-        <div class="text-slate-500">// Archivo: {{ agentConfig.activeOption().filename }}</div>
-        <div class="text-indigo-400"># {{ agentConfig.config().projectName }}</div>
-        <div class="text-slate-400">> {{ agentConfig.config().description }}</div>
+      <div class="flex-1 p-5 rounded-xl bg-slate-950/80 border border-white/[0.08] font-mono text-xs text-slate-300 overflow-x-auto leading-relaxed space-y-2">
+        <div class="text-slate-500">// Target: {{ agentConfig.activeOption().filename }} [Lang: {{ agentConfig.config().outputLanguage }}]</div>
+        <div class="text-indigo-400 text-sm font-bold"># {{ agentConfig.config().projectName }}</div>
+        @if (agentConfig.config().description) {
+          <div class="text-slate-400 italic">> {{ agentConfig.config().description }}</div>
+        }
         <div class="text-purple-400 mt-3 font-semibold">## Rol: {{ agentConfig.config().role }}</div>
-        <div class="text-slate-300 font-semibold mt-2">## Reglas de Arquitectura</div>
+        <div class="text-slate-300 font-semibold mt-3">## Directivas de Arquitectura</div>
         @for (rule of agentConfig.config().architecturalRules; track rule) {
           <div class="text-slate-400 pl-2">- {{ rule }}</div>
         }

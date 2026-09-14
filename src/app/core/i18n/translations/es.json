@@ -46,7 +46,16 @@
     "agentParamsPlaceholderDesc": "Preparado para integrar los campos modulares: Rol, Stack tecnológico, Estándares de calidad y Convenciones.",
     "livePreview": "Previsualización en Vivo",
     "compiledOutput": "Salida Compilada",
-    "compiledOutputDesc": "El motor de generación en tiempo real mostrará aquí el resultado listo para copiar o exportar en 1 clic."
+    "compiledOutputDesc": "El motor de generación en tiempo real mostrará aquí el resultado listo para copiar o exportar en 1 clic.",
+    "projectNameLabel": "Nombre del proyecto o repositorio",
+    "projectNamePlaceholder": "Ej: AgentCraft",
+    "roleLabel": "Rol y personalidad del agente",
+    "rolePlaceholder": "Ej: Senior Frontend Architect & Clean Code Expert",
+    "descriptionLabel": "Misión / Contexto general",
+    "descriptionPlaceholder": "Describe brevemente el propósito de la app y cómo debe comportarse el asistente...",
+    "outputLanguageLabel": "Idioma del archivo generado",
+    "outputLangEs": "Español",
+    "outputLangEn": "Inglés"
   },
   "footer": {
     "createdWith": "Creado con",
