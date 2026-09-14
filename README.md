@@ -61,6 +61,7 @@ This project is built using modern web standards focused on performance, modular
 | [![Angular](https://img.shields.io/badge/Angular-22-dd0031?style=flat-square&logo=angular&logoColor=white)](https://angular.dev/) | Frontend core framework using **Standalone Components**, functional `inject()` and reactive **Signals** |
 | [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/) | Next-generation utility-first styling engine with `@tailwindcss/postcss` and dark-mode first design |
 | [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) | Strict static typing ensuring high quality and zero runtime exceptions |
+| [![Font Awesome](https://img.shields.io/badge/Font_Awesome-6-528DD7?style=flat-square&logo=font-awesome&logoColor=white)](https://fontawesome.com/) | Standard vector icon toolkit for sleek dev-tool UI controls and indicators |
 | [![Vitest](https://img.shields.io/badge/Vitest-Unit_Testing-fcc72b?style=flat-square&logo=vitest&logoColor=black)](https://vitest.dev/) | Ultra-fast test runner for continuous unit testing validation |
 
 ---

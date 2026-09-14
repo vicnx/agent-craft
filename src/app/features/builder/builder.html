@@ -2,11 +2,11 @@
   <!-- Top Builder Navigation Bar -->
   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-white/[0.08]">
     <div class="flex items-center gap-2 sm:gap-3">
-      <button (click)="goBack()" type="button" class="btn-secondary text-xs py-1.5 px-2.5 sm:px-3 shrink-0" [attr.aria-label]="'common.back' | translate">
-        <span>&larr;</span><span class="hidden sm:inline">&nbsp;{{ 'common.back' | translate }}</span>
+      <button (click)="goBack()" type="button" class="btn-secondary text-xs py-1.5 px-2.5 sm:px-3 shrink-0 flex items-center gap-1.5" [attr.aria-label]="'common.back' | translate">
+        <i class="fa-solid fa-arrow-left"></i><span class="hidden sm:inline">{{ 'common.back' | translate }}</span>
       </button>
-      <button type="button" (click)="openResetModal()" class="btn-secondary text-xs py-1.5 px-2.5 sm:px-3 text-slate-400 hover:text-amber-300 transition-colors cursor-pointer shrink-0" [attr.aria-label]="'common.reset' | translate">
-        <span>↺</span><span class="hidden sm:inline">&nbsp;{{ 'common.reset' | translate }}</span>
+      <button type="button" (click)="openResetModal()" class="btn-secondary text-xs py-1.5 px-2.5 sm:px-3 text-slate-400 hover:text-amber-300 transition-colors cursor-pointer shrink-0 flex items-center gap-1.5" [attr.aria-label]="'common.reset' | translate">
+        <i class="fa-solid fa-rotate-left"></i><span class="hidden sm:inline">{{ 'common.reset' | translate }}</span>
       </button>
       <div class="min-w-0">
         <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap sm:flex-nowrap">
@@ -42,9 +42,9 @@
       [class.bg-brand-primary]="activeMobileTab() === 'editor'"
       [class.text-white]="activeMobileTab() === 'editor'"
       [class.text-slate-400]="activeMobileTab() !== 'editor'"
-      class="flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer text-center"
+      class="flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer text-center flex items-center justify-center gap-1.5"
     >
-      ⚙️ {{ 'builder.tabEditor' | translate }}
+      <i class="fa-solid fa-sliders"></i> {{ 'builder.tabEditor' | translate }}
     </button>
     <button
       type="button"
@@ -52,9 +52,9 @@
       [class.bg-brand-primary]="activeMobileTab() === 'preview'"
       [class.text-white]="activeMobileTab() === 'preview'"
       [class.text-slate-400]="activeMobileTab() !== 'preview'"
-      class="flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer text-center"
+      class="flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer text-center flex items-center justify-center gap-1.5"
     >
-      👁️ {{ 'builder.tabPreview' | translate }}
+      <i class="fa-solid fa-eye"></i> {{ 'builder.tabPreview' | translate }}
     </button>
   </div>
 
@@ -92,10 +92,14 @@
             [class.border-emerald-500/50]="isCopied()"
             [class.text-emerald-400]="isCopied()"
           >
-            @if (isCopied()) { <span>✓ {{ 'builder.copied' | translate }}</span> } @else { <span>📋 {{ 'builder.copy' | translate }}</span> }
+            @if (isCopied()) {
+              <i class="fa-solid fa-check"></i><span>{{ 'builder.copied' | translate }}</span>
+            } @else {
+              <i class="fa-regular fa-clipboard"></i><span>{{ 'builder.copy' | translate }}</span>
+            }
           </button>
           <button type="button" (click)="downloadFile()" class="flex-1 sm:flex-none btn-primary text-xs py-1 px-3 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap">
-            <span>⬇ {{ 'builder.download' | translate }}</span>
+            <i class="fa-solid fa-download"></i><span>{{ 'builder.download' | translate }}</span>
           </button>
         </div>
       </div>

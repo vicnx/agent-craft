@@ -15,7 +15,7 @@
           [attr.aria-label]="('common.remove' | translate) + ' ' + tech"
           class="hover:text-white text-indigo-400 font-bold transition-colors cursor-pointer text-xs"
         >
-          &times;
+          <i class="fa-solid fa-xmark text-xs"></i>
         </button>
       </span>
     } @empty {
@@ -69,7 +69,11 @@
           [class.border-white/[0.06]]="!isTechSelected(tech)"
           class="px-2 py-0.5 rounded-md text-[11px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap shrink-0"
         >
-          <span class="mr-1 font-bold">{{ isTechSelected(tech) ? '✓' : '+' }}</span>
+          @if (isTechSelected(tech)) {
+            <i class="fa-solid fa-check text-[10px] mr-1"></i>
+          } @else {
+            <i class="fa-solid fa-plus text-[10px] mr-1"></i>
+          }
           {{ tech }}
         </button>
       }
@@ -94,7 +98,11 @@
                   [class.border-white/[0.06]]="!isTechSelected(item)"
                   class="px-1.5 py-0.5 rounded text-[10px] font-mono border transition-all hover:text-white hover:border-white/20 cursor-pointer whitespace-nowrap shrink-0"
                 >
-                  <span class="mr-0.5 font-bold">{{ isTechSelected(item) ? '✓' : '+' }}</span>
+                  @if (isTechSelected(item)) {
+                    <i class="fa-solid fa-check text-[9px] mr-0.5"></i>
+                  } @else {
+                    <i class="fa-solid fa-plus text-[9px] mr-0.5"></i>
+                  }
                   {{ item }}
                 </button>
               }

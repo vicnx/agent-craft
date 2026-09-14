@@ -27,9 +27,7 @@
           class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-white/[0.06] transition-colors cursor-pointer"
           [attr.aria-label]="'common.close' | translate"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <i class="fa-solid fa-xmark text-base"></i>
         </button>
       </div>
 
@@ -88,9 +86,7 @@
                       class="w-4 h-4 mt-0.5 rounded-md flex items-center justify-center border transition-all shrink-0 group-hover:border-white/40"
                     >
                       @if (isRuleSelected(rule)) {
-                        <svg class="w-3 h-3 text-white stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fa-solid fa-check text-[10px] text-white"></i>
                       }
                     </div>
 
