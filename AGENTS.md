@@ -33,10 +33,10 @@
 
 ## 3. UI/UX y Diseño Visual
 
-### 3.1. Estilos y Sistema de Diseño
+### 3.1. Estética de Última Generación (Dev-Tool Moderna)
 - **Tailwind CSS:** Utilizado como motor de diseño y utilidad de estilos.
-- **Dark-Mode First:** Estética optimizada prioritariamente para tema oscuro, alineada con las herramientas modernas de desarrollo (paleta oscura cuidada, fondos contrastados, acentos cromáticos precisos).
-- **Accesibilidad y Coherencia:** Contrastes legibles (cumplimiento WCAG), tipografías claras y jerarquías visuales limpias.
+- **Dark-Mode First & Estética de Vanguardia:** Inspirada en las mejores interfaces de desarrollo actuales (Linear, Raycast, Vercel, Supabase). Fondos oscuros profundos, degradados y brillos sutiles, microbordes translúcidos de alta precisión (`border-white/10`, `border-slate-800`), sombras atmosféricas y acabados tipo glassmorphism.
+- **Accesibilidad y Coherencia:** Contrastes legibles (cumplimiento WCAG), tipografías contemporáneas y jerarquías visuales limpias.
 
 ### 3.2. Reutilización de Estilos
 - Encapsular o centralizar componentes UI primitivos (botones, inputs, selectores, tarjetas, modales, badges).
@@ -50,15 +50,15 @@
 
 ## 4. Documentación y "README Vivo"
 
-### 4.1. Sincronización en Tiempo Real
-- El archivo `README.md` debe mantenerse permanentemente actualizado.
-- **Registro Inmediato:** Cada vez que se instale una nueva dependencia, librería, se configure una API o se introduzca un cambio arquitectónico relevante, se debe actualizar la sección correspondiente del `README.md`.
+### 4.1. Información Mínima Necesaria
+- El archivo `README.md` debe contener **únicamente lo indispensable** para entender y ejecutar el proyecto (título, descripción de 1-2 frases, stack esencial, scripts y versión).
+- **Sin meta-información:** Queda estrictamente prohibido incluir referencias a directivas internas, menciones al archivo `AGENTS.md` o explicaciones sobre cómo fue creada o asistida la app.
 
 ### 4.2. Versionado Semántico (SemVer)
 - Al completar una funcionalidad (`feat`) o solventar un error (`fix`), se debe incrementar la versión del proyecto siguiendo SemVer (`MAJOR.MINOR.PATCH`).
 - El incremento debe reflejarse simultáneamente en:
   1. `package.json` (`version`)
-  2. Badge y menciones de versión en `README.md`
+  2. Badge de versión en `README.md`
 
 ---
 
@@ -74,7 +74,7 @@
 
 ## 6. Flujo de Trabajo y Git
 
-- Al finalizar cualquier respuesta o iteración donde se genere o modifique código, **es obligatorio incluir siempre al final un bloque de código** con la propuesta de comando Git siguiendo la convención **Conventional Commits**:
+- Al finalizar cualquier respuesta o iteración donde se genere o modifique código, **es obligatorio incluir siempre al final un bloque de código que contenga ÚNICAMENTE el texto del commit** (siguiendo Conventional Commits), sin comandos git adicionales (sin `git add`, `git commit`, `git push`, etc.):
   - `feat(...)`: Nuevas funcionalidades.
   - `fix(...)`: Corrección de errores.
   - `refactor(...)`: Refactorización de código sin cambio de comportamiento.
