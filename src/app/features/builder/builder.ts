@@ -16,15 +16,16 @@ export class Builder {
   readonly presetId = input<string>();
 
   readonly activeTarget = computed(() => {
+    this.i18n.currentLang();
     const id = this.presetId();
-    if (!id) return this.i18n.t().builder.customConfig;
+    if (!id) return this.i18n.translate('builder.customConfig');
     switch (id) {
       case 'cursor':
-        return `.cursorrules · ${this.i18n.t().presets.cursorName}`;
+        return `.cursorrules · ${this.i18n.translate('presets.cursorName')}`;
       case 'copilot':
-        return `copilot-instructions.md · ${this.i18n.t().presets.copilotName}`;
+        return `copilot-instructions.md · ${this.i18n.translate('presets.copilotName')}`;
       case 'agents':
-        return `AGENTS.md · ${this.i18n.t().presets.agentsName}`;
+        return `AGENTS.md · ${this.i18n.translate('presets.agentsName')}`;
       default:
         return `${id} · Preset`;
     }

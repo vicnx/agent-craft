@@ -1,7 +1,10 @@
-import { computed, Injectable, signal } from '@angular/core';
-import { Language, TranslationSchema } from './i18n.model';
-import { enTranslations } from './translations/en';
-import { esTranslations } from './translations/es';
+import { Injectable, signal } from '@angular/core';
+import en from './translations/en.json';
+import es from './translations/es.json';
+
+export type Language = 'es' | 'en';
+
+type Dictionary = Record<string, Record<string, string>>;
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +12,12 @@ import { esTranslations } from './translations/es';
 export class I18nService {
   private static readonly STORAGE_KEY = 'agentcraft_lang';
 
-  private readonly dictionaries: Record<Language, TranslationSchema> = {
-    es: esTranslations,
-    en: enTranslations,
+  private readonly dictionaries: Record<Language, Dictionary> = {
+    es: es as Dictionary,
+    en: en as Dictionary,
   };
 
   readonly currentLang = signal<Language>(this.detectInitialLanguage());
-
-  readonly t = computed(() => this.dictionaries[this.currentLang()]);
 
   setLanguage(lang: Language): void {
     if (this.currentLang() === lang) return;
@@ -24,7 +25,7 @@ export class I18nService {
     try {
       localStorage.setItem(I18nService.STORAGE_KEY, lang);
     } catch {
-      // Ignore storage access exceptions in restricted environments
+      // Ignorar restricciones de almacenamiento
     }
   }
 
@@ -32,19 +33,10 @@ export class I18nService {
     this.setLanguage(this.currentLang() === 'es' ? 'en' : 'es');
   }
 
-  translate(path: string): string {
-    const keys = path.split('.');
-    let current: unknown = this.dictionaries[this.currentLang()];
-
-    for (const key of keys) {
-      if (typeof current === 'object' && current !== null && key in current) {
-        current = (current as Record<string, unknown>)[key];
-      } else {
-        return path;
-      }
-    }
-
-    return typeof current === 'string' ? current : path;
+  translate(keyPath: string): string {
+    const [section, key] = keyPath.split('.');
+    const dict = this.dictionaries[this.currentLang()];
+    return dict?.[section]?.[key] ?? keyPath;
   }
 
   private detectInitialLanguage(): Language {
