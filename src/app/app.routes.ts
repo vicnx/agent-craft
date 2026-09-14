@@ -10,15 +10,14 @@ export const routes: Routes = [
   },
   {
     path: 'builder',
-    loadComponent: () =>
-      import('./features/builder/builder').then((m) => m.Builder),
-    title: 'AgentCraft · Studio de Reglas',
+    redirectTo: 'builder/custom',
+    pathMatch: 'full',
   },
   {
     path: 'builder/:presetId',
     loadComponent: () =>
       import('./features/builder/builder').then((m) => m.Builder),
-    title: 'AgentCraft · Configurar Preset',
+    title: 'AgentCraft · Studio de Reglas',
   },
   {
     path: '**',

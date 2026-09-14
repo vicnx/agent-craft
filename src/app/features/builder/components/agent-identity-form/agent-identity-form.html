@@ -1,7 +1,7 @@
-<div class="space-y-4">
+<div class="space-y-5">
   <!-- Project Name Field -->
   <div class="space-y-1.5">
-    <label for="projectNameInput" class="text-xs font-medium text-slate-300">
+    <label for="projectNameInput" class="block text-xs font-medium text-slate-300 mb-2">
       {{ 'builder.projectNameLabel' | translate }}
     </label>
     <input
@@ -10,13 +10,13 @@
       [value]="agentConfig.config().projectName"
       (input)="onProjectNameChange($event)"
       [placeholder]="'builder.projectNamePlaceholder' | translate"
-      class="w-full bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none"
+      class="input-field text-xs font-mono"
     />
   </div>
 
   <!-- Agent Role Field -->
   <div class="space-y-1.5">
-    <label for="roleInput" class="text-xs font-medium text-slate-300">
+    <label for="roleInput" class="block text-xs font-medium text-slate-300 mb-2">
       {{ 'builder.roleLabel' | translate }}
     </label>
     <input
@@ -25,7 +25,7 @@
       [value]="agentConfig.config().role"
       (input)="onRoleChange($event)"
       [placeholder]="'builder.rolePlaceholder' | translate"
-      class="w-full bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none"
+      class="input-field text-xs font-mono"
     />
 
     <!-- Role Suggestions Pills -->
@@ -94,8 +94,8 @@
   </div>
 
   <!-- Mission / Description Field -->
-  <div class="space-y-1.5">
-    <label for="descriptionInput" class="text-xs font-medium text-slate-300">
+  <div>
+    <label for="descriptionInput" class="block text-xs font-medium text-slate-300 mb-2">
       {{ 'builder.descriptionLabel' | translate }}
     </label>
     <textarea
@@ -104,7 +104,7 @@
       [value]="agentConfig.config().description"
       (input)="onDescriptionChange($event)"
       [placeholder]="'builder.descriptionPlaceholder' | translate"
-      class="w-full bg-white/[0.03] border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 transition-all outline-none resize-none"
+      class="input-field text-xs font-mono resize-none leading-relaxed"
     ></textarea>
   </div>
 </div>

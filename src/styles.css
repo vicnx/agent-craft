@@ -173,8 +173,9 @@ html, body {
   border-width: 1px;
   border-color: rgba(255, 255, 255, 0.08);
   border-radius: 0.75rem;
-  padding: 0.5rem 0.875rem;
+  padding: 0.625rem 1rem;
   font-size: 0.75rem;
+  line-height: 1.5;
   color: #ffffff;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

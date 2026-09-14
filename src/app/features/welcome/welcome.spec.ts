@@ -26,12 +26,12 @@ describe('Welcome', () => {
     expect(component.presets().length).toBe(3);
   });
 
-  it('should navigate to /builder on onStart()', () => {
+  it('should navigate to /builder/custom on onStart()', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
     const navigateSpy = vi.spyOn(router, 'navigate');
     component.onStart();
-    expect(navigateSpy).toHaveBeenCalledWith(['/builder']);
+    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'custom']);
   });
 
   it('should navigate to /builder/:presetId on onChoosePreset()', () => {

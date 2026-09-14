@@ -10,7 +10,8 @@
     "autonomous": "Autonomous",
     "readyToEdit": "Ready to edit",
     "stepOf": "Step 1 of 2",
-    "all": "All"
+    "all": "All",
+    "cancel": "Cancel"
   },
   "welcome": {
     "badge": "Visual Rule Builder for AI",
@@ -42,6 +43,9 @@
     "title": "Rules Studio",
     "subtitle": "Configure directives, architecture, and code conventions.",
     "customConfig": "Custom Configuration",
+    "changeTemplateTitle": "Change template?",
+    "changeTemplateMessage": "Changing the template will reset all fields and discard any information you have entered. Do you wish to continue?",
+    "changeTemplateConfirm": "Change template",
     "agentParams": "Agent Parameters",
     "agentParamsPlaceholderTitle": "Configurator Forms",
     "agentParamsPlaceholderDesc": "Ready to integrate modular fields: Role, Tech stack, Quality standards, and Conventions.",

@@ -40,7 +40,7 @@ export class Welcome {
   ]);
 
   onStart(): void {
-    void this.router.navigate(['/builder']);
+    void this.router.navigate(['/builder', 'custom']);
   }
 
   onChoosePreset(presetId: string): void {

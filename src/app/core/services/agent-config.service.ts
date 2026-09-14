@@ -31,7 +31,7 @@ export class AgentConfigService {
 
   loadPreset(format: TargetFormat): void {
     const preset = PRESET_CONFIGS[format] ?? DEFAULT_AGENT_CONFIG;
-    const isEn = this.config().outputLanguage === 'en';
+    const isEn = untracked(() => this.config().outputLanguage === 'en');
     const { translatedRules, translatedRole } = isEn
       ? translateCatalogItems(preset.architecturalRules, preset.role, 'es', 'en')
       : { translatedRules: preset.architecturalRules, translatedRole: preset.role };

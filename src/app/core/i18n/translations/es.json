@@ -10,7 +10,8 @@
     "autonomous": "Autónomo",
     "readyToEdit": "Listo para editar",
     "stepOf": "Paso 1 de 2",
-    "all": "Todas"
+    "all": "Todas",
+    "cancel": "Cancelar"
   },
   "welcome": {
     "badge": "Generador Visual de Reglas para IA",
@@ -42,6 +43,9 @@
     "title": "Studio de Reglas",
     "subtitle": "Configura directivas, arquitectura y convenciones de código.",
     "customConfig": "Configuración Personalizada",
+    "changeTemplateTitle": "¿Cambiar de plantilla?",
+    "changeTemplateMessage": "Al cambiar de plantilla se restablecerán los campos y se borrará la información que hayas ingresado. ¿Deseas continuar?",
+    "changeTemplateConfirm": "Cambiar plantilla",
     "agentParams": "Parámetros del Agente",
     "agentParamsPlaceholderTitle": "Formularios del Configurador",
     "agentParamsPlaceholderDesc": "Preparado para integrar los campos modulares: Rol, Stack tecnológico, Estándares de calidad y Convenciones.",

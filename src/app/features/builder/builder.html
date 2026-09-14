@@ -121,4 +121,15 @@
     [isOpen]="isCatalogOpen()"
     (close)="isCatalogOpen.set(false)"
   />
+
+  <!-- Template Change Confirmation Warning Modal -->
+  <app-confirm-modal
+    [isOpen]="isChangeFormatModalOpen()"
+    [title]="'builder.changeTemplateTitle' | translate"
+    [message]="'builder.changeTemplateMessage' | translate"
+    [confirmLabel]="'builder.changeTemplateConfirm' | translate"
+    [cancelLabel]="'common.cancel' | translate"
+    (confirm)="confirmChangeFormat()"
+    (cancel)="closeChangeFormatModal()"
+  />
 </div>
