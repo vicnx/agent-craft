@@ -1,0 +1,101 @@
+<div class="relative overflow-hidden w-full flex flex-col items-center">
+  <!-- Subtle ambient glow in background -->
+  <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] sm:w-[850px] h-[350px] bg-gradient-to-tr from-indigo-500/15 via-purple-600/10 to-transparent blur-[120px] rounded-full"></div>
+
+  <!-- Hero Section -->
+  <section class="w-full max-w-4xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-10 text-center flex flex-col items-center relative z-10">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-medium text-slate-300 mb-6 backdrop-blur-md">
+      <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+      <span>Generador Visual de Reglas para IA</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+      Configura tus agentes de código con
+      <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">precisión quirúrgica</span>
+    </h1>
+
+    <p class="mt-4 sm:mt-6 text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
+      Diseña visualmente directivas para <strong class="text-slate-200">Cursor</strong>, <strong class="text-slate-200">GitHub Copilot</strong> y <strong class="text-slate-200">Claude Code</strong>. Previsualiza en tiempo real y exporta sin lidiar con markdown manual.
+    </p>
+
+    <!-- Action CTAs -->
+    <div class="mt-8 flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+      <button (click)="onStart()" type="button" class="btn-primary w-full sm:w-auto">
+        <span>Crear Configuración Desde Cero</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </button>
+      <a href="#plantillas" class="btn-secondary w-full sm:w-auto">
+        Explorar Plantillas
+      </a>
+    </div>
+  </section>
+
+  <!-- Presets Grid Section -->
+  <section id="plantillas" class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 relative z-10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2">
+      <div>
+        <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">Plantillas de Inicio Rápido</h2>
+        <p class="text-xs sm:text-sm text-slate-400">Selecciona un formato preconfigurado para acelerar tu flujo de trabajo.</p>
+      </div>
+      <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 rounded-lg self-start sm:self-auto">
+        3 formatos soportados
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      @for (preset of presets(); track preset.id) {
+        <div (click)="onChoosePreset(preset.id)"
+             class="glass-card p-6 rounded-2xl cursor-pointer hover:border-indigo-500/40 hover:bg-white/[0.04] flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                {{ preset.targetFile }}
+              </span>
+              <span class="text-[11px] font-medium text-slate-400 bg-white/[0.03] border border-white/[0.06] px-2 py-0.5 rounded-full">
+                {{ preset.badge }}
+              </span>
+            </div>
+
+            <h3 class="text-base font-semibold text-white group-hover:text-indigo-300 transition-colors">
+              {{ preset.name }}
+            </h3>
+            <p class="mt-2 text-xs text-slate-400 leading-relaxed">
+              {{ preset.description }}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+            <div class="flex flex-wrap gap-1.5">
+              @for (tag of preset.tags; track tag) {
+                <span class="text-[10px] font-mono text-slate-400 bg-white/[0.03] px-1.5 py-0.5 rounded">
+                  {{ tag }}
+                </span>
+              }
+            </div>
+            <span class="text-xs font-medium text-indigo-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
+              Usar &rarr;
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Bottom Value Props Row -->
+  <section class="w-full max-w-5xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center border-t border-white/[0.06] mt-6">
+    <div class="flex flex-col items-center gap-1.5">
+      <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">100% Client-Side</span>
+      <p class="text-xs text-slate-400">Sin backend ni cuentas. Tus directivas viven solo en tu navegador.</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <span class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-semibold">Live Markdown</span>
+      <p class="text-xs text-slate-400">Previsualización inmediata del archivo compilado en tiempo real.</p>
+    </div>
+    <div class="flex flex-col items-center gap-1.5">
+      <span class="text-xs font-mono uppercase tracking-widest text-purple-400 font-semibold">One-Click Export</span>
+      <p class="text-xs text-slate-400">Copia al portapapeles o descarga el archivo listo para usar.</p>
+    </div>
+  </section>
+</div>

@@ -1,11 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [],
   selector: 'app-root',
-  styleUrl: './app.css',
+  imports: [RouterOutlet, RouterLink],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = signal('agent-craft');
-}
+export class App {}
