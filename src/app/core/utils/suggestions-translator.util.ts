@@ -7,6 +7,7 @@ interface CatalogCategory {
 interface LanguageCatalog {
   readonly categories: readonly CatalogCategory[];
   readonly roles: readonly string[];
+  readonly quickSuggestions?: readonly string[];
 }
 
 export function translateCatalogItems(
@@ -29,6 +30,10 @@ export function translateCatalogItems(
       if (idx !== -1 && newData.categories[c]?.rules[idx]) {
         return newData.categories[c].rules[idx];
       }
+    }
+    const qIdx = prevData.quickSuggestions?.indexOf(rule) ?? -1;
+    if (qIdx !== -1 && newData.quickSuggestions?.[qIdx]) {
+      return newData.quickSuggestions[qIdx];
     }
     return rule;
   });

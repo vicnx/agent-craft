@@ -28,19 +28,19 @@
   "defaultConfig": {
     "targetFormat": "cursor",
     "projectName": "My Project",
-    "role": "Senior Software Engineer & AI Assistant",
+    "role": "Ingeniero de Software Fullstack Senior",
     "description": "Directivas y contexto de desarrollo para código limpio y mantenible.",
     "outputLanguage": "es",
     "techStack": [],
     "architecturalRules": [
       "Arquitectura modular y componentes desacoplados",
-      "Principio de responsabilidad única por archivo (SRP)",
-      "Código limpio, legible y autodocumentado"
+      "Principio de Responsabilidad Única (SRP) por módulo o archivo",
+      "Principio DRY: máxima reutilización y cero duplicidad lógica"
     ],
     "qualityStandards": [
-      "Tipado estricto sin tipos permisivos ni evasivos",
-      "Tolerancia cero a código muerto o dependencias huérfanas",
-      "Cobertura de pruebas unitarias para lógica crítica"
+      "Tipado estricto activado sin uso de tipos permisivos o genéricos inseguros",
+      "Tolerancia cero a código muerto, imports huérfanos o variables sin uso",
+      "Tests unitarios e integración automatizados para lógica crítica"
     ],
     "gitConvention": "Conventional Commits (feat, fix, refactor, docs, chore)",
     "customInstructions": ""
@@ -49,19 +49,19 @@
     "cursor": {
       "targetFormat": "cursor",
       "projectName": "Cursor Workspace",
-      "role": "Senior Fullstack Engineer & Cursor AI Assistant",
+      "role": "Ingeniero de Software Fullstack Senior",
       "description": "Reglas de desarrollo, estándares de código y directivas optimizadas para el editor Cursor.",
       "outputLanguage": "es",
       "techStack": [],
       "architecturalRules": [
-        "Estructura modular y componentes desacoplados con responsabilidad única",
-        "Favorecer claridad, legibilidad y simplicidad antes que abstracciones complejas",
-        "Proponer cambios concisos y bien explicados"
+        "Arquitectura modular y componentes desacoplados",
+        "Principio KISS: favorecer simplicidad frente a abstracciones complejas",
+        "Instrucciones claras de prueba y validación para cada funcionalidad"
       ],
       "qualityStandards": [
-        "Tipado estricto y convenciones idiomáticas del lenguaje",
-        "Principio DRY: reutilización máxima y cero duplicidad lógica",
-        "Eliminación estricta de código muerto y dependencias huérfanas"
+        "Tipado estricto activado sin uso de tipos permisivos o genéricos inseguros",
+        "Principio DRY: máxima reutilización y cero duplicidad lógica",
+        "Tolerancia cero a código muerto, imports huérfanos o variables sin uso"
       ],
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "customInstructions": "Generar siempre al final de cada respuesta una propuesta de commit en un bloque de código."
@@ -69,19 +69,19 @@
     "copilot": {
       "targetFormat": "copilot",
       "projectName": "Copilot Workspace",
-      "role": "GitHub Copilot Senior Pair Programmer",
+      "role": "Experto en Código Limpio y Software Craftsmanship",
       "description": "Instrucciones a nivel de repositorio para alinear sugerencias de autocompletado y chat de GitHub Copilot.",
       "outputLanguage": "es",
       "techStack": [],
       "architecturalRules": [
-        "Diseño modular y funciones con responsabilidad única",
-        "Manejo robusto y defensivo de errores y validaciones",
-        "Documentación concisa en APIs públicas y funciones complejas"
+        "Principio de Responsabilidad Única (SRP) por módulo o archivo",
+        "Programación defensiva y validación estricta en los límites del sistema",
+        "Separación estricta de capas (presentación, negocio y datos)"
       ],
       "qualityStandards": [
-        "Tipado fuerte en todas las interfaces y firmas de métodos",
-        "Consistencia de estilo en todo el proyecto",
-        "Tests automatizados para cada nueva funcionalidad"
+        "Tipado estricto activado sin uso de tipos permisivos o genéricos inseguros",
+        "Adherencia a principios SOLID y patrones de diseño limpios",
+        "Tests unitarios e integración automatizados para lógica crítica"
       ],
       "gitConvention": "Conventional Commits",
       "customInstructions": "Priorizar legibilidad y adherencia a las mejores prácticas del ecosistema utilizado."
@@ -89,19 +89,19 @@
     "agents": {
       "targetFormat": "agents",
       "projectName": "Autonomous Agents Space",
-      "role": "Autonomous Software Architect & AI Agent",
+      "role": "Ingeniero de Sistemas de IA y Agentes Autónomos",
       "description": "Directivas maestras de arquitectura, límites de ejecución y flujos de trabajo autónomos.",
       "outputLanguage": "es",
       "techStack": [],
       "architecturalRules": [
-        "Metodología incremental paso a paso con commits atómicos",
-        "Auditoría de código y refactorización tras cada bloque funcional",
-        "Modularidad estricta y componentes independientes"
+        "Metodología incremental con commits pequeños y atómicos",
+        "Auditoría y refactorización continua tras cada bloque funcional",
+        "Propuesta de commit estructurado al finalizar cada tarea"
       ],
       "qualityStandards": [
-        "Tolerancia cero a código no utilizado o dependencias sin uso",
-        "Verificación obligatoria mediante tests o ejecución antes de completar una tarea",
-        "Documentación viva sincronizada en tiempo real"
+        "Tolerancia cero a código muerto, imports huérfanos o variables sin uso",
+        "Tests unitarios e integración automatizados para lógica crítica",
+        "Documentación viva sincronizada (README y comentarios en APIs clave)"
       ],
       "gitConvention": "Conventional Commits estructurados",
       "customInstructions": "Indicar siempre cómo verificar y probar los cambios introducidos."

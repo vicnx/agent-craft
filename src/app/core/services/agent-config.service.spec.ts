@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { I18nService } from '../i18n/i18n.service';
 import { AgentConfigService } from './agent-config.service';
 
 describe('AgentConfigService', () => {
   let service: AgentConfigService;
 
   beforeEach(() => {
+    localStorage.clear();
     TestBed.configureTestingModule({});
     service = TestBed.inject(AgentConfigService);
   });
@@ -13,6 +15,15 @@ describe('AgentConfigService', () => {
     expect(service).toBeTruthy();
     expect(service.config().targetFormat).toBe('cursor');
     expect(service.activeOption().filename).toBe('.cursorrules');
+  });
+
+  it('should initialize with English outputLanguage if I18nService is initially English', () => {
+    localStorage.setItem('agentcraft_lang', 'en');
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({});
+    const enService = TestBed.inject(AgentConfigService);
+    expect(enService.config().outputLanguage).toBe('en');
+    expect(enService.config().role).toBe('Senior Fullstack Software Engineer');
   });
 
   it('should load preset correctly', () => {
@@ -75,5 +86,34 @@ describe('AgentConfigService', () => {
     expect(service.config().outputLanguage).toBe('es');
     expect(service.config().role).toBe('Arquitecto Frontend Senior y Especialista UI/UX');
     expect(service.config().architecturalRules).toContain('Arquitectura modular y componentes desacoplados');
+  });
+
+  it('should reactively sync outputLanguage when I18nService language changes', () => {
+    const i18n = TestBed.inject(I18nService);
+    i18n.setLanguage('en');
+    TestBed.flushEffects();
+    expect(service.config().outputLanguage).toBe('en');
+
+    i18n.setLanguage('es');
+    TestBed.flushEffects();
+    expect(service.config().outputLanguage).toBe('es');
+  });
+
+  it('should maintain English outputLanguage and translate preset items when loading preset', () => {
+    service.setOutputLanguage('en');
+    service.loadPreset('copilot');
+    expect(service.config().outputLanguage).toBe('en');
+    expect(service.config().targetFormat).toBe('copilot');
+    expect(service.config().role).toBe('Clean Code & Software Craftsmanship Expert');
+  });
+
+  it('should reset to English default config when app language is English', () => {
+    const i18n = TestBed.inject(I18nService);
+    i18n.setLanguage('en');
+    TestBed.flushEffects();
+    service.loadPreset('agents');
+    service.reset();
+    expect(service.config().outputLanguage).toBe('en');
+    expect(service.config().role).toBe('Senior Fullstack Software Engineer');
   });
 });
