@@ -19,6 +19,7 @@ import { DirectivesModal } from './components/directives-modal/directives-modal'
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 import { WorkflowForm } from './components/workflow-form/workflow-form';
 import { CustomInstructionsForm } from './components/custom-instructions-form/custom-instructions-form';
+import { ConfirmModal } from './components/confirm-modal/confirm-modal';
 
 @Component({
   selector: 'app-builder',
@@ -30,6 +31,7 @@ import { CustomInstructionsForm } from './components/custom-instructions-form/cu
     WorkflowForm,
     CustomInstructionsForm,
     DirectivesModal,
+    ConfirmModal,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './builder.html',
@@ -41,6 +43,8 @@ export class Builder {
   readonly presetId = input<string>();
   readonly formatOptions = TARGET_FORMAT_OPTIONS;
   readonly isCatalogOpen = signal(false);
+  readonly isResetModalOpen = signal(false);
+  readonly isCopied = signal(false);
   private lastLoadedPreset?: string;
 
   constructor() {
@@ -61,6 +65,41 @@ export class Builder {
 
   changeFormat(format: TargetFormat): void {
     this.agentConfig.setTargetFormat(format);
+  }
+
+  openResetModal(): void {
+    this.isResetModalOpen.set(true);
+  }
+
+  confirmReset(): void {
+    this.agentConfig.reset();
+    this.isResetModalOpen.set(false);
+  }
+
+  cancelReset(): void {
+    this.isResetModalOpen.set(false);
+  }
+
+  async copyToClipboard(): Promise<void> {
+    try {
+      await navigator.clipboard.writeText(this.agentConfig.compiledMarkdown());
+      this.isCopied.set(true);
+      setTimeout(() => this.isCopied.set(false), 2000);
+    } catch {
+      // Manejar error silenciosamente
+    }
+  }
+
+  downloadFile(): void {
+    const markdown = this.agentConfig.compiledMarkdown();
+    const filename = this.agentConfig.activeOption().filename;
+    const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
   }
 
   goBack(): void {

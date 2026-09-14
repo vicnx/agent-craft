@@ -13,6 +13,3 @@ export const PRESET_CONFIGS_BY_LANG: Record<'es' | 'en', Record<LanguagePresetId
   es: presetsEs.presets as Record<LanguagePresetId, AgentConfig>,
   en: presetsEn.presets as Record<LanguagePresetId, AgentConfig>,
 };
-
-export const PRESET_CONFIGS: Record<LanguagePresetId, AgentConfig> =
-  presetsEs.presets as Record<LanguagePresetId, AgentConfig>;

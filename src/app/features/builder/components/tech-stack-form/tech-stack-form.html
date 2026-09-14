@@ -12,7 +12,7 @@
         <button
           type="button"
           (click)="removeTech(tech)"
-          [attr.aria-label]="'Remove ' + tech"
+          [attr.aria-label]="('common.remove' | translate) + ' ' + tech"
           class="hover:text-white text-indigo-400 font-bold transition-colors cursor-pointer text-xs"
         >
           &times;

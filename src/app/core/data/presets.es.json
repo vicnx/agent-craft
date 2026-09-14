@@ -55,13 +55,12 @@
         "Arquitectura modular y componentes desacoplados con Principio de Responsabilidad Única (SRP)",
         "Principio DRY: máxima reutilización y cero duplicación lógica",
         "Inmutabilidad por defecto: utilizar readonly, objetos inmutables y reactividad con Signals",
-        "Separación estricta entre presentación visual, lógica de negocio y capa de datos"
-      ],
-      "qualityStandards": [
+        "Separación estricta entre presentación visual, lógica de negocio y capa de datos",
         "Tipado estricto activado (strict: true) con tolerancia cero a uso de any",
         "Tolerancia cero a código muerto, imports huérfanos o variables sin uso",
         "Tests unitarios e integración automatizados para lógica crítica"
       ],
+      "qualityStandards": [],
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "customInstructions": "Priorizar legibilidad, composabilidad y rendimiento en el renderizado."
     },
@@ -76,13 +75,12 @@
         "Clean Architecture con capas desacopladas (Domain, Application, Infrastructure)",
         "Type Hints obligatorios en todas las funciones y clases según PEP 484",
         "Gestión explícita de errores mediante excepciones de dominio personalizadas",
-        "Programación asíncrona idiomática con asyncio y dependency injection"
-      ],
-      "qualityStandards": [
+        "Programación asíncrona idiomática con asyncio y dependency injection",
         "Validación estricta con Ruff y Mypy en modo estricto",
         "Tests automatizados con Pytest, fixtures tipadas y cobertura superior al 80%",
         "Docstrings Google Style con documentación clara de argumentos y retornos"
       ],
+      "qualityStandards": [],
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "customInstructions": "Favorecer inmutabilidad con dataclasses(frozen=True) o Pydantic BaseModel(frozen=True)."
     },
@@ -97,13 +95,12 @@
         "Interfaces pequeñas y desacopladas en el punto de consumo (aceptar interfaces, devolver structs)",
         "Manejo explícito de errores idiomático (if err != nil), nunca ignorar errores devueltos",
         "Concurrencia segura con goroutines, sync.WaitGroup y control de contexto (context.Context)",
-        "Estructura estándar de proyectos Go (cmd/, internal/, pkg/)"
-      ],
-      "qualityStandards": [
+        "Estructura estándar de proyectos Go (cmd/, internal/, pkg/)",
         "Validación con golangci-lint en modo estricto",
         "Cero data races: verificar siempre con 'go test -race'",
         "Tests unitarios y de integración con el paquete nativo testing y table-driven tests"
       ],
+      "qualityStandards": [],
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
       "customInstructions": "Evitar abstracciones innecesarias; preferir código claro, directo y con cero dependencias superfluas."
     },
@@ -118,13 +115,12 @@
         "Respeto estricto del ownership y borrowing sin clones defensivos innecesarios",
         "Manejo de errores explícito y tipado con Result<T, E> y el operador '?'",
         "Modelado de estados rico mediante Enums con datos y pattern matching exhaustivo",
-        "Modularidad interna con visibilidad restringida (pub(crate))"
-      ],
-      "qualityStandards": [
+        "Modularidad interna con visibilidad restringida (pub(crate))",
         "Tolerancia cero a bloques 'unsafe' sin justificación rigurosa y documentada",
         "Compilación limpia sin warnings con 'cargo clippy -- -D warnings'",
         "Tests unitarios y de propiedades con 'cargo test'"
       ],
+      "qualityStandards": [],
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
       "customInstructions": "Asegurar que los errores contengan contexto descriptivo antes de propagarse."
     },
@@ -139,13 +135,12 @@
         "Arquitectura Hexagonal (Ports & Adapters) con aislamiento del modelo de dominio",
         "Inyección de dependencias estricta por constructor sin inyección por campo (@Autowired)",
         "Inmutabilidad favorecida mediante Records de Java y DTOs inmutables",
-        "Manejo global de excepciones mediante @RestControllerAdvice y ProblemDetails"
-      ],
-      "qualityStandards": [
+        "Manejo global de excepciones mediante @RestControllerAdvice y ProblemDetails",
         "Adherencia a estándares de Checkstyle y análisis estático con SonarQube",
         "Tests unitarios e integración con JUnit 5, AssertJ, Mockito y Testcontainers",
         "Validación declarativa de datos mediante Jakarta Bean Validation (@Valid)"
       ],
+      "qualityStandards": [],
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "customInstructions": "Seguir principios SOLID rigurosamente y evitar acoplamiento a frameworks en la capa de negocio."
     },

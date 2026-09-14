@@ -11,7 +11,11 @@
     "readyToEdit": "Ready to edit",
     "stepOf": "Step 1 of 2",
     "all": "All",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "close": "Close",
+    "remove": "Remove",
+    "reset": "Reset",
+    "toggleLanguage": "Toggle language"
   },
   "welcome": {
     "badge": "Visual Rule Builder for AI",
@@ -61,9 +65,17 @@
     "title": "Rules Studio",
     "subtitle": "Configure directives, architecture, and code conventions.",
     "customConfig": "Custom Configuration",
+    "badgeGit": "Git Flow",
+    "badgeCustom": "Custom",
     "changeTemplateTitle": "Change template?",
     "changeTemplateMessage": "Changing the template will reset all fields and discard any information you have entered. Do you wish to continue?",
     "changeTemplateConfirm": "Change template",
+    "resetConfigTitle": "Reset configuration?",
+    "resetConfigMessage": "This action will clear all fields and restore the builder to a blank slate. Do you wish to continue?",
+    "resetConfigConfirm": "Reset from scratch",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
     "agentParams": "Agent Parameters",
     "agentParamsPlaceholderTitle": "Configurator Forms",
     "agentParamsPlaceholderDesc": "Ready to integrate modular fields: Role, Tech stack, Quality standards, and Conventions.",
@@ -96,6 +108,7 @@
     "activeBadge": "active",
     "clearAll": "Clear",
     "clearAllRules": "Clear all directives",
+    "removeRule": "Remove directive",
     "quickDirectives": "Featured suggestions:",
     "browseAllRules": "Browse suggestions catalog",
     "noRulesSelected": "No directives added yet. Type one or browse the catalog.",
@@ -127,6 +140,8 @@
     "createdWith": "Crafted with",
     "by": "by",
     "author": "Xente",
-    "license": "MIT License"
+    "license": "MIT License",
+    "githubAria": "GitHub Profile vicnx",
+    "linkedinAria": "LinkedIn Profile vicnx"
   }
 }

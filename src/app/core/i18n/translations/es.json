@@ -11,7 +11,11 @@
     "readyToEdit": "Listo para editar",
     "stepOf": "Paso 1 de 2",
     "all": "Todas",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "remove": "Eliminar",
+    "reset": "Restablecer",
+    "toggleLanguage": "Cambiar idioma"
   },
   "welcome": {
     "badge": "Generador Visual de Reglas para IA",
@@ -61,9 +65,17 @@
     "title": "Studio de Reglas",
     "subtitle": "Configura directivas, arquitectura y convenciones de código.",
     "customConfig": "Configuración Personalizada",
+    "badgeGit": "Git Flow",
+    "badgeCustom": "Personalizado",
     "changeTemplateTitle": "¿Cambiar de plantilla?",
     "changeTemplateMessage": "Al cambiar de plantilla se restablecerán los campos y se borrará la información que hayas ingresado. ¿Deseas continuar?",
     "changeTemplateConfirm": "Cambiar plantilla",
+    "resetConfigTitle": "¿Restablecer configuración?",
+    "resetConfigMessage": "Esta acción borrará todos los campos y devolverá el configurador a su estado inicial en blanco. ¿Deseas continuar?",
+    "resetConfigConfirm": "Restablecer a cero",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "download": "Descargar",
     "agentParams": "Parámetros del Agente",
     "agentParamsPlaceholderTitle": "Formularios del Configurador",
     "agentParamsPlaceholderDesc": "Preparado para integrar los campos modulares: Rol, Stack tecnológico, Estándares de calidad y Convenciones.",
@@ -96,6 +108,7 @@
     "activeBadge": "activas",
     "clearAll": "Limpiar",
     "clearAllRules": "Limpiar todas las directivas",
+    "removeRule": "Eliminar directiva",
     "quickDirectives": "Sugerencias destacadas:",
     "browseAllRules": "Ver catálogo de sugerencias",
     "noRulesSelected": "No hay directivas añadidas todavía. Escribe una o explora el catálogo.",
@@ -127,6 +140,8 @@
     "createdWith": "Creado con",
     "by": "por",
     "author": "Xente",
-    "license": "Licencia MIT"
+    "license": "Licencia MIT",
+    "githubAria": "Perfil de GitHub de vicnx",
+    "linkedinAria": "Perfil de LinkedIn de vicnx"
   }
 }

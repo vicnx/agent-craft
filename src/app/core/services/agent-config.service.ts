@@ -8,6 +8,7 @@ import { I18nService, Language } from '../i18n/i18n.service';
 import { AgentConfig, TargetFormat, TargetFormatOption } from '../models/agent.model';
 import { LanguagePresetId } from '../models/preset.model';
 import { translateCatalogItems } from '../utils/suggestions-translator.util';
+import { compileAgentMarkdown } from '../utils/markdown-compiler.util';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class AgentConfigService {
   readonly activeOption = computed<TargetFormatOption>(
     () => TARGET_FORMAT_OPTIONS.find((opt) => opt.id === this.targetFormat()) ?? TARGET_FORMAT_OPTIONS[0],
   );
+  readonly compiledMarkdown = computed<string>(() => compileAgentMarkdown(this.config()));
 
   constructor() {
     effect(() => {
@@ -93,15 +95,6 @@ export class AgentConfigService {
 
   clearArchitecturalRules(): void {
     this.config.update((c) => ({ ...c, architecturalRules: [] }));
-  }
-
-  addQualityStandard(standard: string): void {
-    const trimmed = standard.trim();
-    if (trimmed) this.config.update((c) => ({ ...c, qualityStandards: [...c.qualityStandards, trimmed] }));
-  }
-
-  removeQualityStandard(index: number): void {
-    this.config.update((c) => ({ ...c, qualityStandards: c.qualityStandards.filter((_, i) => i !== index) }));
   }
 
   setGitConvention(gitConvention: string): void {

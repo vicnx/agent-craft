@@ -50,6 +50,37 @@ describe('Builder', () => {
     expect(component.isCatalogOpen()).toBe(false);
   });
 
+  it('should open and handle reset modal', () => {
+    const fixture = TestBed.createComponent(Builder);
+    const component = fixture.componentInstance;
+    component.agentConfig.updateConfig({ projectName: 'Custom' });
+    expect(component.isResetModalOpen()).toBe(false);
+
+    component.openResetModal();
+    expect(component.isResetModalOpen()).toBe(true);
+
+    component.cancelReset();
+    expect(component.isResetModalOpen()).toBe(false);
+    expect(component.agentConfig.config().projectName).toBe('Custom');
+
+    component.openResetModal();
+    component.confirmReset();
+    expect(component.isResetModalOpen()).toBe(false);
+    const expectedName = component.agentConfig.config().outputLanguage === 'es' ? 'Proyecto Personalizado' : 'Custom Project';
+    expect(component.agentConfig.config().projectName).toBe(expectedName);
+  });
+
+  it('should copy compiled markdown to clipboard', async () => {
+    const fixture = TestBed.createComponent(Builder);
+    const component = fixture.componentInstance;
+    const writeTextSpy = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, { clipboard: { writeText: writeTextSpy } });
+
+    await component.copyToClipboard();
+    expect(writeTextSpy).toHaveBeenCalledWith(component.agentConfig.compiledMarkdown());
+    expect(component.isCopied()).toBe(true);
+  });
+
   it('should load preset when presetId input is provided without infinite loop', () => {
     const fixture = TestBed.createComponent(Builder);
     fixture.componentRef.setInput('presetId', 'python');

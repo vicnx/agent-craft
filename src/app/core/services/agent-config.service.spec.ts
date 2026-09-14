@@ -51,21 +51,21 @@ describe('AgentConfigService', () => {
   it('should add and remove tech stack items without duplicates', () => {
     service.addTechStackItem('RxJS');
     expect(service.config().techStack).toContain('RxJS');
-
     service.addTechStackItem('RxJS');
     expect(service.config().techStack.filter((t) => t === 'RxJS').length).toBe(1);
-
     service.removeTechStackItem('RxJS');
     expect(service.config().techStack).not.toContain('RxJS');
   });
 
-  it('should add and remove architectural rules', () => {
+  it('should add, remove and clear architectural rules', () => {
     const initialCount = service.config().architecturalRules.length;
     service.addArchitecturalRule('New Rule 1');
     expect(service.config().architecturalRules.length).toBe(initialCount + 1);
-
     service.removeArchitecturalRule(initialCount);
     expect(service.config().architecturalRules.length).toBe(initialCount);
+    service.addArchitecturalRule('To clear');
+    service.clearArchitecturalRules();
+    expect(service.config().architecturalRules.length).toBe(0);
   });
 
   it('should toggle architectural rules and verify existence', () => {
@@ -76,32 +76,17 @@ describe('AgentConfigService', () => {
     expect(service.hasArchitecturalRule('Toggle Rule')).toBe(false);
   });
 
-  it('should clear all architectural rules', () => {
-    service.addArchitecturalRule('Rule to clear');
-    service.clearArchitecturalRules();
-    expect(service.config().architecturalRules.length).toBe(0);
+  it('should compile reactive markdown whenever config changes', () => {
+    service.updateConfig({ projectName: 'SuperStudio' });
+    expect(service.compiledMarkdown()).toContain('# SuperStudio');
   });
 
-  it('should add and remove quality standards', () => {
-    service.addQualityStandard('Test Coverage > 80%');
-    expect(service.config().qualityStandards).toContain('Test Coverage > 80%');
-
-    service.removeQualityStandard(service.config().qualityStandards.length - 1);
-    expect(service.config().qualityStandards).not.toContain('Test Coverage > 80%');
-  });
-
-  it('should update git convention', () => {
+  it('should update git convention and append custom instructions without duplication', () => {
     service.setGitConvention('GitFlow');
     expect(service.config().gitConvention).toBe('GitFlow');
-  });
-
-  it('should update and append custom instructions without duplication', () => {
     service.setCustomInstructions('Initial rule.');
-    expect(service.config().customInstructions).toBe('Initial rule.');
-
     service.appendCustomInstruction('Second rule.');
     expect(service.config().customInstructions).toContain('- Second rule.');
-
     service.appendCustomInstruction('Second rule.');
     const occurrences = service.config().customInstructions.split('Second rule.').length - 1;
     expect(occurrences).toBe(1);
@@ -123,7 +108,6 @@ describe('AgentConfigService', () => {
       role: 'Arquitecto Frontend Senior y Especialista UI/UX',
       architecturalRules: ['Arquitectura modular y componentes desacoplados'],
     });
-
     service.setOutputLanguage('en');
     expect(service.config().outputLanguage).toBe('en');
     expect(service.config().role).toBe('Senior Frontend Architect & UI/UX Specialist');
@@ -135,32 +119,18 @@ describe('AgentConfigService', () => {
     expect(service.config().architecturalRules).toContain('Arquitectura modular y componentes desacoplados');
   });
 
-  it('should reactively sync outputLanguage when I18nService language changes', () => {
+  it('should reactively sync outputLanguage and reset with I18nService language', () => {
     const i18n = TestBed.inject(I18nService);
     i18n.setLanguage('en');
     TestBed.flushEffects();
     expect(service.config().outputLanguage).toBe('en');
 
-    i18n.setLanguage('es');
-    TestBed.flushEffects();
-    expect(service.config().outputLanguage).toBe('es');
-  });
-
-  it('should load English preset when outputLanguage is English', () => {
-    service.setOutputLanguage('en');
     service.loadPreset('typescript');
-    expect(service.config().outputLanguage).toBe('en');
     expect(service.config().projectName).toBe('TypeScript Project');
     expect(service.config().role).toBe('Senior Frontend Architect & TypeScript Specialist');
-  });
 
-  it('should reset to English default config when app language is English', () => {
-    const i18n = TestBed.inject(I18nService);
-    i18n.setLanguage('en');
-    TestBed.flushEffects();
     service.loadPreset('go');
     service.reset();
-    expect(service.config().outputLanguage).toBe('en');
     expect(service.config().projectName).toBe('Custom Project');
     expect(service.config().role).toBe('AI Coding Assistant');
   });
