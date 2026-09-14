@@ -15,7 +15,10 @@
     "close": "Cerrar",
     "remove": "Eliminar",
     "reset": "Restablecer",
-    "toggleLanguage": "Cambiar idioma"
+    "toggleLanguage": "Cambiar idioma",
+    "toggleTheme": "Cambiar tema",
+    "themeLight": "Modo claro",
+    "themeDark": "Modo oscuro"
   },
   "welcome": {
     "badge": "Generador Visual de Reglas para IA",
@@ -93,6 +96,7 @@
     "agentParamsPlaceholderTitle": "Formularios del Configurador",
     "agentParamsPlaceholderDesc": "Preparado para integrar los campos modulares: Rol, Stack tecnológico, Estándares de calidad y Convenciones.",
     "livePreview": "Previsualización en Vivo",
+    "readonlyBadge": "Solo lectura",
     "compiledOutput": "Salida Compilada",
     "compiledOutputDesc": "El motor de generación en tiempo real mostrará aquí el resultado listo para copiar o exportar en 1 clic.",
     "projectNameLabel": "Nombre del proyecto o repositorio",

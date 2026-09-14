@@ -1,18 +1,18 @@
-<div class="space-y-4 pt-4 border-t border-white/[0.06]">
+<div class="space-y-4 pt-4 border-t border-slate-200/80 dark:border-white/[0.06]">
   <!-- Section Title & Subtitle -->
   <div class="flex items-center justify-between">
     <div>
-      <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
         {{ 'builder.workflowTitle' | translate }}
       </h3>
-      <p class="text-xs text-slate-500">{{ 'builder.workflowSubtitle' | translate }}</p>
+      <p class="text-xs text-slate-400 dark:text-slate-500">{{ 'builder.workflowSubtitle' | translate }}</p>
     </div>
     <span class="badge-brand text-[10px]">{{ 'builder.badgeGit' | translate }}</span>
   </div>
 
   <!-- Git Convention Input Field -->
   <div>
-    <label for="git-convention-input" class="block text-xs font-medium text-slate-300 mb-2">
+    <label for="git-convention-input" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
       {{ 'builder.gitConventionLabel' | translate }}
     </label>
     <input
@@ -27,7 +27,7 @@
 
   <!-- Quick Convention Presets -->
   <div class="space-y-2">
-    <span class="text-[11px] text-slate-400 font-medium">
+    <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
       {{ 'builder.quickConventions' | translate }}
     </span>
     <div class="flex flex-wrap gap-1.5">
@@ -35,13 +35,9 @@
         <button
           type="button"
           (click)="selectPreset(preset)"
-          [class.bg-indigo-500/20]="isSelected(preset)"
-          [class.text-indigo-300]="isSelected(preset)"
-          [class.border-indigo-500/50]="isSelected(preset)"
-          [class.bg-white/[0.03]]="!isSelected(preset)"
-          [class.text-slate-400]="!isSelected(preset)"
-          [class.border-white/[0.06]]="!isSelected(preset)"
-          class="text-[11px] font-mono px-2.5 py-1 rounded-lg border transition-all hover:text-white hover:border-white/20 hover:bg-white/[0.06] cursor-pointer"
+          [class.chip-active]="isSelected(preset)"
+          [class.chip-item]="!isSelected(preset)"
+          class="text-[11px] font-mono px-2.5 py-1 rounded-lg"
         >
           {{ preset }}
         </button>
@@ -50,13 +46,13 @@
   </div>
 
   <!-- Propose Commit Block Independent Toggle -->
-  <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+  <div class="flex items-center justify-between p-3 rounded-xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/[0.06] hover:border-slate-300 dark:hover:border-white/[0.12] transition-colors">
     <div class="flex flex-col gap-0.5 pr-3">
-      <span class="text-xs font-semibold text-white flex items-center gap-1.5">
+      <span class="text-xs font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
         <i class="fa-solid fa-code-commit text-brand-primary text-xs"></i>
         {{ 'builder.proposeCommitLabel' | translate }}
       </span>
-      <p class="text-[11px] text-slate-400 leading-snug">
+      <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
         {{ 'builder.proposeCommitDesc' | translate }}
       </p>
     </div>
@@ -66,7 +62,8 @@
       (click)="toggleProposeCommit()"
       [attr.aria-checked]="agentConfig.config().proposeCommit"
       [class.bg-brand-primary]="agentConfig.config().proposeCommit"
-      [class.bg-slate-800]="!agentConfig.config().proposeCommit"
+      [class.bg-slate-300]="!agentConfig.config().proposeCommit"
+      [class.dark:bg-slate-800]="!agentConfig.config().proposeCommit"
       class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
     >
       <span
@@ -78,18 +75,18 @@
   </div>
 
   <!-- Development & Verification Commands -->
-  <div class="space-y-3 pt-3 border-t border-white/[0.06]">
+  <div class="space-y-3 pt-3 border-t border-slate-200/80 dark:border-white/[0.06]">
     <div>
-      <h4 class="text-xs font-semibold text-white flex items-center gap-1.5">
+      <h4 class="text-xs font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
         <i class="fa-solid fa-terminal text-brand-primary text-[10px]"></i>
         {{ 'builder.buildCommandsTitle' | translate }}
       </h4>
-      <p class="text-xs text-slate-400 mt-0.5">{{ 'builder.buildCommandsSubtitle' | translate }}</p>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{{ 'builder.buildCommandsSubtitle' | translate }}</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
       <div>
-        <label for="cmd-build" class="block text-[11px] font-medium text-slate-300 mb-1">{{ 'builder.cmdBuild' | translate }}</label>
+        <label for="cmd-build" class="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">{{ 'builder.cmdBuild' | translate }}</label>
         <input
           id="cmd-build"
           type="text"
@@ -100,7 +97,7 @@
         />
       </div>
       <div>
-        <label for="cmd-test" class="block text-[11px] font-medium text-slate-300 mb-1">{{ 'builder.cmdTest' | translate }}</label>
+        <label for="cmd-test" class="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">{{ 'builder.cmdTest' | translate }}</label>
         <input
           id="cmd-test"
           type="text"
@@ -111,7 +108,7 @@
         />
       </div>
       <div>
-        <label for="cmd-dev" class="block text-[11px] font-medium text-slate-300 mb-1">{{ 'builder.cmdDev' | translate }}</label>
+        <label for="cmd-dev" class="block text-[11px] font-medium text-slate-700 dark:text-slate-300 mb-1">{{ 'builder.cmdDev' | translate }}</label>
         <input
           id="cmd-dev"
           type="text"

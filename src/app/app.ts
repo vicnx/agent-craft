@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Footer } from './core/components/footer/footer';
 import { I18nService } from './core/i18n/i18n.service';
+import { ThemeService } from './core/services/theme.service';
 import { TranslatePipe } from './core/i18n/translate.pipe';
 
 @Component({
@@ -12,4 +13,5 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
 })
 export class App {
   readonly i18n = inject(I18nService);
+  readonly themeService = inject(ThemeService);
 }

@@ -1,6 +1,6 @@
 @if (isOpen()) {
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md transition-opacity duration-200"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 dark:bg-black/75 backdrop-blur-md transition-opacity duration-200"
     (click)="onCancel()"
     (keydown.escape)="onCancel()"
     tabindex="-1"
@@ -8,26 +8,26 @@
     aria-modal="true"
   >
     <div
-      class="glass-panel w-full max-w-md rounded-2xl p-6 border border-white/10 shadow-2xl relative space-y-5"
+      class="glass-panel w-full max-w-md rounded-2xl p-6 border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/95 shadow-2xl relative space-y-5"
       (click)="$event.stopPropagation()"
     >
       <!-- Modal Header with Warning Icon -->
       <div class="flex items-start gap-3.5">
-        <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-500 dark:text-amber-400 shrink-0">
           <i class="fa-solid fa-triangle-exclamation text-base"></i>
         </div>
         <div class="space-y-1">
-          <h3 class="text-sm font-semibold text-white tracking-tight">
+          <h3 class="text-sm font-semibold text-slate-900 dark:text-white tracking-tight">
             {{ title() }}
           </h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
             {{ message() }}
           </p>
         </div>
       </div>
 
       <!-- Actions -->
-      <div class="flex items-center justify-end gap-2.5 pt-2 border-t border-white/[0.06]">
+      <div class="flex items-center justify-end gap-2.5 pt-2 border-t border-slate-200/80 dark:border-white/[0.06]">
         <button
           type="button"
           (click)="onCancel()"

@@ -15,7 +15,10 @@
     "close": "Close",
     "remove": "Remove",
     "reset": "Reset",
-    "toggleLanguage": "Toggle language"
+    "toggleLanguage": "Toggle language",
+    "toggleTheme": "Toggle theme",
+    "themeLight": "Light mode",
+    "themeDark": "Dark mode"
   },
   "welcome": {
     "badge": "Visual Rule Builder for AI",
@@ -93,6 +96,7 @@
     "agentParamsPlaceholderTitle": "Configurator Forms",
     "agentParamsPlaceholderDesc": "Ready to integrate modular fields: Role, Tech stack, Quality standards, and Conventions.",
     "livePreview": "Live Preview",
+    "readonlyBadge": "Read-only",
     "compiledOutput": "Compiled Output",
     "compiledOutputDesc": "The real-time compiler engine will display the ready-to-copy or one-click export output here.",
     "projectNameLabel": "Project or repository name",
