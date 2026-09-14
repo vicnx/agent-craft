@@ -67,6 +67,8 @@
     "customConfig": "Custom Configuration",
     "badgeGit": "Git Flow",
     "badgeCustom": "Custom",
+    "tabEditor": "Configuration",
+    "tabPreview": "Live Preview",
     "changeTemplateTitle": "Change template?",
     "changeTemplateMessage": "Changing the template will reset all fields and discard any information you have entered. Do you wish to continue?",
     "changeTemplateConfirm": "Change template",

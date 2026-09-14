@@ -1,6 +1,6 @@
 @if (isOpen()) {
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200"
+    class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200"
     (click)="onClose()"
     (keydown.escape)="onClose()"
     tabindex="0"
@@ -34,14 +34,14 @@
       </div>
 
       <!-- Category Filter Tabs -->
-      <div class="flex flex-wrap items-center gap-2 px-5 py-3 border-b border-white/[0.06] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div class="flex items-center gap-2 px-4 sm:px-5 py-3 border-b border-white/[0.06] overflow-x-auto no-scrollbar flex-nowrap">
         <button
           type="button"
           (click)="setActiveCategory('all')"
           [class.bg-brand-primary]="activeCategory() === 'all'"
           [class.text-white]="activeCategory() === 'all'"
           [class.text-slate-400]="activeCategory() !== 'all'"
-          class="px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors whitespace-nowrap"
+          class="px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors whitespace-nowrap shrink-0"
         >
           {{ 'common.all' | translate }}
         </button>
@@ -52,7 +52,7 @@
             [class.bg-brand-primary]="activeCategory() === cat.id"
             [class.text-white]="activeCategory() === cat.id"
             [class.text-slate-400]="activeCategory() !== cat.id"
-            class="px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors whitespace-nowrap"
+            class="px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors whitespace-nowrap shrink-0"
           >
             {{ cat.nameKey | translate }}
           </button>

@@ -69,14 +69,14 @@
     <label class="block text-xs font-medium text-slate-300 mb-2">
       {{ 'builder.outputLanguageLabel' | translate }}
     </label>
-    <div class="inline-flex p-1 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+    <div class="inline-flex w-full sm:w-auto p-1 rounded-xl bg-white/[0.03] border border-white/[0.08]">
       <button
         type="button"
         (click)="setOutputLanguage('es')"
         [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'es'"
         [class.text-white]="agentConfig.config().outputLanguage === 'es'"
         [class.text-slate-400]="agentConfig.config().outputLanguage !== 'es'"
-        class="px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
+        class="flex-1 sm:flex-initial text-center px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer whitespace-nowrap"
       >
         {{ 'builder.outputLangEs' | translate }}
       </button>
@@ -86,7 +86,7 @@
         [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'en'"
         [class.text-white]="agentConfig.config().outputLanguage === 'en'"
         [class.text-slate-400]="agentConfig.config().outputLanguage !== 'en'"
-        class="px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer"
+        class="flex-1 sm:flex-initial text-center px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer whitespace-nowrap"
       >
         {{ 'builder.outputLangEn' | translate }}
       </button>

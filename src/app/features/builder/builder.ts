@@ -45,6 +45,7 @@ export class Builder {
   readonly isCatalogOpen = signal(false);
   readonly isResetModalOpen = signal(false);
   readonly isCopied = signal(false);
+  readonly activeMobileTab = signal<'editor' | 'preview'>('editor');
   private lastLoadedPreset?: string;
 
   constructor() {
@@ -65,6 +66,10 @@ export class Builder {
 
   changeFormat(format: TargetFormat): void {
     this.agentConfig.setTargetFormat(format);
+  }
+
+  setMobileTab(tab: 'editor' | 'preview'): void {
+    this.activeMobileTab.set(tab);
   }
 
   openResetModal(): void {
