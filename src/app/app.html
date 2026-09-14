@@ -1,35 +1,46 @@
-<div class="min-h-screen flex flex-col bg-canvas text-slate-100 selection:bg-brand-primary selection:text-white">
+<div class="min-h-screen flex flex-col bg-canvas text-slate-900 dark:text-slate-100 selection:bg-brand-primary selection:text-white">
   <!-- Top Navigation Header -->
-  <header class="border-b border-white/[0.08] bg-canvas/80 backdrop-blur-xl sticky top-0 z-50">
+  <header class="border-b border-slate-200/80 dark:border-white/[0.08] bg-white/80 dark:bg-canvas/80 backdrop-blur-xl sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a routerLink="/" class="flex items-center gap-3 group cursor-pointer">
         <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 via-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/25 ring-1 ring-white/20 font-bold text-white text-sm tracking-wider group-hover:scale-105 transition-transform">
           AC
         </div>
         <div>
-          <span class="text-sm font-semibold tracking-tight text-white flex items-center gap-2">
+          <span class="text-sm font-semibold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             {{ 'common.appName' | translate }}
-            <span class="badge-brand text-[10px] py-0.5">v0.11.0</span>
+            <span class="badge-brand text-[10px] py-0.5">v0.15.0</span>
           </span>
-          <p class="text-xs text-slate-400 hidden sm:block">{{ 'common.appSubtitle' | translate }}</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">{{ 'common.appSubtitle' | translate }}</p>
         </div>
       </a>
 
       <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Theme Switcher Toggle (Light / Dark) -->
+        <button
+          (click)="themeService.toggleTheme()"
+          type="button"
+          [attr.aria-label]="'common.toggleTheme' | translate"
+          [attr.title]="(themeService.isDark() ? 'common.themeLight' : 'common.themeDark') | translate"
+          class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] hover:border-indigo-500/40 hover:bg-slate-200/60 dark:hover:bg-white/[0.08] text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white transition-all cursor-pointer"
+        >
+          <i class="fa-solid text-xs" [class.fa-sun]="themeService.isDark()" [class.fa-moon]="!themeService.isDark()"></i>
+        </button>
+
         <!-- Language Switcher Toggle -->
         <button
           (click)="i18n.toggleLanguage()"
           type="button"
           [attr.aria-label]="'common.toggleLanguage' | translate"
-          class="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] hover:border-indigo-500/40 hover:bg-white/[0.08] text-slate-300 transition-all cursor-pointer"
+          class="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] hover:border-indigo-500/40 hover:bg-slate-200/60 dark:hover:bg-white/[0.08] text-slate-600 dark:text-slate-300 transition-all cursor-pointer"
         >
-          <span [class.text-indigo-400]="i18n.currentLang() === 'es'" [class.font-bold]="i18n.currentLang() === 'es'">ES</span>
-          <span class="text-slate-600">/</span>
-          <span [class.text-indigo-400]="i18n.currentLang() === 'en'" [class.font-bold]="i18n.currentLang() === 'en'">EN</span>
+          <span [class.text-indigo-600]="i18n.currentLang() === 'es'" [class.dark:text-indigo-400]="i18n.currentLang() === 'es'" [class.font-bold]="i18n.currentLang() === 'es'">ES</span>
+          <span class="text-slate-400 dark:text-slate-600">/</span>
+          <span [class.text-indigo-600]="i18n.currentLang() === 'en'" [class.dark:text-indigo-400]="i18n.currentLang() === 'en'" [class.font-bold]="i18n.currentLang() === 'en'">EN</span>
         </button>
 
         <span class="badge-emerald text-xs">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
           <span class="hidden sm:inline">{{ 'common.clientSide' | translate }}</span>
         </span>
       </div>

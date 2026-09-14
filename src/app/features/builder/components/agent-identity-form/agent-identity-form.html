@@ -1,7 +1,7 @@
 <div class="space-y-5">
   <!-- Project Name Field -->
   <div>
-    <label for="projectNameInput" class="block text-xs font-medium text-slate-300 mb-2">
+    <label for="projectNameInput" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
       {{ 'builder.projectNameLabel' | translate }}
     </label>
     <input
@@ -16,7 +16,7 @@
 
   <!-- Agent Role Field -->
   <div>
-    <label for="roleInput" class="block text-xs font-medium text-slate-300 mb-2">
+    <label for="roleInput" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
       {{ 'builder.roleLabel' | translate }}
     </label>
     <input
@@ -31,7 +31,7 @@
     <!-- Role Suggestions Pills -->
     <div class="space-y-1.5 pt-2">
       <div class="flex items-center justify-between">
-        <span class="text-[11px] text-slate-400 font-medium">
+        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
           {{ 'builder.quickRoles' | translate }}
         </span>
         @if (allRoles().length > 4) {
@@ -49,13 +49,9 @@
           <button
             type="button"
             (click)="selectRole(role)"
-            [class.bg-brand-primary/20]="agentConfig.config().role === role"
-            [class.border-brand-primary/40]="agentConfig.config().role === role"
-            [class.text-brand-primary]="agentConfig.config().role === role"
-            [class.bg-white/[0.03]]="agentConfig.config().role !== role"
-            [class.border-white/[0.08]]="agentConfig.config().role !== role"
-            [class.text-slate-400]="agentConfig.config().role !== role"
-            class="text-[11px] px-2.5 py-1 rounded-lg border hover:border-brand-primary/40 hover:text-white transition-all cursor-pointer text-left"
+            [class.chip-active]="agentConfig.config().role === role"
+            [class.chip-item]="agentConfig.config().role !== role"
+            class="text-[11px] px-2.5 py-1 rounded-lg text-left"
           >
             {{ role }}
           </button>
@@ -66,17 +62,18 @@
 
   <!-- Output Language Toggle -->
   <div>
-    <label class="block text-xs font-medium text-slate-300 mb-2">
+    <label class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
       {{ 'builder.outputLanguageLabel' | translate }}
     </label>
-    <div class="inline-flex w-full sm:w-auto p-1 rounded-xl bg-white/[0.03] border border-white/[0.08]">
+    <div class="inline-flex w-full sm:w-auto p-1 rounded-xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08]">
       <button
         type="button"
         (click)="setOutputLanguage('es')"
         [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'es'"
         [class.text-white]="agentConfig.config().outputLanguage === 'es'"
-        [class.text-slate-400]="agentConfig.config().outputLanguage !== 'es'"
-        class="flex-1 sm:flex-initial text-center px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer whitespace-nowrap"
+        [class.text-slate-500]="agentConfig.config().outputLanguage !== 'es'"
+        [class.dark:text-slate-400]="agentConfig.config().outputLanguage !== 'es'"
+        class="flex-1 sm:flex-initial text-center px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-slate-900 dark:hover:text-white cursor-pointer whitespace-nowrap"
       >
         {{ 'builder.outputLangEs' | translate }}
       </button>
@@ -85,8 +82,9 @@
         (click)="setOutputLanguage('en')"
         [class.bg-brand-primary]="agentConfig.config().outputLanguage === 'en'"
         [class.text-white]="agentConfig.config().outputLanguage === 'en'"
-        [class.text-slate-400]="agentConfig.config().outputLanguage !== 'en'"
-        class="flex-1 sm:flex-initial text-center px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-white cursor-pointer whitespace-nowrap"
+        [class.text-slate-500]="agentConfig.config().outputLanguage !== 'en'"
+        [class.dark:text-slate-400]="agentConfig.config().outputLanguage !== 'en'"
+        class="flex-1 sm:flex-initial text-center px-4 py-1.5 rounded-lg text-xs font-medium transition-all hover:text-slate-900 dark:hover:text-white cursor-pointer whitespace-nowrap"
       >
         {{ 'builder.outputLangEn' | translate }}
       </button>
@@ -95,7 +93,7 @@
 
   <!-- Mission / Description Field -->
   <div>
-    <label for="descriptionInput" class="block text-xs font-medium text-slate-300 mb-2">
+    <label for="descriptionInput" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
       {{ 'builder.descriptionLabel' | translate }}
     </label>
     <textarea

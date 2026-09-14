@@ -1,0 +1,104 @@
+<div class="glass-panel rounded-2xl p-4 sm:p-6 flex flex-col gap-4 w-full h-full">
+  <!-- Preview Header Bar -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200/80 dark:border-white/[0.06] gap-2">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-purple-500 dark:bg-purple-400 shrink-0"></span>
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-white whitespace-nowrap">{{ 'builder.livePreview' | translate }}</h2>
+      <span class="text-xs font-mono text-slate-500 dark:text-slate-400 truncate">({{ agentConfig.activeOption().filename }})</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        (click)="copyToClipboard()"
+        class="flex-1 sm:flex-none btn-secondary text-xs py-1 px-3 flex items-center justify-center gap-1.5 cursor-pointer transition-all whitespace-nowrap"
+        [class.border-emerald-500/50]="isCopied()"
+        [class.text-emerald-500]="isCopied()"
+        [class.dark:text-emerald-400]="isCopied()"
+      >
+        @if (isCopied()) {
+          <i class="fa-solid fa-check"></i><span>{{ 'builder.copied' | translate }}</span>
+        } @else {
+          <i class="fa-regular fa-clipboard"></i><span>{{ 'builder.copy' | translate }}</span>
+        }
+      </button>
+      <button type="button" (click)="downloadFile()" class="flex-1 sm:flex-none btn-primary text-xs py-1 px-3 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap">
+        <i class="fa-solid fa-download"></i><span>{{ 'builder.download' | translate }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Readonly Code Viewer Window (Readonly slate gray in Light Mode, deep terminal in Dark Mode) -->
+  <div class="flex-1 flex flex-col rounded-xl overflow-hidden border border-slate-300/80 dark:border-white/[0.08] shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)] dark:shadow-inner bg-slate-100/90 dark:bg-slate-950/90">
+    <!-- Window Top Header / Status Bar -->
+    <div class="flex items-center justify-between px-3.5 py-2 bg-slate-200/80 dark:bg-slate-900/90 border-b border-slate-300/70 dark:border-white/[0.06] select-none shrink-0">
+      <!-- Simulated Window Controls + File Tab -->
+      <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-slate-400/40 dark:bg-rose-500/60"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-slate-400/40 dark:bg-amber-500/60"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-slate-400/40 dark:bg-emerald-500/60"></span>
+        </div>
+        <span class="text-[11px] font-mono font-medium text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+          <i class="fa-regular fa-file-code text-indigo-500 text-xs"></i>
+          {{ agentConfig.activeOption().filename }}
+        </span>
+      </div>
+
+      <!-- Readonly Pill Indicator -->
+      <span class="inline-flex items-center gap-1 text-[10px] font-mono font-medium px-2 py-0.5 rounded-md bg-slate-300/70 dark:bg-white/[0.06] text-slate-600 dark:text-slate-400">
+        <i class="fa-solid fa-lock text-[9px] text-slate-500 dark:text-slate-400"></i>
+        <span>{{ 'builder.readonlyBadge' | translate }}</span>
+      </span>
+    </div>
+
+    <!-- Code Content Buffer -->
+    <div class="flex-1 p-3.5 sm:p-5 font-mono text-xs overflow-auto leading-relaxed selection:bg-brand-primary/25 max-h-[700px] text-slate-800 dark:text-slate-200">
+      @for (line of previewLines(); track $index) {
+        @switch (line.type) {
+          @case ('h1') {
+            <span [class]="'block text-sm sm:text-base tracking-tight my-2 ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @case ('h2') {
+            <span [class]="'block font-bold text-xs sm:text-sm mt-4 mb-1.5 pb-1 border-b ' + line.borderClass + ' ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @case ('h3') {
+            <span [class]="'block font-semibold text-xs mt-3 mb-1 ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @case ('quote') {
+            <span [class]="'block border-l-2 pl-2.5 my-1.5 rounded-r bg-amber-500/[0.07] py-0.5 ' + line.borderClass + ' ' + line.colorClass">
+              @for (seg of line.segments; track $index) {
+                @if (seg.isBold) { <strong class="text-amber-950 dark:text-amber-100 font-semibold">{{ seg.text }}</strong> } @else { <span>{{ seg.text }}</span> }
+              }
+            </span>
+          }
+          @case ('code-fence') {
+            <span [class]="'block select-none opacity-60 ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @case ('code-comment') {
+            <span [class]="'block bg-slate-200/70 dark:bg-slate-900/60 px-2 py-0.5 rounded ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @case ('code') {
+            <span [class]="'block bg-slate-200/70 dark:bg-slate-900/60 px-2 py-0.5 rounded font-medium ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @case ('comment') {
+            <span [class]="'block select-none ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @case ('frontmatter') {
+            <span [class]="'block select-none ' + line.colorClass">{{ line.raw }}</span>
+          }
+          @default {
+            @if (line.raw.trim() === '') {
+              <span class="block h-2 select-none"></span>
+            } @else {
+              <span [class]="'block ' + line.colorClass">
+                @for (seg of line.segments; track $index) {
+                  @if (seg.isBold) { <strong class="text-slate-950 dark:text-slate-100 font-semibold">{{ seg.text }}</strong> } @else { <span>{{ seg.text }}</span> }
+                }
+              </span>
+            }
+          }
+        }
+      }
+    </div>
+  </div>
+</div>

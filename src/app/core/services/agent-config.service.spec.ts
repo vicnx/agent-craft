@@ -76,6 +76,17 @@ describe('AgentConfigService', () => {
     expect(service.hasArchitecturalRule('Toggle Rule')).toBe(false);
   });
 
+  it('should manage ui design rules and build commands', () => {
+    service.addUiDesignRule('Dark-mode first');
+    expect(service.config().uiDesignRules).toContain('Dark-mode first');
+    service.removeUiDesignRule(0);
+    expect(service.config().uiDesignRules).not.toContain('Dark-mode first');
+    service.setBuildCommand('build', 'npm run build');
+    expect(service.config().buildCommands.build).toBe('npm run build');
+    service.setProposeCommit(false);
+    expect(service.config().proposeCommit).toBe(false);
+  });
+
   it('should compile reactive markdown whenever config changes', () => {
     service.updateConfig({ projectName: 'SuperStudio' });
     expect(service.compiledMarkdown()).toContain('# SuperStudio');

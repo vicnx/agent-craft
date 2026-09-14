@@ -39,8 +39,14 @@
     "outputLanguage": "en",
     "techStack": [],
     "architecturalRules": [],
-    "qualityStandards": [],
+    "uiDesignRules": [],
+    "buildCommands": {
+      "build": "npm run build",
+      "test": "npm test",
+      "dev": "npm run start"
+    },
     "gitConvention": "Conventional Commits",
+    "proposeCommit": true,
     "customInstructions": ""
   },
   "presets": {
@@ -60,8 +66,19 @@
         "Zero tolerance for dead code, orphan imports, or unused variables",
         "Automated unit and integration tests for critical business logic"
       ],
-      "qualityStandards": [],
+      "uiDesignRules": [
+        "Modern dev-tool aesthetics (Dark-mode first, glassmorphism, translucent micro-borders)",
+        "Mandatory responsive design (complete adaptability on mobile, tablet, and desktop)",
+        "Reusable atomic UI components (buttons, inputs, selectors, modals)",
+        "WCAG accessibility compliance and contemporary readable typography"
+      ],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm test",
+        "dev": "npm run start"
+      },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
       "customInstructions": "Prioritize readability, composability, and rendering performance."
     },
     "python": {
@@ -80,8 +97,14 @@
         "Automated tests with Pytest, typed fixtures, and coverage above 80%",
         "Google Style docstrings clearly documenting arguments and return types"
       ],
-      "qualityStandards": [],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "pytest",
+        "test": "pytest --cov",
+        "dev": "uvicorn main:app --reload"
+      },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
       "customInstructions": "Favor immutability using dataclasses(frozen=True) or Pydantic BaseModel(frozen=True)."
     },
     "go": {
@@ -100,8 +123,14 @@
         "Zero data races: always verify with 'go test -race'",
         "Unit and integration testing using standard testing package and table-driven tests"
       ],
-      "qualityStandards": [],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "go build ./...",
+        "test": "go test ./...",
+        "dev": "go run main.go"
+      },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "proposeCommit": true,
       "customInstructions": "Avoid unnecessary abstractions; favor clear, direct code with zero superfluous dependencies."
     },
     "rust": {
@@ -120,8 +149,14 @@
         "Clean compilation with zero warnings using 'cargo clippy -- -D warnings'",
         "Unit, integration, and property-based tests using 'cargo test'"
       ],
-      "qualityStandards": [],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "cargo build",
+        "test": "cargo test",
+        "dev": "cargo run"
+      },
       "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "proposeCommit": true,
       "customInstructions": "Ensure errors contain descriptive contextual information before propagating."
     },
     "java": {
@@ -140,8 +175,14 @@
         "Unit and integration testing with JUnit 5, AssertJ, Mockito, and Testcontainers",
         "Declarative input validation using Jakarta Bean Validation (@Valid)"
       ],
-      "qualityStandards": [],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "./mvnw clean package",
+        "test": "./mvnw test",
+        "dev": "./mvnw spring-boot:run"
+      },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
       "customInstructions": "Follow SOLID principles rigorously and prevent framework coupling in the business layer."
     },
     "custom": {
@@ -152,8 +193,14 @@
       "outputLanguage": "en",
       "techStack": [],
       "architecturalRules": [],
-      "qualityStandards": [],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm test",
+        "dev": "npm run start"
+      },
       "gitConvention": "Conventional Commits",
+      "proposeCommit": true,
       "customInstructions": ""
     }
   }
