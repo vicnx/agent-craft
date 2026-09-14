@@ -1,20 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { I18nService } from '../../core/i18n/i18n.service';
 import { Builder } from './builder';
 
 describe('Builder', () => {
-  let i18n: I18nService;
-
   beforeEach(async () => {
     localStorage.clear();
     await TestBed.configureTestingModule({
       imports: [Builder],
       providers: [provideRouter([])],
     }).compileComponents();
-
-    i18n = TestBed.inject(I18nService);
-    i18n.setLanguage('es');
   });
 
   it('should create the builder component', () => {
@@ -23,16 +17,18 @@ describe('Builder', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show custom target by default when no presetId is provided', () => {
+  it('should have 4 target format options available', () => {
     const fixture = TestBed.createComponent(Builder);
     const component = fixture.componentInstance;
-    expect(component.activeTarget()).toBe('Configuración Personalizada');
+    expect(component.formatOptions.length).toBe(4);
   });
 
-  it('should reflect English translation when language is set to en', () => {
-    i18n.setLanguage('en');
+  it('should switch format and load preset when changeFormat is called', () => {
     const fixture = TestBed.createComponent(Builder);
     const component = fixture.componentInstance;
-    expect(component.activeTarget()).toBe('Custom Configuration');
+    component.changeFormat('copilot');
+    expect(component.agentConfig.targetFormat()).toBe('copilot');
+    expect(component.agentConfig.activeOption().filename).toBe('copilot-instructions.md');
+    expect(component.agentConfig.config().projectName).toBe('Copilot Workspace');
   });
 });

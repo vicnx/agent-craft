@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  input,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { I18nService } from '../../core/i18n/i18n.service';
+import { TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
+import { TargetFormat } from '../../core/models/agent.model';
+import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 
 @Component({
@@ -11,25 +19,23 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
 })
 export class Builder {
   private readonly router = inject(Router);
-  private readonly i18n = inject(I18nService);
+  readonly agentConfig = inject(AgentConfigService);
 
   readonly presetId = input<string>();
+  readonly formatOptions = TARGET_FORMAT_OPTIONS;
 
-  readonly activeTarget = computed(() => {
-    this.i18n.currentLang();
-    const id = this.presetId();
-    if (!id) return this.i18n.translate('builder.customConfig');
-    switch (id) {
-      case 'cursor':
-        return `.cursorrules · ${this.i18n.translate('presets.cursorName')}`;
-      case 'copilot':
-        return `copilot-instructions.md · ${this.i18n.translate('presets.copilotName')}`;
-      case 'agents':
-        return `AGENTS.md · ${this.i18n.translate('presets.agentsName')}`;
-      default:
-        return `${id} · Preset`;
-    }
-  });
+  constructor() {
+    effect(() => {
+      const id = this.presetId();
+      if (id === 'cursor' || id === 'copilot' || id === 'agents' || id === 'custom') {
+        this.agentConfig.loadPreset(id);
+      }
+    });
+  }
+
+  changeFormat(format: TargetFormat): void {
+    this.agentConfig.loadPreset(format);
+  }
 
   goBack(): void {
     void this.router.navigate(['/']);
