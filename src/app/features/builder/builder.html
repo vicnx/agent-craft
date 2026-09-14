@@ -57,6 +57,9 @@
 
       <!-- Git Conventions & Workflow Form -->
       <app-workflow-form />
+
+      <!-- Custom Instructions & Guardrails Form -->
+      <app-custom-instructions-form />
     </div>
 
     <!-- Right Column: Real-Time Markdown Preview -->
@@ -100,6 +103,14 @@
           <div class="text-slate-400 pl-2">- {{ agentConfig.config().gitConvention }}</div>
         } @else {
           <div class="text-slate-600 pl-2 italic">// {{ 'builder.previewEmptyWorkflow' | translate }}</div>
+        }
+
+        <!-- Custom Instructions Live Section -->
+        <div class="text-cyan-400 font-semibold mt-3">## {{ 'builder.previewCustomTitle' | translate }}</div>
+        @if (agentConfig.config().customInstructions) {
+          <div class="text-slate-400 pl-2 whitespace-pre-wrap">{{ agentConfig.config().customInstructions }}</div>
+        } @else {
+          <div class="text-slate-600 pl-2 italic">// {{ 'builder.previewEmptyCustom' | translate }}</div>
         }
       </div>
     </div>

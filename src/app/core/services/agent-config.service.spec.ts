@@ -67,6 +67,19 @@ describe('AgentConfigService', () => {
     expect(service.config().gitConvention).toBe('Git Flow');
   });
 
+  it('should update and append custom instructions without duplication', () => {
+    service.setCustomInstructions('Initial rule.');
+    expect(service.config().customInstructions).toBe('Initial rule.');
+
+    service.appendCustomInstruction('Second rule.');
+    expect(service.config().customInstructions).toContain('- Second rule.');
+
+    // Duplicate append should not duplicate
+    service.appendCustomInstruction('Second rule.');
+    const occurrences = service.config().customInstructions.split('Second rule.').length - 1;
+    expect(occurrences).toBe(1);
+  });
+
   it('should reset configuration back to defaults', () => {
     service.loadPreset('agents');
     expect(service.config().targetFormat).toBe('agents');

@@ -81,12 +81,7 @@ export class AgentConfigService {
 
   addArchitecturalRule(rule: string): void {
     const trimmed = rule.trim();
-    if (!trimmed) return;
-    this.config.update((c) =>
-      c.architecturalRules.includes(trimmed)
-        ? c
-        : { ...c, architecturalRules: [...c.architecturalRules, trimmed] },
-    );
+    if (trimmed) this.config.update((c) => c.architecturalRules.includes(trimmed) ? c : { ...c, architecturalRules: [...c.architecturalRules, trimmed] });
   }
 
   removeArchitecturalRule(index: number): void {
@@ -95,8 +90,7 @@ export class AgentConfigService {
 
   toggleArchitecturalRule(rule: string): void {
     const trimmed = rule.trim();
-    if (!trimmed) return;
-    this.config.update((c) => ({
+    if (trimmed) this.config.update((c) => ({
       ...c,
       architecturalRules: c.architecturalRules.includes(trimmed)
         ? c.architecturalRules.filter((r) => r !== trimmed)
@@ -114,8 +108,7 @@ export class AgentConfigService {
 
   addQualityStandard(standard: string): void {
     const trimmed = standard.trim();
-    if (!trimmed) return;
-    this.config.update((c) => ({ ...c, qualityStandards: [...c.qualityStandards, trimmed] }));
+    if (trimmed) this.config.update((c) => ({ ...c, qualityStandards: [...c.qualityStandards, trimmed] }));
   }
 
   removeQualityStandard(index: number): void {
@@ -124,6 +117,19 @@ export class AgentConfigService {
 
   setGitConvention(gitConvention: string): void {
     this.config.update((c) => ({ ...c, gitConvention }));
+  }
+
+  setCustomInstructions(customInstructions: string): void {
+    this.config.update((c) => ({ ...c, customInstructions }));
+  }
+
+  appendCustomInstruction(instruction: string): void {
+    const trimmed = instruction.trim();
+    if (!trimmed) return;
+    this.config.update((c) => c.customInstructions.includes(trimmed) ? c : ({
+      ...c,
+      customInstructions: `${c.customInstructions.trim() ? `${c.customInstructions.trim()}\n` : ''}- ${trimmed}`,
+    }));
   }
 
   reset(): void {

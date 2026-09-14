@@ -93,7 +93,13 @@
     "previewEmptyRules": "No directives configured",
     "previewArchitectureTitle": "Architectural Directives",
     "previewWorkflowTitle": "Workflow & Git Conventions",
-    "previewEmptyWorkflow": "No Git convention defined"
+    "previewEmptyWorkflow": "No Git convention defined",
+    "customInstructionsTitle": "Custom Instructions & Guardrails",
+    "customInstructionsSubtitle": "Additional directives, execution commands, or boundaries the agent must not cross",
+    "customInstructionsLabel": "Custom directives",
+    "customInstructionsPlaceholder": "Write any specific instructions, project commands (e.g., npm test), or repository boundaries...",
+    "previewCustomTitle": "Custom Instructions & Operational Guidelines",
+    "previewEmptyCustom": "No custom instructions configured"
   },
   "footer": {
     "createdWith": "Crafted with",

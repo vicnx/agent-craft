@@ -16,6 +16,7 @@ import { DirectivesForm } from './components/directives-form/directives-form';
 import { DirectivesModal } from './components/directives-modal/directives-modal';
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 import { WorkflowForm } from './components/workflow-form/workflow-form';
+import { CustomInstructionsForm } from './components/custom-instructions-form/custom-instructions-form';
 
 @Component({
   selector: 'app-builder',
@@ -25,6 +26,7 @@ import { WorkflowForm } from './components/workflow-form/workflow-form';
     TechStackForm,
     DirectivesForm,
     WorkflowForm,
+    CustomInstructionsForm,
     DirectivesModal,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

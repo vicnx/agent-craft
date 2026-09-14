@@ -93,7 +93,13 @@
     "previewEmptyRules": "Ninguna directiva configurada",
     "previewArchitectureTitle": "Directivas de Arquitectura",
     "previewWorkflowTitle": "Flujo de Trabajo y Git",
-    "previewEmptyWorkflow": "Sin convención de Git definida"
+    "previewEmptyWorkflow": "Sin convención de Git definida",
+    "customInstructionsTitle": "Instrucciones Libres y Restricciones",
+    "customInstructionsSubtitle": "Directivas adicionales, comandos o límites que el agente no debe traspasar",
+    "customInstructionsLabel": "Directivas personalizadas",
+    "customInstructionsPlaceholder": "Escribe cualquier instrucción específica, comandos del proyecto (ej: npm test) o restricciones del repositorio...",
+    "previewCustomTitle": "Instrucciones y Límites del Asistente",
+    "previewEmptyCustom": "Sin instrucciones adicionales"
   },
   "footer": {
     "createdWith": "Creado con",
