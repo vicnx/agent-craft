@@ -48,7 +48,7 @@ describe('markdown-compiler.util', () => {
     expect(md).toContain('## 3. Stack Tecnológico');
     expect(md).toContain('- Angular');
     expect(md).toContain('## 4. Directivas de Arquitectura y Estándares de Código');
-    expect(md).toContain('**Principio DRY:**');
+    expect(md).toContain('- Principio DRY: máxima reutilización y cero duplicación');
     expect(md).toContain('## 5. UI/UX y Diseño Visual');
     expect(md).toContain('- Dark-mode first con Tailwind CSS');
     expect(md).toContain('## 6. Flujo de Trabajo y Convenciones Git');
@@ -58,7 +58,7 @@ describe('markdown-compiler.util', () => {
     expect(md).toContain('## 7. Instrucciones Operativas y Guardrails');
     expect(md).toContain('### 🚫 Restricciones Estrictas y Prohibiciones (Never-Do List)');
     expect(md).toContain('- ❌ No usar any ni @ts-ignore');
-    expect(md).toContain('- ❌ **Seguridad:** No exponer variables de entorno .env');
+    expect(md).toContain('- ❌ Seguridad: No exponer variables de entorno .env');
     expect(md).toContain('### Instrucciones Adicionales del Proyecto');
     expect(md).toContain('Never touch tmp files.');
   });
@@ -95,16 +95,16 @@ describe('markdown-compiler.util', () => {
     expect(md).toContain('### Additional Project Instructions');
   });
 
-  it('should format rule items with bold title when containing a colon', () => {
-    expect(formatRuleItem('Principio DRY: cero duplicidad')).toBe('- **Principio DRY:** cero duplicidad');
-    expect(formatRuleItem('- **Ya formateado:** regla')).toBe('- - **Ya formateado:** regla');
+  it('should format rule items consistently as clean bullets without artificial colon bolding', () => {
+    expect(formatRuleItem('Principio DRY: cero duplicidad')).toBe('- Principio DRY: cero duplicidad');
+    expect(formatRuleItem('- Ya formateado')).toBe('- Ya formateado');
     expect(formatRuleItem('Regla simple sin dos puntos')).toBe('- Regla simple sin dos puntos');
     expect(formatRuleItem('')).toBe('');
   });
 
-  it('should format never items with bold title when containing a colon', () => {
-    expect(formatNeverItem('Seguridad: No exponer .env')).toBe('**Seguridad:** No exponer .env');
-    expect(formatNeverItem('- Sin guion: regla')).toBe('**Sin guion:** regla');
+  it('should format never items cleanly removing leading dashes without artificial colon bolding', () => {
+    expect(formatNeverItem('Seguridad: No exponer .env')).toBe('Seguridad: No exponer .env');
+    expect(formatNeverItem('- Sin guion: regla')).toBe('Sin guion: regla');
     expect(formatNeverItem('Regla directa')).toBe('Regla directa');
     expect(formatNeverItem('')).toBe('');
   });

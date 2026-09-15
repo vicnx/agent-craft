@@ -5,29 +5,14 @@ import es from '../i18n/translations/es.json';
 export function formatRuleItem(rule: string): string {
   const trimmed = rule.trim();
   if (!trimmed) return '';
-  if (trimmed.includes('**')) return `- ${trimmed}`;
-
-  const colonIdx = trimmed.indexOf(':');
-  if (colonIdx > 0 && colonIdx < 45) {
-    const key = trimmed.substring(0, colonIdx).trim();
-    const rest = trimmed.substring(colonIdx + 1).trim();
-    return `- **${key}:** ${rest}`;
-  }
-
-  return `- ${trimmed}`;
+  const clean = trimmed.replace(/^-\s*/, '');
+  return `- ${clean}`;
 }
 
 export function formatNeverItem(rule: string): string {
   const trimmed = rule.trim();
   if (!trimmed) return '';
-  const clean = trimmed.replace(/^-\s*/, '');
-  const colonIdx = clean.indexOf(':');
-  if (colonIdx > 0 && colonIdx < 45) {
-    const key = clean.substring(0, colonIdx).trim();
-    const rest = clean.substring(colonIdx + 1).trim();
-    return `**${key}:** ${rest}`;
-  }
-  return clean;
+  return trimmed.replace(/^-\s*/, '');
 }
 
 export function compileAgentMarkdown(config: AgentConfig): string {
