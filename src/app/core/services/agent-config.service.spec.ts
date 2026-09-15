@@ -57,6 +57,19 @@ describe('AgentConfigService', () => {
     expect(service.config().neverRules.some((r) => r.includes('Class Components'))).toBe(true);
   });
 
+  it('should load react-native preset with expo router, nativewind, and flashlist', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('react-native');
+    expect(service.config().projectName).toBe('Proyecto React Native & Expo');
+    expect(service.config().techStack).toContain('React Native');
+    expect(service.config().techStack).toContain('Expo Router');
+    expect(service.config().techStack).toContain('NativeWind');
+    expect(service.config().buildCommands.build).toBe('npx expo export');
+    expect(service.config().buildCommands.dev).toBe('npx expo start');
+    expect(service.config().architecturalRules.some((r) => r.includes('Expo Router'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('elementos DOM web'))).toBe(true);
+  });
+
   it('should switch targetFormat without resetting user rules or stack', () => {
     service.setOutputLanguage('es');
     service.loadPreset('react');

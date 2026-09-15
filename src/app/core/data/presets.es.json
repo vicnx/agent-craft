@@ -193,6 +193,72 @@
         "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)"
       ]
     },
+    "react-native": {
+      "targetFormat": "cursor",
+      "projectName": "Proyecto React Native & Expo",
+      "role": "Arquitecto Mobile Senior y Especialista en React Native & Expo",
+      "description": "Directivas de arquitectura móvil, Expo Router, New Architecture y buenas prácticas para React Native y Expo.",
+      "outputLanguage": "es",
+      "techStack": [
+        "React Native",
+        "Expo",
+        "Expo Router",
+        "TypeScript",
+        "NativeWind",
+        "Zustand",
+        "TanStack Query",
+        "FlashList",
+        "Reanimated"
+      ],
+      "architecturalRules": [
+        "Estructura basada en Expo Router (app/) con layouts anidados y navegación tipada sin código imperativo",
+        "Componentes funcionales puros y Hooks optimizados para la New Architecture (Fabric y TurboModules)",
+        "Listas de alto rendimiento con @shopify/flash-list, proveyendo siempre estimatedItemSize y keyExtractor estable",
+        "Animaciones fluidas y gestos en el hilo nativo de UI mediante react-native-reanimated y react-native-gesture-handler",
+        "Control exhaustivo de áreas seguras con react-native-safe-area-context para respetar notches y Dynamic Island",
+        "Renderizado de imágenes exclusivamente con expo-image para caching avanzado y optimización de memoria",
+        "Separación estricta entre estado de servidor (TanStack Query) y estado global local (Zustand)",
+        "Formularios móviles con validación tipada en runtime mediante React Hook Form y Zod",
+        "Diseño modular de componentes atómicos con early returns y límite de 150-200 líneas por archivo",
+        "Tipado TypeScript estricto (strict: true) con interfaces explícitas para props y modelos de datos"
+      ],
+      "uiDesignRules": [
+        "Estilizado ágil con NativeWind v4 (Tailwind CSS compilado) evitando estilos inline innecesarios",
+        "Soporte nativo obligatorio para Modo Oscuro respetando las preferencias de sistema del dispositivo",
+        "Feedback táctil visual y háptico en botones y controles interactivos utilizando el componente Pressable",
+        "Accesibilidad móvil y ergonomía táctil con áreas mínimas de pulsación de 44x44 pt"
+      ],
+      "buildCommands": {
+        "build": "npx expo export",
+        "test": "npm test",
+        "dev": "npx expo start"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Priorizar siempre la fluidez nativa a 60/120 fps, áreas seguras, animaciones en el hilo de UI y separación entre vistas y custom hooks.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibido el uso de elementos DOM web (div, span, button, onClick); usar siempre primitivos nativos (View, Text, Pressable, onPress)",
+        "Prohibido el uso de FlatList o ScrollView para listas largas y dinámicas; usar siempre FlashList",
+        "Prohibido realizar animaciones en el hilo de JavaScript; emplear siempre react-native-reanimated",
+        "Prohibido omitir SafeAreaView o hardcodear coordenadas para notches o Dynamic Island",
+        "Prohibido el componente básico Image de React Native; usar exclusivamente expo-image",
+        "Prohibido anidar scrolls con la misma orientación sin nestedScrollEnabled",
+        "Prohibido el uso de any, @ts-ignore o aserciones de tipo inseguras",
+        "Prohibido escribir lógica compleja o cálculos inline dentro de componentes visuales",
+        "No superar el límite de 150-200 líneas de código por archivo de componente",
+        "Cero textos literales en componentes; canalizar todo a través del sistema de i18n",
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)"
+      ]
+    },
     "python": {
       "targetFormat": "cursor",
       "projectName": "Python AI & Backend",

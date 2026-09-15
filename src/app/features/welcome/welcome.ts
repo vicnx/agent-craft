@@ -31,6 +31,14 @@ export class Welcome {
       tags: ['React 19', 'Vite', 'Tailwind', 'Zustand'],
     },
     {
+      id: 'react-native',
+      nameKey: 'presets.reactNativeName',
+      targetFile: 'React Native',
+      badgeKey: 'common.popular',
+      descKey: 'presets.reactNativeDesc',
+      tags: ['React Native', 'Expo', 'Expo Router', 'NativeWind'],
+    },
+    {
       id: 'python',
       nameKey: 'presets.pythonName',
       targetFile: 'Python',

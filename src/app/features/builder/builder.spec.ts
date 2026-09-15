@@ -136,6 +136,14 @@ describe('Builder', () => {
     expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('npm run dev');
   });
 
+  it('should load react-native preset with npx expo start when presetId is react-native', () => {
+    const fixture = TestBed.createComponent(Builder);
+    fixture.componentRef.setInput('presetId', 'react-native');
+    fixture.detectChanges();
+    expect(fixture.componentInstance.agentConfig.config().techStack).toContain('React Native');
+    expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('npx expo start');
+  });
+
   it('should load custom preset from scratch with empty rules when presetId is custom', () => {
     const fixture = TestBed.createComponent(Builder);
     fixture.componentRef.setInput('presetId', 'custom');

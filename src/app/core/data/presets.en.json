@@ -193,6 +193,72 @@
         "Never create, modify, or expose credentials, secrets, or .env files"
       ]
     },
+    "react-native": {
+      "targetFormat": "cursor",
+      "projectName": "Modern React Native & Expo App",
+      "role": "Senior Mobile Architect & React Native / Expo Specialist",
+      "description": "Mobile architecture directives, Expo Router, New Architecture performance, and React Native best practices.",
+      "outputLanguage": "en",
+      "techStack": [
+        "React Native",
+        "Expo",
+        "Expo Router",
+        "TypeScript",
+        "NativeWind",
+        "Zustand",
+        "TanStack Query",
+        "FlashList",
+        "Reanimated"
+      ],
+      "architecturalRules": [
+        "File-based routing with Expo Router (app/) featuring nested layouts and typed navigation without imperative code",
+        "Pure functional components and Hooks optimized for the New Architecture (Fabric and TurboModules)",
+        "High-performance list virtualization with @shopify/flash-list, always providing estimatedItemSize and stable keys",
+        "Fluid animations and gestures on the native UI thread via react-native-reanimated and react-native-gesture-handler",
+        "Comprehensive safe area handling using react-native-safe-area-context to adapt to notches and Dynamic Island",
+        "Render images exclusively using expo-image for advanced caching and memory optimization",
+        "Strict separation between server state (TanStack Query) and local device state (Zustand)",
+        "Mobile forms with runtime schema validation using React Hook Form paired with Zod",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit",
+        "Strict TypeScript (strict: true) with explicit interfaces for props and data models"
+      ],
+      "uiDesignRules": [
+        "Agile utility styling with NativeWind v4 (compiled Tailwind CSS) avoiding unnecessary inline styles",
+        "Mandatory native Dark Mode support respecting device system preferences",
+        "Visual and haptic tactile feedback on interactive buttons and controls using Pressable",
+        "Mobile accessibility and ergonomics with minimum touch targets of 44x44 pt"
+      ],
+      "buildCommands": {
+        "build": "npx expo export",
+        "test": "npm test",
+        "dev": "npx expo start"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always prioritize native 60/120 fps fluidity, safe areas, UI-thread animations, and separation between views and custom hooks.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibit web DOM elements (div, span, button, onClick); always use native primitives (View, Text, Pressable, onPress)",
+        "Prohibit FlatList or ScrollView for long dynamic lists; always use FlashList",
+        "Prohibit animations on the JavaScript thread; always use react-native-reanimated",
+        "Prohibit omitting SafeAreaView or hardcoding notch / Dynamic Island coordinate offsets",
+        "Prohibit React Native's legacy Image component; use expo-image exclusively",
+        "Prohibit nesting scroll views with identical orientation without nestedScrollEnabled",
+        "Prohibit any, @ts-ignore, or unsafe type casting",
+        "Prohibit complex logic or inline calculations inside visual components",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in components; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
     "python": {
       "targetFormat": "cursor",
       "projectName": "Python AI & Backend",

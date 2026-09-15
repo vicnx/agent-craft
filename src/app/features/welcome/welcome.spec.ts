@@ -20,12 +20,13 @@ describe('Welcome', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain 6 language presets by default with angular first and react second', () => {
+  it('should contain 7 language presets by default including react-native', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
-    expect(component.presets().length).toBe(6);
+    expect(component.presets().length).toBe(7);
     expect(component.presets()[0].id).toBe('angular');
     expect(component.presets()[1].id).toBe('react');
+    expect(component.presets()[2].id).toBe('react-native');
   });
 
   it('should navigate to /builder/custom on onStart()', () => {
@@ -40,7 +41,7 @@ describe('Welcome', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
     const navigateSpy = vi.spyOn(router, 'navigate');
-    component.onChoosePreset('react');
-    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'react']);
+    component.onChoosePreset('react-native');
+    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'react-native']);
   });
 });

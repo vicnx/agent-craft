@@ -1,6 +1,7 @@
 export type LanguagePresetId =
   | 'angular'
   | 'react'
+  | 'react-native'
   | 'python'
   | 'go'
   | 'rust'
