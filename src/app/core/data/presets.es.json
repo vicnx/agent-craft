@@ -127,55 +127,70 @@
         "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)"
       ]
     },
-    "typescript": {
+    "react": {
       "targetFormat": "cursor",
-      "projectName": "Proyecto TypeScript",
-      "role": "Arquitecto Frontend Senior y Especialista TypeScript",
-      "description": "Directivas de arquitectura, tipado estricto y buenas prácticas para el ecosistema TypeScript.",
+      "projectName": "Proyecto React 19 Web",
+      "role": "Arquitecto Frontend Senior y Especialista en React 19",
+      "description": "Directivas de arquitectura, Hooks modernos, gestión de estado y buenas prácticas para React 19 y Vite.",
       "outputLanguage": "es",
       "techStack": [
+        "React 19",
         "TypeScript",
-        "Angular",
+        "Vite",
         "Tailwind CSS",
-        "Node.js"
+        "Zustand",
+        "TanStack Query",
+        "React Hook Form",
+        "Zod",
+        "Vitest"
       ],
       "architecturalRules": [
-        "Arquitectura modular y componentes desacoplados con Principio de Responsabilidad Única (SRP)",
-        "Principio DRY: máxima reutilización y cero duplicación lógica",
-        "Inmutabilidad por defecto: utilizar readonly, objetos inmutables y reactividad con Signals",
-        "Separación estricta entre presentación visual, lógica de negocio y capa de datos",
-        "Tipado estricto activado (strict: true) con tolerancia cero a uso de any",
-        "Tolerancia cero a código muerto, imports huérfanos o variables sin uso",
-        "Tests unitarios e integración automatizados para lógica crítica"
+        "Componentes funcionales puros y Hooks exclusivamente. Prohibido el uso de Class Components y React.FC",
+        "Tipado estricto de Props mediante interface explícita y exportaciones con nombre (named exports)",
+        "Encapsulación de lógica de negocio, efectos y acceso a datos en Custom Hooks reutilizables (use*)",
+        "Data fetching y sincronización de servidor exclusivamente con TanStack Query v5 mediante query key factories",
+        "Gestión de estado global de cliente con Zustand utilizando selectores atómicos para evitar re-renderizados",
+        "Cero estado derivado en useEffect: calcular durante el render o memoizar con useMemo",
+        "Formularios tipados y validación de esquemas en runtime mediante React Hook Form y Zod",
+        "Aprovechar APIs modernas de React 19 (useTransition, useOptimistic, useActionState, use) para UX fluida",
+        "Componentes modulares y retornos tempranos (early returns) con límite de 150-200 líneas por archivo",
+        "Tests unitarios y de componentes con Vitest y React Testing Library simulando interacción de usuario real"
       ],
       "uiDesignRules": [
-        "Estética moderna dev-tool (Dark-mode first, glassmorphism, microbordes translúcidos)",
-        "Diseño responsive obligatorio (adaptabilidad total en móvil, tablet y escritorio)",
-        "Reutilización de componentes UI atómicos (botones, inputs, selectores, modales)",
-        "Accesibilidad WCAG y tipografías contemporáneas legibles"
+        "Estética de vanguardia dev-tool moderna: Dark-Mode First, fondos oscuros profundos, degradados sutiles y microbordes translúcidos",
+        "Utilidades de Tailwind CSS encapsuladas en componentes primitivos atómicos (botones, inputs, selectores, modales, badges)",
+        "Diseño responsive total y fluido mediante breakpoints sistemáticos (sm:, md:, lg:, xl:)",
+        "Accesibilidad universal (cumplimiento WCAG), navegación por teclado y tipografías contemporáneas legibles"
       ],
       "buildCommands": {
         "build": "npm run build",
         "test": "npm test",
-        "dev": "npm run start"
+        "dev": "npm run dev"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Priorizar legibilidad, composabilidad y rendimiento en el renderizado.",
+      "customInstructions": "Priorizar siempre la inmutabilidad, componentes pequeños desacoplados, Custom Hooks y rendimiento en el renderizado.",
       "tone": "concise",
       "autonomy": "autonomous",
       "communicationRules": [
-        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
-        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
       ],
       "customTone": "",
       "neverRules": [
-        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
-        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
-        "No eliminar comentarios explicativos, documentación ni tests existentes",
-        "Prohibido el uso de any, @ts-ignore o casting inseguro",
-        "No superar el límite de 150-200 líneas de código por archivo"
+        "Prohibido el uso de Class Components (utilizar siempre componentes funcionales y Hooks)",
+        "Prohibido el uso de useEffect para sincronizar o derivar estado (derivar en render o con useMemo)",
+        "Prohibido el uso de useEffect para peticiones de datos (emplear TanStack Query)",
+        "Prohibida la mutación directa de estados o props; emplear siempre actualizaciones inmutables",
+        "Prohibido usar índices de array como key en listas dinámicas",
+        "Prohibida la manipulación directa del DOM con document.querySelector o getElementById (usar useRef)",
+        "Prohibido el uso de any, @ts-ignore o aserciones de tipo inseguras",
+        "Prohibido escribir lógica compleja o cálculos inline dentro de la plantilla JSX",
+        "No superar el límite de 150-200 líneas de código por archivo de componente",
+        "Cero textos literales en JSX; canalizar todo a través del sistema de i18n",
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)"
       ]
     },
     "python": {

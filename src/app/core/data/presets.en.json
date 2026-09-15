@@ -127,55 +127,70 @@
         "Never create, modify, or expose credentials, secrets, or .env files"
       ]
     },
-    "typescript": {
+    "react": {
       "targetFormat": "cursor",
-      "projectName": "TypeScript Project",
-      "role": "Senior Frontend Architect & TypeScript Specialist",
-      "description": "Architectural directives, strict typing, and best practices for the modern TypeScript ecosystem.",
+      "projectName": "Modern React 19 Web App",
+      "role": "Senior Frontend Architect & React 19 Specialist",
+      "description": "Architectural directives, modern Hooks, state management, and best practices for React 19 and Vite.",
       "outputLanguage": "en",
       "techStack": [
+        "React 19",
         "TypeScript",
-        "Angular",
+        "Vite",
         "Tailwind CSS",
-        "Node.js"
+        "Zustand",
+        "TanStack Query",
+        "React Hook Form",
+        "Zod",
+        "Vitest"
       ],
       "architecturalRules": [
-        "Modular architecture and decoupled components adhering to the Single Responsibility Principle (SRP)",
-        "DRY Principle: maximum reusability and zero logical duplication",
-        "Immutability by default: use readonly, immutable objects, and reactive Signals",
-        "Strict separation between presentation layer, business logic, and data access",
-        "Strict typing enabled (strict: true) with zero tolerance for the any type",
-        "Zero tolerance for dead code, orphan imports, or unused variables",
-        "Automated unit and integration tests for critical business logic"
+        "Exclusively functional components and modern Hooks. Prohibit Class Components and React.FC",
+        "Strict Props typing via explicit interfaces and standard named exports for all components",
+        "Encapsulate business logic, effects, and data access inside reusable Custom Hooks (use*)",
+        "Server state and data fetching exclusively via TanStack Query v5 with query key factories",
+        "Global client state managed with Zustand using atomic selectors to prevent unnecessary re-renders",
+        "Zero derived state in useEffect: calculate during render or memoize with useMemo",
+        "Type-safe forms and runtime schema validation using React Hook Form paired with Zod",
+        "Leverage React 19 modern features (useTransition, useOptimistic, useActionState, use) for seamless UX",
+        "Modular component design with early returns for loading/error states and a 150-200 line limit",
+        "Unit and component testing with Vitest and React Testing Library testing real user interactions"
       ],
       "uiDesignRules": [
-        "Modern dev-tool aesthetics (Dark-mode first, glassmorphism, translucent micro-borders)",
-        "Mandatory responsive design (complete adaptability on mobile, tablet, and desktop)",
-        "Reusable atomic UI components (buttons, inputs, selectors, modals)",
-        "WCAG accessibility compliance and contemporary readable typography"
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
       ],
       "buildCommands": {
         "build": "npm run build",
         "test": "npm test",
-        "dev": "npm run start"
+        "dev": "npm run dev"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Prioritize readability, composability, and rendering performance.",
+      "customInstructions": "Always prioritize immutability, small decoupled components, Custom Hooks, and rendering efficiency.",
       "tone": "concise",
       "autonomy": "autonomous",
       "communicationRules": [
-        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
-        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
-        "Explain technical rationale step-by-step before making complex changes"
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
       ],
       "customTone": "",
       "neverRules": [
-        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
-        "Never install external packages or dependencies without explicit user confirmation",
-        "Never delete existing comments, documentation, or unit tests",
-        "Forbidden use of any, @ts-ignore, or unsafe type casting",
-        "Never exceed the 150-200 lines of code limit per file"
+        "Prohibit Class Components (always use functional components and Hooks)",
+        "Prohibit useEffect for state synchronization or derivation (derive in render or useMemo)",
+        "Prohibit useEffect for data fetching (use TanStack Query instead)",
+        "Prohibit direct mutation of state or props; always use immutable updates",
+        "Prohibit using array indices as keys in dynamic list rendering",
+        "Prohibit direct DOM manipulation via document.querySelector or getElementById (use useRef)",
+        "Prohibit any, @ts-ignore, or unsafe type casting",
+        "Prohibit writing complex inline calculations or handler logic directly inside JSX",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
       ]
     },
     "python": {

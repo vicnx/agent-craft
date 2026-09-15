@@ -41,8 +41,8 @@
   "presets": {
     "angularName": "Angular (Signals & Standalone)",
     "angularDesc": "Cutting-edge directives for modern Angular: Signals, Zoneless, OnPush, inject(), and Tailwind CSS.",
-    "typescriptName": "TypeScript & Frontend",
-    "typescriptDesc": "Modern TypeScript ecosystem (Node.js, React, Express). Strict typing, immutability, and clean patterns.",
+    "reactName": "React 19 & Web Ecosystem",
+    "reactDesc": "Modern architecture with React 19, Vite, Tailwind CSS, Zustand, TanStack Query, and Zod.",
     "pythonName": "Python Backend & AI",
     "pythonDesc": "FastAPI, Django, and AI services. Mandatory type hints (PEP 484), Pytest, and Clean Architecture.",
     "goName": "Go / Golang Microservices",

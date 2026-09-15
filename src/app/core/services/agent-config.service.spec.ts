@@ -44,14 +44,27 @@ describe('AgentConfigService', () => {
     expect(service.config().neverRules.some((r) => r.includes('NgModule'))).toBe(true);
   });
 
+  it('should load react preset with modern hooks, zustand, and tanstack query', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('react');
+    expect(service.config().projectName).toBe('Proyecto React 19 Web');
+    expect(service.config().techStack).toContain('React 19');
+    expect(service.config().techStack).toContain('Zustand');
+    expect(service.config().techStack).toContain('TanStack Query');
+    expect(service.config().buildCommands.build).toBe('npm run build');
+    expect(service.config().buildCommands.dev).toBe('npm run dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('TanStack Query'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('Class Components'))).toBe(true);
+  });
+
   it('should switch targetFormat without resetting user rules or stack', () => {
     service.setOutputLanguage('es');
-    service.loadPreset('typescript');
+    service.loadPreset('react');
     service.addTechStackItem('CustomLib');
     service.setTargetFormat('copilot');
     expect(service.config().targetFormat).toBe('copilot');
     expect(service.config().techStack).toContain('CustomLib');
-    expect(service.config().projectName).toBe('Proyecto TypeScript');
+    expect(service.config().projectName).toBe('Proyecto React 19 Web');
   });
 
   it('should update partial configuration', () => {
@@ -148,9 +161,9 @@ describe('AgentConfigService', () => {
     TestBed.flushEffects();
     expect(service.config().outputLanguage).toBe('en');
 
-    service.loadPreset('typescript');
-    expect(service.config().projectName).toBe('TypeScript Project');
-    expect(service.config().role).toBe('Senior Frontend Architect & TypeScript Specialist');
+    service.loadPreset('react');
+    expect(service.config().projectName).toBe('Modern React 19 Web App');
+    expect(service.config().role).toBe('Senior Frontend Architect & React 19 Specialist');
 
     service.loadPreset('go');
     service.reset();

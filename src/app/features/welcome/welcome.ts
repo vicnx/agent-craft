@@ -23,12 +23,12 @@ export class Welcome {
       tags: ['Angular', 'Signals', 'Standalone', 'Tailwind'],
     },
     {
-      id: 'typescript',
-      nameKey: 'presets.typescriptName',
-      targetFile: 'TypeScript',
-      badgeKey: 'common.standard',
-      descKey: 'presets.typescriptDesc',
-      tags: ['TypeScript', 'Node.js', 'React', 'Express'],
+      id: 'react',
+      nameKey: 'presets.reactName',
+      targetFile: 'React 19',
+      badgeKey: 'common.popular',
+      descKey: 'presets.reactDesc',
+      tags: ['React 19', 'Vite', 'Tailwind', 'Zustand'],
     },
     {
       id: 'python',

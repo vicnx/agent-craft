@@ -128,6 +128,14 @@ describe('Builder', () => {
     expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('ng serve');
   });
 
+  it('should load react preset with npm run dev when presetId is react', () => {
+    const fixture = TestBed.createComponent(Builder);
+    fixture.componentRef.setInput('presetId', 'react');
+    fixture.detectChanges();
+    expect(fixture.componentInstance.agentConfig.config().techStack).toContain('React 19');
+    expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('npm run dev');
+  });
+
   it('should load custom preset from scratch with empty rules when presetId is custom', () => {
     const fixture = TestBed.createComponent(Builder);
     fixture.componentRef.setInput('presetId', 'custom');
