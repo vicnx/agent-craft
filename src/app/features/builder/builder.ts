@@ -8,9 +8,8 @@ import {
   untracked,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
+import { isValidPresetId, TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
 import { TargetFormat } from '../../core/models/agent.model';
-import { LanguagePresetId } from '../../core/models/preset.model';
 import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { AgentIdentityForm } from './components/agent-identity-form/agent-identity-form';
@@ -79,14 +78,10 @@ export class Builder {
   constructor() {
     effect(() => {
       const id = this.presetId();
-      if (
-        id &&
-        id !== this.lastLoadedPreset &&
-        (id === 'typescript' || id === 'python' || id === 'go' || id === 'rust' || id === 'java' || id === 'custom')
-      ) {
+      if (id && id !== this.lastLoadedPreset && isValidPresetId(id)) {
         this.lastLoadedPreset = id;
         untracked(() => {
-          this.agentConfig.loadPreset(id as LanguagePresetId);
+          this.agentConfig.loadPreset(id);
         });
       }
     });

@@ -23,12 +23,13 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render application brand', async () => {
+  it('should render application brand and dynamic version badge', async () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('AgentCraft');
+    expect(compiled.textContent).toContain('v0.18.0');
   });
 
   it('should toggle theme when clicking the theme button', async () => {

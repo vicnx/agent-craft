@@ -166,4 +166,19 @@ describe('markdown-compiler.util', () => {
     expect(md).not.toContain('## 6. Git Workflow');
     expect(md).not.toContain('## 7. Operational');
   });
+
+  it('should number sections consecutively without gaps when a section is omitted', () => {
+    const backendConfig: AgentConfig = {
+      ...baseConfig,
+      uiDesignRules: [],
+    };
+    const md = compileAgentMarkdown(backendConfig);
+    expect(md).toContain('## 1. Visión del Proyecto');
+    expect(md).toContain('## 2. Tono y Estilo de Respuesta');
+    expect(md).toContain('## 3. Stack Tecnológico');
+    expect(md).toContain('## 4. Directivas de Arquitectura y Estándares de Código');
+    expect(md).toContain('## 5. Flujo de Trabajo y Convenciones Git');
+    expect(md).toContain('## 6. Instrucciones Operativas y Guardrails');
+    expect(md).not.toContain('## 7.');
+  });
 });

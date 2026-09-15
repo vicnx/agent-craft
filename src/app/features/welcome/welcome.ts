@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { APP_ROUTES } from '../../core/constants/routes.constant';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { PresetOption } from '../../core/models/preset.model';
 
@@ -56,10 +57,10 @@ export class Welcome {
   ]);
 
   onStart(): void {
-    void this.router.navigate(['/builder', 'custom']);
+    void this.router.navigate([`/${APP_ROUTES.BUILDER}`, 'custom']);
   }
 
   onChoosePreset(presetId: string): void {
-    void this.router.navigate(['/builder', presetId]);
+    void this.router.navigate([`/${APP_ROUTES.BUILDER}`, presetId]);
   }
 }

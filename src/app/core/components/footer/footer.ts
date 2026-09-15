@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { APP_CONFIG } from '../../constants/app.constant';
 import { TranslatePipe } from '../../i18n/translate.pipe';
 
 @Component({
@@ -8,6 +9,6 @@ import { TranslatePipe } from '../../i18n/translate.pipe';
   templateUrl: './footer.html',
 })
 export class Footer {
-  readonly githubUrl = 'https://github.com/vicnx';
-  readonly linkedinUrl = 'https://www.linkedin.com/in/vicnx/';
+  readonly githubUrl = APP_CONFIG.githubUrl;
+  readonly linkedinUrl = APP_CONFIG.linkedinUrl;
 }
