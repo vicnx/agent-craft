@@ -67,10 +67,4 @@ describe('PersonaToneForm', () => {
     component.removeCommunicationRule(0);
     expect(configService.config().communicationRules).toEqual(['Regla 2']);
   });
-
-  it('should update customTone textarea on input', () => {
-    const event = { target: { value: 'Actuar como Senior Staff Engineer' } } as unknown as Event;
-    component.onCustomToneChange(event);
-    expect(configService.config().customTone).toBe('Actuar como Senior Staff Engineer');
-  });
 });

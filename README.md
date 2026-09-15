@@ -11,7 +11,7 @@
   </p>
 
   <p>
-    <img src="https://img.shields.io/badge/version-0.17.1-6366f1?style=flat-square" alt="Version 0.17.1" />
+    <img src="https://img.shields.io/badge/version-0.18.0-6366f1?style=flat-square" alt="Version 0.18.0" />
     <img src="https://img.shields.io/badge/Angular-22-dd0031?style=flat-square&logo=angular&logoColor=white" alt="Angular 22" />
     <img src="https://img.shields.io/badge/TailwindCSS-v4-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" />
     <img src="https://img.shields.io/badge/TypeScript-Strict-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
@@ -44,7 +44,7 @@ Design, customize, and export standard context files such as `.cursorrules`, `co
 
 ## ✨ Features
 
-- **Visual Rule Builder:** Form-driven 7-step configuration for agent roles, persona & tone, tech stack constraints, code conventions, architectural boundaries, and strict negative guardrails.
+- **Visual Rule Builder:** Form-driven 5-step agile configuration for agent identity & tech stack, persona & tone, unified directives & UI design, git workflows, and negative guardrails.
 - **Persona & Communication Style:** Granular control over assistant verbosity (Concise, Balanced, Explanatory), operational autonomy (Conservative, Collaborative, Autonomous), and anti-pattern prevention habits.
 - **Never-Do List (Negative Guardrails):** Explicit negative constraints and prohibitions preventing credential leaks (.env), unwanted package installations, test deletions, and unchecked `any` typing.
 - **Dark & Light Modes:** Seamless toggle between sleek dark mode and crisp light mode with persistent local storage.

@@ -20,7 +20,6 @@ import { DirectivesModal } from './components/directives-modal/directives-modal'
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 import { WorkflowForm } from './components/workflow-form/workflow-form';
 import { CustomInstructionsForm } from './components/custom-instructions-form/custom-instructions-form';
-import { UiDesignForm } from './components/ui-design-form/ui-design-form';
 import { ConfirmModal } from './components/confirm-modal/confirm-modal';
 import { BuilderStepper } from './components/builder-stepper/builder-stepper';
 import { BuilderPreview } from './components/builder-preview/builder-preview';
@@ -35,7 +34,6 @@ import { BuilderPreview } from './components/builder-preview/builder-preview';
     PersonaToneForm,
     TechStackForm,
     DirectivesForm,
-    UiDesignForm,
     WorkflowForm,
     CustomInstructionsForm,
     DirectivesModal,
@@ -57,13 +55,13 @@ export class Builder {
   private lastLoadedPreset?: string;
 
   goToStep(step: number): void {
-    if (step >= 1 && step <= 7) {
+    if (step >= 1 && step <= 5) {
       this.currentStep.set(step);
     }
   }
 
   nextStep(): void {
-    if (this.currentStep() < 7) {
+    if (this.currentStep() < 5) {
       this.currentStep.update((s) => s + 1);
     }
   }

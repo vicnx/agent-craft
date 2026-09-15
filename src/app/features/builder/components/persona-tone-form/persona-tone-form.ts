@@ -71,9 +71,4 @@ export class PersonaToneForm {
   removeCommunicationRule(index: number): void {
     this.agentConfig.removeCommunicationRule(index);
   }
-
-  onCustomToneChange(event: Event): void {
-    const target = event.target as HTMLTextAreaElement;
-    this.agentConfig.setCustomTone(target.value);
-  }
 }

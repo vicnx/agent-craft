@@ -57,4 +57,12 @@ describe('DirectivesForm', () => {
     const enRule = component.quickSuggestions()[0];
     expect(esRule).not.toBe(enRule);
   });
+
+  it('should switch between architecture and design tabs', () => {
+    expect(component.activeTab()).toBe('architecture');
+    component.setTab('design');
+    expect(component.activeTab()).toBe('design');
+    component.setTab('architecture');
+    expect(component.activeTab()).toBe('architecture');
+  });
 });

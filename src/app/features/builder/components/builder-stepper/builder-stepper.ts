@@ -15,13 +15,11 @@ export interface StepItem {
 }
 
 export const BUILDER_STEPS: readonly StepItem[] = [
-  { id: 1, icon: 'fa-solid fa-id-card', labelKey: 'builder.stepIdentity' },
+  { id: 1, icon: 'fa-solid fa-id-card', labelKey: 'builder.stepIdentityStack' },
   { id: 2, icon: 'fa-solid fa-comments', labelKey: 'builder.stepTone' },
-  { id: 3, icon: 'fa-solid fa-layer-group', labelKey: 'builder.stepStack' },
-  { id: 4, icon: 'fa-solid fa-cubes', labelKey: 'builder.stepArchitecture' },
-  { id: 5, icon: 'fa-solid fa-palette', labelKey: 'builder.stepDesign' },
-  { id: 6, icon: 'fa-solid fa-code-branch', labelKey: 'builder.stepWorkflow' },
-  { id: 7, icon: 'fa-solid fa-shield-halved', labelKey: 'builder.stepGuardrails' },
+  { id: 3, icon: 'fa-solid fa-cubes', labelKey: 'builder.stepDirectives' },
+  { id: 4, icon: 'fa-solid fa-code-branch', labelKey: 'builder.stepWorkflow' },
+  { id: 5, icon: 'fa-solid fa-shield-halved', labelKey: 'builder.stepGuardrails' },
 ] as const;
 
 @Component({
@@ -47,19 +45,19 @@ export class BuilderStepper {
   }
 
   getStepBadge(stepId: number): number {
+    if (stepId === 1) {
+      return this.agentConfig.config().techStack.length;
+    }
     if (stepId === 2) {
       return this.agentConfig.config().communicationRules.length;
     }
     if (stepId === 3) {
-      return this.agentConfig.config().techStack.length;
-    }
-    if (stepId === 4) {
-      return this.agentConfig.config().architecturalRules.length;
+      return (
+        this.agentConfig.config().architecturalRules.length +
+        this.agentConfig.config().uiDesignRules.length
+      );
     }
     if (stepId === 5) {
-      return this.agentConfig.config().uiDesignRules.length;
-    }
-    if (stepId === 7) {
       return this.agentConfig.config().neverRules.length;
     }
     return 0;

@@ -56,7 +56,7 @@ describe('markdown-compiler.util', () => {
     expect(md).toContain('# Build');
     expect(md).toContain('npm run build');
     expect(md).toContain('## 7. Instrucciones Operativas y Guardrails');
-    expect(md).toContain('### 🚫 Restricciones Estrictas (Never-Do List)');
+    expect(md).toContain('### 🚫 Restricciones Estrictas y Prohibiciones (Never-Do List)');
     expect(md).toContain('- ❌ No usar any ni @ts-ignore');
     expect(md).toContain('- ❌ **Seguridad:** No exponer variables de entorno .env');
     expect(md).toContain('### Instrucciones Adicionales del Proyecto');

@@ -76,6 +76,17 @@
           "Propuesta de commit estructurado al finalizar cada tarea",
           "Instrucciones claras de prueba y validación para cada funcionalidad"
         ]
+      },
+      {
+        "id": "design",
+        "nameKey": "builder.catDesign",
+        "rules": [
+          "Estética moderna dev-tool (Dark-mode first, microbordes y glassmorphism)",
+          "Diseño responsive obligatorio (adaptabilidad móvil, tablet y escritorio)",
+          "Reutilización de componentes UI atómicos (botones, inputs, selectores, modales)",
+          "Accesibilidad WCAG y contrastes legibles",
+          "Consistencia visual y diseño limpio con Tailwind CSS"
+        ]
       }
     ]
   },
@@ -155,6 +166,17 @@
           "Continuous code audit and mandatory refactoring after each feature block",
           "Structured commit proposal block at the end of each completed task",
           "Clear verification and testing instructions for every introduced change"
+        ]
+      },
+      {
+        "id": "design",
+        "nameKey": "builder.catDesign",
+        "rules": [
+          "Modern dev-tool aesthetics (Dark-mode first, micro-borders, glassmorphism)",
+          "Mandatory responsive design (mobile, tablet, and desktop adaptability)",
+          "Reusable atomic UI components (buttons, inputs, selectors, modals)",
+          "WCAG accessibility compliance and legible contrasts",
+          "Visual consistency and clean utility-first styling with Tailwind CSS"
         ]
       }
     ]

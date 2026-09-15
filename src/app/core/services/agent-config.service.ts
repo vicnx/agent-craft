@@ -146,6 +146,26 @@ export class AgentConfigService {
     this.config.update((c) => ({ ...c, uiDesignRules: c.uiDesignRules.filter((_, i) => i !== index) }));
   }
 
+  toggleUiDesignRule(rule: string): void {
+    const trimmed = rule.trim();
+    if (trimmed) {
+      this.config.update((c) => ({
+        ...c,
+        uiDesignRules: c.uiDesignRules.includes(trimmed)
+          ? c.uiDesignRules.filter((r) => r !== trimmed)
+          : [...c.uiDesignRules, trimmed],
+      }));
+    }
+  }
+
+  hasUiDesignRule(rule: string): boolean {
+    return this.config().uiDesignRules.includes(rule.trim());
+  }
+
+  clearUiDesignRules(): void {
+    this.config.update((c) => ({ ...c, uiDesignRules: [] }));
+  }
+
   setBuildCommand(key: 'build' | 'test' | 'dev', value: string): void {
     this.config.update((c) => ({ ...c, buildCommands: { ...c.buildCommands, [key]: value } }));
   }
