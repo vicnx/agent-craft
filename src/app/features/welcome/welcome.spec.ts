@@ -20,10 +20,11 @@ describe('Welcome', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain 5 language presets by default', () => {
+  it('should contain 6 language presets by default with angular first', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
-    expect(component.presets().length).toBe(5);
+    expect(component.presets().length).toBe(6);
+    expect(component.presets()[0].id).toBe('angular');
   });
 
   it('should navigate to /builder/custom on onStart()', () => {
@@ -38,7 +39,7 @@ describe('Welcome', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
     const navigateSpy = vi.spyOn(router, 'navigate');
-    component.onChoosePreset('typescript');
-    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'typescript']);
+    component.onChoosePreset('angular');
+    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'angular']);
   });
 });

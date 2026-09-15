@@ -120,6 +120,14 @@ describe('Builder', () => {
     expect(fixture.componentInstance.agentConfig.config().techStack).toContain('FastAPI');
   });
 
+  it('should load angular preset with ng serve when presetId is angular', () => {
+    const fixture = TestBed.createComponent(Builder);
+    fixture.componentRef.setInput('presetId', 'angular');
+    fixture.detectChanges();
+    expect(fixture.componentInstance.agentConfig.config().techStack).toContain('Angular');
+    expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('ng serve');
+  });
+
   it('should load custom preset from scratch with empty rules when presetId is custom', () => {
     const fixture = TestBed.createComponent(Builder);
     fixture.componentRef.setInput('presetId', 'custom');

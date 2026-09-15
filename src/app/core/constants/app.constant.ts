@@ -1,6 +1,6 @@
 export const APP_CONFIG = {
   name: 'AgentCraft',
-  version: '0.18.0',
+  version: '0.19.0',
   author: 'Xente',
   githubUrl: 'https://github.com/vicnx',
   linkedinUrl: 'https://www.linkedin.com/in/vicnx/',

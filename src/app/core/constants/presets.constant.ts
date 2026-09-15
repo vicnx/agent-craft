@@ -15,6 +15,7 @@ export const PRESET_CONFIGS_BY_LANG: Record<'es' | 'en', Record<LanguagePresetId
 };
 
 export const VALID_LANGUAGE_PRESET_IDS: readonly LanguagePresetId[] = [
+  'angular',
   'typescript',
   'python',
   'go',

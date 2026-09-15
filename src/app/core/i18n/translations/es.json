@@ -29,7 +29,7 @@
     "ctaExploreTemplates": "Explorar Plantillas",
     "templatesTitle": "Plantillas por Ecosistema y Lenguaje",
     "templatesSubtitle": "Selecciona el stack de tu proyecto para precargar directivas idiomáticas y estándares de calidad.",
-    "formatsSupported": "5 ecosistemas soportados",
+    "formatsSupported": "6 ecosistemas soportados",
     "useTemplate": "Usar",
     "featureClientTitle": "100% Client-Side",
     "featureClientDesc": "Sin backend ni cuentas. Tus directivas viven solo en tu navegador.",
@@ -39,8 +39,10 @@
     "featureExportDesc": "Copia al portapapeles o descarga el archivo listo para usar."
   },
   "presets": {
+    "angularName": "Angular (Signals & Standalone)",
+    "angularDesc": "Reglas y directivas de vanguardia para Angular moderno: Signals, Zoneless, OnPush, inject() y Tailwind CSS.",
     "typescriptName": "TypeScript & Frontend",
-    "typescriptDesc": "Ecosistema TypeScript moderno (Angular, React, Node.js). Tipado estricto, inmutabilidad y patrones limpios.",
+    "typescriptDesc": "Ecosistema TypeScript moderno (Node.js, React, Express). Tipado estricto, inmutabilidad y patrones limpios.",
     "pythonName": "Python Backend & AI",
     "pythonDesc": "FastAPI, Django y servicios de IA. Type hints obligatorios (PEP 484), Pytest y Clean Architecture.",
     "goName": "Go / Golang Microservices",

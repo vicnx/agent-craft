@@ -65,6 +65,68 @@
     ]
   },
   "presets": {
+    "angular": {
+      "targetFormat": "cursor",
+      "projectName": "Modern Angular Project",
+      "role": "Senior Angular Architect & Signals / Zoneless Specialist",
+      "description": "Architectural directives, reactive Signals, Standalone Components, and modern Angular best practices.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Angular",
+        "TypeScript",
+        "Tailwind CSS",
+        "RxJS",
+        "Vitest",
+        "Playwright"
+      ],
+      "architecturalRules": [
+        "Exclusively Standalone Components (standalone: true). Prohibit NgModule usage",
+        "Dependency injection strictly via native inject() function. Prohibit constructor injection",
+        "Fine-grained reactivity with Signals: state in signal(), derive with computed(), bind with input(), output(), model()",
+        "Clean RxJS & Signals interoperability: RxJS solely for complex async streams; bridge via toSignal() or takeUntilDestroyed()",
+        "Mandatory native modern control flow (@if, @for with mandatory track, @switch, @defer). Prohibit legacy *ngIf, *ngFor",
+        "ChangeDetectionStrategy.OnPush on every component for optimal performance and zoneless compatibility",
+        "Functional routing & lazy loading via loadComponent, CanActivateFn, and withComponentInputBinding()",
+        "Decoupled component architecture (Smart / Dumb container patterns) adhering strictly to SRP",
+        "Strict file size limit: maximum 150-200 lines per component file (HTML and TS) for maintainability",
+        "Strict TypeScript (strict: true) with explicit interfaces and strong typing for all models and API responses"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "ng build",
+        "test": "ng test",
+        "dev": "ng serve"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always prioritize readability, small reusable components, Signals-based reactivity, and Zoneless compatibility. Avoid side effects in effect().",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibit NgModule usage (always use Standalone Components)",
+        "Prohibit legacy structural directives (*ngIf, *ngFor, *ngSwitch)",
+        "Prohibit constructor dependency injection; always use inject()",
+        "Prohibit mutating signals inside effect() or introducing circular reactive dependencies",
+        "Prohibit unmanaged manual RxJS subscriptions (use takeUntilDestroyed or toSignal)",
+        "Prohibit direct DOM manipulation via ElementRef.nativeElement; use declarative bindings",
+        "Prohibit any, @ts-ignore, or unsafe type casting",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
     "typescript": {
       "targetFormat": "cursor",
       "projectName": "TypeScript Project",

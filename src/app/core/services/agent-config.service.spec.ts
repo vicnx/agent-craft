@@ -32,6 +32,18 @@ describe('AgentConfigService', () => {
     expect(service.config().techStack).toContain('FastAPI');
   });
 
+  it('should load angular preset with modern rules, commands, and stack', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('angular');
+    expect(service.config().projectName).toBe('Proyecto Angular Moderno');
+    expect(service.config().techStack).toContain('Angular');
+    expect(service.config().techStack).toContain('Tailwind CSS');
+    expect(service.config().buildCommands.build).toBe('ng build');
+    expect(service.config().buildCommands.dev).toBe('ng serve');
+    expect(service.config().architecturalRules.some((r) => r.includes('Standalone Components'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('NgModule'))).toBe(true);
+  });
+
   it('should switch targetFormat without resetting user rules or stack', () => {
     service.setOutputLanguage('es');
     service.loadPreset('typescript');

@@ -15,12 +15,20 @@ export class Welcome {
 
   readonly presets = signal<readonly PresetOption[]>([
     {
+      id: 'angular',
+      nameKey: 'presets.angularName',
+      targetFile: 'Angular (v19+)',
+      badgeKey: 'common.popular',
+      descKey: 'presets.angularDesc',
+      tags: ['Angular', 'Signals', 'Standalone', 'Tailwind'],
+    },
+    {
       id: 'typescript',
       nameKey: 'presets.typescriptName',
       targetFile: 'TypeScript',
-      badgeKey: 'common.popular',
+      badgeKey: 'common.standard',
       descKey: 'presets.typescriptDesc',
-      tags: ['TypeScript', 'Angular', 'React', 'Node.js'],
+      tags: ['TypeScript', 'Node.js', 'React', 'Express'],
     },
     {
       id: 'python',

@@ -65,6 +65,68 @@
     ]
   },
   "presets": {
+    "angular": {
+      "targetFormat": "cursor",
+      "projectName": "Proyecto Angular Moderno",
+      "role": "Arquitecto Angular Senior y Especialista en Signals / Zoneless",
+      "description": "Directivas de arquitectura, Signals reactivos, Standalone Components y buenas prácticas para Angular moderno.",
+      "outputLanguage": "es",
+      "techStack": [
+        "Angular",
+        "TypeScript",
+        "Tailwind CSS",
+        "RxJS",
+        "Vitest",
+        "Playwright"
+      ],
+      "architecturalRules": [
+        "Uso exclusivo de Standalone Components (standalone: true). Prohibido el uso de NgModule",
+        "Inyección de dependencias exclusivamente mediante la función nativa inject(). Prohibida la inyección en constructores",
+        "Reactividad granular mediante Signals: gestionar estado con signal(), derivar con computed() y enlazar con input(), output() y model()",
+        "Interoperabilidad limpia RxJS & Signals: usar RxJS solo para flujos asíncronos complejos y convertir con toSignal() o takeUntilDestroyed()",
+        "Control Flow nativo obligatorio (@if, @for con track obligatorio, @switch, @defer). Prohibidas directivas estructurales obsoletas (*ngIf, *ngFor)",
+        "Estrategia ChangeDetectionStrategy.OnPush en todos los componentes para rendimiento óptimo y compatibilidad Zoneless",
+        "Enrutamiento funcional y carga perezosa (lazy-loading) con loadComponent, CanActivateFn y withComponentInputBinding()",
+        "Arquitectura de componentes desacoplada (Smart / Dumb), respetando el Principio de Responsabilidad Única (SRP)",
+        "Límite estricto de 150-200 líneas por archivo de componente (HTML y TS) para maximizar legibilidad y modularidad",
+        "Tipado TypeScript estricto (strict: true) con contratos e interfaces explícitos para todas las estructuras y respuestas HTTP"
+      ],
+      "uiDesignRules": [
+        "Estética de vanguardia dev-tool moderna: Dark-Mode First, fondos oscuros profundos, degradados sutiles y microbordes translúcidos",
+        "Utilidades de Tailwind CSS encapsuladas en componentes primitivos atómicos (botones, inputs, selectores, modales, badges)",
+        "Diseño responsive total y fluido mediante breakpoints sistemáticos (sm:, md:, lg:, xl:)",
+        "Accesibilidad universal (cumplimiento WCAG), navegación por teclado y tipografías contemporáneas legibles"
+      ],
+      "buildCommands": {
+        "build": "ng build",
+        "test": "ng test",
+        "dev": "ng serve"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Priorizar siempre legibilidad, componentes pequeños reutilizables, reactividad con Signals y compatibilidad Zoneless. Evitar efectos secundarios dentro de effect().",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibido el uso de NgModule (utilizar siempre Standalone Components)",
+        "Prohibido el uso de directivas estructurales obsoletas (*ngIf, *ngFor, *ngSwitch)",
+        "Prohibida la inyección de dependencias en constructores; usar siempre inject()",
+        "Prohibido mutar señales dentro de effect() o crear dependencias circulares reactivas",
+        "Prohibidas las suscripciones manuales a RxJS sin desuscribir (usar takeUntilDestroyed o toSignal)",
+        "Prohibida la manipulación directa del DOM con ElementRef.nativeElement; usar bindings declarativos",
+        "Prohibido el uso de any, @ts-ignore o aserciones de tipo inseguras",
+        "No superar el límite de 150-200 líneas de código por archivo de componente",
+        "Cero textos literales en plantillas HTML; canalizar todo a través del sistema de i18n",
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)"
+      ]
+    },
     "typescript": {
       "targetFormat": "cursor",
       "projectName": "Proyecto TypeScript",
