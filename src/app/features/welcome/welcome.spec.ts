@@ -73,4 +73,18 @@ describe('Welcome', () => {
     component.onChoosePreset('nextjs');
     expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'nextjs']);
   });
+
+  it('should dynamically recompute category counts when presets change', () => {
+    const fixture = TestBed.createComponent(Welcome);
+    const component = fixture.componentInstance;
+    const initialFrontendCount = component.categories().find((c) => c.id === 'frontend')?.count;
+    expect(initialFrontendCount).toBe(5);
+
+    // Simulate disabling a preset from the presets list
+    component.presets.update((current) => current.filter((p) => p.id !== 'svelte'));
+    const updatedFrontendCount = component.categories().find((c) => c.id === 'frontend')?.count;
+    const updatedAllCount = component.categories().find((c) => c.id === 'all')?.count;
+    expect(updatedFrontendCount).toBe(4);
+    expect(updatedAllCount).toBe(10);
+  });
 });

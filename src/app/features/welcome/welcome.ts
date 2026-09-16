@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { WELCOME_CATEGORIES, WELCOME_PRESET_OPTIONS } from '../../core/constants/presets.constant';
+import { getWelcomeCategories, WELCOME_PRESET_OPTIONS } from '../../core/constants/presets.constant';
 import { APP_ROUTES } from '../../core/constants/routes.constant';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { PresetCategory } from '../../core/models/preset.model';
@@ -14,9 +14,9 @@ import { PresetCategory } from '../../core/models/preset.model';
 export class Welcome {
   private readonly router = inject(Router);
 
-  readonly categories = WELCOME_CATEGORIES;
   readonly activeCategory = signal<'all' | PresetCategory>('all');
   readonly presets = signal(WELCOME_PRESET_OPTIONS);
+  readonly categories = computed(() => getWelcomeCategories(this.presets()));
 
   readonly filteredPresets = computed(() => {
     const category = this.activeCategory();

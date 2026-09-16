@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { ALL_PRESETS_CATALOG, ENABLED_LANGUAGE_PRESET_IDS, isValidPresetId } from '../constants/presets.constant';
 import { I18nService } from '../i18n/i18n.service';
 import { AgentConfigService } from './agent-config.service';
 
@@ -299,5 +300,15 @@ describe('AgentConfigService', () => {
     expect(service.config().neverRules.length).toBe(2);
     service.clearNeverRules();
     expect(service.config().neverRules.length).toBe(0);
+  });
+
+  it('should validate preset IDs from presets-config.json and respect enabled status', () => {
+    expect(ALL_PRESETS_CATALOG.length).toBe(11);
+    expect(ENABLED_LANGUAGE_PRESET_IDS).toContain('nextjs');
+    expect(ENABLED_LANGUAGE_PRESET_IDS).toContain('react');
+    expect(ENABLED_LANGUAGE_PRESET_IDS).toContain('custom');
+    expect(isValidPresetId('nextjs')).toBe(true);
+    expect(isValidPresetId('custom')).toBe(true);
+    expect(isValidPresetId('non-existent-preset')).toBe(false);
   });
 });

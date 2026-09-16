@@ -44,7 +44,7 @@
 
     <!-- Category Filter Tabs -->
     <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-1 scrollbar-none">
-      @for (tab of categories; track tab.id) {
+      @for (tab of categories(); track tab.id) {
         <button type="button"
                 (click)="setCategory(tab.id)"
                 class="px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap"

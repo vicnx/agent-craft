@@ -16,6 +16,7 @@ export type PresetCategory = 'frontend' | 'backend' | 'mobile';
 
 export interface PresetOption {
   readonly id: LanguagePresetId;
+  readonly enabled?: boolean;
   readonly category: PresetCategory;
   readonly nameKey: string;
   readonly targetFile: string;

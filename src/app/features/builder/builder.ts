@@ -78,6 +78,10 @@ export class Builder {
   constructor() {
     effect(() => {
       const id = this.presetId();
+      if (id && !isValidPresetId(id)) {
+        void this.router.navigate(['/builder', 'custom']);
+        return;
+      }
       if (id && id !== this.lastLoadedPreset && isValidPresetId(id)) {
         this.lastLoadedPreset = id;
         untracked(() => {
