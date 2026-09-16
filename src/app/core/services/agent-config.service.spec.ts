@@ -80,6 +80,44 @@ describe('AgentConfigService', () => {
     expect(service.config().neverRules.some((r) => r.includes('Class Components'))).toBe(true);
   });
 
+  it('should load nextjs preset with App Router, React 19, and Server Actions', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('nextjs');
+    expect(service.config().projectName).toBe('Next.js 15 App Router & React 19');
+    expect(service.config().techStack).toContain('Next.js 15+');
+    expect(service.config().techStack).toContain('React 19');
+    expect(service.config().techStack).toContain('Server Actions');
+    expect(service.config().buildCommands.build).toBe('next build');
+    expect(service.config().buildCommands.dev).toBe('next dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('Server Components'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('next/router'))).toBe(true);
+  });
+
+  it('should load vue preset with Composition API, Nuxt 3, and Pinia', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('vue');
+    expect(service.config().projectName).toBe('Proyecto Vue 3 & Nuxt 3');
+    expect(service.config().techStack).toContain('Vue 3');
+    expect(service.config().techStack).toContain('Nuxt 3');
+    expect(service.config().techStack).toContain('Pinia');
+    expect(service.config().buildCommands.build).toBe('npm run build');
+    expect(service.config().buildCommands.dev).toBe('npm run dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('<script setup'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('Options API'))).toBe(true);
+  });
+
+  it('should load svelte preset with Runes and SvelteKit 2', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('svelte');
+    expect(service.config().projectName).toBe('Proyecto Svelte 5 & SvelteKit');
+    expect(service.config().techStack).toContain('Svelte 5');
+    expect(service.config().techStack).toContain('SvelteKit 2');
+    expect(service.config().buildCommands.build).toBe('npm run build');
+    expect(service.config().buildCommands.dev).toBe('npm run dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('Runes'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('$state') || r.includes('$:'))).toBe(true);
+  });
+
   it('should load react-native preset with expo router, nativewind, and flashlist', () => {
     service.setOutputLanguage('es');
     service.loadPreset('react-native');

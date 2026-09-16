@@ -20,18 +20,42 @@ describe('Welcome', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain 8 language presets by default including backend ecosystems', () => {
+  it('should contain 11 presets by default across frontend, backend, and mobile', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
-    expect(component.presets().length).toBe(8);
-    expect(component.presets()[0].id).toBe('angular');
-    expect(component.presets()[1].id).toBe('react');
-    expect(component.presets()[2].id).toBe('react-native');
+    expect(component.presets().length).toBe(11);
+    expect(component.presets().some((p) => p.id === 'nextjs')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'react')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'angular')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'vue')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'svelte')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'react-native')).toBe(true);
     expect(component.presets().some((p) => p.id === 'nestjs')).toBe(true);
     expect(component.presets().some((p) => p.id === 'fastapi')).toBe(true);
     expect(component.presets().some((p) => p.id === 'springboot')).toBe(true);
     expect(component.presets().some((p) => p.id === 'aspnet')).toBe(true);
     expect(component.presets().some((p) => p.id === 'go-microservices')).toBe(true);
+  });
+
+  it('should filter presets reactively by category', () => {
+    const fixture = TestBed.createComponent(Welcome);
+    const component = fixture.componentInstance;
+    expect(component.filteredPresets().length).toBe(11);
+
+    component.setCategory('frontend');
+    expect(component.filteredPresets().length).toBe(5);
+    expect(component.filteredPresets().every((p) => p.category === 'frontend')).toBe(true);
+
+    component.setCategory('backend');
+    expect(component.filteredPresets().length).toBe(5);
+    expect(component.filteredPresets().every((p) => p.category === 'backend')).toBe(true);
+
+    component.setCategory('mobile');
+    expect(component.filteredPresets().length).toBe(1);
+    expect(component.filteredPresets()[0].id).toBe('react-native');
+
+    component.setCategory('all');
+    expect(component.filteredPresets().length).toBe(11);
   });
 
   it('should navigate to /builder/custom on onStart()', () => {
@@ -46,7 +70,7 @@ describe('Welcome', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
     const navigateSpy = vi.spyOn(router, 'navigate');
-    component.onChoosePreset('fastapi');
-    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'fastapi']);
+    component.onChoosePreset('nextjs');
+    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'nextjs']);
   });
 });

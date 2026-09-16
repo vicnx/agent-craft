@@ -1,6 +1,9 @@
 export type LanguagePresetId =
-  | 'angular'
+  | 'nextjs'
   | 'react'
+  | 'angular'
+  | 'vue'
+  | 'svelte'
   | 'react-native'
   | 'nestjs'
   | 'fastapi'
@@ -9,8 +12,11 @@ export type LanguagePresetId =
   | 'go-microservices'
   | 'custom';
 
+export type PresetCategory = 'frontend' | 'backend' | 'mobile';
+
 export interface PresetOption {
   readonly id: LanguagePresetId;
+  readonly category: PresetCategory;
   readonly nameKey: string;
   readonly targetFile: string;
   readonly badgeKey: string;

@@ -65,6 +65,137 @@
     ]
   },
   "presets": {
+    "nextjs": {
+      "targetFormat": "cursor",
+      "projectName": "Next.js 15 App Router & React 19",
+      "role": "Senior Full-Stack Frontend Architect & Next.js 15 Specialist",
+      "description": "Directives for Next.js 15 App Router, React 19 Server Components, Server Actions, TypeScript, and Tailwind CSS.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Next.js 15+",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS",
+        "Server Actions",
+        "Zod",
+        "Lucide Icons",
+        "Vitest"
+      ],
+      "architecturalRules": [
+        "App Router (app/) architecture: Default to Server Components; restrict 'use client' exclusively to interactive leaf components",
+        "Next.js 15 async request APIs: params and searchParams are Promises; always await params and await searchParams before accessing properties",
+        "Data fetching executed directly within async Server Components using typed fetch with granular revalidate or cache tags",
+        "Data mutations strictly handled via Server Actions ('use server') validated at runtime with Zod schemas",
+        "Canonical file convention hierarchy for routes: layout.tsx, page.tsx, loading.tsx, error.tsx, and not-found.tsx",
+        "Client navigation exclusively with next/navigation (useRouter, usePathname, useSearchParams, redirect)",
+        "Enforce server boundary isolation by importing the 'server-only' package in database utilities or API secrets",
+        "Media and typography optimization via next/image with mandatory priority/dimensions and next/font/google",
+        "Server state invalidation managed with revalidatePath and revalidateTag; avoid redundant client global stores",
+        "Optimistic UI mutations using React 19 useOptimistic and useActionState for instantaneous user feedback"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "next build",
+        "test": "npm test",
+        "dev": "next dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always prioritize Server Components. In Next.js 15 await params/searchParams is mandatory. Always validate Server Actions with Zod and guard sensitive modules with 'server-only'.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to use next/router in App Router; use next/navigation exclusively",
+        "Forbidden to synchronously access params or searchParams in Next.js 15 (they are Promises requiring await)",
+        "Forbidden to mark root layouts or top-level pages with 'use client' unless strictly necessary",
+        "Forbidden to fetch data inside useEffect when it can be fetched in an async Server Component",
+        "Forbidden to execute Server Actions without Zod schema validation and user authorization",
+        "Forbidden to expose sensitive server environment variables without the NEXT_PUBLIC_ prefix to the client",
+        "Forbidden to use standard HTML img tags; always use the optimized next/image component",
+        "Forbidden use of any, @ts-ignore, or unsafe type assertions",
+        "Never exceed the 150-200 lines of code limit per component file",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
+    "react": {
+      "targetFormat": "cursor",
+      "projectName": "Modern React 19 Web App",
+      "role": "Senior Frontend Architect & React 19 Specialist",
+      "description": "Architectural directives, modern Hooks, state management, and best practices for React 19 and Vite.",
+      "outputLanguage": "en",
+      "techStack": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Zustand",
+        "TanStack Query",
+        "React Hook Form",
+        "Zod",
+        "Vitest"
+      ],
+      "architecturalRules": [
+        "Functional components and Hooks exclusively. Prohibit Class Components and React.FC",
+        "In React 19 ref is passed directly as a standard prop; forwardRef is strictly prohibited in new components",
+        "Strict Props typing using explicit interface contracts and named exports",
+        "Encapsulate business logic, effects, and data access inside reusable Custom Hooks (use*)",
+        "Server state synchronization handled exclusively via TanStack Query v5 using query key factories",
+        "Client UI global state managed via Zustand using atomic selectors to prevent excess re-renders",
+        "Zero derived state in useEffect: calculate during render or memoize with useMemo",
+        "Type-safe form handling and runtime schema validation with React Hook Form paired with Zod",
+        "Leverage modern React 19 primitives (useTransition, useOptimistic, useActionState, use) for fluid UX",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm run test",
+        "dev": "npm run dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always prioritize immutability, small decoupled components, Custom Hooks, and render performance.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibit Class Components (always use functional components and Hooks)",
+        "Prohibit forwardRef in React 19 (pass ref directly as a regular prop)",
+        "Prohibit useEffect for state synchronization or derivation (derive in render or useMemo)",
+        "Prohibit useEffect for data fetching (use TanStack Query instead)",
+        "Prohibit direct mutation of state or props; always use immutable updates",
+        "Prohibit using array indices as keys in dynamic list rendering",
+        "Prohibit direct DOM manipulation via document.querySelector or getElementById (use useRef)",
+        "Prohibit any, @ts-ignore, or unsafe type casting",
+        "Prohibit writing complex inline calculations or handler logic directly inside JSX",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
     "angular": {
       "targetFormat": "cursor",
       "projectName": "Modern Angular Project",
@@ -127,34 +258,33 @@
         "Never create, modify, or expose credentials, secrets, or .env files"
       ]
     },
-    "react": {
+    "vue": {
       "targetFormat": "cursor",
-      "projectName": "Modern React 19 Web App",
-      "role": "Senior Frontend Architect & React 19 Specialist",
-      "description": "Architectural directives, modern Hooks, state management, and best practices for React 19 and Vite.",
+      "projectName": "Vue 3 & Nuxt 3 Project",
+      "role": "Senior Frontend Architect & Vue 3 / Nuxt 3 Specialist",
+      "description": "Directives for Vue 3, Nuxt 3, Composition API with script setup, Pinia, and TypeScript.",
       "outputLanguage": "en",
       "techStack": [
-        "React 19",
+        "Vue 3",
+        "Nuxt 3",
         "TypeScript",
-        "Vite",
         "Tailwind CSS",
-        "Zustand",
-        "TanStack Query",
-        "React Hook Form",
+        "Pinia",
+        "VueUse",
         "Zod",
         "Vitest"
       ],
       "architecturalRules": [
-        "Exclusively functional components and modern Hooks. Prohibit Class Components and React.FC",
-        "Strict Props typing via explicit interfaces and standard named exports for all components",
-        "Encapsulate business logic, effects, and data access inside reusable Custom Hooks (use*)",
-        "Server state and data fetching exclusively via TanStack Query v5 with query key factories",
-        "Global client state managed with Zustand using atomic selectors to prevent unnecessary re-renders",
-        "Zero derived state in useEffect: calculate during render or memoize with useMemo",
-        "Type-safe forms and runtime schema validation using React Hook Form paired with Zod",
-        "Leverage React 19 modern features (useTransition, useOptimistic, useActionState, use) for seamless UX",
-        "Modular component design with early returns for loading/error states and a 150-200 line limit",
-        "Unit and component testing with Vitest and React Testing Library testing real user interactions"
+        "Single File Components (SFC) built exclusively with Composition API and <script setup lang=\"ts\">",
+        "Idiomatic reactivity: ref() for primitives and objects; computed() for derived values with reactive caching",
+        "Global state management exclusively with Pinia utilizing modern Setup Store syntax (defineStore with function)",
+        "Encapsulate reusable logic in Composables (use*) leveraging the @vueuse/core ecosystem",
+        "Nuxt 3 data fetching: prioritize useFetch and useAsyncData for SSR with unique keys to eliminate network waterfalls",
+        "Strictly typed Props and Emits using compiler macros: defineProps<{ ... }>() and defineEmits<{ ... }>()",
+        "Mobile and web forms with runtime schema validation using Zod and typed composables",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit",
+        "Zero complex business logic inside templates; delegate calculations to typed computed properties",
+        "Unit and component tests using Vitest and @vue/test-utils with typed store and router mocks"
       ],
       "uiDesignRules": [
         "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
@@ -164,12 +294,12 @@
       ],
       "buildCommands": {
         "build": "npm run build",
-        "test": "npm test",
+        "test": "npm run test",
         "dev": "npm run dev"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Always prioritize immutability, small decoupled components, Custom Hooks, and rendering efficiency.",
+      "customInstructions": "Always use <script setup lang=\"ts\">. Avoid destructuring reactive objects without toRefs(). Use Pinia setup stores and useFetch for SSR in Nuxt.",
       "tone": "concise",
       "autonomy": "autonomous",
       "communicationRules": [
@@ -180,14 +310,75 @@
       ],
       "customTone": "",
       "neverRules": [
-        "Prohibit Class Components (always use functional components and Hooks)",
-        "Prohibit useEffect for state synchronization or derivation (derive in render or useMemo)",
-        "Prohibit useEffect for data fetching (use TanStack Query instead)",
-        "Prohibit direct mutation of state or props; always use immutable updates",
-        "Prohibit using array indices as keys in dynamic list rendering",
-        "Prohibit direct DOM manipulation via document.querySelector or getElementById (use useRef)",
-        "Prohibit any, @ts-ignore, or unsafe type casting",
-        "Prohibit writing complex inline calculations or handler logic directly inside JSX",
+        "Forbidden to use Options API (data, methods, computed objects); always use <script setup>",
+        "Forbidden to destructure reactive objects returned by reactive() or props without toRefs() (causes reactivity loss)",
+        "Forbidden use of legacy Vuex; use Pinia exclusively",
+        "Forbidden to mutate props directly in child components; emit typed events via defineEmits",
+        "Forbidden to use v-for without a unique, stable :key, or combine v-if and v-for on the same DOM node",
+        "Forbidden to manipulate the DOM directly using document.querySelector; use template ref()",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
+    "svelte": {
+      "targetFormat": "cursor",
+      "projectName": "Svelte 5 & SvelteKit Project",
+      "role": "Senior Frontend Architect & Svelte 5 Runes Specialist",
+      "description": "Directives for Svelte 5, Runes ($state, $derived, $effect, $props), SvelteKit 2, TypeScript, and Tailwind CSS.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Svelte 5",
+        "SvelteKit 2",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "Vitest"
+      ],
+      "architecturalRules": [
+        "Exclusive adherence to Svelte 5 Runes: $state() for state and $derived() / $derived.by() for computed values",
+        "Typed component properties declared exclusively using the $props() rune: let { item, onSelect }: Props = $props()",
+        "Controlled two-way data binding explicitly enabled via the $bindable() rune for mutable parent props",
+        "Side effects strictly confined to $effect() and $effect.pre() solely for DOM or external browser API synchronization",
+        "View composition using snippets ({#snippet name(param)}...{/snippet}) and children as snippets instead of slots",
+        "Universal global state management in .svelte.ts modules using classes or reactive functions powered by Runes",
+        "SvelteKit 2 routing: standard file-based architecture (+page.svelte, +layout.svelte, +page.server.ts, +error.svelte)",
+        "Secure server-side data loading using load functions in +page.server.ts to safeguard credentials and secrets",
+        "Form mutations in SvelteKit handled through standard Form Actions with schema validation",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm run test",
+        "dev": "npm run dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Use Svelte 5 Runes ($state, $derived, $props) exclusively. Prohibit Svelte 4 legacy syntax ($:, export let). Use snippets instead of slots.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to use deprecated Svelte 4 syntax (reactive declarations $:, export let for props)",
+        "Forbidden to use legacy stores (writable, readable) for new state; use Runes in .svelte.ts files",
+        "Forbidden to mutate $state variables inside $effect to synchronize state (triggers infinite render loops)",
+        "Forbidden to use the legacy <slot />; use snippets ({#snippet}) and rendering with {@render snippet()}",
+        "Forbidden to import server-only or secret-access modules in +page.ts (always use +page.server.ts)",
+        "Forbidden to manipulate the DOM directly with document.querySelector; use declarative bindings or use: actions",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
         "Never exceed 150-200 lines of code per component file",
         "Zero hardcoded user-visible strings in templates; channel all through i18n",
         "Never create, modify, or expose credentials, secrets, or .env files"
