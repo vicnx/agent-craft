@@ -20,13 +20,18 @@ describe('Welcome', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain 7 language presets by default including react-native', () => {
+  it('should contain 8 language presets by default including backend ecosystems', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
-    expect(component.presets().length).toBe(7);
+    expect(component.presets().length).toBe(8);
     expect(component.presets()[0].id).toBe('angular');
     expect(component.presets()[1].id).toBe('react');
     expect(component.presets()[2].id).toBe('react-native');
+    expect(component.presets().some((p) => p.id === 'nestjs')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'fastapi')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'springboot')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'aspnet')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'go-microservices')).toBe(true);
   });
 
   it('should navigate to /builder/custom on onStart()', () => {
@@ -41,7 +46,7 @@ describe('Welcome', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
     const navigateSpy = vi.spyOn(router, 'navigate');
-    component.onChoosePreset('react-native');
-    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'react-native']);
+    component.onChoosePreset('fastapi');
+    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'fastapi']);
   });
 });

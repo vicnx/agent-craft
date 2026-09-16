@@ -2,10 +2,11 @@ export type LanguagePresetId =
   | 'angular'
   | 'react'
   | 'react-native'
-  | 'python'
-  | 'go'
-  | 'rust'
-  | 'java'
+  | 'nestjs'
+  | 'fastapi'
+  | 'springboot'
+  | 'aspnet'
+  | 'go-microservices'
   | 'custom';
 
 export interface PresetOption {

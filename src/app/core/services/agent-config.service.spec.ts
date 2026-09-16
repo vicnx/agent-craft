@@ -27,9 +27,32 @@ describe('AgentConfigService', () => {
   });
 
   it('should load preset correctly', () => {
-    service.loadPreset('python');
-    expect(service.config().projectName).toBe('Python AI & Backend');
+    service.loadPreset('fastapi');
+    expect(service.config().projectName).toBe('FastAPI AI & Modern Backend');
     expect(service.config().techStack).toContain('FastAPI');
+  });
+
+  it('should load modern backend presets correctly', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('nestjs');
+    expect(service.config().projectName).toBe('Backend Empresarial NestJS');
+    expect(service.config().techStack).toContain('NestJS');
+    expect(service.config().buildCommands.dev).toBe('npm run start:dev');
+
+    service.loadPreset('springboot');
+    expect(service.config().projectName).toBe('Backend Empresarial Spring Boot 3');
+    expect(service.config().techStack).toContain('Spring Boot 3');
+    expect(service.config().buildCommands.dev).toBe('./mvnw spring-boot:run');
+
+    service.loadPreset('aspnet');
+    expect(service.config().projectName).toBe('Backend ASP.NET Core & Clean Architecture');
+    expect(service.config().techStack).toContain('ASP.NET Core');
+    expect(service.config().buildCommands.dev).toBe('dotnet watch run');
+
+    service.loadPreset('go-microservices');
+    expect(service.config().projectName).toBe('Microservicios Go de Alta Concurrencia');
+    expect(service.config().techStack).toContain('Go 1.23+');
+    expect(service.config().buildCommands.dev).toBe('go run cmd/api/main.go');
   });
 
   it('should load angular preset with modern rules, commands, and stack', () => {
@@ -145,8 +168,8 @@ describe('AgentConfigService', () => {
     const i18n = TestBed.inject(I18nService);
     i18n.setLanguage('es');
     TestBed.flushEffects();
-    service.loadPreset('go');
-    expect(service.config().projectName).toBe('Microservicio Go');
+    service.loadPreset('go-microservices');
+    expect(service.config().projectName).toBe('Microservicios Go de Alta Concurrencia');
     service.reset();
     expect(service.config().projectName).toBe('Proyecto Personalizado');
   });
@@ -178,7 +201,7 @@ describe('AgentConfigService', () => {
     expect(service.config().projectName).toBe('Modern React 19 Web App');
     expect(service.config().role).toBe('Senior Frontend Architect & React 19 Specialist');
 
-    service.loadPreset('go');
+    service.loadPreset('go-microservices');
     service.reset();
     expect(service.config().projectName).toBe('Custom Project');
     expect(service.config().role).toBe('AI Coding Assistant');

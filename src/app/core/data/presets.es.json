@@ -259,27 +259,90 @@
         "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)"
       ]
     },
-    "python": {
+    "nestjs": {
       "targetFormat": "cursor",
-      "projectName": "Python AI & Backend",
-      "role": "Arquitecto Backend Senior y Especialista Python",
-      "description": "Estándares de desarrollo, Clean Architecture y directivas para servicios backend y aplicaciones de IA en Python.",
+      "projectName": "Backend Empresarial NestJS",
+      "role": "Arquitecto Backend Senior y Especialista NestJS",
+      "description": "Arquitectura modular empresarial, controladores ligeros, DTOs con class-validator, Prisma y OpenAPI.",
+      "outputLanguage": "es",
+      "techStack": [
+        "NestJS",
+        "TypeScript",
+        "Node.js",
+        "Prisma",
+        "class-validator",
+        "Jest",
+        "Swagger"
+      ],
+      "architecturalRules": [
+        "Arquitectura modular estricta organizando el código por módulos de dominio cohesivos (@Module)",
+        "Controladores delgados (Thin Controllers) delegando toda la lógica de negocio y orquestación a Servicios (@Injectable)",
+        "Validación y transformación exhaustiva de entradas mediante DTOs con class-validator y class-transformer en ValidationPipe global",
+        "Manejo global y centralizado de excepciones mediante ExceptionFilters personalizados transformando a respuestas estructuradas",
+        "Acceso a datos desacoplado mediante patrón repositorio o capa de persistencia tipada con Prisma / TypeORM",
+        "Documentación viva de endpoints y contratos OpenAPI mediante decoradores Swagger (@ApiTags, @ApiOperation, @ApiResponse)",
+        "Interceptors para logging uniforme, transformación de respuestas y métricas de rendimiento",
+        "Configuración fuertemente tipada y validada en el arranque mediante ConfigModule y esquemas Joi o Zod",
+        "Inyección de dependencias idiomática de NestJS utilizando tokens personalizados y scopes apropiados",
+        "Tests unitarios y e2e aislados con Jest y @nestjs/testing simulando dependencias con mocks tipados"
+      ],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm run test",
+        "dev": "npm run start:dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Mantener controladores limpios y desacoplados. Priorizar inyección de dependencias, DTOs estrictos y tipado integral sin any.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibido escribir lógica de negocio o queries de base de datos directamente en los Controllers",
+        "Prohibido el uso de synchronize: true de TypeORM o migraciones automáticas destructivas en entornos de producción",
+        "Prohibido el uso de any, @ts-ignore o castings inseguros sin validación de tipo previa",
+        "Prohibido crear dependencias circulares entre módulos; usar forwardRef() solo como último recurso justificado",
+        "Prohibido omitir ValidationPipe con whitelist: true y forbidNonWhitelisted: true en entradas públicas",
+        "Prohibido mutar directamente el objeto Request o Response de Express sin abstracciones de NestJS",
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
+    },
+    "fastapi": {
+      "targetFormat": "cursor",
+      "projectName": "FastAPI AI & Modern Backend",
+      "role": "Arquitecto Backend Senior y Especialista FastAPI & Python Asíncrono",
+      "description": "APIs asíncronas de alto rendimiento y backends de IA con Pydantic v2, SQLAlchemy 2 async y Ruff.",
       "outputLanguage": "es",
       "techStack": [
         "Python 3.12+",
         "FastAPI",
-        "Pydantic",
+        "Pydantic v2",
+        "SQLAlchemy 2.0 (Async)",
+        "Alembic",
         "Pytest",
         "Ruff"
       ],
       "architecturalRules": [
-        "Clean Architecture con capas desacopladas (Domain, Application, Infrastructure)",
-        "Type Hints obligatorios en todas las funciones y clases según PEP 484",
-        "Gestión explícita de errores mediante excepciones de dominio personalizadas",
-        "Programación asíncrona idiomática con asyncio y dependency injection",
-        "Validación estricta con Ruff y Mypy en modo estricto",
-        "Tests automatizados con Pytest, fixtures tipadas y cobertura superior al 80%",
-        "Docstrings Google Style con documentación clara de argumentos y retornos"
+        "Endpoints asíncronos obligatorios (async def) para todas las operaciones I/O bound (base de datos, HTTP, colas)",
+        "Modelos de validación con Pydantic v2 configurados con model_config y separación estricta entre schemas de entrada y salida",
+        "Inyección de dependencias idiomática utilizando typing.Annotated y Depends() para sesiones, autenticación y servicios",
+        "Capa de persistencia asíncrona mediante SQLAlchemy 2.0 con select(), AsyncSession y migraciones controladas con Alembic",
+        "Estructura modular con APIRouter organizados por dominio funcional y prefijos versionados (/api/v1)",
+        "Gestión del ciclo de vida de la aplicación mediante contextmanager lifespan en lugar de eventos obsoletos on_event",
+        "Manejo centralizado de excepciones con ExceptionHandler personalizados devolviendo formatos JSON RFC 7807 consistentes",
+        "Gestión de configuración inmutable basada en pydantic-settings cargando variables validadas",
+        "Análisis estático de código estricto y formateo continuo con Ruff y Mypy con type hints obligatorios (PEP 484)",
+        "Tests de integración asíncronos con Pytest, pytest-asyncio y httpx.AsyncClient con base de datos de test efímera"
       ],
       "uiDesignRules": [],
       "buildCommands": {
@@ -289,135 +352,55 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Favorecer inmutabilidad con dataclasses(frozen=True) o Pydantic BaseModel(frozen=True).",
+      "customInstructions": "Asegurar que todas las llamadas de I/O utilicen async/await. Favorecer inmutabilidad en schemas de Pydantic v2 y validaciones en tiempo de compilación con Mypy.",
       "tone": "concise",
       "autonomy": "autonomous",
       "communicationRules": [
-        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
-        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
       ],
       "customTone": "",
       "neverRules": [
+        "Prohibido ejecutar operaciones síncronas bloqueantes (time.sleep, requests.get) dentro de funciones async def",
+        "Prohibido retornar modelos ORM crudos de SQLAlchemy directamente al cliente sin serialización Pydantic",
+        "Prohibido el uso de sintaxis obsoleta de Pydantic v1 (ej: class Config, @validator, .dict())",
+        "Prohibido omitir Type Hints o usar Any en firmas de funciones públicas y esquemas",
+        "Prohibido concatenar parámetros SQL crudos o f-strings en consultas de base de datos",
+        "Prohibido acoplar lógica de negocio o queries SQL complejas dentro de las funciones de ruta de los APIRouters",
         "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
         "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
         "No eliminar comentarios explicativos, documentación ni tests existentes",
-        "Prohibido el uso de any, @ts-ignore o casting inseguro",
         "No superar el límite de 150-200 líneas de código por archivo"
       ]
     },
-    "go": {
+    "springboot": {
       "targetFormat": "cursor",
-      "projectName": "Microservicio Go",
-      "role": "Ingeniero de Sistemas Senior y Especialista Go",
-      "description": "Directivas de desarrollo idiomático en Go, alta concurrencia y microservicios resilientes.",
-      "outputLanguage": "es",
-      "techStack": [
-        "Go 1.22+",
-        "Gin/Fiber",
-        "PostgreSQL",
-        "Docker"
-      ],
-      "architecturalRules": [
-        "Interfaces pequeñas y desacopladas en el punto de consumo (aceptar interfaces, devolver structs)",
-        "Manejo explícito de errores idiomático (if err != nil), nunca ignorar errores devueltos",
-        "Concurrencia segura con goroutines, sync.WaitGroup y control de contexto (context.Context)",
-        "Estructura estándar de proyectos Go (cmd/, internal/, pkg/)",
-        "Validación con golangci-lint en modo estricto",
-        "Cero data races: verificar siempre con 'go test -race'",
-        "Tests unitarios y de integración con el paquete nativo testing y table-driven tests"
-      ],
-      "uiDesignRules": [],
-      "buildCommands": {
-        "build": "go build ./...",
-        "test": "go test ./...",
-        "dev": "go run main.go"
-      },
-      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
-      "proposeCommit": true,
-      "customInstructions": "Evitar abstracciones innecesarias; preferir código claro, directo y con cero dependencias superfluas.",
-      "tone": "concise",
-      "autonomy": "autonomous",
-      "communicationRules": [
-        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
-        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
-        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
-      ],
-      "customTone": "",
-      "neverRules": [
-        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
-        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
-        "No eliminar comentarios explicativos, documentación ni tests existentes",
-        "Prohibido el uso de any, @ts-ignore o casting inseguro",
-        "No superar el límite de 150-200 líneas de código por archivo"
-      ]
-    },
-    "rust": {
-      "targetFormat": "cursor",
-      "projectName": "Sistemas Rust de Alto Rendimiento",
-      "role": "Ingeniero de Sistemas de Alto Rendimiento y Especialista Rust",
-      "description": "Directivas de desarrollo seguro, alto rendimiento y gestión estricta de memoria en Rust.",
-      "outputLanguage": "es",
-      "techStack": [
-        "Rust 2024",
-        "Cargo",
-        "Tokio",
-        "Serde"
-      ],
-      "architecturalRules": [
-        "Respeto estricto del ownership y borrowing sin clones defensivos innecesarios",
-        "Manejo de errores explícito y tipado con Result<T, E> y el operador '?'",
-        "Modelado de estados rico mediante Enums con datos y pattern matching exhaustivo",
-        "Modularidad interna con visibilidad restringida (pub(crate))",
-        "Tolerancia cero a bloques 'unsafe' sin justificación rigurosa y documentada",
-        "Compilación limpia sin warnings con 'cargo clippy -- -D warnings'",
-        "Tests unitarios y de propiedades con 'cargo test'"
-      ],
-      "uiDesignRules": [],
-      "buildCommands": {
-        "build": "cargo build",
-        "test": "cargo test",
-        "dev": "cargo run"
-      },
-      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
-      "proposeCommit": true,
-      "customInstructions": "Asegurar que los errores contengan contexto descriptivo antes de propagarse.",
-      "tone": "concise",
-      "autonomy": "autonomous",
-      "communicationRules": [
-        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
-        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
-        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
-      ],
-      "customTone": "",
-      "neverRules": [
-        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
-        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
-        "No eliminar comentarios explicativos, documentación ni tests existentes",
-        "Prohibido el uso de any, @ts-ignore o casting inseguro",
-        "No superar el límite de 150-200 líneas de código por archivo"
-      ]
-    },
-    "java": {
-      "targetFormat": "cursor",
-      "projectName": "Backend Empresarial Java",
-      "role": "Arquitecto Empresarial Senior y Especialista Spring Boot",
-      "description": "Directivas de arquitectura empresarial, DDD y estándares de código limpio para Java y Spring Boot.",
+      "projectName": "Backend Empresarial Spring Boot 3",
+      "role": "Arquitecto Empresarial Senior y Especialista Spring Boot & Java 21",
+      "description": "Microservicios empresariales con Java 21 Records, Virtual Threads, inyección por constructor y Testcontainers.",
       "outputLanguage": "es",
       "techStack": [
         "Java 21+",
         "Spring Boot 3",
         "Spring Data JPA",
-        "PostgreSQL"
+        "PostgreSQL",
+        "Flyway",
+        "Testcontainers",
+        "JUnit 5"
       ],
       "architecturalRules": [
-        "Arquitectura Hexagonal (Ports & Adapters) con aislamiento del modelo de dominio",
-        "Inyección de dependencias estricta por constructor sin inyección por campo (@Autowired)",
-        "Inmutabilidad favorecida mediante Records de Java y DTOs inmutables",
-        "Manejo global de excepciones mediante @RestControllerAdvice y ProblemDetails",
-        "Adherencia a estándares de Checkstyle y análisis estático con SonarQube",
-        "Tests unitarios e integración con JUnit 5, AssertJ, Mockito y Testcontainers",
-        "Validación declarativa de datos mediante Jakarta Bean Validation (@Valid)"
+        "Arquitectura Hexagonal (Ports & Adapters) desacoplando la lógica de negocio pura de frameworks y persistencia",
+        "Inyección de dependencias exclusivamente por constructor; prohibida de forma terminante la inyección por campo (@Autowired)",
+        "Modelado inmutable de datos y DTOs mediante Java 21 Records con validación compacta en constructores canónicos",
+        "Concurrencia de alto rendimiento habilitando Virtual Threads (Project Loom) en Spring Boot 3",
+        "Manejo centralizado de excepciones con @RestControllerAdvice emitiendo RFC 7807 ProblemDetail estandarizados",
+        "Consultas JPA optimizadas con proyecciones DTO, fetch joins o EntityGraph para erradicar el problema N+1",
+        "Validación declarativa exhaustiva en controladores y servicios mediante Jakarta Bean Validation (@Valid, @NotNull)",
+        "Evolución controlada y versionada del esquema de base de datos mediante migraciones automatizadas con Flyway",
+        "Observabilidad de producción lista para la nube con Spring Boot Actuator, Micrometer y OpenTelemetry",
+        "Tests de integración realistas utilizando Testcontainers con PostgreSQL real en lugar de bases en memoria H2"
       ],
       "uiDesignRules": [],
       "buildCommands": {
@@ -427,20 +410,142 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Seguir principios SOLID rigurosamente y evitar acoplamiento a frameworks en la capa de negocio.",
+      "customInstructions": "Seguir estrictamente principios SOLID y arquitectura limpia. Usar Java 21 Records para DTOs e inyección por constructor en todos los componentes.",
       "tone": "concise",
       "autonomy": "autonomous",
       "communicationRules": [
-        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones y código limpio",
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
         "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
-        "Explicar el razonamiento técnico de forma estructurada antes de cambios complejos"
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
       ],
       "customTone": "",
       "neverRules": [
+        "Prohibido el uso de inyección de dependencias por campo (@Autowired en campos privados)",
+        "Prohibido exponer entidades JPA (@Entity) en las APIs REST; mapear siempre a Records/DTOs inmutables",
+        "Prohibido el uso de System.out.println; emplear siempre SLF4J / loggers parametrizados",
+        "Prohibido ignorar el problema N+1 en relaciones JPA lazy sin optimizar fetch joins o proyecciones",
+        "Prohibido capturar Exception genérica de forma silenciosa sin relanzar ni registrar adecuadamente",
+        "Prohibido el uso de librerías obsoletas o deprecadas de Java EE en lugar del namespace jakarta.*",
         "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
         "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
         "No eliminar comentarios explicativos, documentación ni tests existentes",
-        "Prohibido el uso de any, @ts-ignore o casting inseguro",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
+    },
+    "aspnet": {
+      "targetFormat": "cursor",
+      "projectName": "Backend ASP.NET Core & Clean Architecture",
+      "role": "Arquitecto Backend Senior y Especialista .NET 9 & C# 13",
+      "description": "Clean Architecture de alto rendimiento, Minimal APIs tipadas, CQRS con MediatR y Entity Framework Core async.",
+      "outputLanguage": "es",
+      "techStack": [
+        ".NET 9",
+        "C# 13",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "MediatR",
+        "FluentValidation",
+        "xUnit"
+      ],
+      "architecturalRules": [
+        "Clean Architecture estructurada en capas independientes (Domain, Application, Infrastructure, WebApi)",
+        "Patrón CQRS desacoplado mediante MediatR separando estrictamente comandos mutables y queries de lectura",
+        "Minimal APIs o Controllers fuertemente tipados utilizando TypedResults para OpenAPI y rendimiento óptimo",
+        "Validación declarativa de comandos y queries mediante pipeline behaviors automáticos con FluentValidation",
+        "Aprovechamiento de C# 13: records posicionales para inmutabilidad, pattern matching y nullability estricta activada",
+        "Acceso a datos asíncrono con Entity Framework Core propagando siempre CancellationToken en todas las llamadas",
+        "Consultas de lectura optimizadas en EF Core con AsNoTracking() y proyecciones directas a DTOs (Select)",
+        "Manejo global de excepciones mediante middleware ProblemDetails devolviendo especificaciones RFC 7807",
+        "Inyección de dependencias nativa registrando servicios con el ciclo de vida adecuado (Scoped, Singleton, Transient)",
+        "Pruebas unitarias y de integración con xUnit, FluentAssertions, Moq y WebApplicationFactory"
+      ],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "dotnet build",
+        "test": "dotnet test",
+        "dev": "dotnet watch run"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Favorecer inmutabilidad con records de C# 13, propagar CancellationToken en todas las firmas asíncronas y aislar la lógica de dominio en MediatR handlers.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibido ejecutar consultas de base de datos sincrónicas (.ToList(), .FirstOrDefault()); usar siempre versiones Async",
+        "Prohibido omitir la propagación del CancellationToken en llamadas asíncronas de base de datos o HTTP",
+        "Prohibido exponer entidades de dominio de EF Core en respuestas de API; mapear siempre a DTOs/records",
+        "Prohibido el uso de async void excepto en manejadores de eventos; utilizar siempre Task o ValueTask",
+        "Prohibido el antipatrón Service Locator o resolver dependencias manualmente desde IServiceProvider en controladores",
+        "Prohibido silenciar excepciones de base de datos sin registrar o lanzar excepciones de dominio específicas",
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env o appsettings.Production.json)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
+        "No superar el límite de 150-200 líneas de código por archivo"
+      ]
+    },
+    "go-microservices": {
+      "targetFormat": "cursor",
+      "projectName": "Microservicios Go de Alta Concurrencia",
+      "role": "Ingeniero de Sistemas Senior y Especialista Go Cloud-Native",
+      "description": "Microservicios cloud-native de alta concurrencia, layout estándar, context.Context, sqlc + pgx y slog.",
+      "outputLanguage": "es",
+      "techStack": [
+        "Go 1.23+",
+        "Chi/Gin",
+        "sqlc",
+        "pgx/v5",
+        "slog",
+        "golangci-lint",
+        "Docker"
+      ],
+      "architecturalRules": [
+        "Standard Go Project Layout separando puntos de entrada (cmd/) de paquetes no exportables (internal/)",
+        "Interfaces pequeñas, cohesivas y desacopladas declaradas en el punto de consumo (aceptar interfaces, devolver structs)",
+        "Propagación estricta de context.Context como primer argumento en todas las funciones I/O y llamadas de red",
+        "Consultas SQL seguras y fuertemente tipadas generadas en tiempo de compilación mediante sqlc con driver pgx/v5",
+        "Logging estructurado de alto rendimiento con log/slog nativo incluyendo atributos de contexto y trace IDs",
+        "Gestión coordinada de concurrencia y goroutines mediante golang.org/x/sync/errgroup para cancelaciones seguras",
+        "Manejo explícito de errores idiomático de Go (if err != nil), encapsulando contexto con fmt.Errorf(\"%w\", err)",
+        "Verificación estricta de calidad de código con golangci-lint en modo estricto en pipelines CI/CD",
+        "Tolerancia cero a condiciones de carrera, validando siempre con 'go test -race ./...'",
+        "Tests unitarios e integración estructurados mediante Table-Driven Tests y paquetes nativos testing y httptest"
+      ],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "go build -v -o bin/api ./cmd/api",
+        "test": "go test -v -race ./...",
+        "dev": "go run cmd/api/main.go"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Diseño idiomático de Go: interfaces concisas, propagación obligatoria de context.Context y comprobación estricta de carreras con -race.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Evitar disculpas o saludos innecesarios; responder directamente con soluciones técnicas y código limpio",
+        "No truncar código crítico ni usar comentarios de omisión tipo \"// ... resto del código\"",
+        "Explicar el razonamiento técnico de forma estructurada antes de acometer refactorizaciones complejas",
+        "Proponer siempre al final de cada tarea el bloque con el mensaje de commit siguiendo Conventional Commits"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibido ignorar errores retornados usando el identificador blanco (_ = fn()); manejarlos o propagarlos siempre",
+        "Prohibido invocar panic() o recover() en código de librerías o controladores normales de peticiones HTTP",
+        "Prohibido omitir la propagación de context.Context o usar context.Background() en la cadena de llamadas de una request",
+        "Prohibido el uso de http.DefaultClient o servidores HTTP sin timeouts explícitos de lectura, escritura y header",
+        "Prohibido el uso de variables globales mutables o estado global compartido que pueda causar data races",
+        "Prohibido lanzar goroutines huérfanas sin sincronización o mecanismo explícito de detención / context cancellation",
+        "No crear, modificar ni exponer credenciales, secretos o archivos de entorno (.env)",
+        "No instalar paquetes ni dependencias externas sin confirmación explícita del usuario",
+        "No eliminar comentarios explicativos, documentación ni tests existentes",
         "No superar el límite de 150-200 líneas de código por archivo"
       ]
     },

@@ -114,9 +114,9 @@ describe('Builder', () => {
 
   it('should load preset when presetId input is provided without infinite loop', () => {
     const fixture = TestBed.createComponent(Builder);
-    fixture.componentRef.setInput('presetId', 'python');
+    fixture.componentRef.setInput('presetId', 'fastapi');
     fixture.detectChanges();
-    expect(fixture.componentInstance.agentConfig.config().projectName).toBe('Python AI & Backend');
+    expect(fixture.componentInstance.agentConfig.config().projectName).toBe('FastAPI AI & Modern Backend');
     expect(fixture.componentInstance.agentConfig.config().techStack).toContain('FastAPI');
   });
 

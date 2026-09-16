@@ -18,10 +18,11 @@ export const VALID_LANGUAGE_PRESET_IDS: readonly LanguagePresetId[] = [
   'angular',
   'react',
   'react-native',
-  'python',
-  'go',
-  'rust',
-  'java',
+  'nestjs',
+  'fastapi',
+  'springboot',
+  'aspnet',
+  'go-microservices',
   'custom',
 ] as const;
 
