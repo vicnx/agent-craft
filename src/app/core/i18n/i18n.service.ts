@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { STORAGE_KEYS } from '../constants/app.constant';
 import en from './translations/en.json';
 import es from './translations/es.json';
 
@@ -10,7 +11,7 @@ type Dictionary = Record<string, Record<string, string>>;
   providedIn: 'root',
 })
 export class I18nService {
-  private static readonly STORAGE_KEY = 'agentcraft_lang';
+  private static readonly STORAGE_KEY = STORAGE_KEYS.LANG;
 
   private readonly dictionaries: Record<Language, Dictionary> = {
     es: es as Dictionary,

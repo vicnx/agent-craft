@@ -37,8 +37,39 @@ describe('CustomInstructionsForm', () => {
     fixture.detectChanges();
     expect(agentConfig.config().customInstructions).toBe('Temporary note');
 
-    component.clear();
+    component.clearCustomInstructions();
     fixture.detectChanges();
     expect(agentConfig.config().customInstructions).toBe('');
+  });
+
+  it('should toggle neverRules and check selection', () => {
+    const rule = 'No usar any';
+    agentConfig.updateConfig({ neverRules: [] });
+
+    expect(component.isRuleSelected(rule)).toBe(false);
+    component.toggleNeverRule(rule);
+    expect(component.isRuleSelected(rule)).toBe(true);
+
+    component.toggleNeverRule(rule);
+    expect(component.isRuleSelected(rule)).toBe(false);
+  });
+
+  it('should add custom neverRule and reset input', () => {
+    component.neverRuleInput.set('No usar eval()');
+    component.addCustomNeverRule();
+    expect(agentConfig.config().neverRules).toContain('No usar eval()');
+    expect(component.neverRuleInput()).toBe('');
+  });
+
+  it('should remove neverRule by index', () => {
+    agentConfig.updateConfig({ neverRules: ['Rule 1', 'Rule 2'] });
+    component.removeNeverRule(0);
+    expect(agentConfig.config().neverRules).toEqual(['Rule 2']);
+  });
+
+  it('should clear all neverRules', () => {
+    agentConfig.updateConfig({ neverRules: ['Rule 1', 'Rule 2'] });
+    component.clearAllNeverRules();
+    expect(agentConfig.config().neverRules.length).toBe(0);
   });
 });

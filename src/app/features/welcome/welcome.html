@@ -31,7 +31,7 @@
   </section>
 
   <!-- Presets Grid Section -->
-  <section id="plantillas" class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-8 relative z-10">
+  <section id="plantillas" class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 relative z-10">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2">
       <div>
         <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">{{ 'welcome.templatesTitle' | translate }}</h2>
@@ -42,15 +42,37 @@
       </span>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      @for (preset of presets(); track preset.id) {
+    <!-- Category Filter Tabs -->
+    <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-1 scrollbar-none">
+      @for (tab of categories(); track tab.id) {
+        <button type="button"
+                (click)="setCategory(tab.id)"
+                class="px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap"
+                [class.bg-indigo-600]="activeCategory() === tab.id"
+                [class.text-white]="activeCategory() === tab.id"
+                [class.shadow-sm]="activeCategory() === tab.id"
+                [class.bg-slate-100]="activeCategory() !== tab.id"
+                [class.dark:bg-white/[0.04]]="activeCategory() !== tab.id"
+                [class.text-slate-600]="activeCategory() !== tab.id"
+                [class.dark:text-slate-400]="activeCategory() !== tab.id"
+                [class.hover:bg-slate-200]="activeCategory() !== tab.id"
+                [class.dark:hover:bg-white/[0.08]]="activeCategory() !== tab.id">
+          @if (tab.icon) {
+            <i [class]="tab.icon" class="mr-1.5 text-[10px]"></i>
+          }
+          {{ tab.labelKey | translate }} ({{ tab.count }})
+        </button>
+      }
+    </div>
+
+    <!-- Presets Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      @for (preset of filteredPresets(); track preset.id) {
         <div (click)="onChoosePreset(preset.id)"
              class="glass-card p-6 rounded-2xl cursor-pointer flex flex-col justify-between group">
           <div>
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="badge-brand text-xs font-mono">
-                {{ preset.targetFile }}
-              </span>
+              <span class="badge-brand text-xs font-mono">{{ preset.targetFile }}</span>
               <span class="text-[11px] font-medium text-slate-600 dark:text-slate-400 bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">
                 {{ preset.badgeKey | translate }}
               </span>

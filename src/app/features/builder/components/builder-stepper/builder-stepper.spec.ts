@@ -22,8 +22,8 @@ describe('BuilderStepper', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should have 6 predefined steps', () => {
-    expect(BUILDER_STEPS.length).toBe(6);
+  it('should have 5 predefined steps', () => {
+    expect(BUILDER_STEPS.length).toBe(5);
   });
 
   it('should emit stepChange when clicking a different step', () => {
@@ -55,17 +55,19 @@ describe('BuilderStepper', () => {
     fixture.componentRef.setInput('currentStep', 1);
     fixture.detectChanges();
 
+    agentConfig.updateConfig({ communicationRules: [], neverRules: [] });
+    agentConfig.addCommunicationRule('Be concise');
     agentConfig.addTechStackItem('Angular');
     agentConfig.addTechStackItem('Tailwind');
     agentConfig.addArchitecturalRule('Clean code principle');
     agentConfig.addUiDesignRule('Dark mode first');
+    agentConfig.addNeverRule('No usar any');
 
-    expect(fixture.componentInstance.getStepBadge(1)).toBe(0);
-    expect(fixture.componentInstance.getStepBadge(2)).toBe(2);
-    expect(fixture.componentInstance.getStepBadge(3)).toBe(1);
-    expect(fixture.componentInstance.getStepBadge(4)).toBe(1);
-    expect(fixture.componentInstance.getStepBadge(5)).toBe(0);
-    expect(fixture.componentInstance.getStepBadge(6)).toBe(0);
+    expect(fixture.componentInstance.getStepBadge(1)).toBe(2);
+    expect(fixture.componentInstance.getStepBadge(2)).toBe(1);
+    expect(fixture.componentInstance.getStepBadge(3)).toBe(2);
+    expect(fixture.componentInstance.getStepBadge(4)).toBe(0);
+    expect(fixture.componentInstance.getStepBadge(5)).toBe(1);
   });
 
   it('should render icon and tooltip for each step tab', () => {
@@ -74,8 +76,8 @@ describe('BuilderStepper', () => {
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelectorAll('button').length).toBe(6);
-    expect(compiled.querySelectorAll('i').length).toBe(6);
-    expect(compiled.querySelectorAll('[role="tooltip"]').length).toBe(6);
+    expect(compiled.querySelectorAll('button').length).toBe(5);
+    expect(compiled.querySelectorAll('i').length).toBe(5);
+    expect(compiled.querySelectorAll('[role="tooltip"]').length).toBe(5);
   });
 });

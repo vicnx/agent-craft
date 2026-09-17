@@ -1,26 +1,27 @@
 import { Routes } from '@angular/router';
+import { APP_ROUTES } from './core/constants/routes.constant';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: APP_ROUTES.HOME,
     pathMatch: 'full',
     loadComponent: () =>
       import('./features/welcome/welcome').then((m) => m.Welcome),
     title: 'AgentCraft · Inicio',
   },
   {
-    path: 'builder',
-    redirectTo: 'builder/custom',
+    path: APP_ROUTES.BUILDER,
+    redirectTo: `${APP_ROUTES.BUILDER}/custom`,
     pathMatch: 'full',
   },
   {
-    path: 'builder/:presetId',
+    path: APP_ROUTES.BUILDER_PARAM,
     loadComponent: () =>
       import('./features/builder/builder').then((m) => m.Builder),
     title: 'AgentCraft · Studio de Reglas',
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: APP_ROUTES.HOME,
   },
 ];

@@ -1,4 +1,4 @@
-import { compileAgentMarkdown, formatRuleItem } from './markdown-compiler.util';
+import { compileAgentMarkdown, formatNeverItem, formatRuleItem } from './markdown-compiler.util';
 import { AgentConfig } from '../models/agent.model';
 
 describe('markdown-compiler.util', () => {
@@ -8,6 +8,14 @@ describe('markdown-compiler.util', () => {
     role: 'Frontend Architect',
     description: 'A tool for generating agent instructions.',
     outputLanguage: 'es',
+    tone: 'concise',
+    autonomy: 'autonomous',
+    communicationRules: ['Evitar disculpas o charlas innecesarias'],
+    customTone: 'Actuar como Staff Software Engineer',
+    neverRules: [
+      'No usar any ni @ts-ignore',
+      'Seguridad: No exponer variables de entorno .env',
+    ],
     techStack: ['Angular', 'TypeScript'],
     architecturalRules: [
       'Arquitectura modular y componentes desacoplados',
@@ -25,23 +33,33 @@ describe('markdown-compiler.util', () => {
     customInstructions: 'Never touch tmp files.',
   };
 
-  it('should compile complete config in AGENTS.md format with all 6 sections', () => {
+  it('should compile complete config in AGENTS.md format with all sections', () => {
     const md = compileAgentMarkdown(baseConfig);
     expect(md).toContain('# Directivas de Desarrollo: AgentCraft');
     expect(md).toContain('> A tool for generating agent instructions.');
     expect(md).toContain('## 1. Visión del Proyecto');
     expect(md).toContain('**Rol del Asistente:** Frontend Architect');
-    expect(md).toContain('## 2. Stack Tecnológico');
+    expect(md).toContain('## 2. Tono y Estilo de Respuesta');
+    expect(md).toContain('**Tono de Comunicación:**');
+    expect(md).toContain('**Nivel de Autonomía:**');
+    expect(md).toContain('**Pautas de Interacción:**');
+    expect(md).toContain('- Evitar disculpas o charlas innecesarias');
+    expect(md).toContain('**Instrucciones de Estilo:** Actuar como Staff Software Engineer');
+    expect(md).toContain('## 3. Stack Tecnológico');
     expect(md).toContain('- Angular');
-    expect(md).toContain('## 3. Directivas de Arquitectura y Estándares de Código');
-    expect(md).toContain('**Principio DRY:**');
-    expect(md).toContain('## 4. UI/UX y Diseño Visual');
+    expect(md).toContain('## 4. Directivas de Arquitectura y Estándares de Código');
+    expect(md).toContain('- Principio DRY: máxima reutilización y cero duplicación');
+    expect(md).toContain('## 5. UI/UX y Diseño Visual');
     expect(md).toContain('- Dark-mode first con Tailwind CSS');
-    expect(md).toContain('## 5. Flujo de Trabajo y Convenciones Git');
+    expect(md).toContain('## 6. Flujo de Trabajo y Convenciones Git');
     expect(md).toContain('Conventional Commits');
     expect(md).toContain('# Build');
     expect(md).toContain('npm run build');
-    expect(md).toContain('## 6. Instrucciones Operativas y Guardrails');
+    expect(md).toContain('## 7. Instrucciones Operativas y Guardrails');
+    expect(md).toContain('### 🚫 Restricciones Estrictas y Prohibiciones (Never-Do List)');
+    expect(md).toContain('- ❌ No usar any ni @ts-ignore');
+    expect(md).toContain('- ❌ Seguridad: No exponer variables de entorno .env');
+    expect(md).toContain('### Instrucciones Adicionales del Proyecto');
     expect(md).toContain('Never touch tmp files.');
   });
 
@@ -64,19 +82,31 @@ describe('markdown-compiler.util', () => {
     const md = compileAgentMarkdown(enConfig);
     expect(md).toContain('## 1. Project Vision & Scope');
     expect(md).toContain('**Assigned Agent Role:** Frontend Architect');
-    expect(md).toContain('## 2. Technology Stack');
-    expect(md).toContain('## 3. Architecture & Code Quality Directives');
-    expect(md).toContain('## 4. UI/UX & Visual Design');
-    expect(md).toContain('## 5. Git Workflow & Conventions');
+    expect(md).toContain('## 2. Persona & Communication Style');
+    expect(md).toContain('**Communication Tone:**');
+    expect(md).toContain('**Autonomy Level:**');
+    expect(md).toContain('## 3. Technology Stack');
+    expect(md).toContain('## 4. Architecture & Code Quality Directives');
+    expect(md).toContain('## 5. UI/UX & Visual Design');
+    expect(md).toContain('## 6. Git Workflow & Conventions');
     expect(md).toContain('### Development & Verification Commands');
-    expect(md).toContain('## 6. Operational Instructions & Guardrails');
+    expect(md).toContain('## 7. Operational Instructions & Guardrails');
+    expect(md).toContain('### 🚫 Strict Prohibitions & Constraints (Never-Do List)');
+    expect(md).toContain('### Additional Project Instructions');
   });
 
-  it('should format rule items with bold title when containing a colon', () => {
-    expect(formatRuleItem('Principio DRY: cero duplicidad')).toBe('- **Principio DRY:** cero duplicidad');
-    expect(formatRuleItem('- **Ya formateado:** regla')).toBe('- - **Ya formateado:** regla');
+  it('should format rule items consistently as clean bullets without artificial colon bolding', () => {
+    expect(formatRuleItem('Principio DRY: cero duplicidad')).toBe('- Principio DRY: cero duplicidad');
+    expect(formatRuleItem('- Ya formateado')).toBe('- Ya formateado');
     expect(formatRuleItem('Regla simple sin dos puntos')).toBe('- Regla simple sin dos puntos');
     expect(formatRuleItem('')).toBe('');
+  });
+
+  it('should format never items cleanly removing leading dashes without artificial colon bolding', () => {
+    expect(formatNeverItem('Seguridad: No exponer .env')).toBe('Seguridad: No exponer .env');
+    expect(formatNeverItem('- Sin guion: regla')).toBe('Sin guion: regla');
+    expect(formatNeverItem('Regla directa')).toBe('Regla directa');
+    expect(formatNeverItem('')).toBe('');
   });
 
   it('should handle custom git conventions that are not conventional commits', () => {
@@ -113,6 +143,11 @@ describe('markdown-compiler.util', () => {
       role: '',
       description: '',
       outputLanguage: 'en',
+      tone: '' as unknown as AgentConfig['tone'],
+      autonomy: '' as unknown as AgentConfig['autonomy'],
+      communicationRules: [],
+      customTone: '',
+      neverRules: [],
       techStack: [],
       architecturalRules: [],
       uiDesignRules: [],
@@ -124,10 +159,26 @@ describe('markdown-compiler.util', () => {
     const md = compileAgentMarkdown(minimalConfig);
     expect(md).toContain('# Development Directives: Agent Guidelines');
     expect(md).not.toContain('## 1. Project Vision');
-    expect(md).not.toContain('## 2. Technology Stack');
-    expect(md).not.toContain('## 3. Architecture');
-    expect(md).not.toContain('## 4. UI/UX');
-    expect(md).not.toContain('## 5. Git Workflow');
-    expect(md).not.toContain('## 6. Operational');
+    expect(md).not.toContain('## 2. Persona & Communication Style');
+    expect(md).not.toContain('## 3. Technology Stack');
+    expect(md).not.toContain('## 4. Architecture');
+    expect(md).not.toContain('## 5. UI/UX');
+    expect(md).not.toContain('## 6. Git Workflow');
+    expect(md).not.toContain('## 7. Operational');
+  });
+
+  it('should number sections consecutively without gaps when a section is omitted', () => {
+    const backendConfig: AgentConfig = {
+      ...baseConfig,
+      uiDesignRules: [],
+    };
+    const md = compileAgentMarkdown(backendConfig);
+    expect(md).toContain('## 1. Visión del Proyecto');
+    expect(md).toContain('## 2. Tono y Estilo de Respuesta');
+    expect(md).toContain('## 3. Stack Tecnológico');
+    expect(md).toContain('## 4. Directivas de Arquitectura y Estándares de Código');
+    expect(md).toContain('## 5. Flujo de Trabajo y Convenciones Git');
+    expect(md).toContain('## 6. Instrucciones Operativas y Guardrails');
+    expect(md).not.toContain('## 7.');
   });
 });

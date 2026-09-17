@@ -26,6 +26,9 @@ export interface BuildCommands {
   readonly dev: string;
 }
 
+export type AgentTone = 'concise' | 'balanced' | 'explanatory';
+export type AgentAutonomy = 'conservative' | 'collaborative' | 'autonomous';
+
 /**
  * Estado completo de la configuración del agente que se compilará en Markdown.
  */
@@ -45,6 +48,18 @@ export interface AgentConfig {
   /** Idioma en el que se redactará el archivo final generado ('es' o 'en') */
   readonly outputLanguage: 'es' | 'en';
 
+  /** Estilo y nivel de detalle de las respuestas */
+  readonly tone: AgentTone;
+
+  /** Grado de iniciativa y autonomía técnica */
+  readonly autonomy: AgentAutonomy;
+
+  /** Pautas de comunicación e interacción seleccionadas */
+  readonly communicationRules: readonly string[];
+
+  /** Instrucciones personalizadas libres sobre personalidad y estilo */
+  readonly customTone: string;
+
   /** Tecnologías y librerías clave. Ej: ['Angular 22', 'Tailwind CSS v4', 'TypeScript'] */
   readonly techStack: readonly string[];
 
@@ -62,6 +77,9 @@ export interface AgentConfig {
 
   /** Si se debe exigir al asistente proponer un bloque de commit al finalizar cada tarea */
   readonly proposeCommit: boolean;
+
+  /** Lista de prohibiciones estrictas y restricciones negativas (Never-Do List) */
+  readonly neverRules: readonly string[];
 
   /** Instrucciones adicionales libres o restricciones específicas del desarrollador */
   readonly customInstructions: string;

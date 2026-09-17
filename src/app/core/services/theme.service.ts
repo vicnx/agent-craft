@@ -1,4 +1,5 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
+import { STORAGE_KEYS } from '../constants/app.constant';
 
 export type Theme = 'dark' | 'light';
 
@@ -6,7 +7,7 @@ export type Theme = 'dark' | 'light';
   providedIn: 'root',
 })
 export class ThemeService {
-  private static readonly STORAGE_KEY = 'agentcraft_theme';
+  private static readonly STORAGE_KEY = STORAGE_KEYS.THEME;
 
   readonly currentTheme = signal<Theme>(this.detectInitialTheme());
   readonly isDark = computed(() => this.currentTheme() === 'dark');

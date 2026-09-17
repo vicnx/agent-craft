@@ -48,7 +48,7 @@ export class AgentIdentityForm {
   }
 
   onDescriptionChange(event: Event): void {
-    const target = event.target as HTMLTextAreaElement;
+    const target = event.target as HTMLInputElement;
     this.agentConfig.updateConfig({ description: target.value });
   }
 

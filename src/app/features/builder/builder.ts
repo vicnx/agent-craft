@@ -8,18 +8,17 @@ import {
   untracked,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
+import { isValidPresetId, TARGET_FORMAT_OPTIONS } from '../../core/constants/presets.constant';
 import { TargetFormat } from '../../core/models/agent.model';
-import { LanguagePresetId } from '../../core/models/preset.model';
 import { AgentConfigService } from '../../core/services/agent-config.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { AgentIdentityForm } from './components/agent-identity-form/agent-identity-form';
+import { PersonaToneForm } from './components/persona-tone-form/persona-tone-form';
 import { DirectivesForm } from './components/directives-form/directives-form';
 import { DirectivesModal } from './components/directives-modal/directives-modal';
 import { TechStackForm } from './components/tech-stack-form/tech-stack-form';
 import { WorkflowForm } from './components/workflow-form/workflow-form';
 import { CustomInstructionsForm } from './components/custom-instructions-form/custom-instructions-form';
-import { UiDesignForm } from './components/ui-design-form/ui-design-form';
 import { ConfirmModal } from './components/confirm-modal/confirm-modal';
 import { BuilderStepper } from './components/builder-stepper/builder-stepper';
 import { BuilderPreview } from './components/builder-preview/builder-preview';
@@ -31,9 +30,9 @@ import { BuilderPreview } from './components/builder-preview/builder-preview';
     BuilderStepper,
     BuilderPreview,
     AgentIdentityForm,
+    PersonaToneForm,
     TechStackForm,
     DirectivesForm,
-    UiDesignForm,
     WorkflowForm,
     CustomInstructionsForm,
     DirectivesModal,
@@ -55,13 +54,13 @@ export class Builder {
   private lastLoadedPreset?: string;
 
   goToStep(step: number): void {
-    if (step >= 1 && step <= 6) {
+    if (step >= 1 && step <= 5) {
       this.currentStep.set(step);
     }
   }
 
   nextStep(): void {
-    if (this.currentStep() < 6) {
+    if (this.currentStep() < 5) {
       this.currentStep.update((s) => s + 1);
     }
   }
@@ -79,14 +78,14 @@ export class Builder {
   constructor() {
     effect(() => {
       const id = this.presetId();
-      if (
-        id &&
-        id !== this.lastLoadedPreset &&
-        (id === 'typescript' || id === 'python' || id === 'go' || id === 'rust' || id === 'java' || id === 'custom')
-      ) {
+      if (id && !isValidPresetId(id)) {
+        void this.router.navigate(['/builder', 'custom']);
+        return;
+      }
+      if (id && id !== this.lastLoadedPreset && isValidPresetId(id)) {
         this.lastLoadedPreset = id;
         untracked(() => {
-          this.agentConfig.loadPreset(id as LanguagePresetId);
+          this.agentConfig.loadPreset(id);
         });
       }
     });

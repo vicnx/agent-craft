@@ -43,11 +43,18 @@ export class DirectivesModal {
     this.activeCategory.set(catId);
   }
 
-  isRuleSelected(rule: string): boolean {
+  isRuleSelected(rule: string, catId?: string): boolean {
+    if (catId === 'design') {
+      return this.agentConfig.hasUiDesignRule(rule);
+    }
     return this.agentConfig.hasArchitecturalRule(rule);
   }
 
-  toggleRule(rule: string): void {
+  toggleRule(rule: string, catId?: string): void {
+    if (catId === 'design') {
+      this.agentConfig.toggleUiDesignRule(rule);
+      return;
+    }
     this.agentConfig.toggleArchitecturalRule(rule);
   }
 

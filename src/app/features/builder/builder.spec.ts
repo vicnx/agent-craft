@@ -81,15 +81,15 @@ describe('Builder', () => {
     component.nextStep();
     expect(component.currentStep()).toBe(3);
 
-    component.goToStep(6);
-    expect(component.currentStep()).toBe(6);
+    component.goToStep(5);
+    expect(component.currentStep()).toBe(5);
 
-    // Should not exceed step 6
+    // Should not exceed step 5
     component.nextStep();
-    expect(component.currentStep()).toBe(6);
+    expect(component.currentStep()).toBe(5);
 
     component.prevStep();
-    expect(component.currentStep()).toBe(5);
+    expect(component.currentStep()).toBe(4);
 
     component.goToStep(1);
     expect(component.currentStep()).toBe(1);
@@ -114,10 +114,34 @@ describe('Builder', () => {
 
   it('should load preset when presetId input is provided without infinite loop', () => {
     const fixture = TestBed.createComponent(Builder);
-    fixture.componentRef.setInput('presetId', 'python');
+    fixture.componentRef.setInput('presetId', 'fastapi');
     fixture.detectChanges();
-    expect(fixture.componentInstance.agentConfig.config().projectName).toBe('Python AI & Backend');
+    expect(fixture.componentInstance.agentConfig.config().projectName).toBe('FastAPI AI & Modern Backend');
     expect(fixture.componentInstance.agentConfig.config().techStack).toContain('FastAPI');
+  });
+
+  it('should load angular preset with ng serve when presetId is angular', () => {
+    const fixture = TestBed.createComponent(Builder);
+    fixture.componentRef.setInput('presetId', 'angular');
+    fixture.detectChanges();
+    expect(fixture.componentInstance.agentConfig.config().techStack).toContain('Angular');
+    expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('ng serve');
+  });
+
+  it('should load react preset with npm run dev when presetId is react', () => {
+    const fixture = TestBed.createComponent(Builder);
+    fixture.componentRef.setInput('presetId', 'react');
+    fixture.detectChanges();
+    expect(fixture.componentInstance.agentConfig.config().techStack).toContain('React 19');
+    expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('npm run dev');
+  });
+
+  it('should load react-native preset with npx expo start when presetId is react-native', () => {
+    const fixture = TestBed.createComponent(Builder);
+    fixture.componentRef.setInput('presetId', 'react-native');
+    fixture.detectChanges();
+    expect(fixture.componentInstance.agentConfig.config().techStack).toContain('React Native');
+    expect(fixture.componentInstance.agentConfig.config().buildCommands.dev).toBe('npx expo start');
   });
 
   it('should load custom preset from scratch with empty rules when presetId is custom', () => {

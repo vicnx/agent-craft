@@ -91,18 +91,18 @@
     </div>
   </div>
 
-  <!-- Mission / Description Field -->
+  <!-- Mission / Description Field (Compact 1-line input) -->
   <div>
     <label for="descriptionInput" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
       {{ 'builder.descriptionLabel' | translate }}
     </label>
-    <textarea
+    <input
       id="descriptionInput"
-      rows="3"
+      type="text"
       [value]="agentConfig.config().description"
       (input)="onDescriptionChange($event)"
       [placeholder]="'builder.descriptionPlaceholder' | translate"
-      class="input-field w-full text-xs font-mono resize-none leading-relaxed"
-    ></textarea>
+      class="input-field w-full text-xs font-mono"
+    />
   </div>
 </div>

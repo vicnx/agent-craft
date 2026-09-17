@@ -9,18 +9,24 @@ import {
 import suggestionsData from '../../../../core/data/suggestions.json';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { AgentConfigService } from '../../../../core/services/agent-config.service';
+import { UiDesignForm } from '../ui-design-form/ui-design-form';
 
 @Component({
   selector: 'app-directives-form',
   standalone: true,
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, UiDesignForm],
   templateUrl: './directives-form.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DirectivesForm {
   readonly agentConfig = inject(AgentConfigService);
   readonly customInput = signal('');
+  readonly activeTab = signal<'architecture' | 'design'>('architecture');
   readonly openCatalog = output<void>();
+
+  setTab(tab: 'architecture' | 'design'): void {
+    this.activeTab.set(tab);
+  }
 
   readonly quickSuggestions = computed<readonly string[]>(() => {
     const lang = this.agentConfig.config().outputLanguage;

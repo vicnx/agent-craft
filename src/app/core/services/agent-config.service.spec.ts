@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { ALL_PRESETS_CATALOG, ENABLED_LANGUAGE_PRESET_IDS, isValidPresetId } from '../constants/presets.constant';
 import { I18nService } from '../i18n/i18n.service';
 import { AgentConfigService } from './agent-config.service';
 
@@ -27,19 +28,118 @@ describe('AgentConfigService', () => {
   });
 
   it('should load preset correctly', () => {
-    service.loadPreset('python');
-    expect(service.config().projectName).toBe('Python AI & Backend');
+    service.loadPreset('fastapi');
+    expect(service.config().projectName).toBe('FastAPI AI & Modern Backend');
     expect(service.config().techStack).toContain('FastAPI');
+  });
+
+  it('should load modern backend presets correctly', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('nestjs');
+    expect(service.config().projectName).toBe('Backend Empresarial NestJS');
+    expect(service.config().techStack).toContain('NestJS');
+    expect(service.config().buildCommands.dev).toBe('npm run start:dev');
+
+    service.loadPreset('springboot');
+    expect(service.config().projectName).toBe('Backend Empresarial Spring Boot 3');
+    expect(service.config().techStack).toContain('Spring Boot 3');
+    expect(service.config().buildCommands.dev).toBe('./mvnw spring-boot:run');
+
+    service.loadPreset('aspnet');
+    expect(service.config().projectName).toBe('Backend ASP.NET Core & Clean Architecture');
+    expect(service.config().techStack).toContain('ASP.NET Core');
+    expect(service.config().buildCommands.dev).toBe('dotnet watch run');
+
+    service.loadPreset('go-microservices');
+    expect(service.config().projectName).toBe('Microservicios Go de Alta Concurrencia');
+    expect(service.config().techStack).toContain('Go 1.23+');
+    expect(service.config().buildCommands.dev).toBe('go run cmd/api/main.go');
+  });
+
+  it('should load angular preset with modern rules, commands, and stack', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('angular');
+    expect(service.config().projectName).toBe('Proyecto Angular Moderno');
+    expect(service.config().techStack).toContain('Angular');
+    expect(service.config().techStack).toContain('Tailwind CSS');
+    expect(service.config().buildCommands.build).toBe('ng build');
+    expect(service.config().buildCommands.dev).toBe('ng serve');
+    expect(service.config().architecturalRules.some((r) => r.includes('Standalone Components'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('NgModule'))).toBe(true);
+  });
+
+  it('should load react preset with modern hooks, zustand, and tanstack query', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('react');
+    expect(service.config().projectName).toBe('Proyecto React 19 Web');
+    expect(service.config().techStack).toContain('React 19');
+    expect(service.config().techStack).toContain('Zustand');
+    expect(service.config().techStack).toContain('TanStack Query');
+    expect(service.config().buildCommands.build).toBe('npm run build');
+    expect(service.config().buildCommands.dev).toBe('npm run dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('TanStack Query'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('Class Components'))).toBe(true);
+  });
+
+  it('should load nextjs preset with App Router, React 19, and Server Actions', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('nextjs');
+    expect(service.config().projectName).toBe('Next.js 15 App Router & React 19');
+    expect(service.config().techStack).toContain('Next.js 15+');
+    expect(service.config().techStack).toContain('React 19');
+    expect(service.config().techStack).toContain('Server Actions');
+    expect(service.config().buildCommands.build).toBe('next build');
+    expect(service.config().buildCommands.dev).toBe('next dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('Server Components'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('next/router'))).toBe(true);
+  });
+
+  it('should load vue preset with Composition API, Nuxt 3, and Pinia', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('vue');
+    expect(service.config().projectName).toBe('Proyecto Vue 3 & Nuxt 3');
+    expect(service.config().techStack).toContain('Vue 3');
+    expect(service.config().techStack).toContain('Nuxt 3');
+    expect(service.config().techStack).toContain('Pinia');
+    expect(service.config().buildCommands.build).toBe('npm run build');
+    expect(service.config().buildCommands.dev).toBe('npm run dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('<script setup'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('Options API'))).toBe(true);
+  });
+
+  it('should load svelte preset with Runes and SvelteKit 2', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('svelte');
+    expect(service.config().projectName).toBe('Proyecto Svelte 5 & SvelteKit');
+    expect(service.config().techStack).toContain('Svelte 5');
+    expect(service.config().techStack).toContain('SvelteKit 2');
+    expect(service.config().buildCommands.build).toBe('npm run build');
+    expect(service.config().buildCommands.dev).toBe('npm run dev');
+    expect(service.config().architecturalRules.some((r) => r.includes('Runes'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('$state') || r.includes('$:'))).toBe(true);
+  });
+
+  it('should load react-native preset with expo router, nativewind, and flashlist', () => {
+    service.setOutputLanguage('es');
+    service.loadPreset('react-native');
+    expect(service.config().projectName).toBe('Proyecto React Native & Expo');
+    expect(service.config().techStack).toContain('React Native');
+    expect(service.config().techStack).toContain('Expo Router');
+    expect(service.config().techStack).toContain('NativeWind');
+    expect(service.config().buildCommands.build).toBe('npx expo export');
+    expect(service.config().buildCommands.dev).toBe('npx expo start');
+    expect(service.config().architecturalRules.some((r) => r.includes('Expo Router'))).toBe(true);
+    expect(service.config().neverRules.some((r) => r.includes('elementos DOM web'))).toBe(true);
   });
 
   it('should switch targetFormat without resetting user rules or stack', () => {
     service.setOutputLanguage('es');
-    service.loadPreset('typescript');
+    service.loadPreset('react');
     service.addTechStackItem('CustomLib');
     service.setTargetFormat('copilot');
     expect(service.config().targetFormat).toBe('copilot');
     expect(service.config().techStack).toContain('CustomLib');
-    expect(service.config().projectName).toBe('Proyecto TypeScript');
+    expect(service.config().projectName).toBe('Proyecto React 19 Web');
   });
 
   it('should update partial configuration', () => {
@@ -107,8 +207,8 @@ describe('AgentConfigService', () => {
     const i18n = TestBed.inject(I18nService);
     i18n.setLanguage('es');
     TestBed.flushEffects();
-    service.loadPreset('go');
-    expect(service.config().projectName).toBe('Microservicio Go');
+    service.loadPreset('go-microservices');
+    expect(service.config().projectName).toBe('Microservicios Go de Alta Concurrencia');
     service.reset();
     expect(service.config().projectName).toBe('Proyecto Personalizado');
   });
@@ -136,13 +236,79 @@ describe('AgentConfigService', () => {
     TestBed.flushEffects();
     expect(service.config().outputLanguage).toBe('en');
 
-    service.loadPreset('typescript');
-    expect(service.config().projectName).toBe('TypeScript Project');
-    expect(service.config().role).toBe('Senior Frontend Architect & TypeScript Specialist');
+    service.loadPreset('react');
+    expect(service.config().projectName).toBe('Modern React 19 Web App');
+    expect(service.config().role).toBe('Senior Frontend Architect & React 19 Specialist');
 
-    service.loadPreset('go');
+    service.loadPreset('go-microservices');
     service.reset();
     expect(service.config().projectName).toBe('Custom Project');
     expect(service.config().role).toBe('AI Coding Assistant');
+  });
+
+  it('should update tone, autonomy, and custom tone', () => {
+    service.setTone('explanatory');
+    expect(service.config().tone).toBe('explanatory');
+
+    service.setAutonomy('conservative');
+    expect(service.config().autonomy).toBe('conservative');
+
+    service.setCustomTone('Act like a principal engineer');
+    expect(service.config().customTone).toBe('Act like a principal engineer');
+  });
+
+  it('should toggle, add, and remove communication rules', () => {
+    service.updateConfig({ communicationRules: [] });
+    service.toggleCommunicationRule('Never apologize');
+    expect(service.config().communicationRules).toContain('Never apologize');
+
+    // Toggle off
+    service.toggleCommunicationRule('Never apologize');
+    expect(service.config().communicationRules).not.toContain('Never apologize');
+
+    // Add unique
+    service.addCommunicationRule('Keep code concise');
+    service.addCommunicationRule('Keep code concise');
+    expect(service.config().communicationRules.length).toBe(1);
+
+    // Remove by index
+    service.removeCommunicationRule(0);
+    expect(service.config().communicationRules.length).toBe(0);
+  });
+
+  it('should toggle, add, remove, and clear neverRules', () => {
+    service.updateConfig({ neverRules: [] });
+    service.toggleNeverRule('No usar any');
+    expect(service.config().neverRules).toContain('No usar any');
+
+    // Toggle off
+    service.toggleNeverRule('No usar any');
+    expect(service.config().neverRules).not.toContain('No usar any');
+
+    // Add unique
+    service.addNeverRule('No tocar .env');
+    service.addNeverRule('No tocar .env');
+    expect(service.config().neverRules.length).toBe(1);
+
+    // Remove by index
+    service.removeNeverRule(0);
+    expect(service.config().neverRules.length).toBe(0);
+
+    // Clear all
+    service.addNeverRule('Regla 1');
+    service.addNeverRule('Regla 2');
+    expect(service.config().neverRules.length).toBe(2);
+    service.clearNeverRules();
+    expect(service.config().neverRules.length).toBe(0);
+  });
+
+  it('should validate preset IDs from presets-config.json and respect enabled status', () => {
+    expect(ALL_PRESETS_CATALOG.length).toBe(11);
+    expect(ENABLED_LANGUAGE_PRESET_IDS).toContain('nextjs');
+    expect(ENABLED_LANGUAGE_PRESET_IDS).toContain('react');
+    expect(ENABLED_LANGUAGE_PRESET_IDS).toContain('custom');
+    expect(isValidPresetId('nextjs')).toBe(true);
+    expect(isValidPresetId('custom')).toBe(true);
+    expect(isValidPresetId('non-existent-preset')).toBe(false);
   });
 });

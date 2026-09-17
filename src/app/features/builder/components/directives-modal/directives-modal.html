@@ -71,32 +71,32 @@
                 @for (rule of cat.rules; track rule) {
                   <button
                     type="button"
-                    (click)="toggleRule(rule)"
-                    [class.chip-active]="isRuleSelected(rule)"
-                    [class.chip-item]="!isRuleSelected(rule)"
+                    (click)="toggleRule(rule, cat.id)"
+                    [class.chip-active]="isRuleSelected(rule, cat.id)"
+                    [class.chip-item]="!isRuleSelected(rule, cat.id)"
                     class="w-full text-left flex items-start gap-3 p-3 rounded-xl group"
                   >
                     <!-- Custom Styled Checkbox Indicator -->
                     <div
-                      [class.bg-brand-primary]="isRuleSelected(rule)"
-                      [class.border-brand-primary]="isRuleSelected(rule)"
-                      [class.shadow-sm]="isRuleSelected(rule)"
-                      [class.bg-white]="!isRuleSelected(rule)"
-                      [class.dark:bg-white/[0.04]]="!isRuleSelected(rule)"
-                      [class.border-slate-300]="!isRuleSelected(rule)"
-                      [class.dark:border-white/20]="!isRuleSelected(rule)"
+                      [class.bg-brand-primary]="isRuleSelected(rule, cat.id)"
+                      [class.border-brand-primary]="isRuleSelected(rule, cat.id)"
+                      [class.shadow-sm]="isRuleSelected(rule, cat.id)"
+                      [class.bg-white]="!isRuleSelected(rule, cat.id)"
+                      [class.dark:bg-white/[0.04]]="!isRuleSelected(rule, cat.id)"
+                      [class.border-slate-300]="!isRuleSelected(rule, cat.id)"
+                      [class.dark:border-white/20]="!isRuleSelected(rule, cat.id)"
                       class="w-4 h-4 mt-0.5 rounded-md flex items-center justify-center border transition-all shrink-0 group-hover:border-slate-400 dark:group-hover:border-white/40"
                     >
-                      @if (isRuleSelected(rule)) {
+                      @if (isRuleSelected(rule, cat.id)) {
                         <i class="fa-solid fa-check text-[10px] text-white"></i>
                       }
                     </div>
 
                     <span
-                      [class.text-slate-900]="isRuleSelected(rule)"
-                      [class.dark:text-white]="isRuleSelected(rule)"
-                      [class.text-slate-700]="!isRuleSelected(rule)"
-                      [class.dark:text-slate-300]="!isRuleSelected(rule)"
+                      [class.text-slate-900]="isRuleSelected(rule, cat.id)"
+                      [class.dark:text-white]="isRuleSelected(rule, cat.id)"
+                      [class.text-slate-700]="!isRuleSelected(rule, cat.id)"
+                      [class.dark:text-slate-300]="!isRuleSelected(rule, cat.id)"
                       class="text-xs leading-relaxed group-hover:text-slate-900 dark:group-hover:text-white transition-colors select-none flex-1"
                     >
                       {{ rule }}
@@ -112,7 +112,7 @@
       <!-- Modal Footer -->
       <div class="flex items-center justify-between p-4 border-t border-slate-200/80 dark:border-white/[0.08] bg-slate-50/90 dark:bg-slate-950/50">
         <span class="text-xs text-slate-500 dark:text-slate-400">
-          {{ agentConfig.config().architecturalRules.length }} {{ 'builder.selectedRulesCount' | translate }}
+          {{ agentConfig.config().architecturalRules.length + agentConfig.config().uiDesignRules.length }} {{ 'builder.selectedRulesCount' | translate }}
         </span>
         <button
           type="button"

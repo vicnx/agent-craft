@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { App } from './app';
+import { APP_CONFIG } from './core/constants/app.constant';
 import { I18nService } from './core/i18n/i18n.service';
 import { ThemeService } from './core/services/theme.service';
 
@@ -23,12 +24,13 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render application brand', async () => {
+  it('should render application brand and dynamic version badge', async () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('AgentCraft');
+    expect(compiled.textContent).toContain(`v${APP_CONFIG.version}`);
   });
 
   it('should toggle theme when clicking the theme button', async () => {

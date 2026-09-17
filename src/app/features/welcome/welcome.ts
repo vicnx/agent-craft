@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { getWelcomeCategories, WELCOME_PRESET_OPTIONS } from '../../core/constants/presets.constant';
+import { APP_ROUTES } from '../../core/constants/routes.constant';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { PresetOption } from '../../core/models/preset.model';
+import { PresetCategory } from '../../core/models/preset.model';
 
 @Component({
   selector: 'app-welcome',
@@ -12,54 +14,27 @@ import { PresetOption } from '../../core/models/preset.model';
 export class Welcome {
   private readonly router = inject(Router);
 
-  readonly presets = signal<readonly PresetOption[]>([
-    {
-      id: 'typescript',
-      nameKey: 'presets.typescriptName',
-      targetFile: 'TypeScript',
-      badgeKey: 'common.popular',
-      descKey: 'presets.typescriptDesc',
-      tags: ['TypeScript', 'Angular', 'React', 'Node.js'],
-    },
-    {
-      id: 'python',
-      nameKey: 'presets.pythonName',
-      targetFile: 'Python',
-      badgeKey: 'common.popular',
-      descKey: 'presets.pythonDesc',
-      tags: ['FastAPI', 'Django', 'Pytest', 'Ruff'],
-    },
-    {
-      id: 'go',
-      nameKey: 'presets.goName',
-      targetFile: 'Go',
-      badgeKey: 'common.autonomous',
-      descKey: 'presets.goDesc',
-      tags: ['Microservices', 'Concurrency', 'APIs'],
-    },
-    {
-      id: 'rust',
-      nameKey: 'presets.rustName',
-      targetFile: 'Rust',
-      badgeKey: 'common.popular',
-      descKey: 'presets.rustDesc',
-      tags: ['High-Perf', 'Memory-Safety', 'Cargo'],
-    },
-    {
-      id: 'java',
-      nameKey: 'presets.javaName',
-      targetFile: 'Java',
-      badgeKey: 'common.standard',
-      descKey: 'presets.javaDesc',
-      tags: ['Spring Boot 3', 'Hexagonal', 'JUnit 5'],
-    },
-  ]);
+  readonly activeCategory = signal<'all' | PresetCategory>('all');
+  readonly presets = signal(WELCOME_PRESET_OPTIONS);
+  readonly categories = computed(() => getWelcomeCategories(this.presets()));
+
+  readonly filteredPresets = computed(() => {
+    const category = this.activeCategory();
+    if (category === 'all') {
+      return this.presets();
+    }
+    return this.presets().filter((preset) => preset.category === category);
+  });
+
+  setCategory(category: 'all' | PresetCategory): void {
+    this.activeCategory.set(category);
+  }
 
   onStart(): void {
-    void this.router.navigate(['/builder', 'custom']);
+    void this.router.navigate([`/${APP_ROUTES.BUILDER}`, 'custom']);
   }
 
   onChoosePreset(presetId: string): void {
-    void this.router.navigate(['/builder', presetId]);
+    void this.router.navigate([`/${APP_ROUTES.BUILDER}`, presetId]);
   }
 }

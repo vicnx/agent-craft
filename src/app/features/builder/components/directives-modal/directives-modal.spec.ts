@@ -56,4 +56,14 @@ describe('DirectivesModal', () => {
     component.onClose();
     expect(closed).toBe(true);
   });
+
+  it('should toggle design rules when catId is design', () => {
+    const designRule = 'Dark-mode first test rule';
+    expect(component.isRuleSelected(designRule, 'design')).toBe(false);
+    component.toggleRule(designRule, 'design');
+    expect(component.isRuleSelected(designRule, 'design')).toBe(true);
+    expect(service.config().uiDesignRules).toContain(designRule);
+    component.toggleRule(designRule, 'design');
+    expect(component.isRuleSelected(designRule, 'design')).toBe(false);
+  });
 });

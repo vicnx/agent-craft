@@ -17,12 +17,13 @@ export function parseBoldSegments(line: string): readonly TextSegment[] {
 }
 
 function getH2Classes(line: string): { color: string; border: string } {
-  if (line.includes('1.') || /visio?n|scope|rol\b|role\b/i.test(line)) return { color: 'text-sky-600 dark:text-sky-400', border: 'border-sky-500/25' };
-  if (line.includes('2.') || /stack|tecnolog/i.test(line)) return { color: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/25' };
-  if (line.includes('3.') || /arquitectura|architecture/i.test(line)) return { color: 'text-indigo-600 dark:text-indigo-400', border: 'border-indigo-500/25' };
-  if (line.includes('4.') || /dise[nñ]o|design|ui/i.test(line)) return { color: 'text-fuchsia-600 dark:text-fuchsia-400', border: 'border-fuchsia-500/25' };
-  if (line.includes('5.') || /git|flujo|workflow/i.test(line)) return { color: 'text-amber-600 dark:text-amber-400', border: 'border-amber-500/25' };
-  if (line.includes('6.') || /instruccion|guardrail|restric/i.test(line)) return { color: 'text-rose-600 dark:text-rose-400', border: 'border-rose-500/25' };
+  if (line.includes('1.') || /visi[oó]n|scope|rol\b|role\b/i.test(line)) return { color: 'text-sky-600 dark:text-sky-400', border: 'border-sky-500/25' };
+  if (/tono|tone|persona/i.test(line)) return { color: 'text-violet-600 dark:text-violet-400', border: 'border-violet-500/25' };
+  if (/stack|tecnolog/i.test(line)) return { color: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/25' };
+  if (/arquitectura|architecture/i.test(line)) return { color: 'text-indigo-600 dark:text-indigo-400', border: 'border-indigo-500/25' };
+  if (/dise[nñ]o|design|ui/i.test(line)) return { color: 'text-fuchsia-600 dark:text-fuchsia-400', border: 'border-fuchsia-500/25' };
+  if (/git|flujo|workflow/i.test(line)) return { color: 'text-amber-600 dark:text-amber-400', border: 'border-amber-500/25' };
+  if (/instrucci[oó]n|guardrail|restric/i.test(line)) return { color: 'text-rose-600 dark:text-rose-400', border: 'border-rose-500/25' };
   return { color: 'text-purple-600 dark:text-purple-400', border: 'border-purple-500/25' };
 }
 

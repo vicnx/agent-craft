@@ -47,55 +47,493 @@
     },
     "gitConvention": "Conventional Commits",
     "proposeCommit": true,
-    "customInstructions": ""
+    "customInstructions": "",
+    "tone": "concise",
+    "autonomy": "autonomous",
+    "communicationRules": [
+      "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+      "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+      "Explain technical rationale step-by-step before making complex changes"
+    ],
+    "customTone": "",
+    "neverRules": [
+      "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+      "Never install external packages or dependencies without explicit user confirmation",
+      "Never delete existing comments, documentation, or unit tests",
+      "Forbidden use of any, @ts-ignore, or unsafe type casting",
+      "Never exceed the 150-200 lines of code limit per file"
+    ]
   },
   "presets": {
-    "typescript": {
+    "nextjs": {
       "targetFormat": "cursor",
-      "projectName": "TypeScript Project",
-      "role": "Senior Frontend Architect & TypeScript Specialist",
-      "description": "Architectural directives, strict typing, and best practices for the modern TypeScript ecosystem.",
+      "projectName": "Next.js 15 App Router & React 19",
+      "role": "Senior Full-Stack Frontend Architect & Next.js 15 Specialist",
+      "description": "Directives for Next.js 15 App Router, React 19 Server Components, Server Actions, TypeScript, and Tailwind CSS.",
       "outputLanguage": "en",
-      "techStack": ["TypeScript", "Angular", "Tailwind CSS", "Node.js"],
+      "techStack": [
+        "Next.js 15+",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS",
+        "Server Actions",
+        "Zod",
+        "Lucide Icons",
+        "Vitest"
+      ],
       "architecturalRules": [
-        "Modular architecture and decoupled components adhering to the Single Responsibility Principle (SRP)",
-        "DRY Principle: maximum reusability and zero logical duplication",
-        "Immutability by default: use readonly, immutable objects, and reactive Signals",
-        "Strict separation between presentation layer, business logic, and data access",
-        "Strict typing enabled (strict: true) with zero tolerance for the any type",
-        "Zero tolerance for dead code, orphan imports, or unused variables",
-        "Automated unit and integration tests for critical business logic"
+        "App Router (app/) architecture: Default to Server Components; restrict 'use client' exclusively to interactive leaf components",
+        "Next.js 15 async request APIs: params and searchParams are Promises; always await params and await searchParams before accessing properties",
+        "Data fetching executed directly within async Server Components using typed fetch with granular revalidate or cache tags",
+        "Data mutations strictly handled via Server Actions ('use server') validated at runtime with Zod schemas",
+        "Canonical file convention hierarchy for routes: layout.tsx, page.tsx, loading.tsx, error.tsx, and not-found.tsx",
+        "Client navigation exclusively with next/navigation (useRouter, usePathname, useSearchParams, redirect)",
+        "Enforce server boundary isolation by importing the 'server-only' package in database utilities or API secrets",
+        "Media and typography optimization via next/image with mandatory priority/dimensions and next/font/google",
+        "Server state invalidation managed with revalidatePath and revalidateTag; avoid redundant client global stores",
+        "Optimistic UI mutations using React 19 useOptimistic and useActionState for instantaneous user feedback"
       ],
       "uiDesignRules": [
-        "Modern dev-tool aesthetics (Dark-mode first, glassmorphism, translucent micro-borders)",
-        "Mandatory responsive design (complete adaptability on mobile, tablet, and desktop)",
-        "Reusable atomic UI components (buttons, inputs, selectors, modals)",
-        "WCAG accessibility compliance and contemporary readable typography"
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
       ],
       "buildCommands": {
-        "build": "npm run build",
+        "build": "next build",
         "test": "npm test",
-        "dev": "npm run start"
+        "dev": "next dev"
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Prioritize readability, composability, and rendering performance."
+      "customInstructions": "Always prioritize Server Components. In Next.js 15 await params/searchParams is mandatory. Always validate Server Actions with Zod and guard sensitive modules with 'server-only'.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to use next/router in App Router; use next/navigation exclusively",
+        "Forbidden to synchronously access params or searchParams in Next.js 15 (they are Promises requiring await)",
+        "Forbidden to mark root layouts or top-level pages with 'use client' unless strictly necessary",
+        "Forbidden to fetch data inside useEffect when it can be fetched in an async Server Component",
+        "Forbidden to execute Server Actions without Zod schema validation and user authorization",
+        "Forbidden to expose sensitive server environment variables without the NEXT_PUBLIC_ prefix to the client",
+        "Forbidden to use standard HTML img tags; always use the optimized next/image component",
+        "Forbidden use of any, @ts-ignore, or unsafe type assertions",
+        "Never exceed the 150-200 lines of code limit per component file",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
     },
-    "python": {
+    "react": {
       "targetFormat": "cursor",
-      "projectName": "Python AI & Backend",
-      "role": "Senior Backend Architect & Python Specialist",
-      "description": "Development standards, Clean Architecture, and directives for backend services and AI applications in Python.",
+      "projectName": "Modern React 19 Web App",
+      "role": "Senior Frontend Architect & React 19 Specialist",
+      "description": "Architectural directives, modern Hooks, state management, and best practices for React 19 and Vite.",
       "outputLanguage": "en",
-      "techStack": ["Python 3.12+", "FastAPI", "Pydantic", "Pytest", "Ruff"],
+      "techStack": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Zustand",
+        "TanStack Query",
+        "React Hook Form",
+        "Zod",
+        "Vitest"
+      ],
       "architecturalRules": [
-        "Clean Architecture with decoupled layers (Domain, Application, Infrastructure)",
-        "Mandatory Type Hints across all functions and classes per PEP 484",
-        "Explicit error handling using custom domain exceptions",
-        "Idiomatic asynchronous programming using asyncio and dependency injection",
-        "Strict validation with Ruff and Mypy in strict mode",
-        "Automated tests with Pytest, typed fixtures, and coverage above 80%",
-        "Google Style docstrings clearly documenting arguments and return types"
+        "Functional components and Hooks exclusively. Prohibit Class Components and React.FC",
+        "In React 19 ref is passed directly as a standard prop; forwardRef is strictly prohibited in new components",
+        "Strict Props typing using explicit interface contracts and named exports",
+        "Encapsulate business logic, effects, and data access inside reusable Custom Hooks (use*)",
+        "Server state synchronization handled exclusively via TanStack Query v5 using query key factories",
+        "Client UI global state managed via Zustand using atomic selectors to prevent excess re-renders",
+        "Zero derived state in useEffect: calculate during render or memoize with useMemo",
+        "Type-safe form handling and runtime schema validation with React Hook Form paired with Zod",
+        "Leverage modern React 19 primitives (useTransition, useOptimistic, useActionState, use) for fluid UX",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm run test",
+        "dev": "npm run dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always prioritize immutability, small decoupled components, Custom Hooks, and render performance.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibit Class Components (always use functional components and Hooks)",
+        "Prohibit forwardRef in React 19 (pass ref directly as a regular prop)",
+        "Prohibit useEffect for state synchronization or derivation (derive in render or useMemo)",
+        "Prohibit useEffect for data fetching (use TanStack Query instead)",
+        "Prohibit direct mutation of state or props; always use immutable updates",
+        "Prohibit using array indices as keys in dynamic list rendering",
+        "Prohibit direct DOM manipulation via document.querySelector or getElementById (use useRef)",
+        "Prohibit any, @ts-ignore, or unsafe type casting",
+        "Prohibit writing complex inline calculations or handler logic directly inside JSX",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
+    "angular": {
+      "targetFormat": "cursor",
+      "projectName": "Modern Angular Project",
+      "role": "Senior Angular Architect & Signals / Zoneless Specialist",
+      "description": "Architectural directives, reactive Signals, Standalone Components, and modern Angular best practices.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Angular",
+        "TypeScript",
+        "Tailwind CSS",
+        "RxJS",
+        "Vitest",
+        "Playwright"
+      ],
+      "architecturalRules": [
+        "Exclusively Standalone Components (standalone: true). Prohibit NgModule usage",
+        "Dependency injection strictly via native inject() function. Prohibit constructor injection",
+        "Fine-grained reactivity with Signals: state in signal(), derive with computed(), bind with input(), output(), model()",
+        "Clean RxJS & Signals interoperability: RxJS solely for complex async streams; bridge via toSignal() or takeUntilDestroyed()",
+        "Mandatory native modern control flow (@if, @for with mandatory track, @switch, @defer). Prohibit legacy *ngIf, *ngFor",
+        "ChangeDetectionStrategy.OnPush on every component for optimal performance and zoneless compatibility",
+        "Functional routing & lazy loading via loadComponent, CanActivateFn, and withComponentInputBinding()",
+        "Decoupled component architecture (Smart / Dumb container patterns) adhering strictly to SRP",
+        "Strict file size limit: maximum 150-200 lines per component file (HTML and TS) for maintainability",
+        "Strict TypeScript (strict: true) with explicit interfaces and strong typing for all models and API responses"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "ng build",
+        "test": "ng test",
+        "dev": "ng serve"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always prioritize readability, small reusable components, Signals-based reactivity, and Zoneless compatibility. Avoid side effects in effect().",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibit NgModule usage (always use Standalone Components)",
+        "Prohibit legacy structural directives (*ngIf, *ngFor, *ngSwitch)",
+        "Prohibit constructor dependency injection; always use inject()",
+        "Prohibit mutating signals inside effect() or introducing circular reactive dependencies",
+        "Prohibit unmanaged manual RxJS subscriptions (use takeUntilDestroyed or toSignal)",
+        "Prohibit direct DOM manipulation via ElementRef.nativeElement; use declarative bindings",
+        "Prohibit any, @ts-ignore, or unsafe type casting",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
+    "vue": {
+      "targetFormat": "cursor",
+      "projectName": "Vue 3 & Nuxt 3 Project",
+      "role": "Senior Frontend Architect & Vue 3 / Nuxt 3 Specialist",
+      "description": "Directives for Vue 3, Nuxt 3, Composition API with script setup, Pinia, and TypeScript.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Vue 3",
+        "Nuxt 3",
+        "TypeScript",
+        "Tailwind CSS",
+        "Pinia",
+        "VueUse",
+        "Zod",
+        "Vitest"
+      ],
+      "architecturalRules": [
+        "Single File Components (SFC) built exclusively with Composition API and <script setup lang=\"ts\">",
+        "Idiomatic reactivity: ref() for primitives and objects; computed() for derived values with reactive caching",
+        "Global state management exclusively with Pinia utilizing modern Setup Store syntax (defineStore with function)",
+        "Encapsulate reusable logic in Composables (use*) leveraging the @vueuse/core ecosystem",
+        "Nuxt 3 data fetching: prioritize useFetch and useAsyncData for SSR with unique keys to eliminate network waterfalls",
+        "Strictly typed Props and Emits using compiler macros: defineProps<{ ... }>() and defineEmits<{ ... }>()",
+        "Mobile and web forms with runtime schema validation using Zod and typed composables",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit",
+        "Zero complex business logic inside templates; delegate calculations to typed computed properties",
+        "Unit and component tests using Vitest and @vue/test-utils with typed store and router mocks"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm run test",
+        "dev": "npm run dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always use <script setup lang=\"ts\">. Avoid destructuring reactive objects without toRefs(). Use Pinia setup stores and useFetch for SSR in Nuxt.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to use Options API (data, methods, computed objects); always use <script setup>",
+        "Forbidden to destructure reactive objects returned by reactive() or props without toRefs() (causes reactivity loss)",
+        "Forbidden use of legacy Vuex; use Pinia exclusively",
+        "Forbidden to mutate props directly in child components; emit typed events via defineEmits",
+        "Forbidden to use v-for without a unique, stable :key, or combine v-if and v-for on the same DOM node",
+        "Forbidden to manipulate the DOM directly using document.querySelector; use template ref()",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
+    "svelte": {
+      "targetFormat": "cursor",
+      "projectName": "Svelte 5 & SvelteKit Project",
+      "role": "Senior Frontend Architect & Svelte 5 Runes Specialist",
+      "description": "Directives for Svelte 5, Runes ($state, $derived, $effect, $props), SvelteKit 2, TypeScript, and Tailwind CSS.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Svelte 5",
+        "SvelteKit 2",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "Vitest"
+      ],
+      "architecturalRules": [
+        "Exclusive adherence to Svelte 5 Runes: $state() for state and $derived() / $derived.by() for computed values",
+        "Typed component properties declared exclusively using the $props() rune: let { item, onSelect }: Props = $props()",
+        "Controlled two-way data binding explicitly enabled via the $bindable() rune for mutable parent props",
+        "Side effects strictly confined to $effect() and $effect.pre() solely for DOM or external browser API synchronization",
+        "View composition using snippets ({#snippet name(param)}...{/snippet}) and children as snippets instead of slots",
+        "Universal global state management in .svelte.ts modules using classes or reactive functions powered by Runes",
+        "SvelteKit 2 routing: standard file-based architecture (+page.svelte, +layout.svelte, +page.server.ts, +error.svelte)",
+        "Secure server-side data loading using load functions in +page.server.ts to safeguard credentials and secrets",
+        "Form mutations in SvelteKit handled through standard Form Actions with schema validation",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit"
+      ],
+      "uiDesignRules": [
+        "Cutting-edge modern dev-tool aesthetics: Dark-mode first, deep backgrounds, subtle gradients, and translucent borders",
+        "Tailwind CSS utility-first styling encapsulated in atomic UI primitives (buttons, inputs, selectors, badges, modals)",
+        "Full responsive fluidity using systematic breakpoints (sm:, md:, lg:, xl:) across mobile, tablet, and desktop",
+        "Universal accessibility (WCAG compliance), keyboard navigable elements, and legible contemporary typography"
+      ],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm run test",
+        "dev": "npm run dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Use Svelte 5 Runes ($state, $derived, $props) exclusively. Prohibit Svelte 4 legacy syntax ($:, export let). Use snippets instead of slots.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to use deprecated Svelte 4 syntax (reactive declarations $:, export let for props)",
+        "Forbidden to use legacy stores (writable, readable) for new state; use Runes in .svelte.ts files",
+        "Forbidden to mutate $state variables inside $effect to synchronize state (triggers infinite render loops)",
+        "Forbidden to use the legacy <slot />; use snippets ({#snippet}) and rendering with {@render snippet()}",
+        "Forbidden to import server-only or secret-access modules in +page.ts (always use +page.server.ts)",
+        "Forbidden to manipulate the DOM directly with document.querySelector; use declarative bindings or use: actions",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in templates; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
+    "react-native": {
+      "targetFormat": "cursor",
+      "projectName": "Modern React Native & Expo App",
+      "role": "Senior Mobile Architect & React Native / Expo Specialist",
+      "description": "Mobile architecture directives, Expo Router, New Architecture performance, and React Native best practices.",
+      "outputLanguage": "en",
+      "techStack": [
+        "React Native",
+        "Expo",
+        "Expo Router",
+        "TypeScript",
+        "NativeWind",
+        "Zustand",
+        "TanStack Query",
+        "FlashList",
+        "Reanimated"
+      ],
+      "architecturalRules": [
+        "File-based routing with Expo Router (app/) featuring nested layouts and typed navigation without imperative code",
+        "Pure functional components and Hooks optimized for the New Architecture (Fabric and TurboModules)",
+        "High-performance list virtualization with @shopify/flash-list, always providing estimatedItemSize and stable keys",
+        "Fluid animations and gestures on the native UI thread via react-native-reanimated and react-native-gesture-handler",
+        "Comprehensive safe area handling using react-native-safe-area-context to adapt to notches and Dynamic Island",
+        "Render images exclusively using expo-image for advanced caching and memory optimization",
+        "Strict separation between server state (TanStack Query) and local device state (Zustand)",
+        "Mobile forms with runtime schema validation using React Hook Form paired with Zod",
+        "Modular atomic component design with early returns and a strict 150-200 lines per file limit",
+        "Strict TypeScript (strict: true) with explicit interfaces for props and data models"
+      ],
+      "uiDesignRules": [
+        "Agile utility styling with NativeWind v4 (compiled Tailwind CSS) avoiding unnecessary inline styles",
+        "Mandatory native Dark Mode support respecting device system preferences",
+        "Visual and haptic tactile feedback on interactive buttons and controls using Pressable",
+        "Mobile accessibility and ergonomics with minimum touch targets of 44x44 pt"
+      ],
+      "buildCommands": {
+        "build": "npx expo export",
+        "test": "npm test",
+        "dev": "npx expo start"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, style, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Always prioritize native 60/120 fps fluidity, safe areas, UI-thread animations, and separation between views and custom hooks.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Prohibit web DOM elements (div, span, button, onClick); always use native primitives (View, Text, Pressable, onPress)",
+        "Prohibit FlatList or ScrollView for long dynamic lists; always use FlashList",
+        "Prohibit animations on the JavaScript thread; always use react-native-reanimated",
+        "Prohibit omitting SafeAreaView or hardcoding notch / Dynamic Island coordinate offsets",
+        "Prohibit React Native's legacy Image component; use expo-image exclusively",
+        "Prohibit nesting scroll views with identical orientation without nestedScrollEnabled",
+        "Prohibit any, @ts-ignore, or unsafe type casting",
+        "Prohibit complex logic or inline calculations inside visual components",
+        "Never exceed 150-200 lines of code per component file",
+        "Zero hardcoded user-visible strings in components; channel all through i18n",
+        "Never create, modify, or expose credentials, secrets, or .env files"
+      ]
+    },
+    "nestjs": {
+      "targetFormat": "cursor",
+      "projectName": "Enterprise NestJS Backend",
+      "role": "Senior Backend Architect & NestJS Specialist",
+      "description": "Enterprise modular architecture, thin controllers, DTOs with class-validator, Prisma, and OpenAPI.",
+      "outputLanguage": "en",
+      "techStack": [
+        "NestJS",
+        "TypeScript",
+        "Node.js",
+        "Prisma",
+        "class-validator",
+        "Jest",
+        "Swagger"
+      ],
+      "architecturalRules": [
+        "Strict modular architecture organizing code into cohesive domain feature modules (@Module)",
+        "Thin controllers delegating all business logic and orchestration exclusively to injectable Services (@Injectable)",
+        "Comprehensive input validation and data transformation using DTOs with class-validator and class-transformer via global ValidationPipe",
+        "Centralized error handling through custom ExceptionFilters transforming errors into structured API responses",
+        "Decoupled data access utilizing typed repositories or persistence layer abstractions with Prisma or TypeORM",
+        "Living API contracts and OpenAPI documentation maintained via Swagger decorators (@ApiTags, @ApiOperation, @ApiResponse)",
+        "Interceptors for consistent request/response logging, serialization, and execution time metrics",
+        "Strongly typed and validated runtime application configuration using ConfigModule with Joi or Zod schemas",
+        "Idiomatic NestJS dependency injection using custom injection tokens and appropriate provider scopes",
+        "Isolated unit and end-to-end tests using Jest and @nestjs/testing with fully typed dependency mocks"
+      ],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "npm run build",
+        "test": "npm run test",
+        "dev": "npm run start:dev"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Keep controllers lean and decoupled. Prioritize dependency injection, strict DTO validation, and zero any usage.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to write business logic or database queries directly inside Controllers",
+        "Forbidden to use TypeORM synchronize: true or destructive automatic schema sync in production environments",
+        "Forbidden use of any, @ts-ignore, or unsafe type assertions without runtime validation",
+        "Forbidden to introduce circular module dependencies; use forwardRef() only as an explicitly documented last resort",
+        "Forbidden to omit ValidationPipe with whitelist: true and forbidNonWhitelisted: true on public endpoints",
+        "Forbidden to mutate underlying Express Request or Response objects directly without NestJS abstractions",
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
+    },
+    "fastapi": {
+      "targetFormat": "cursor",
+      "projectName": "FastAPI AI & Modern Backend",
+      "role": "Senior Backend Architect & Async Python Specialist",
+      "description": "High-performance async APIs and AI backends with Pydantic v2, async SQLAlchemy 2, and Ruff.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Python 3.12+",
+        "FastAPI",
+        "Pydantic v2",
+        "SQLAlchemy 2.0 (Async)",
+        "Alembic",
+        "Pytest",
+        "Ruff"
+      ],
+      "architecturalRules": [
+        "Mandatory asynchronous route handlers (async def) for all I/O-bound operations (database, HTTP calls, message queues)",
+        "Pydantic v2 data models with model_config and strict separation between request and response schemas",
+        "Idiomatic dependency injection utilizing typing.Annotated and Depends() for sessions, authentication, and services",
+        "Async persistence layer with SQLAlchemy 2.0 using select(), AsyncSession, and versioned Alembic migrations",
+        "Modular structure organizing APIRouter instances by domain boundaries and versioned prefixes (/api/v1)",
+        "Application lifecycle management using modern lifespan context managers instead of deprecated on_event handlers",
+        "Centralized error handling with custom ExceptionHandlers returning consistent RFC 7807 compliant JSON payloads",
+        "Immutable configuration management powered by pydantic-settings with validated environment variables",
+        "Strict static analysis and formatting using Ruff and Mypy with mandatory Type Hints (PEP 484)",
+        "Async integration tests powered by Pytest, pytest-asyncio, and httpx.AsyncClient against isolated test databases"
       ],
       "uiDesignRules": [],
       "buildCommands": {
@@ -105,75 +543,55 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Favor immutability using dataclasses(frozen=True) or Pydantic BaseModel(frozen=True)."
-    },
-    "go": {
-      "targetFormat": "cursor",
-      "projectName": "Go Cloud Service",
-      "role": "Senior Systems Engineer & Go Specialist",
-      "description": "Directives for idiomatic Go development, high concurrency, and resilient microservices.",
-      "outputLanguage": "en",
-      "techStack": ["Go 1.22+", "Gin/Fiber", "PostgreSQL", "Docker"],
-      "architecturalRules": [
-        "Small, decoupled interfaces defined at the consumption point (accept interfaces, return structs)",
-        "Explicit idiomatic error handling (if err != nil); never discard returned errors",
-        "Safe concurrency using goroutines, sync.WaitGroup, and channels with context control (context.Context)",
-        "Standard Go project layout (cmd/, internal/, pkg/)",
-        "Strict linting with golangci-lint",
-        "Zero data races: always verify with 'go test -race'",
-        "Unit and integration testing using standard testing package and table-driven tests"
+      "customInstructions": "Ensure all I/O calls leverage async/await. Favor immutable Pydantic v2 schemas and compile-time type validation with Mypy.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
       ],
-      "uiDesignRules": [],
-      "buildCommands": {
-        "build": "go build ./...",
-        "test": "go test ./...",
-        "dev": "go run main.go"
-      },
-      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
-      "proposeCommit": true,
-      "customInstructions": "Avoid unnecessary abstractions; favor clear, direct code with zero superfluous dependencies."
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to run blocking synchronous calls (time.sleep, requests.get) inside async def route handlers",
+        "Forbidden to return raw SQLAlchemy ORM entities directly to the client without Pydantic schema serialization",
+        "Forbidden use of deprecated Pydantic v1 syntax (e.g. class Config, @validator, .dict())",
+        "Forbidden to omit Type Hints or use Any in public function signatures and domain models",
+        "Forbidden to concatenate raw SQL strings or f-strings in database queries",
+        "Forbidden to couple complex business logic or SQL queries directly into APIRouter route handlers",
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     },
-    "rust": {
+    "springboot": {
       "targetFormat": "cursor",
-      "projectName": "Rust High-Perf Systems",
-      "role": "Senior Systems Engineer & Rust Specialist",
-      "description": "Directives for memory-safe, high-performance, and idiomatic systems development in Rust.",
-      "outputLanguage": "en",
-      "techStack": ["Rust 2024", "Cargo", "Tokio", "Serde"],
-      "architecturalRules": [
-        "Strict adherence to ownership and borrowing rules without unnecessary defensive clones",
-        "Explicit, typed error handling using Result<T, E> and the '?' operator",
-        "Rich domain modeling with algebraic data types (Enums with payloads) and exhaustive pattern matching",
-        "Internal modularity with restricted crate visibility (pub(crate))",
-        "Zero tolerance for 'unsafe' blocks without rigorous, documented justification",
-        "Clean compilation with zero warnings using 'cargo clippy -- -D warnings'",
-        "Unit, integration, and property-based tests using 'cargo test'"
-      ],
-      "uiDesignRules": [],
-      "buildCommands": {
-        "build": "cargo build",
-        "test": "cargo test",
-        "dev": "cargo run"
-      },
-      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
-      "proposeCommit": true,
-      "customInstructions": "Ensure errors contain descriptive contextual information before propagating."
-    },
-    "java": {
-      "targetFormat": "cursor",
-      "projectName": "Enterprise Java Backend",
+      "projectName": "Enterprise Spring Boot 3 Backend",
       "role": "Senior Enterprise Architect & Spring Boot Specialist",
-      "description": "Directives for enterprise architecture, Domain-Driven Design (DDD), and clean code standards for Java & Spring Boot.",
+      "description": "Enterprise microservices with Java 21 Records, Virtual Threads, constructor injection, and Testcontainers.",
       "outputLanguage": "en",
-      "techStack": ["Java 21+", "Spring Boot 3", "Spring Data JPA", "PostgreSQL"],
+      "techStack": [
+        "Java 21+",
+        "Spring Boot 3",
+        "Spring Data JPA",
+        "PostgreSQL",
+        "Flyway",
+        "Testcontainers",
+        "JUnit 5"
+      ],
       "architecturalRules": [
-        "Hexagonal Architecture (Ports & Adapters) isolating the core domain model",
-        "Strict constructor-based dependency injection; avoid field injection (@Autowired)",
-        "Immutability encouraged using Java Records and immutable DTOs",
-        "Global exception handling via @RestControllerAdvice and RFC 7807 ProblemDetails",
-        "Adherence to Checkstyle standards and static analysis with SonarQube",
-        "Unit and integration testing with JUnit 5, AssertJ, Mockito, and Testcontainers",
-        "Declarative input validation using Jakarta Bean Validation (@Valid)"
+        "Hexagonal Architecture (Ports & Adapters) isolating core business domain logic from frameworks and infrastructure",
+        "Strict constructor-based dependency injection; field injection (@Autowired) is strictly prohibited",
+        "Immutable data modeling and DTOs using Java 21 Records with concise validation in canonical constructors",
+        "High-throughput concurrency leveraging Java Virtual Threads (Project Loom) in Spring Boot 3",
+        "Centralized exception handling with @RestControllerAdvice emitting RFC 7807 ProblemDetail error responses",
+        "Optimized JPA queries using DTO projections, fetch joins, or EntityGraphs to eliminate the N+1 problem",
+        "Declarative input validation on controllers and services using Jakarta Bean Validation (@Valid, @NotNull)",
+        "Controlled database schema evolution using automated, versioned Flyway migrations",
+        "Cloud-native observability enabled via Spring Boot Actuator, Micrometer, and OpenTelemetry standards",
+        "Realistic integration testing using Testcontainers with actual PostgreSQL instances instead of in-memory H2"
       ],
       "uiDesignRules": [],
       "buildCommands": {
@@ -183,7 +601,144 @@
       },
       "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
       "proposeCommit": true,
-      "customInstructions": "Follow SOLID principles rigorously and prevent framework coupling in the business layer."
+      "customInstructions": "Strictly follow SOLID principles and clean architecture. Use Java 21 Records for DTOs and constructor injection across all components.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to use field injection (@Autowired on private fields)",
+        "Forbidden to expose JPA entities (@Entity) in public REST APIs; always map to immutable Records/DTOs",
+        "Forbidden to use System.out.println; always use SLF4J / parameterized logging",
+        "Forbidden to ignore the Hibernate/JPA N+1 query problem on lazy relationships without fetch joins or projections",
+        "Forbidden to swallow generic exceptions silently without logging or appropriate rethrowing",
+        "Forbidden use of legacy Java EE packages instead of the modern jakarta.* namespace",
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
+    },
+    "aspnet": {
+      "targetFormat": "cursor",
+      "projectName": "ASP.NET Core Clean Architecture Backend",
+      "role": "Senior Backend Architect & .NET 9 Specialist",
+      "description": "High-performance Clean Architecture, typed Minimal APIs, CQRS with MediatR, and async EF Core.",
+      "outputLanguage": "en",
+      "techStack": [
+        ".NET 9",
+        "C# 13",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "MediatR",
+        "FluentValidation",
+        "xUnit"
+      ],
+      "architecturalRules": [
+        "Clean Architecture structured into decoupled layers (Domain, Application, Infrastructure, WebApi)",
+        "Decoupled CQRS pattern using MediatR strictly separating state-changing commands from read-only queries",
+        "Strongly typed Minimal APIs or Controllers utilizing TypedResults for OpenAPI precision and maximum throughput",
+        "Declarative request validation via MediatR pipeline behaviors integrated with FluentValidation",
+        "Modern C# 13 features: positional records for immutability, pattern matching, and strict nullable reference types",
+        "Asynchronous data access with Entity Framework Core, always propagating CancellationToken across all database calls",
+        "Read-optimized EF Core queries using AsNoTracking() and direct projections (Select) to DTOs",
+        "Centralized exception handling via ProblemDetails middleware compliant with RFC 7807 specifications",
+        "Native Microsoft.Extensions.DependencyInjection with appropriate service lifetimes (Scoped, Singleton, Transient)",
+        "Unit and integration testing using xUnit, FluentAssertions, Moq, and WebApplicationFactory"
+      ],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "dotnet build",
+        "test": "dotnet test",
+        "dev": "dotnet watch run"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, test, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Favor immutability with C# 13 records, propagate CancellationToken across all async method signatures, and isolate domain logic inside MediatR handlers.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to execute synchronous database queries (.ToList(), .FirstOrDefault()); always use Async counterparts",
+        "Forbidden to omit CancellationToken propagation in asynchronous database or HTTP operations",
+        "Forbidden to expose internal EF Core domain entities in API endpoints; always map to DTOs/records",
+        "Forbidden to use async void except for top-level event handlers; always return Task or ValueTask",
+        "Forbidden to use the Service Locator anti-pattern or resolve dependencies directly from IServiceProvider in controllers",
+        "Forbidden to swallow database exceptions without logging or rethrowing typed domain exceptions",
+        "Never create, modify, or expose credentials, secrets, or configuration secrets (appsettings.Production.json)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
+    },
+    "go-microservices": {
+      "targetFormat": "cursor",
+      "projectName": "High-Concurrency Go Microservices",
+      "role": "Senior Systems Engineer & Cloud-Native Go Specialist",
+      "description": "High-concurrency cloud-native microservices, standard layout, context.Context, sqlc + pgx, and slog.",
+      "outputLanguage": "en",
+      "techStack": [
+        "Go 1.23+",
+        "Chi/Gin",
+        "sqlc",
+        "pgx/v5",
+        "slog",
+        "golangci-lint",
+        "Docker"
+      ],
+      "architecturalRules": [
+        "Standard Go Project Layout isolating application entrypoints (cmd/) from private packages (internal/)",
+        "Small, cohesive interfaces defined at the consumer site (accept interfaces, return structs)",
+        "Strict propagation of context.Context as the first argument in all I/O and network operations",
+        "Compile-time type-safe and performant SQL queries generated with sqlc and pgx/v5 driver",
+        "High-performance structured logging using native log/slog with contextual attributes and trace correlation",
+        "Coordinated concurrency and goroutine lifecycle control using golang.org/x/sync/errgroup for safe teardown",
+        "Explicit idiomatic error handling (if err != nil), wrapping errors with descriptive context via fmt.Errorf(\"%w\", err)",
+        "Strict code quality and linting verification using golangci-lint in CI/CD automation",
+        "Zero tolerance for data races, always verified via 'go test -race ./...'",
+        "Clean unit and integration test suites using Table-Driven Tests with native testing and httptest packages"
+      ],
+      "uiDesignRules": [],
+      "buildCommands": {
+        "build": "go build -v -o bin/api ./cmd/api",
+        "test": "go test -v -race ./...",
+        "dev": "go run cmd/api/main.go"
+      },
+      "gitConvention": "Conventional Commits (feat, fix, refactor, perf, chore)",
+      "proposeCommit": true,
+      "customInstructions": "Idiomatic Go design: concise interfaces, mandatory context.Context propagation, and strict race condition checking with -race.",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary pleasantries or apologies; provide direct technical solutions and clean code",
+        "Never truncate critical code or use omission placeholders like \"// ... rest of code\"",
+        "Structure technical reasoning step-by-step before undertaking complex refactors",
+        "Always conclude completed tasks with a Conventional Commits message code block"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Forbidden to discard returned errors using the blank identifier (_ = fn()); always handle or wrap them",
+        "Forbidden to invoke panic() or recover() in business logic or normal HTTP request handlers",
+        "Forbidden to omit context.Context or use context.Background() inside an active request call chain",
+        "Forbidden to use http.DefaultClient or HTTP servers without explicit read, write, and idle timeouts",
+        "Forbidden to declare mutable global package variables or shared global state causing data races",
+        "Forbidden to launch unbounded orphan goroutines without synchronization or context cancellation mechanisms",
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     },
     "custom": {
       "targetFormat": "cursor",
@@ -201,7 +756,22 @@
       },
       "gitConvention": "Conventional Commits",
       "proposeCommit": true,
-      "customInstructions": ""
+      "customInstructions": "",
+      "tone": "concise",
+      "autonomy": "autonomous",
+      "communicationRules": [
+        "Avoid unnecessary apologies or conversational fluff; deliver direct solutions and clean code",
+        "Never truncate critical logic or use omit comments like \"// ... rest of code\"",
+        "Explain technical rationale step-by-step before making complex changes"
+      ],
+      "customTone": "",
+      "neverRules": [
+        "Never create, modify, or expose credentials, secrets, or environment files (.env)",
+        "Never install external packages or dependencies without explicit user confirmation",
+        "Never delete existing comments, documentation, or unit tests",
+        "Forbidden use of any, @ts-ignore, or unsafe type casting",
+        "Never exceed the 150-200 lines of code limit per file"
+      ]
     }
   }
 }

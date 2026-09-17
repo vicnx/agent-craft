@@ -11,7 +11,7 @@
   </p>
 
   <p>
-    <img src="https://img.shields.io/badge/version-0.15.0-6366f1?style=flat-square" alt="Version 0.15.0" />
+    <img src="https://img.shields.io/badge/version-0.24.0-6366f1?style=flat-square" alt="Version 0.24.0" />
     <img src="https://img.shields.io/badge/Angular-22-dd0031?style=flat-square&logo=angular&logoColor=white" alt="Angular 22" />
     <img src="https://img.shields.io/badge/TailwindCSS-v4-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" />
     <img src="https://img.shields.io/badge/TypeScript-Strict-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
@@ -44,7 +44,10 @@ Design, customize, and export standard context files such as `.cursorrules`, `co
 
 ## ✨ Features
 
-- **Visual Rule Builder:** Form-driven configuration for agent roles, tech stack constraints, code conventions, and architectural boundaries.
+- **Visual Rule Builder:** Form-driven 5-step agile configuration for agent identity & tech stack, persona & tone, unified directives & UI design, git workflows, and negative guardrails.
+- **11 Ecosystem-Specific Presets:** Battle-tested presets categorized by Frontend & Web (Next.js 15+ App Router & React 19, Vue 3 & Nuxt 3, Svelte 5 Runes & SvelteKit, Modern Angular Signals/Zoneless, React 19 & Vite), Mobile (React Native & Expo Router), and Backend (NestJS, FastAPI, Spring Boot 3, ASP.NET Core, Go Microservices).
+- **Persona & Communication Style:** Granular control over assistant verbosity (Concise, Balanced, Explanatory), operational autonomy (Conservative, Collaborative, Autonomous), and anti-pattern prevention habits.
+- **Never-Do List (Negative Guardrails):** Explicit negative constraints and prohibitions preventing credential leaks (.env), unwanted package installations, test deletions, and unchecked `any` typing.
 - **Dark & Light Modes:** Seamless toggle between sleek dark mode and crisp light mode with persistent local storage.
 - **Live Markdown Sync:** Real-time dual-pane editor showing the exact rendered file structure.
 - **One-Click Export:** Copy directly to clipboard or download ready-to-use configuration files for your repository root.

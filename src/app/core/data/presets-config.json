@@ -1,0 +1,112 @@
+[
+  {
+    "id": "nextjs",
+    "enabled": true,
+    "category": "frontend",
+    "targetFile": "Next.js 15",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.nextjsName",
+    "descKey": "presets.nextjsDesc",
+    "tags": ["Next.js 15", "React 19", "Server Actions", "Tailwind"]
+  },
+  {
+    "id": "react",
+    "enabled": true,
+    "category": "frontend",
+    "targetFile": "React 19",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.reactName",
+    "descKey": "presets.reactDesc",
+    "tags": ["React 19", "Vite", "Tailwind", "Zustand"]
+  },
+  {
+    "id": "angular",
+    "enabled": true,
+    "category": "frontend",
+    "targetFile": "Angular (v19+)",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.angularName",
+    "descKey": "presets.angularDesc",
+    "tags": ["Angular", "Signals", "Standalone", "Tailwind"]
+  },
+  {
+    "id": "vue",
+    "enabled": true,
+    "category": "frontend",
+    "targetFile": "Vue 3 / Nuxt",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.vueName",
+    "descKey": "presets.vueDesc",
+    "tags": ["Vue 3", "Nuxt 3", "Pinia", "VueUse"]
+  },
+  {
+    "id": "svelte",
+    "enabled": true,
+    "category": "frontend",
+    "targetFile": "Svelte 5",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.svelteName",
+    "descKey": "presets.svelteDesc",
+    "tags": ["Svelte 5", "Runes", "SvelteKit 2", "Vite"]
+  },
+  {
+    "id": "react-native",
+    "enabled": true,
+    "category": "mobile",
+    "targetFile": "React Native",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.reactNativeName",
+    "descKey": "presets.reactNativeDesc",
+    "tags": ["React Native", "Expo", "Expo Router", "NativeWind"]
+  },
+  {
+    "id": "nestjs",
+    "enabled": true,
+    "category": "backend",
+    "targetFile": "NestJS",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.nestjsName",
+    "descKey": "presets.nestjsDesc",
+    "tags": ["Node.js", "TypeScript", "Prisma", "OpenAPI"]
+  },
+  {
+    "id": "fastapi",
+    "enabled": true,
+    "category": "backend",
+    "targetFile": "FastAPI",
+    "badgeKey": "common.popular",
+    "nameKey": "presets.fastapiName",
+    "descKey": "presets.fastapiDesc",
+    "tags": ["Python 3.12+", "Async", "Pydantic v2", "Ruff"]
+  },
+  {
+    "id": "springboot",
+    "enabled": true,
+    "category": "backend",
+    "targetFile": "Spring Boot 3",
+    "badgeKey": "common.standard",
+    "nameKey": "presets.springbootName",
+    "descKey": "presets.springbootDesc",
+    "tags": ["Java 21+", "Virtual Threads", "Records", "JPA"]
+  },
+  {
+    "id": "aspnet",
+    "enabled": true,
+    "category": "backend",
+    "targetFile": "ASP.NET Core",
+    "badgeKey": "common.standard",
+    "nameKey": "presets.aspnetName",
+    "descKey": "presets.aspnetDesc",
+    "tags": [".NET 9", "C# 13", "Clean Arch", "EF Core"]
+  },
+  {
+    "id": "go-microservices",
+    "enabled": true,
+    "category": "backend",
+    "targetFile": "Go",
+    "badgeKey": "common.autonomous",
+    "nameKey": "presets.goMicroservicesName",
+    "descKey": "presets.goMicroservicesDesc",
+    "tags": ["Microservices", "sqlc", "pgx", "slog"]
+  }
+]

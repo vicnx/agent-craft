@@ -20,10 +20,42 @@ describe('Welcome', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain 5 language presets by default', () => {
+  it('should contain 11 presets by default across frontend, backend, and mobile', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
-    expect(component.presets().length).toBe(5);
+    expect(component.presets().length).toBe(11);
+    expect(component.presets().some((p) => p.id === 'nextjs')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'react')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'angular')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'vue')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'svelte')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'react-native')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'nestjs')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'fastapi')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'springboot')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'aspnet')).toBe(true);
+    expect(component.presets().some((p) => p.id === 'go-microservices')).toBe(true);
+  });
+
+  it('should filter presets reactively by category', () => {
+    const fixture = TestBed.createComponent(Welcome);
+    const component = fixture.componentInstance;
+    expect(component.filteredPresets().length).toBe(11);
+
+    component.setCategory('frontend');
+    expect(component.filteredPresets().length).toBe(5);
+    expect(component.filteredPresets().every((p) => p.category === 'frontend')).toBe(true);
+
+    component.setCategory('backend');
+    expect(component.filteredPresets().length).toBe(5);
+    expect(component.filteredPresets().every((p) => p.category === 'backend')).toBe(true);
+
+    component.setCategory('mobile');
+    expect(component.filteredPresets().length).toBe(1);
+    expect(component.filteredPresets()[0].id).toBe('react-native');
+
+    component.setCategory('all');
+    expect(component.filteredPresets().length).toBe(11);
   });
 
   it('should navigate to /builder/custom on onStart()', () => {
@@ -38,7 +70,21 @@ describe('Welcome', () => {
     const fixture = TestBed.createComponent(Welcome);
     const component = fixture.componentInstance;
     const navigateSpy = vi.spyOn(router, 'navigate');
-    component.onChoosePreset('typescript');
-    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'typescript']);
+    component.onChoosePreset('nextjs');
+    expect(navigateSpy).toHaveBeenCalledWith(['/builder', 'nextjs']);
+  });
+
+  it('should dynamically recompute category counts when presets change', () => {
+    const fixture = TestBed.createComponent(Welcome);
+    const component = fixture.componentInstance;
+    const initialFrontendCount = component.categories().find((c) => c.id === 'frontend')?.count;
+    expect(initialFrontendCount).toBe(5);
+
+    // Simulate disabling a preset from the presets list
+    component.presets.update((current) => current.filter((p) => p.id !== 'svelte'));
+    const updatedFrontendCount = component.categories().find((c) => c.id === 'frontend')?.count;
+    const updatedAllCount = component.categories().find((c) => c.id === 'all')?.count;
+    expect(updatedFrontendCount).toBe(4);
+    expect(updatedAllCount).toBe(10);
   });
 });
